@@ -324,6 +324,18 @@ listOfColumns1: ColumnItem[] = [
     listOfFilter: [],
     filterFn: null
   }
+ 
 ];
+
+changeA()
+{
+  this.isa= true
+  this.isb = false
+}
+changeB()
+{
+  this.isa= false
+  this.isb = true
+}
 }
 
