@@ -60,7 +60,7 @@
           <nz-form-label [nzSm]="6" [nzXs]="24">
             <span style="border-radius: 10px">Resource Type</span>
           </nz-form-label>
-          <nz-table #filterTable [nzData]="inventory">
+          <nz-table #filterTable [nzData]="inventoryItem" style="padding-top: 2%;padding-left: 10%;">
             <thead id="asset-table-head">
               <tr>
                 <th>Select</th>
@@ -75,11 +75,11 @@
                   <label
                     nz-checkbox
                     [ngModel]="a"
-                    (ngModelChange)="getId($event, data.resourceId)"
+                    (ngModelChange)="getId($event)"
                   ></label>
                 </td>
                 <td>{{ data.id }}</td>
-                <td>{{ data.Email }}</td>
+                <td>{{ data.name }}</td>
                 <td>{{ data.quantity }}</td>
               </tr>
             </tbody>

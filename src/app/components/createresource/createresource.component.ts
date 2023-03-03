@@ -13,6 +13,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { Inventory } from 'src/app/models/Inventory';
 import { Resource } from 'src/app/models/Resource';
 // import { Employee } from 'src/app/models/Employee';
 import { RestapiService } from 'src/app/restapi.service';
@@ -126,6 +127,7 @@ export class CreateresourceComponent {
       window.location.pathname = '/signin';
     }
     this.userData = this.tokenService.getCurrentUserData();
+    this.getInventoryItem()
   }
 
   createresourceByData(resource: Resource) {
@@ -158,6 +160,20 @@ export class CreateresourceComponent {
     );
   }
 
+  inventoryItem : Inventory[] = []
+  getInventoryItem(){
+    this.restService.getItem().subscribe(
+      (data:any)=>{
+        this.inventoryItem=data.responseData
+      },
+      (error:any)=>
+      {
+        console.log('Error occcured', error);
+      }
+    )
+
+  }
+
   handleClose() {
     this.isUpdateComponent = false;
     this.resourceData = null;
@@ -165,11 +181,7 @@ export class CreateresourceComponent {
   }
   id = null;
   a = false;
-  getId(event: any, id: any) {
+  getId(event: any) {
     console.log(event);
-    if (event == true) {
-      this.id = id;
-      console.log(id);
-    }
   }
 }
