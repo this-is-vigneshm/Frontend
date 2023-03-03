@@ -1,6 +1,6 @@
 
 
-<input nz-input id="search-bar" type="text" (change)="filterData($event)" placeholder="Search Tickets" />
+<input nz-input id="search-bar" type="text" (change)="filterData($event)" placeholder="Search WorkOrders" />
 <!-- <button nz-button nzType="primary" id="create-workorder-button" ><span nz-icon nzType="plus" nzTheme="outline"></span>Create WorkOrder</button> -->
 
 <nz-table #editRowTable #filterTable nzBordered [nzData]="searchResults" >
@@ -25,13 +25,13 @@
         <td>{{ data.emailId }}</td>
         <td>{{ data.phoneNumber }}</td>
         <td>
-          <button nz-button style=" border-color: rgb(224, 228, 234); background-color: white; border-radius: 5px;" (click)="showModal()"><span nz-icon nzType="edit" nzTheme="outline" nz-tooltip
+          <button nz-button style=" border-color: rgb(224, 228, 234); background-color: white; border-radius: 5px;" (click)="showModal(data)"><span nz-icon nzType="edit" nzTheme="outline" nz-tooltip
             [nzTooltipTitle]="'Update WorkOrder'" [nzTooltipColor]="'Green'" nz-popconfirm
             nzPopconfirmTitle="Proceed to Update"
             ></span></button>
           <nz-modal [(nzVisible)]="isVisible" nzTitle="Update Workorder Status" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
             <ng-container *nzModalContent>
-              <app-updatewostatus></app-updatewostatus>
+              <app-updatewostatus [workOrderData]="selectedWo"></app-updatewostatus>
             </ng-container>
           </nz-modal></td>
         <td>

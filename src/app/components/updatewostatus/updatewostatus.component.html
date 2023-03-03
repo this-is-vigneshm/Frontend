@@ -1,14 +1,45 @@
 <div >
 
     <form  nz-form [formGroup]="form" nzLayout="vertical" (ngSubmit)="submitForm()">
+      <nz-form-item>
+        <nz-form-label nzRequired nzFor="">OrderNo</nz-form-label>
+        <nz-form-control nzErrorTip="Please Choose the OrderNo">
+          <input  id="orderNo" 
+        value="{{workOrderData.orderNo}}" disabled = "true">
+        </nz-form-control>
+      </nz-form-item>
 
+      <nz-form-label nzRequired nzFor="">Status</nz-form-label>
 <nz-select nz-input formControlName="status" id="userId" nzShowSearch nzAllowClear nzPlaceHolder="Update workOrder Status">
     <nz-option *ngFor="let status of statusList" [nzLabel]="status" [nzValue]="status" ></nz-option>
    </nz-select>
   <nz-form-item nz-row class="register-area">
     <nz-form-control [nzOffset]="6">
-      <button nz-button nzType="primary">Update Status</button>
+ 
     </nz-form-control>
+  </nz-form-item>
+  
+  <nz-form-item>
+    <nz-form-label nzRequired nzFor="">Name</nz-form-label>
+    <nz-form-control nzErrorTip="">
+      <input  id="name" 
+        nzPlaceHolder="Edit an Name" value="{{workOrderData.name}}" disabled = "true">
+    </nz-form-control>
+  </nz-form-item>
+  
+  <nz-form-item>
+    <nz-form-label nzRequired nzFor="userId">User Id</nz-form-label>
+    <nz-form-control nzErrorTip="Please Choose the User Id">
+      <nz-select nz-input formControlName="userId" id="userId" nzShowSearch nzAllowClear
+        nzPlaceHolder="Select an userId">
+        <nz-option *ngFor="let employee of employees" [nzLabel]="employee.id "
+          [nzValue]="employee.id">{{employee.id}}</nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>     
+    <button nz-button nzType="primary">Update Status</button>
   </nz-form-item>
 
 </form>

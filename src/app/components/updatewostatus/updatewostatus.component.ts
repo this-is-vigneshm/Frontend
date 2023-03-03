@@ -20,7 +20,7 @@ export class UpdatewostatusComponent  implements OnInit{
     ]
 
   @Input()
-  workorderData: any;
+  workOrderData: any;
 
   @Output()
   close: EventEmitter<void> = new EventEmitter<void>();
@@ -44,18 +44,19 @@ export class UpdatewostatusComponent  implements OnInit{
     return {};
   };
 
+
   constructor(private formBuilder: UntypedFormBuilder, private notification: NzMessageService,
     private restApiService: RestapiService, private router: Router, private tokenService: TokenService) {
     this.form = this.formBuilder.group({
       status: ["Open", [Validators.required]],
-      name: [null, [this.confirmationValidator]],
       userId: [null, [Validators.required]],
     })
-    // this.employees = this.getAllEmployees();
+    this.employees = this.getAllEmployees();
   }
 
   ngOnInit(): void {
     this.userData = this.tokenService.getCurrentUserData()
+    console.log(this.workOrderData)
   }
 
   submitForm(): void {
@@ -93,7 +94,7 @@ export class UpdatewostatusComponent  implements OnInit{
 
   updateWorkOrderData(updateReq: any) {
 
-    var workorderUpdate = new UpdateWorkOrderStatusReq(this.workorderData.orderNO, updateReq.status, updateReq.name,
+    var workorderUpdate = new UpdateWorkOrderStatusReq(this.workOrderData.orderNO, updateReq.status, updateReq.name,
       this.userData.userId);
     console.log(workorderUpdate);
 

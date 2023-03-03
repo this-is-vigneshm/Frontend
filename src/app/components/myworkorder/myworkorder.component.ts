@@ -178,7 +178,12 @@ getAllWorkOrders() {
 
 
 
+selectedWo : any;
 
+showModal(workOrderData:any): void {
+  this.isVisible = true;
+  this.selectedWo = workOrderData;
+}
 
 filterData(event : any){
   function ispositive(element:WorkOrderResp, index:any, array:any)
@@ -252,9 +257,9 @@ editId : string | null =null;
     this.selectedWorkOrder = null;
   } 
   isVisible = false
-  showModal(): void{
-    this.isVisible = true
-  }
+  // showModal(): void{
+  //   this.isVisible = true
+  // }
   handleOk(): void {
     console.log('Button ok clicked!');
     this.isVisible = false;
