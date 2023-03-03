@@ -13,11 +13,10 @@
             <input
               style="border-radius: 10px"
               nz-input
-             
               id="resource-name"
               placeholder="Allocate Resource"
-              value="{{workOrderId}}"
-              [disabled]= "true"
+              value="{{ workOrderId }}"
+              [disabled]="true"
             />
           </nz-form-control>
         </nz-form-item>
@@ -61,7 +60,11 @@
           <nz-form-label [nzSm]="6" [nzXs]="24">
             <span style="border-radius: 10px">Resource Type</span>
           </nz-form-label>
-          <nz-table #filterTable [nzData]="employeeList" formControlName="resourceType">
+          <nz-table
+            #filterTable
+            [nzData]="employeeList"
+            formControlName="resourceType"
+          >
             <thead id="asset-table-head">
               <tr>
                 <th>Select</th>
@@ -72,7 +75,13 @@
             </thead>
             <tbody>
               <tr *ngFor="let data of filterTable.data">
-                <td><label nz-checkbox [ngModel]="a" (ngModelChange)="getId($event, data.resourceId)"></label></td>
+                <td>
+                  <label
+                    nz-checkbox
+                    [ngModel]="a"
+                    (ngModelChange)="getId($event, data.resourceId)"
+                  ></label>
+                </td>
                 <td>{{ data.id }}</td>
                 <td>{{ data.name }}</td>
                 <td>{{ data.email }}</td>
@@ -92,12 +101,14 @@
               style="right: 230px"
               formControlName="startDate"
               placeholder="Start Date"
-            ></nz-date-picker>
-
+              [nzDisabledDate]="disabledStartDate"
+            >
+            </nz-date-picker>
             <nz-date-picker
               style="right: 200px"
               formControlName="endDate"
               placeholder="End Date"
+              [nzDisabledDate]="disabledStartDate"
             ></nz-date-picker>
           </nz-form-control>
         </nz-form-item>

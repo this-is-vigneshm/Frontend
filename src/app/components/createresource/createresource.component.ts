@@ -54,14 +54,17 @@ export class CreateresourceComponent {
   Atype = ['Yes', 'No'];
 
   inventory: any;
-  workOrderId='1'
-
+  workOrderId = '1';
 
   inventoryColumns: ColumnItem[] = [
     { name: 'Id' },
     { name: 'Name' },
     { name: 'Quantity' },
   ];
+
+  disabledStartDate = (current: Date): boolean => {
+    return current <= new Date();
+  };
 
   constructor(
     private fb: UntypedFormBuilder,
@@ -159,12 +162,13 @@ export class CreateresourceComponent {
     this.resourceData = null;
     this.close.emit();
   }
-  id = null
-  a = false
-  getId(event: any, id:any){
-    console.log(event)
-    if(event == true)
-      {this.id = id
-      console.log(id)}
+  id = null;
+  a = false;
+  getId(event: any, id: any) {
+    console.log(event);
+    if (event == true) {
+      this.id = id;
+      console.log(id);
+    }
   }
 }

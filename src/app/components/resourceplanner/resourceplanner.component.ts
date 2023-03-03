@@ -105,7 +105,13 @@ export class ResourceplannerComponent implements OnInit {
 
   selectedUser: any;
   selectedItem: any;
+  disabledStartDate = (current: Date): boolean => {
+    return current <= new Date();
+  };
 
+  disabledEndDate = (current: Date): boolean => {
+    return current <= new Date();
+  };
   constructor(
     private fb: UntypedFormBuilder,
     private notification: NzMessageService,
@@ -116,8 +122,17 @@ export class ResourceplannerComponent implements OnInit {
     if (this.resourceData == null) {
       this.validateForm = this.fb.group({
         workOrderId: [null, [Validators.required]],
-        resourceId: [null, [Validators.required]],
-        resourceName: [null, [Validators.required]],
+        resourceId: [
+          null,
+          [
+            Validators.required,
+            Validators.pattern('^-?[0-9]\\d*(\\.\\d{1,2})?$'),
+          ],
+        ],
+        resourceName: [
+          null,
+          [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z ]+')],
+        ],
         resourceType: [],
         startDate: [null, [Validators.required]],
         endDate: [null, [Validators.required, Validators.pattern]],
@@ -130,7 +145,7 @@ export class ResourceplannerComponent implements OnInit {
         resourceId: [this.resourceData.resourceId, [Validators.required]],
         resourceName: [this.resourceData.resourceName, [Validators.required]],
         resourceType: [this.resourceData.resourceType, [Validators.required]],
-        startDate: [this.resourceData.startDate, [Validators.required, ]],
+        startDate: [this.resourceData.startDate, [Validators.required]],
         endDate: [this.resourceData.endDate, [Validators.required]],
         resourceAvailability: [
           this.resourceData.availability,
@@ -144,7 +159,6 @@ export class ResourceplannerComponent implements OnInit {
 
   submitForm(): void {
     this.createresourceByData(this.validateForm.value);
-
   }
   ngOnInit(): void {
     if (localStorage.getItem('access_token') === null) {
@@ -156,7 +170,7 @@ export class ResourceplannerComponent implements OnInit {
   }
 
   createresourceByData(resource: Resource) {
-    resource.resourceType = "User"
+    resource.resourceType = 'User';
     resource.userId = this.userData.userId;
     this.restService.registerResource(resource).subscribe(
       (data: any) => {
@@ -214,14 +228,15 @@ export class ResourceplannerComponent implements OnInit {
 
   onCheck(event: any) {
     this.check = event;
-    console.log(event)
+    console.log(event);
   }
-  id = null
-  a = false
-  getId(event: any, id:any){
-    console.log(event)
-    if(event == true)
-      {this.id = id
-      console.log(id)}
+  id = null;
+  a = false;
+  getId(event: any, id: any) {
+    console.log(event);
+    if (event == true) {
+      this.id = id;
+      console.log(id);
+    }
   }
 }
