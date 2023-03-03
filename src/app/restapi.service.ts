@@ -12,6 +12,7 @@ import { UpdateStatusReq } from './models/UpdateStatusReq';
 import { TokenService } from './token.service';
 import { Resource } from './models/Resource';
 import { WorkOrder } from './models/WorkOrder';
+import { Inventory } from './models/Inventory';
 // import { TicketRe } from './models/TicketResp';
 
 const reqOptions = {
@@ -85,6 +86,26 @@ export class RestapiService {
         },
       }
     );
+  }
+  //  inventory APIS
+
+  public registerItem(inventory : Inventory) {
+    return this.httpClient.post<ApiResponse>(`${this.baseUrl}/inventory/save`, inventory);
+  }
+
+  public getItem() {
+    return this.httpClient.get<ApiResponse>(`${this.baseUrl}/inventory/list`);
+  }
+  public getByItemId(itemId:number) {
+    return this.httpClient.get<ApiResponse>(`${this.baseUrl}/inventory/${itemId}`);
+  }
+
+  public updateItem(itemId: number ,inventory : Inventory) {
+    return this.httpClient.put<ApiResponse>(`${this.baseUrl}/inventory/${itemId}`, inventory);
+  }
+
+  public deleteItem(itemId: number ) {
+    return this.httpClient.delete<ApiResponse>(`${this.baseUrl}/inventory/${itemId}`);
   }
 
   //Authenticate APIS:
