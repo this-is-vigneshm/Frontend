@@ -1,0 +1,47 @@
+[nz-form-item] {
+  padding: auto;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th,
+table td {
+  border: 1px solid black;
+  padding: 5px;
+}
+
+table td input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+tr.collapsed td {
+  display: none;
+}
+#align {
+  border: 10px;
+  border-top-right-radius: 10px;
+  border-radius: 100px;
+  align-items: center;
+  align-self: center;
+  align-content: center;
+}
+#center {
+  border: 10px;
+  border-top-right-radius: 10px;
+  border-radius: 100px;
+  align-items: center;
+  align-self: center;
+  align-content: center;
+}
+/* button {
+  box-shadow: 0 0 5px rgb(46, 240, 7), 0 0 25px rgb(9, 233, 32);
+}
+button :hover {
+  box-shadow: 0 0 5px rgb(9, 239, 43), 0 0 25px rgb(16, 235, 19),
+    0 0 50px rgb(12, 233, 23), 0 0 100px rgb(28, 233, 17),
+    0 0 200px rgb(63, 247, 7);
+} */

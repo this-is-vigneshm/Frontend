@@ -1,0 +1,64 @@
+
+
+<input nz-input id="search-bar" type="text" (change)="filterData($event)" placeholder="Search Tickets" />
+<!-- <button nz-button nzType="primary" id="create-workorder-button" ><span nz-icon nzType="plus" nzTheme="outline"></span>Create WorkOrder</button> -->
+
+<nz-table #editRowTable #filterTable nzBordered [nzData]="searchResults" >
+  <thead id="myworkorder-table-head">
+    <tr>
+      <th></th>
+      <th *ngFor="let column of listOfColumns" [nzSortOrder]="column.sortOrder" [nzSortFn]="column.sortFn"
+        [nzSortDirections]="column.sortDirections" [nzFilterMultiple]="column.filterMultiple"
+        [nzFilters]="column.listOfFilter" [nzFilterFn]="column.filterFn">
+        {{ column.name }}
+      </th><th>Action</th> 
+             
+    </tr>    
+  </thead>
+  <tbody>
+    <ng-template ngFor let-data [ngForOf]="filterTable.data">
+      <tr>
+        <td [(nzExpand)]="data.expand"></td>
+        <td>{{ data.orderNo }}</td>
+        <td>{{ data.status }}</td>
+        <td>{{ data.name }}</td>
+        <td>{{ data.emailId }}</td>
+        <td>{{ data.phoneNumber }}</td>
+        <td>
+          <button style=" border-color: rgb(224, 228, 234); background-color: white; border-radius: 5px;"><span nz-icon nzType="delete" nzTheme="twotone" [nzTwotoneColor]="'red'" nz-tooltip
+            [nzTooltipTitle]="'Delete WorkOrder'" [nzTooltipColor]="'red'" nz-popconfirm
+            nzPopconfirmTitle="Proceed to Delete"
+            (nzOnConfirm)="handleDeleteWo(data.orderNo)"></span></button>
+        </td>
+           </tr>
+       <tr [nzExpand]="data.expand">
+        <nz-table #innerTable [nzData]="searchResults" nzSize="small" [nzShowPagination]="false">
+          <thead>
+            <tr>
+              <th *ngFor="let column of innerColumns" [nzSortOrder]="column.sortOrder" [nzSortFn]="column.sortFn"
+                [nzSortDirections]="column.sortDirections">
+                {{ column.name }}
+              </th>
+            </tr>
+          </thead>
+<tbody>
+    <tr>
+      <!-- <td>{{ data.createdBy }}</td>
+      <td>{{ data.createdTime }}</td>
+      <td>{{ data.updatedBy }}</td>
+      <td>{{ data.updatedTime }}</td>
+      <td>{{ data.timeTaken }}</td> -->
+      <td>{{ data.description }}</td>
+      <td>{{ data.workSubject }}</td>
+      <td>{{ data.taskDetails }}</td>
+      <td>{{ data.workOrderCost }}</td>
+      <td>{{ data.date }}</td>
+      <!-- <td>{{ data.expectedCompletionTime }}</td> -->
+    </tr>
+  </tbody>
+</nz-table>
+</tr>
+</ng-template>
+</tbody>
+</nz-table>
+

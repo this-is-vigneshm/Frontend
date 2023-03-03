@@ -1,0 +1,41 @@
+<div style="margin: 40px; align-items: center;">
+
+<form  nz-form [formGroup]="form" nzLayout="vertical" (ngSubmit)="submitForm()">
+
+  <nz-form-item>
+    <nz-form-label nzRequired nzFor="assignedTo">Change assignee to?</nz-form-label>
+    <nz-form-control nzErrorTip="Please Choose the Employee Name">
+      <nz-select nz-input formControlName="assignedTo" id="assignedTo" nzShowSearch nzAllowClear
+        nzPlaceHolder="Select an Employee">
+        <nz-option *ngFor="let employee of employees" [nzLabel]="employee.name + '  (' + employee.email + ')' "
+          [nzValue]="employee.id">{{employee.name
+          + employee.employeeMail}}</nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label nzRequired nzFor="status">What is the status you want to update?</nz-form-label>
+    <nz-form-control nzErrorTip="Please Select a Status">
+      <nz-select nz-input formControlName="status" [(ngModel)]="ticketData.status" id="status" nzShowSearch nzAllowClear
+        nzPlaceHolder="Select a Status">
+        <nz-option *ngFor="let status of statusList" [nzLabel]="status"
+          [nzValue]="status"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  
+  <nz-form-item>
+    <nz-form-label nzFor="amountSpent"> Total amount spent (if ticket being closed)?</nz-form-label>
+    <nz-form-control>
+      <input nz-input formControlName="amountSpent" id="ticket-assetId" placeholder="Amount spent in dollars" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item nz-row class="register-area">
+    <nz-form-control [nzOffset]="6">
+      <button nz-button nzType="primary" id="update-status-submit">Update Status</button>
+    </nz-form-control>
+  </nz-form-item>
+
+</form>
+</div>

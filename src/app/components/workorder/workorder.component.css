@@ -1,0 +1,22 @@
+#raise-issue-model{
+    width: 100%;
+}
+
+nz-modal{
+    position: initial;
+}
+
+.ant-modal{
+    position: initial!;
+}
+
+#panel-header{
+    color: rgba(38, 38, 202, 0.733);
+    font-size: large;
+    font-weight: 700;
+}
+
+
+input{
+    border-radius: 7px;
+  }

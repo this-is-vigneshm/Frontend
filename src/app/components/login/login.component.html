@@ -1,0 +1,43 @@
+<div id="login-page">
+    <span id="page-title">Staunch Service Management</span>
+   
+    <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+        <div id="user-logo" >
+            <svg height="150px" width="150px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                <g id="SVGRepo_iconCarrier">
+                    <path opacity="0.4"
+                        d="M22 7.81V16.19C22 19 20.71 20.93 18.44 21.66C17.78 21.89 17.02 22 16.19 22H7.81C6.98 22 6.22 21.89 5.56 21.66C3.29 20.93 2 19 2 16.19V7.81C2 4.17 4.17 2 7.81 2H16.19C19.83 2 22 4.17 22 7.81Z"
+                        fill="#292D32"></path>
+                    <path
+                        d="M18.4406 21.66C17.7806 21.89 17.0206 22 16.1906 22H7.81055C6.98055 22 6.22055 21.89 5.56055 21.66C5.91055 19.02 8.67055 16.97 12.0005 16.97C15.3305 16.97 18.0906 19.02 18.4406 21.66Z"
+                        fill="#292D32"></path>
+                    <path
+                        d="M15.5799 11.58C15.5799 13.56 13.9799 15.17 11.9999 15.17C10.0199 15.17 8.41992 13.56 8.41992 11.58C8.41992 9.60002 10.0199 8 11.9999 8C13.9799 8 15.5799 9.60002 15.5799 11.58Z"
+                        fill="#292D32"></path>
+                </g>
+            </svg>
+        </div>
+        <span id="login-title">Please Login to Continue!</span>
+        <br>
+        <br>
+        <nz-form-item>
+            <nz-form-control nzErrorTip="Please Enter your username!">
+                <nz-input-group style="border-radius: 10px;" nzPrefixIcon="user">
+                    <input  type="text" nz-input formControlName="username" placeholder="Username" />
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-control nzErrorTip="Please Enter your Password!">
+                <nz-input-group style="border-radius: 10px;" nzPrefixIcon="lock">
+                    <input type="password" nz-input formControlName="password" placeholder="Password" />
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+        <div nz-row class="login-form-margin">
+        </div>
+        <button  style="border-radius: 10px;" nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Log in</button>
+    </form>
+</div>

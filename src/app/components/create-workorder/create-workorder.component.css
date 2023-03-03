@@ -1,0 +1,56 @@
+[nz-form] {
+  /* max-width: 600px; */
+  padding: 5% 3% 5% 6%;
+}
+#create-workorder-view {
+  width: 35%;
+  margin-left: 30%;
+  border-radius: 12px;
+}
+:host ::ng-deep .avatar-uploader > .ant-upload {
+  width: 220px;
+  height: 128px;
+  border-radius: 17px;
+  margin-right: 89px;
+}
+#create-workorder-submit {
+  width: 35%;
+  height: 10%;
+  margin-left: 40%;
+  border-radius: 12px;
+}
+#button {
+  width: 35%;
+  height: 10%;
+  margin-left: 40%;
+  border-radius: 12px;
+}
+
+#collapse{
+  width: 60%;
+}
+
+#collapse1{
+  width: 60%;
+}
+#form-view{
+  width:75%;
+}
+#upload-view{
+  width:30%;
+  height: 40%;
+  justify-content: center;
+  margin-top: 70%;
+}
+
+input {
+  border-radius: 7px;
+}
+
+.ant-row .register-area .ant-form-item {
+  width:220px;
+  margin-right: 30px;
+}
+#workOrder{
+  display: flex;
+}

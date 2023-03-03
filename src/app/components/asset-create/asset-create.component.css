@@ -1,0 +1,18 @@
+#create-asset-body{
+  /* padding: 50px 400px 20px 400px; */
+  padding: 5% 20% 5% 20%;
+}
+ #create-button {
+    width: 100%;
+    border-radius: 10px;
+}
+
+#page-title{
+  font-size: xx-large;
+  font-family: serif;
+}
+
+
+input{
+  border-radius: 7px;
+}

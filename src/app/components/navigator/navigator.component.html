@@ -1,0 +1,95 @@
+<ul nz-menu nzMode="horizontal">
+  <li
+    nz-menu-item
+    class="navigation-button"
+    id="home-button"
+    routerLink="/home"
+  >
+    <span nz-icon nzType="home" nzTheme="outline"></span>
+    Home
+  </li>
+  <li nz-submenu class="navigation-button" nzTitle="Assets" nzIcon="caret-down">
+    <ul>
+      <li nz-menu-item routerLink="/assets/create">Register An Asset</li>
+      <li nz-menu-item routerLink="/assets">View All Asset</li>
+    </ul>
+  </li>
+  <li
+    nz-submenu
+    class="navigation-button"
+    nzTitle="Facitlities"
+    nzIcon="caret-down"
+  >
+    <ul>
+      <li nz-menu-item routerLink="/facilities/create">Add a Facility</li>
+      <li nz-menu-item routerLink="/facilities">View All Facitlities</li>
+    </ul>
+  </li>
+  <li
+    *ngIf="isAdmin"
+    nz-submenu
+    class="navigation-button"
+    nzTitle="Users"
+    nzIcon="caret-down"
+  >
+  
+    <ul>
+      <li nz-menu-item routerLink="/users">
+        <span nz-icon nzType="usergroup-add" nzTheme="outline"></span>
+        <span>View All Users</span>
+      </li>
+    </ul>
+  </li>
+  <li nz-submenu class="navigation-button" nzTitle="WorkOrder" nzIcon="caret-down">
+    <ul>
+        <li nz-menu-item routerLink="/workorder/create">Add An WorkOrder</li>
+        <li nz-menu-item routerLink="/myworkorder">View All WorkOrders</li>
+    </ul>
+</li>
+  <li id="logout-button" nzPlacement="topRight">
+    <span id="logout-button">
+      <a nz-dropdown [nzDropdownMenu]="menu">
+        <button
+          nz-button
+          nzIcon="poweroff"
+          nzShape="circle"
+          id="initial-button"
+        >
+          <span style="color: white">{{ userInitials }}</span>
+        </button>
+      </a>
+
+      <nz-dropdown-menu #menu="nzDropdownMenu" style="border-radius: 30px">
+        <ul nz-menu>
+          <li nz-menu-item>
+            <button
+              nz-button
+              nzIcon="poweroff"
+              nzShape="round"
+              nz-popconfirm
+              nzPopconfirmTitle="Sure want to Logout?"
+              (nzOnConfirm)="logoutHandler()"
+            >
+              <span
+                nz-icon
+                nzType="poweroff"
+                nzTheme="outline"
+                nzColor="red"
+              ></span>
+              <span>Logout</span>
+            </button>
+          </li>
+        </ul>
+      </nz-dropdown-menu>
+    </span>
+  </li>
+  <!-- <li
+    nz-menu-item
+    class="navigation-button"
+    id="home-button"
+    routerLink="/resourcelist"
+  >
+    <span nz-icon nzType="view" nzTheme="outline"></span>
+    View Resource
+  </li> -->
+</ul>

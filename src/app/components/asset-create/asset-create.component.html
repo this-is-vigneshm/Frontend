@@ -1,0 +1,113 @@
+<div id="create-asset-body">
+  <div id="create-asset-form">
+    <h2 *ngIf="!isUpdateComponent">Create Asset using Data</h2>
+    <!-- <ng-component #updateTitle><h2 >Create Asset using Data</h2></ng-component> -->
+    <form class nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="name">
+          Asset Name</nz-form-label
+        >
+        <nz-form-control
+          [nzSm]="14"
+          [nzXs]="24"
+          nzErrorTip="Please Enter the Asset Name"
+        >
+          <input
+            style="border-radius: 10px"
+            nz-input
+            formControlName="name"
+            id="asset-name"
+            placeholder="Asset Name"
+          />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="description" nzRequired
+          >Description</nz-form-label
+        >
+        <nz-form-control
+          [nzSm]="14"
+          [nzXs]="24"
+          nzErrorTip="Please Enter the Description!"
+        >
+          <input
+            nz-input
+            id="description"
+            formControlName="description"
+            placeholder="Description"
+          />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="price" nzRequired
+          >Price (in Dollar)</nz-form-label
+        >
+        <nz-form-control
+          [nzSm]="14"
+          [nzXs]="24"
+          nzErrorTip="Please Enter the Asset Price!"
+        >
+          <input
+            formControlName="price"
+            id="'price'"
+            nz-input
+            placeholder="Price in Dollars"
+          />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="facilityCode" nzRequired
+          >Facility Name</nz-form-label
+        >
+        <nz-form-control
+          [nzSm]="14"
+          [nzXs]="24"
+          nzErrorTip="Please Select a Facility Name"
+        >
+          <nz-select
+            nz-input
+            formControlName="facilityCode"
+            id="facilityCode"
+            nzShowSearch
+            nzAllowClear
+            nzPlaceHolder="Select a Facility"
+          >
+            <nz-option
+              *ngFor="let facility of facilities"
+              [nzLabel]="facility.facilityName"
+              [nzValue]="facility.facilityCode"
+              >{{ facility }}</nz-option
+            >
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item nz-row class="register-area">
+        <nz-form-control [nzSpan]="14" [nzOffset]="6">
+          <button nz-button nzType="primary" id="create-button">Submit</button>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </div>
+  <br />
+  <div id="create-asset-file-upload" *ngIf="!isUpdateComponent">
+    <h2>Create Assets By File</h2>
+    <nz-form-label [nzSm]="6" [nzXs]="24"> Upload </nz-form-label>
+    <nz-upload
+      nzType="drag"
+      [nzMultiple]="false"
+      nzAction="http://localhost:8084/assets/csv/{{ userData.userId }}"
+      (nzChange)="handleChange($event)"
+    >
+      <p class="ant-upload-drag-icon">
+        <span nz-icon nzType="inbox"></span>
+      </p>
+      <p class="ant-upload-text">Click or drag file to this area to upload</p>
+      <p class="ant-upload-hint">
+        Please upload Files with extenstions .csv / .xslx
+      </p>
+    </nz-upload>
+  </div>
+</div>

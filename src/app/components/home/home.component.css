@@ -1,0 +1,32 @@
+
+
+img{
+    width: 100%;
+    height: 70%;
+}
+#welcome-text{
+    margin-top: 15%;
+    font-size: xxx-large;
+    font-family: math;
+    font-weight: 800;
+}
+
+
+#raise-issue-button{
+    border-radius: 22px;
+    margin-right: 1%;
+    margin-bottom: 1%;
+    height: 49px;
+    width: 179px;
+    font-size: large;
+    font-family: ui-serif;
+}
+
+
+#sub-text{
+    margin-bottom: 1%;
+    font-size: x-large;
+    font-family: math;
+    font-style: italic;
+    color: grey;
+}

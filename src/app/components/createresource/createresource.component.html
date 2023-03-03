@@ -1,0 +1,150 @@
+<div id="create-resource-body">
+  <div id="create-resource-form">
+    <h2>Add Resource Planner</h2>
+    <div class="align">
+      <form class nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24"> WorkOrder Id</nz-form-label>
+          <nz-form-control
+            [nzSm]="14"
+            [nzXs]="24"
+            nzErrorTip="Please Enter the  WorkOrder Id"
+          >
+            <input
+              style="border-radius: 10px"
+              nz-input
+              id="resource-name"
+              placeholder="Allocate Resource" [disabled]= "true" value="{{workOrderId}}"
+            />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="resourceId">
+            Resource Code</nz-form-label
+          >
+          <nz-form-control
+            [nzSm]="14"
+            [nzXs]="24"
+            nzErrorTip="Please Enter the Resource Id"
+          >
+            <input
+              style="border-radius: 10px"
+              nz-input
+              formControlName="resourceId"
+              id="resource-name"
+              placeholder="Resource Code"
+            />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="name">
+            Resource Name</nz-form-label
+          >
+          <nz-form-control
+            [nzSm]="14"
+            [nzXs]="24"
+            nzErrorTip="Please Enter the Resource Name"
+          >
+            <input
+              style="border-radius: 10px"
+              nz-input
+              formControlName="resourceName"
+              id="resource-name"
+              placeholder="Resource Name"
+            />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24">
+            <span style="border-radius: 10px">Resource Type</span>
+          </nz-form-label>
+          <nz-table #filterTable [nzData]="inventory">
+            <thead id="asset-table-head">
+              <tr>
+                <th>Select</th>
+                <th *ngFor="let column of inventoryColumns">
+                  {{ column.name }}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of filterTable.data">
+                <td><label nz-checkbox [ngModel]="a" (ngModelChange)="getId($event, data.resourceId)"></label></td>
+                <td>{{ data.id }}</td>
+                <td>{{ data.Email }}</td>
+                <td>{{ data.quantity }}</td>
+              
+              </tr>
+            </tbody>
+          </nz-table>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24">
+            Resource Schedule
+          </nz-form-label>
+          <nz-form-control nzErrorTip="Please Enter the Resource Schedule">
+            <nz-date-picker
+              style="right: 230px"
+              formControlName="startDate"
+              placeholder="Start Date"
+            ></nz-date-picker>
+
+            <nz-date-picker
+              style="right: 200px"
+              formControlName="endDate"
+              placeholder="End Date"
+            ></nz-date-picker>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label
+            style="width: 150px"
+            nzRequired
+            nzFor="Resource Availability"
+            [nzSm]="6"
+            [nzXs]="24"
+          >
+            <span style="border-radius: 10px">Resource Availability</span>
+          </nz-form-label>
+          <nz-form-control
+            nzErrorTip="Please Select a Resource Availability"
+            [nzSm]="14"
+            [nzXs]="24"
+          >
+            <nz-select
+              nz-input
+              formControlName="availability"
+              id="Resource Type"
+              nzShowSearch
+              nzAllowClear
+              nzPlaceHolder="Select the Resource Type"
+              style="width: 100%; border-radius: 100px"
+              ><nz-option
+                *ngFor="let Resource of Atype"
+                [nzLabel]="Resource"
+                [nzValue]="Resource"
+              ></nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item nz-row class="register-area">
+          <nz-form-control [nzSpan]="14" [nzOffset]="6">
+            <button nz-button nzType="primary" id="create-button">
+              SAVE AND ADD
+            </button>
+            <button
+              style="right: -10px"
+              nz-button
+              nzType="primary"
+              id="create-button"
+              (click)="handleClose()"
+            >
+              SAVE AND CLOSE
+            </button>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+    </div>
+  </div>
+</div>
+

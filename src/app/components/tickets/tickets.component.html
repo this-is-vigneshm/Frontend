@@ -1,0 +1,88 @@
+<span style="    
+font-family: math;
+font-size: xx-large;
+font-weight: 900;
+margin-left: -66%;">Queues</span>
+
+<input nz-input id="search-bar" type="text" (change)="filterData($event)" placeholder="Search Tickets" />
+
+<button id="create-ticket-button" nz-button nzType="primary" (click)="showModalMiddle()"><span nz-icon nzType="plus" nzTheme="outline"></span>Create a Ticket</button>
+<nz-modal [nzStyle]="{ top: '20px' , width:'60%'}" [(nzVisible)]="isVisibleMiddle" nzTitle="Create a Service Ticket"
+  nzCentered (nzOnCancel)="handleCreateTicketCancel()" (nzOnOk)="handleCreateTicketOk()">
+  <ng-container *nzModalContent>
+    <app-create-ticket></app-create-ticket>
+  </ng-container>
+</nz-modal>
+
+
+
+<nz-table #editRowTable #filterTable nzBordered [nzData]="searchResults" >
+  <thead id="asset-table-head">
+    <tr>
+      <th></th>
+      <th *ngFor="let column of listOfColumns" [nzSortOrder]="column.sortOrder" [nzSortFn]="column.sortFn"
+        [nzSortDirections]="column.sortDirections" [nzFilterMultiple]="column.filterMultiple"
+        [nzFilters]="column.listOfFilter" [nzFilterFn]="column.filterFn">
+        {{ column.name }}
+      </th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-template ngFor let-data [ngForOf]="filterTable.data">
+      <tr>
+        <td [(nzExpand)]="data.expand"></td>
+        <td>{{ data.uuid }}</td>
+        <td>{{ data.title }}</td>
+        <td>{{ data.description }}</td>
+        <td>{{ data.category }}</td>
+        <td>
+          <div [hidden]="editId === data.uuid" (click)="startEdit(data.uuid)">{{ data.status }}
+          </div>
+          <nz-select nz-input [(ngModel)]="data.status" [hidden]="editId !== data.uuid" (blur)="stopEdit()">
+            <nz-option [nzLabel]="'Open'" [nzValue]="'Open'"></nz-option>
+            <nz-option [nzLabel]="'In Progress'" [nzValue]="'In Progress'"></nz-option>
+            <nz-option [nzLabel]="'Resolved'" [nzValue]="'Resolved'"></nz-option>
+            <nz-option [nzLabel]="'Closed'" [nzValue]="'Closed'"></nz-option>
+          </nz-select>
+        </td>
+        <td>{{ data.employeeName }} ({{data.employeeMail}})</td>
+        <td>{{ data.expectedCompletionTime | date: 'dd/MM/yyyy hh:ss a' }}</td>
+        <td>
+          <button nz-button nz-popconfirm nzPopconfirmTitle="Sure to Update Status?"
+            (nzOnConfirm)="showUpdateStatusModal(data)">
+            <span nz-icon nzType="up-circle" nzTheme="twotone"></span></button>
+        </td>
+      </tr>
+      <tr [nzExpand]="data.expand">
+        <nz-table #innerTable [nzData]="searchResults" nzSize="small" [nzShowPagination]="false">
+          <thead>
+            <tr>
+              <th *ngFor="let column of innerColumns" [nzSortOrder]="column.sortOrder" [nzSortFn]="column.sortFn"
+                [nzSortDirections]="column.sortDirections">
+                {{ column.name }}
+              </th>
+            </tr>
+          </thead>
+
+  <tbody>
+    <tr>
+      <td>{{ data.createdTime | date: 'dd/MM/yyyy hh:ss a' }}</td>
+      <td>{{ data.createdBy }}</td>
+      <td>{{ data.updatedTime | date: 'dd/MM/yyyy hh:ss a' }}</td>
+      <td>{{ data.updatedBy }}</td>
+      <td>{{ data.timeTaken / 3600000 }}</td>
+    </tr>
+  </tbody>
+</nz-table>
+</tr>
+</ng-template>
+</tbody>
+</nz-table>
+
+<nz-modal  [nzStyle]="{ top: '20px' , width:'30%' }" [(nzVisible)]="isUpdateStatusVisible" nzTitle="Update Status of Ticket"
+  nzCentered (nzOnCancel)="handleUpdateStatusCancel()" (nzOnOk)="handleUpdateStatusOk()">
+  <ng-container *nzModalContent>
+    <app-update-ticket-status [ticketData]="selectedTicket" (close)="handleUpdateStatusOk()"></app-update-ticket-status>
+  </ng-container>
+</nz-modal>

@@ -1,0 +1,80 @@
+<span style="    
+font-family: math;
+font-size: xx-large;
+font-weight: 900;
+margin-left: -66%;">Facilities</span>
+
+<input nz-input id="search-bar" type="text" (change)="filterData($event)" placeholder="Search a Facility" />
+<button nz-button nzType="primary" id="create-faclity-button" (click)="showCreateFacilityModal()"><span nz-icon
+        nzType="plus" nzTheme="outline"></span>Add Facility</button>
+
+<nz-modal [nzStyle]="{ top: '20px' , width:'60%'}" [(nzVisible)]="isCreateFacilityVisible" nzTitle="Create an Ticket"
+    nzCentered (nzOnCancel)="handleCreateFacilityCancel()" (nzOnOk)="handleCreateFacilityOk()">
+    <ng-container *nzModalContent>
+        <app-create-facility (close)="handleCreateFacilityOk()"></app-create-facility>
+    </ng-container>
+</nz-modal>
+
+<nz-table #nestedTable [nzData]="searchResults" [nzPageSize]="10">
+    <thead>
+        <tr>
+            <th></th>
+            <th *ngFor="let column of facilityColumns" [nzSortOrder]="column.sortOrder" [nzSortFn]="column.sortFn"
+                [nzSortDirections]="column.sortDirections">
+                {{ column.name }}
+            </th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-template ngFor let-data [ngForOf]="nestedTable.data">
+            <tr>
+                <td [(nzExpand)]="data.expand"></td>
+                <td>{{ data.facilityId }}</td>
+                <td>{{ data.facilityName }}</td>
+                <td>{{ data.facilityCode }}</td>
+                <td>{{ data.facilityType }}</td>
+                <td>{{ data.facilitySource }}</td>
+                <td>
+                    {{ data.facLocationCode +", " + data.addressLine1 +
+                    ", " + data.addressLine2 + ", " +data.addressLine3 +
+                    ", " +data.city + ", " +data.state +
+                    ", " +data.postalCode + ", " + data.country}}
+                </td>
+                <td>
+                    <button nz-button>
+                        <span nz-icon nzType="delete" nzTheme="twotone" [nzTwotoneColor]="'red'" nz-tooltip
+                            [nzTooltipTitle]="'Delete Facility'" [nzTooltipColor]="'red'" nz-popconfirm
+                            nzPopconfirmTitle="Proceed to update?"
+                            (nzOnConfirm)="handleDeleteFacility(data.facilityId)">
+                        </span>
+                    </button>
+                </td>
+            </tr>
+            <tr [nzExpand]="data.expand">
+                <nz-table #innerTable [nzData]="searchResults" nzSize="small" [nzShowPagination]="false">
+                    <thead>
+                        <tr>
+                            <th *ngFor="let column of innerColumns" [nzSortOrder]="column.sortOrder"
+                                [nzSortFn]="column.sortFn" [nzSortDirections]="column.sortDirections">
+                                {{ column.name }}
+                            </th>
+                        </tr>
+                    </thead>
+
+    <tbody>
+        <tr>
+            <td>{{ data.dagRunId }}</td>
+            <td>{{ data.taskIdJobId }}</td>
+            <td>{{ data.crossCodeFlag }}</td>
+            <td>{{ data.createdTime | date: 'dd/MM/yyyy hh:ss a' }}</td>
+            <td>{{ data.createdBy }}</td>
+            <td>{{ data.lastUpdatedTime | date: 'dd/MM/yyyy hh:ss a' }}</td>
+            <td>{{ data.lastUpdatedBy }}</td>
+        </tr>
+    </tbody>
+</nz-table>
+</tr>
+</ng-template>
+</tbody>
+</nz-table>

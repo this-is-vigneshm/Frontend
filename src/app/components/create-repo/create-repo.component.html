@@ -1,0 +1,23 @@
+<form nz-form [formGroup]="form" class="login-form" (ngSubmit)="submitForm()">
+  <nz-form-item>
+    <nz-form-label nzFor="asset_name"> 
+      <span style="color: #3253dc;">Asset Name</span>
+    </nz-form-label>
+    <nz-form-control nzErrorTip="Please Select an Asset">
+      <input nz-input formControlName="asset_name" id="ticket-title" placeholder="Asset Name" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label nzFor="file"><span style="color: #3253dc;">Attach a Document</span></nz-form-label>
+    <nz-form-control nzErrorTip="Please Add an Attachment">
+      <!-- <span>Click here or drag your File to upload</span> -->
+      <input type="file" id="file" placeholder="File" (change)="onChange($event)">
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item nz-row class="register-area">
+    <nz-form-control [nzOffset]="6">
+      <button nz-button nzType="primary"  id="create-repo-submit">Create a Repo</button>
+    </nz-form-control>
+  </nz-form-item>
+</form>

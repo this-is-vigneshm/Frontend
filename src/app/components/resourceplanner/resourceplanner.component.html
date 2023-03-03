@@ -1,0 +1,463 @@
+<div id="create-resource-body">
+  <div id="create-resource-form">
+    <h2>Add Resource Planner</h2>
+    <div class="align">
+      <form class nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24"> WorkOrder Id</nz-form-label>
+          <nz-form-control
+            [nzSm]="14"
+            [nzXs]="24"
+            nzErrorTip="Please Enter the  WorkOrder Id"
+          >
+            <input
+              style="border-radius: 10px"
+              nz-input
+             
+              id="resource-name"
+              placeholder="Allocate Resource"
+              value="{{workOrderId}}"
+              [disabled]= "true"
+            />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="resourceId">
+            Resource code</nz-form-label
+          >
+          <nz-form-control
+            [nzSm]="14"
+            [nzXs]="24"
+            nzErrorTip="Please Enter the Resource Code"
+          >
+            <input
+              style="border-radius: 10px"
+              nz-input
+              formControlName="resourceId"
+              id="resource-name"
+              placeholder="Resource Code"
+            />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="name">
+            Resource Name</nz-form-label
+          >
+          <nz-form-control
+            [nzSm]="14"
+            [nzXs]="24"
+            nzErrorTip="Please Enter the Resource Name"
+          >
+            <input
+              style="border-radius: 10px"
+              nz-input
+              formControlName="resourceName"
+              id="resource-name"
+              placeholder="Resource Name"
+            />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24">
+            <span style="border-radius: 10px">Resource Type</span>
+          </nz-form-label>
+          <nz-table #filterTable [nzData]="employeeList" formControlName="resourceType">
+            <thead id="asset-table-head">
+              <tr>
+                <th>Select</th>
+                <th *ngFor="let column of employeeColumns">
+                  {{ column.name }}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of filterTable.data">
+                <td><label nz-checkbox [ngModel]="a" (ngModelChange)="getId($event, data.resourceId)"></label></td>
+                <td>{{ data.id }}</td>
+                <td>{{ data.name }}</td>
+                <td>{{ data.email }}</td>
+                <td>{{ data.phoneNumber }}</td>
+                <td>{{ data.department }}</td>
+                <td>{{ data.designation }}</td>
+              </tr>
+            </tbody>
+          </nz-table>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24">
+            Resource Schedule
+          </nz-form-label>
+          <nz-form-control nzErrorTip="Please Enter the Resource Schedule">
+            <nz-date-picker
+              style="right: 230px"
+              formControlName="startDate"
+              placeholder="Start Date"
+            ></nz-date-picker>
+
+            <nz-date-picker
+              style="right: 200px"
+              formControlName="endDate"
+              placeholder="End Date"
+            ></nz-date-picker>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label
+            style="width: 150px"
+            nzRequired
+            nzFor="Resource Availability"
+            [nzSm]="6"
+            [nzXs]="24"
+          >
+            <span style="border-radius: 10px">Resource Availability</span>
+          </nz-form-label>
+          <nz-form-control
+            nzErrorTip="Please Select a Resource Availability"
+            [nzSm]="14"
+            [nzXs]="24"
+          >
+            <nz-select
+              nz-input
+              formControlName="availability"
+              id="Resource Type"
+              nzShowSearch
+              nzAllowClear
+              nzPlaceHolder="Select the Resource Type"
+              style="width: 100%; border-radius: 100px"
+              ><nz-option
+                *ngFor="let Resource of Atype"
+                [nzLabel]="Resource"
+                [nzValue]="Resource"
+              ></nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item nz-row class="register-area">
+          <nz-form-control [nzSpan]="14" [nzOffset]="6">
+            <button nz-button nzType="primary" id="create-button">
+              SAVE AND ADD
+            </button>
+            <button
+              style="right: -10px"
+              nz-button
+              nzType="primary"
+              id="create-button"
+              (click)="handleClose()"
+            >
+              SAVE AND CLOSE
+            </button>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- <div *ngIf="isusers; else INVENTORY">
+              <nz-table #filterTable [nzData]="employees">
+                <thead id="asset-table-head">
+                  <tr>
+                    <th *ngFor="let column of employeeColumns">
+                      {{ column.name }}
+                    </th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let data of filterTable.data">
+                    <td>{{ data.id }}</td>
+                    <td>{{ data.name }}</td>
+                    <td>{{ data.email }}</td>
+                    <td>{{ data.phoneNumber }}</td>
+                    <td>{{ data.department }}</td>
+                    <td>{{ data.designation }}</td>
+                    <td>
+                      <button nz-checkbox></button>
+                    </td>
+                  </tr>
+                </tbody>
+              </nz-table>
+            </div> -->
+<!-- <ng-template #INVENTORY>
+              <nz-table #filterTable [nzData]="employees">
+                <thead id="asset-table-head">
+                  <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let data of filterTable.data">
+                    <td>{{ data.id }}</td>
+                    <td>{{ data.name }}</td>
+                    <td>
+                      <button nz-checkbox></button>
+                    </td>
+                  </tr>
+                </tbody>
+              </nz-table>
+            </ng-template> -->
+
+<!-- <nz-dropdown-menu #employee="nzDropdownMenu">
+              <ul nz-menu>
+                <li nz-submenu nzTitle="Employee">
+                  <ul>
+                    <li nz-menu-item nz-submenu nzTitle="Employee1">
+                      <ul>
+                        Id
+                      </ul>
+                      <ul>
+                        Name
+                      </ul>
+                      <ul>
+                        Phonenumber
+                      </ul>
+                      <ul>
+                        Department
+                      </ul>
+                      <ul>
+                        Designation
+                      </ul>
+                      <ul>
+                        Role
+                      </ul>
+                    </li>
+
+                    <li nz-menu-item nz-submenu nzTitle="Employee2">
+                      <ul>
+                        Id
+                      </ul>
+                      <ul>
+                        Name
+                      </ul>
+                      <ul>
+                        Phonenumber
+                      </ul>
+                      <ul>
+                        Department
+                      </ul>
+                      <ul>
+                        Designation
+                      </ul>
+                      <ul>
+                        Role
+                      </ul>
+                    </li>
+                    <li nz-menu-item nz-submenu nzTitle="Employee3">
+                      <ul>
+                        Id
+                      </ul>
+                      <ul>
+                        Name
+                      </ul>
+                      <ul>
+                        Phonenumber
+                      </ul>
+                      <ul>
+                        Department
+                      </ul>
+                      <ul>
+                        Designation
+                      </ul>
+                      <ul>
+                        Role
+                      </ul>
+                    </li>
+                    <li nz-menu-item nz-submenu nzTitle="Employee4">
+                      <ul>
+                        Id
+                      </ul>
+                      <ul>
+                        Name
+                      </ul>
+                      <ul>
+                        Phonenumber
+                      </ul>
+                      <ul>
+                        Department
+                      </ul>
+                      <ul>
+                        Designation
+                      </ul>
+                      <ul>
+                        Role
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li nz-submenu nzTitle="Vendor">
+                  <ul>
+                    <li nz-menu-item nz-submenu nzTitle="Vendor1">
+                      <ul>
+                        contractorId
+                      </ul>
+                      <ul>
+                        contractorName
+                      </ul>
+                      <ul>
+                        location
+                      </ul>
+                      <ul>
+                        phonenumber
+                      </ul>
+                    </li>
+                    <li nz-menu-item nz-submenu nzTitle="Vendor2">
+                      <ul>
+                        contractorId
+                      </ul>
+                      <ul>
+                        contractorName
+                      </ul>
+                      <ul>
+                        location
+                      </ul>
+                      <ul>
+                        phonenumber
+                      </ul>
+                    </li>
+                    <li nz-menu-item nz-submenu nzTitle="Vendor3">
+                      <ul>
+                        contractorId
+                      </ul>
+                      <ul>
+                        contractorName
+                      </ul>
+                      <ul>
+                        location
+                      </ul>
+                      <ul>
+                        phonenumber
+                      </ul>
+                    </li>
+                    <li nz-menu-item nz-submenu nzTitle="Vendor4">
+                      <ul>
+                        contractorId
+                      </ul>
+                      <ul>
+                        contractorName
+                      </ul>
+                      <ul>
+                        location
+                      </ul>
+                      <ul>
+                        phonenumber
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li nz-submenu nzTitle="Contractor">
+                  <ul>
+                    <li nz-menu-item nz-submenu nzTitle="Contractor1">
+                      <ul>
+                        contractorId
+                      </ul>
+                      <ul>
+                        contractorName
+                      </ul>
+                      <ul>
+                        location
+                      </ul>
+                      <ul>
+                        phonenumber
+                      </ul>
+                    </li>
+                    <li nz-menu-item nz-submenu nzTitle="Contractor2">
+                      <ul>
+                        contractorId
+                      </ul>
+                      <ul>
+                        contractorName
+                      </ul>
+                      <ul>
+                        location
+                      </ul>
+                      <ul>
+                        phonenumber
+                      </ul>
+                    </li>
+                    <li nz-menu-item nz-submenu nzTitle="Contractor3">
+                      <ul>
+                        contractorId
+                      </ul>
+                      <ul>
+                        contractorName
+                      </ul>
+                      <ul>
+                        location
+                      </ul>
+                      <ul>
+                        phonenumber
+                      </ul>
+                    </li>
+                    <li nz-menu-item nz-submenu nzTitle="Contractor4">
+                      <ul>
+                        contractorId
+                      </ul>
+                      <ul>
+                        contractorName
+                      </ul>
+                      <ul>
+                        location
+                      </ul>
+                      <ul>
+                        phonenumber
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+
+                <li nz-submenu nzTitle="Inventory Items">
+                  <ul>
+                    <li nz-menu-item nz-submenu nzTitle="Item">
+                      <ul>
+                        ItemCode
+                      </ul>
+                      <ul>
+                        ItemName
+                      </ul>
+                      <ul>
+                        Description
+                      </ul>
+                      <ul>
+                        Quauntity
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul> -->
+<!-- </nz-dropdown-menu> -->
+
+<!-- <nz-select nzMode="default" nzPlaceHolder="Select a resource">
+              <nz-option-group nzLabel="User">
+                <nz-option
+                  *ngFor="let Resource of Utype"
+                  [nzLabel]="Resource"
+                  [nzValue]="Resource"
+                ></nz-option>
+              </nz-option-group>
+            </nz-select> -->
+<!-- <nz-select nzMode="default" nzPlaceHolder="Select a resource">
+              <nz-option-group nzLabel="Inventory">
+                <nz-option
+                  *ngFor="let Resource of Itype"
+                  [nzLabel]="Resource"
+                  [nzValue]="Resource"
+                ></nz-option>
+              </nz-option-group>
+            </nz-select> -->
+
+<!-- <nz-input-group nzCompact>
+              <nz-select [ngModel]="'User'" style="width: 30%">
+                <nz-option [nzLabel]="'User'" [nzValue]="'Home'"></nz-option>
+                <nz-option
+                  [nzLabel]="'Inventory'"
+                  [nzValue]="'Inventory'"
+                ></nz-option>
+              </nz-select>
+              <nz-cascader
+                [nzOptions]="user"
+                [nzOptions]="inventory"
+                style="width: 70%"
+              ></nz-cascader>
+            </nz-input-group> -->

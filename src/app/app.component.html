@@ -1,0 +1,6 @@
+<div id="logged-in" *ngIf="isLoggedIn; else loggedIn">
+  <app-layout class="" [jwtToken]="token"></app-layout>
+</div>
+<ng-template id="unsigned" #loggedIn>
+  <app-login (onLogin)="handleLogin()"></app-login>
+</ng-template>

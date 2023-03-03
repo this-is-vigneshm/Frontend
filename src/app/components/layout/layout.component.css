@@ -1,0 +1,105 @@
+.logo {
+  height: 32px;
+  margin: 16px;
+  background-color: white;
+}
+
+#logo-menu-item {
+  height: 64px;
+  background-color: white;
+  padding-left: 24px;
+  margin-top: 0;
+}
+
+img {
+  height: 60px;
+}
+
+nz-header {
+  background: #fff;
+  padding: 0;
+}
+
+nz-content {
+  margin: 0;
+}
+
+.inner-content {
+  margin: 0 16px;
+}
+
+nz-breadcrumb {
+  margin: 16px 0;
+  background-image: url("../../../assets/header-background.jpg");
+  height: 200px;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+nz-header {
+  text-align: center;
+  color: white;
+  /* height: 150px; */
+}
+
+.inner-content {
+  padding: 24px;
+  background: #fff;
+  min-height: 650px;
+  text-align: center;
+}
+
+nz-footer {
+  text-align: center;
+  bottom: 0px;
+}
+
+.title {
+  font-size: x-large;
+}
+
+#logout-button {
+  float: right;
+  padding-right: 20px;
+}
+
+#user-details {
+  padding: 10px;
+  color: #fff;
+}
+
+#user-logo {
+  padding-right: 10px;
+  width: 40px;
+}
+
+#qoutes {
+  font-size: xx-large;
+  color: white;
+  padding: 3% 7%;
+  font-weight: 600;
+  font-family: emoji;
+  /* font-style: italic; */
+}
+
+#user-designation {
+  margin-top: 40px;
+  margin-left: -65px;
+  color: aqua;
+  font-size: smaller;
+}
+
+#user-title {
+  color: white;
+  font-size: medium;
+  font-weight: 600;
+}
+/* .glow {
+  box-shadow: 0 0 5px rgb(46, 240, 7), 0 0 25px rgb(9, 233, 32);
+}
+.glow :hover {
+  box-shadow: 0 0 5px rgb(9, 239, 43), 0 0 25px rgb(16, 235, 19),
+    0 0 50px rgb(12, 233, 23), 0 0 100px rgb(28, 233, 17),
+    0 0 200px rgb(63, 247, 7);
+} */

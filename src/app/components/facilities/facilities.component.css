@@ -1,0 +1,45 @@
+#create-faclity-button{
+    float: right;
+    border-radius: 14px;
+    margin-right: 1%;
+    margin-bottom: 3%;
+    height: 45px;
+    width: 170px;
+    font-size: large;
+    font-family: ui-serif;
+}
+
+
+nz-table{
+    /* padding: 50px 30px 30px 30px; */
+    text-align: center;
+    border-radius: 10px;
+    border: #f0f0f0;
+    border-color: #f0f0f0;
+    align-items: center;
+}
+th{
+    text-align: center;
+    font-weight: 600;
+    color: aqua;
+    border-radius: 3px;
+    align-items: center;
+}
+
+
+.ant-table.ant-table-bordered > .ant-table-container > .ant-table-content > table > thead > tr > th, .ant-table.ant-table-bordered > .ant-table-container > .ant-table-header > table > thead > tr > th, .ant-table.ant-table-bordered > .ant-table-container > .ant-table-body > table > thead > tr > th, .ant-table.ant-table-bordered > .ant-table-container > .ant-table-summary > table > thead > tr > th, .ant-table.ant-table-bordered > .ant-table-container > .ant-table-content > table > tbody > tr > td, .ant-table.ant-table-bordered > .ant-table-container > .ant-table-header > table > tbody > tr > td, .ant-table.ant-table-bordered > .ant-table-container > .ant-table-body > table > tbody > tr > td, .ant-table.ant-table-bordered > .ant-table-container > .ant-table-summary > table > tbody > tr > td, .ant-table.ant-table-bordered > .ant-table-container > .ant-table-content > table > tfoot > tr > th, .ant-table.ant-table-bordered > .ant-table-container > .ant-table-header > table > tfoot > tr > th, .ant-table.ant-table-bordered > .ant-table-container > .ant-table-body > table > tfoot > tr > th, .ant-table.ant-table-bordered > .ant-table-container > .ant-table-summary > table > tfoot > tr > th, .ant-table.ant-table-bordered > .ant-table-container > .ant-table-content > table > tfoot > tr > td, .ant-table.ant-table-bordered > .ant-table-container > .ant-table-header > table > tfoot > tr > td, .ant-table.ant-table-bordered > .ant-table-container > .ant-table-body > table > tfoot > tr > td, .ant-table.ant-table-bordered > .ant-table-container > .ant-table-summary > table > tfoot > tr > td {
+    border-right: 1px solid #f0f0f0;
+    text-align: center;
+}
+
+.ant-table.ant-table-bordered > .ant-table-container > .ant-table-content > table, .ant-table.ant-table-bordered > .ant-table-container > .ant-table-header > table{
+    border-top: 0px solid #f0f0f0;
+}
+
+#search-bar{
+    width: 14%;
+    height: 45px;
+    border-radius: 14px;
+    float: right;
+    margin-right: 1%;
+}

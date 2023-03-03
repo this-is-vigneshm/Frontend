@@ -1,0 +1,70 @@
+<span
+  style="
+    font-family: math;
+    font-size: xx-large;
+    font-weight: 900;
+    margin-left: -58%;
+  "
+  >Employees</span
+>
+
+<input
+  nz-input
+  id="search-bar"
+  type="text"
+  (change)="filterData($event)"
+  placeholder="Search an Employee"
+/>
+
+<button
+  nz-button
+  nzType="primary"
+  id="create-user-button"
+  (click)="showCreateEmployeeModal()"
+>
+  <span nz-icon nzType="plus" nzTheme="outline"></span>Add Employee
+</button>
+
+<nz-table #filterTable [nzData]="searchResults">
+  <thead id="asset-table-head">
+    <tr>
+      <th
+        *ngFor="let column of employeeColumns"
+        [nzSortOrder]="column.sortOrder"
+        [nzSortFn]="column.sortFn"
+        [nzSortDirections]="column.sortDirections"
+      >
+        {{ column.name }}
+      </th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of filterTable.data">
+      <td>{{ data.id }}</td>
+      <td>{{ data.name }}</td>
+      <td>{{ data.email }}</td>
+      <td>{{ data.phoneNumber }}</td>
+      <td>{{ data.department }}</td>
+      <td>{{ data.designation }}</td>
+      <td>{{ data.roles }}</td>
+      <td>
+        <button nz-button nzType="default" nzDanger style="margin: 5px">
+          <span nz-icon nzType="delete" nzTheme="outline"></span>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
+<nz-modal
+  [nzStyle]="{ top: '20px', width: '60%' }"
+  [(nzVisible)]="isCreateEmployeeModalVisible"
+  nzTitle="Create an Ticket"
+  nzCentered
+  (nzOnCancel)="handleCreateEmployeeCancel()"
+  (nzOnOk)="handleCreateEmployeeOk()"
+>
+  <ng-container *nzModalContent>
+    <app-user-register (close)="handleCreateEmployeeOk()"></app-user-register>
+  </ng-container>
+</nz-modal>

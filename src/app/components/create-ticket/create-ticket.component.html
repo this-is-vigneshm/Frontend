@@ -1,0 +1,144 @@
+<form nz-form [formGroup]="form" nzLayout="vertical" (ngSubmit)="submitForm()">
+
+  <nz-form-item>
+    <nz-form-label style="color: #3253dc;" nzRequired nzFor="title">
+      <span style="color: #3253dc;">What is the Maintanence Issue that needs attention?</span>
+       </nz-form-label>
+    <nz-form-control [nzSm]="24" [nzXs]="24" nzErrorTip="Please Enter the Title">
+      <input nz-input formControlName="title" id="ticket-title" placeholder="Brief Title" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label style="color: #3253dc;" nzRequired nzFor="userId">
+      <span style="color: #3253dc;">Raise this request on behalf of?</span>
+    </nz-form-label>
+    <nz-form-control nzErrorTip="Please Choose the Employee Name">
+      <nz-select nz-input formControlName="userId" id="userId" nzShowSearch nzAllowClear
+        nzPlaceHolder="Select an Employee">
+        <nz-option *ngFor="let employee of employees" [nzLabel]="employee.name + '  (' + employee.email + ')' "
+          [nzValue]="employee.id">{{employee.name
+          + employee.employeeMail}}</nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+
+
+  <nz-form-item>
+    <nz-form-label style="color: #3253dc;" nzRequired nzFor="employeeId">
+      <span style="color: #3253dc;">Assign this request to?</span>
+    </nz-form-label>
+    <nz-form-control nzErrorTip="Please Choose the Employee Name">
+      <nz-select nz-input formControlName="employeeId" id="employeeId" nzShowSearch nzAllowClear
+        nzPlaceHolder="Select an Employee">
+        <nz-option *ngFor="let employee of employees" [nzLabel]="employee.name + '  (' + employee.email + ')' "
+          [nzValue]="employee.id">{{employee.name
+          + employee.employeeMail}}</nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+
+  
+
+  <nz-form-item>
+    <nz-form-label style="color: #3253dc;" nzRequired nzFor="category">
+      <span style="color: #3253dc;">How serious is the issue?</span></nz-form-label>
+    <nz-form-control nzErrorTip="Please Select a Category">
+      <nz-select nz-input formControlName="category" id="category" nzShowSearch nzAllowClear
+        nzPlaceHolder="Select a Category" (ngModelChange)="onStatusChange($event)">
+        <nz-option *ngFor="let category of categories" [nzLabel]="category.name +  ' (' + category.value + ')'"
+          [nzValue]="category.value" ></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label style="color: #3253dc;" nzRequired nzFor="category">
+      <span style="color: #3253dc;">Estimated Completion Time</span></nz-form-label>
+    <nz-form-control style="font-weight: 600;">
+      {{expectedTime | date: 'dd/MM/yyyy hh:ss a'}} ({{expectedTimeText}}) 
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label nzRequired nzFor="issueType">
+      <span style="color: #3253dc;">What Type of Maintanence issue is it?</span>
+    </nz-form-label>
+    <nz-form-control nzErrorTip="Please Select a Issue Type">
+      <nz-select nz-input formControlName="issueType" id="issueType" nzShowSearch nzAllowClear
+        nzPlaceHolder="Select the issue Type">
+        <nz-option *ngFor="let issue of issueTypes" [nzLabel]="issue" [nzValue]="issue"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label nzFor="assetId"> 
+      <span style="color: #3253dc;">Which is the asset that you have problem with?</span>
+    </nz-form-label>
+    <nz-form-control>
+      <!-- <input nz-input formControlName="assetId" id="ticket-assetId" [(ngModel)]="assetId" placeholder="Asset Id" /> -->
+      <nz-select nz-input formControlName="assetId" id="assetId" nzShowSearch nzAllowClear
+        nzPlaceHolder="Select the Asset">
+        <nz-option *ngFor="let asset of assetList" [nzLabel]="asset.name +  ' (' + asset.id + ')'"
+           [nzValue]="asset.id"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label style="color: #3253dc;" nzFor="description" nzRequired>
+      <span style="color: #3253dc;">What are the details of the maintenance issue?</span>
+    </nz-form-label>
+    <nz-form-control nzErrorTip="Please Enter the description ( 20 - 200 characters)">
+      <nz-textarea-count [nzMaxCharacterCount]="200">
+        <textarea rows="5" formControlName="description" nz-input></textarea>
+      </nz-textarea-count>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label style="color: #3253dc;" nzFor="workorder">
+      <span style="color: #3253dc; padding-right: 20px;">Is workorder is needed?</span>
+    
+    <label  nz-checkbox [(ngModel)]="radioValue" formControlName="radio"> </label>
+    
+  </nz-form-label>
+
+  <div *ngIf="radioValue"><button nz-button nzType="primary" id="resource">Save and Add New</button>
+    <nz-modal
+    nzWidth = "1200px"
+      [(nzVisible)]="isVisible"
+      [nzTitle]="modalTitle"
+      [nzFooter]="modalFooter"
+      (nzOnCancel)="handleCancel()"
+    >
+      <ng-template #modalTitle>Create WorkOrder</ng-template>
+
+      <ng-container *nzModalContent>
+        <app-create-workorder></app-create-workorder>
+      </ng-container>
+
+      <ng-template #modalFooter>
+        <button nz-button nzType="default" (click)="handleCancel()">Cancel</button>
+        <button nz-button nzType="primary" (click)="handleOk()" [nzLoading]="isConfirmLoading">Ok</button>
+      </ng-template>
+    </nz-modal>
+    <span style="padding: 15px;"></span><button nz-button nzType="primary" id="resource">Add Existing</button></div>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label nzFor="file"><span style="color: #3253dc;">Attach a photo of the Maintanence Issue!</span></nz-form-label>
+    <nz-form-control nzErrorTip="Please Add an Attachment">
+      <!-- <span>Click here or drag your File to upload</span> -->
+      <input type="file" id="file" placeholder="File" (change)="onChange($event)">
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item nz-row class="register-area">
+    <nz-form-control [nzOffset]="6">
+      <button nz-button nzType="primary" (click)="onUpload()" id="create-ticket-submit">Create a Ticket</button>
+    </nz-form-control>
+  </nz-form-item>
+
+</form>

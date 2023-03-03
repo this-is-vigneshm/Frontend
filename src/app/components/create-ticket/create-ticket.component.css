@@ -1,0 +1,19 @@
+[nz-form] {
+  /* max-width: 600px; */
+  padding: 5% 15% 5% 15%;
+}
+
+#create-ticket-submit {
+  width: 129%;
+  margin-left: -32%;
+  border-radius: 8px;
+}
+
+
+input {
+  border-radius: 7px;
+}
+
+.ant-row .register-area .ant-form-item {
+  margin-left: -178px;
+}

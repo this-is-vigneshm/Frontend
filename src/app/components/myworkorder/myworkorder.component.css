@@ -1,0 +1,33 @@
+#search-bar{
+    width: 14%;
+    height: 50px;
+    border-radius: 14px;
+    float: right;
+    margin-right: 2%;
+    bottom: 4px;
+}
+#create-workorder-button{
+    width: 14%;
+    height: 50px;
+    border-radius: 14px;
+    float: right;
+    margin-right: 2%;
+    bottom: 4px;
+    background-color: rgb(18, 47, 216);
+}
+
+nz-table{
+    padding: 50px 3px 30px 30px;
+    text-align: center;
+    border-radius: 10px;
+    border: #f0f0f0;
+    border-color: #f0f0f0;
+    align-items: center;
+}
+th{
+    text-align: center;
+    font-weight: 600;
+    color: aqua;
+    border-radius: 3px;
+    align-items: center;
+}

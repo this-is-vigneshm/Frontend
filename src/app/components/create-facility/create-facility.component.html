@@ -1,0 +1,122 @@
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()" [nzLayout]="'inline'">
+
+    <div nz-col [nzSpan]="12">
+        <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="facilityCode" nzRequired
+                nzTooltipTitle="Facility code should be unique!">
+                <span>Facility Code</span>
+            </nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please Enter Facility Code">
+                <input nz-input id="facilityCode" formControlName="facilityCode" />
+            </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="facilityName">Facility Name</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please Enter Facility Name!">
+                <input nz-input formControlName="facilityName" id="facilityName" />
+            </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="facilityType">Facility Type</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please enter the facilityType!">
+                <input nz-input formControlName="facilityType" id="facilityType" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="facilitySource" nzRequired>Facility Source</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your facilitySource!">
+                <input nz-input id="facilitySource" formControlName="facilitySource" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="inactiveDate" >Inactive Date</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input the inactiveDate for your Facility!">
+                <input nz-input formControlName="inactiveDate" id="inactiveDate" />
+            </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="facLocationCode" >FAC Location
+                Code</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please Enter The FAC Location Code!">
+                <input formControlName="facLocationCode" id="facLocationCode" nz-input />
+            </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="addressLine1" nzRequired>Address Line 1</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please Enter The FAC Location Code!">
+                <input formControlName="addressLine1" id="addressLine1" nz-input />
+            </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="addressLine2" nzRequired>Address Line 2</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please Enter The FAC Location Code!">
+                <input formControlName="addressLine2" id="addressLine2" nz-input />
+            </nz-form-control>
+        </nz-form-item>
+    </div>
+    <div nz-col [nzSpan]="12">
+        <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="addressLine3" nzRequired>Address Line 3</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please Enter The FAC Location Code!">
+                <input formControlName="addressLine3" id="addressLine3" nz-input />
+            </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="city" nzRequired>City</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please Enter The FAC Location Code!">
+                <input formControlName="city" id="city" nz-input />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="state" nzRequired>State</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please Enter The FAC Location Code!">
+                <input formControlName="state" id="state" nz-input />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="postalCode" nzRequired>Postal Code</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please Enter The FAC Location Code!">
+                <input formControlName="postalCode" id="postalCode" nz-input />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="country" nzRequired>Country</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please Enter The FAC Location Code!">
+                <input formControlName="country" id="country" nz-input />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="dagRunId" >DAG Run ID</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please Enter The FAC Location Code!">
+                <input formControlName="dagRunId" id="dagRunId" nz-input />
+            </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="taskIdJobId" >Task & Job ID</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please Enter The FAC Location Code!">
+                <input formControlName="taskIdJobId" id="taskIdJobId" nz-input />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="crossCodeFlag" >Cross Code Flag</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please Enter The FAC Location Code!">
+                <nz-select nz-input formControlName="crossCodeFlag" id="crossCodeFlag">
+                    <nz-option [nzLabel]="'True'" [nzValue]="'true'"></nz-option>
+                    <nz-option [nzLabel]="'False'" [nzValue]="'false'"></nz-option>
+                </nz-select>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item nz-row class="register-area">
+            <nz-form-control [nzSpan]="14" [nzOffset]="6">
+                <button nz-button nzType="primary">Register</button>
+            </nz-form-control>
+        </nz-form-item>
+    </div>
+</form>
