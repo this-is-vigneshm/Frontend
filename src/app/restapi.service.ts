@@ -171,27 +171,6 @@ export class RestapiService {
     );
   }
 
-  public createkRepo(asset_name: String, file: File, userId: any) {
-    var formData = new FormData();
-    formData.append('dto', JSON.stringify(asset_name));
-    formData.append('file', file);
-    return this.httpClient.post<ApiResponse>(
-      `${this.baseUrl}/knowledgerepo/uploadfile/${userId}`,
-      formData
-    );
-  }
-
-  public getAllRepo() {
-    return this.httpClient.get<ApiResponse>(
-      `${this.baseUrl}/knowledgerepo/list`
-    );
-  }
-
-  public deleteRepo(id: Number) {
-    return this.httpClient.delete<ApiResponse>(
-      `${this.baseUrl}/knowledgerepo/${id}`
-    );
-  }
 
   public getAllTickets() {
     return this.httpClient.get<ApiResponse>(`${this.baseUrl}/tickets/list`);
@@ -221,7 +200,28 @@ export class RestapiService {
       `${this.baseUrl}/tickets/${ticketId}`
     );
   }
+  // Knowedge Repo
 
+  
+  public createkRepo(asset_name : String, file : File, userId  :any) {
+    var formData = new FormData();
+    formData.append("dto", JSON.stringify(asset_name));
+    formData.append("file", file);
+    return this.httpClient.post<ApiResponse>(`${this.baseUrl}/knowledgerepo/uploadfile/${userId}`, formData);
+  }
+
+  public getAllRepo() {
+    return this.httpClient.get<ApiResponse>(`${this.baseUrl}/knowledgerepo/list`);
+  }
+
+  public deleteRepo(id: Number) {
+    return this.httpClient.delete<ApiResponse>(`${this.baseUrl}/knowledgerepo/${id}`);
+  }
+
+  public downloadRepo(filename : string)
+  {
+    return this.httpClient.get(`http://localhost:8084/knowledgerepo/download/${filename}`,{observe: 'response', responseType : 'blob'}) 
+  }
   //Facility APIS:
 
   public getAllFacilities() {
@@ -304,4 +304,24 @@ export class RestapiService {
   public getAllResourceByWorkOrderId(workorderId:number) {
     return this.httpClient.get<ApiResponse>(`${this.baseUrl}/resource/wo/${workorderId}`);
   }
+
+    //Reports
+
+    public viewCalculateAmountSpent() {
+      return this.httpClient.get<ApiResponse>(`${this.baseUrl}/reports/amount-spent`);
+    }
+  
+    public viewTimeline(){
+      return this.httpClient.get<ApiResponse>(`${this.baseUrl}/reports/timeline`)
+    }
+  
+   public viewRadar(){
+      return this.httpClient.get<ApiResponse>(`${this.baseUrl}/reports/radar`)
+    }
+    public viewBubble(){
+      return this.httpClient.get<ApiResponse>(`${this.baseUrl}/reports/bubble`)
+    }
+    public getValues(listUuId : string[]) {
+      return this.httpClient.get<ApiResponse>(`${this.baseUrl}/reports/values`, {params: { listId : listUuId}});
+    }
 }

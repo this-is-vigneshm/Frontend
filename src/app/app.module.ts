@@ -37,6 +37,11 @@ import { WorkorderComponent } from './components/workorder/workorder.component';
 import { CreateWorkorderComponent } from './components/create-workorder/create-workorder.component';
 import { MyworkorderComponent } from './components/myworkorder/myworkorder.component';
 import { InventoryCreateComponent } from './components/inventory-create/inventory-create.component';
+import ReportsComponent from './components/reports/reports.component';
+import { ReportsComponent1 } from './components/reports1/reports1.component';
+import { ReportsComponent2 } from './components/reports2/reports2.component';
+import { BubbleReportComponent } from './components/bubble-report/bubble-report.component';
+import { ReportsTableComponent } from './components/reports-table/reports-table.component';
 import { InventoryListComponent } from './components/inventory-list/inventory-list.component';
 registerLocaleData(en);
 
@@ -66,7 +71,13 @@ registerLocaleData(en);
     CreateWorkorderComponent,
     MyworkorderComponent,
     InventoryCreateComponent,
-    InventoryListComponent
+    InventoryListComponent,
+    CreateRepoComponent,
+    ReportsComponent, 
+    ReportsComponent1, 
+    ReportsComponent2, 
+    ReportsTableComponent,
+    BubbleReportComponent
   ],
   imports: [
     BrowserModule,

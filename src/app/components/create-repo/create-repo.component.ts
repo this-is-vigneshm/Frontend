@@ -15,6 +15,9 @@ import { TokenService } from 'src/app/token.service';
 })
 export class CreateRepoComponent {
   
+  @Input()
+  assetData: any;
+
   @Output()
   close: EventEmitter<void> = new EventEmitter<void>();
 
@@ -26,19 +29,21 @@ export class CreateRepoComponent {
 
   userId : any
 
+  assetList: any;
 
   constructor(private formBuilder: UntypedFormBuilder, private notification: NzMessageService,
     private restApiService: RestapiService, private router: Router, private tokenService: TokenService) {
       this.form = this.formBuilder.group({
-        asset_name: ['', [Validators.required]]
+        asset_name: [this.assetData != null ? this.assetData.id : null, []]
       })
+      this.getAssets();
     }
 
   submitForm(): void {
     if (this.form.valid) {
       console.log('submit', this.form.value);
       this.handleCreation(this.form.value)
-
+      
     } else {
       Object.values(this.form.controls).forEach(control => {
         if (control.invalid) {
@@ -94,6 +99,7 @@ export class CreateRepoComponent {
 
   handleClose() {
     this.close.emit();
+    this.router.navigateByUrl("/knowledge-repos")
   }
 
 
@@ -103,17 +109,17 @@ export class CreateRepoComponent {
     console.log(this.file);
   }
 
-  // getAssets() {
-  //   this.restApiService.getAssets().subscribe(
-  //     data => {
-  //       this.assetList = data.responseData;
-  //       console.log(this.assetList)
-  //     },
-  //     error => {
-  //       console.log("Error Occured", error);
-  //       this.notification.error("Error Fetching Asset List!")
-  //     }
+  getAssets() {
+    this.restApiService.getAssets().subscribe(
+      data => {
+        this.assetList = data.responseData;
+        console.log(this.assetList)
+      },
+      error => {
+        console.log("Error Occured", error);
+        this.notification.error("Error Fetching Asset List!")
+      }
 
-  //   )
-  // }
+    )
+  }
 }

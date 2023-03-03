@@ -9,7 +9,11 @@ import { FacilitiesComponent } from './components/facilities/facilities.componen
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RaiseRequestComponent } from './components/raise-request/raise-request.component';
-import { ReportsComponent } from './components/reports/reports.component';
+import ReportsComponent from './components/reports/reports.component';
+import { ReportsComponent1 } from './components/reports1/reports1.component';
+import { ReportsComponent2 } from './components/reports2/reports2.component';
+import { BubbleReportComponent } from './components/bubble-report/bubble-report.component';
+import { ReportsTableComponent } from './components/reports-table/reports-table.component';
 import { TicketsComponent } from './components/tickets/tickets.component';
 import { UserRegisterComponent } from './components/user-register/user-register.component';
 import { KnowledgeRepoComponent } from './components/knowledge-repo/knowledge-repo.component';
@@ -47,6 +51,11 @@ const routes: Routes = [
   {path:'inventory', component: InventoryListComponent},
   { path:'myworkorder',component:MyworkorderComponent},
   { path:'workorder', component: WorkorderComponent},
+  {path:'reports', component: ReportsComponent},
+  {path:'reports1', component: ReportsComponent1},
+  {path:'reports2', component: ReportsComponent2},
+  {path:'bubble-report', component: BubbleReportComponent},
+  {path:'reports-table', component: ReportsTableComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/' },
 ];

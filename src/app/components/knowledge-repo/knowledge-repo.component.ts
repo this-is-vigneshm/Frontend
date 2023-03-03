@@ -19,36 +19,41 @@ interface ColumnItem {
   styleUrls: ['./knowledge-repo.component.css'],
 })
 export class KnowledgeRepoComponent implements OnInit {
-  userData: any;
 
-  constructor(
-    private restApiService: RestapiService,
-    private notification: NzMessageService,
-    private router: Router,
-    private tokenService: TokenService,
-    private restServices: RestapiService
-  ) {}
+  userData:any;
+
+  
+  assetData: any;
+
+  constructor(private restApiService: RestapiService, private notification: NzMessageService, private router: Router, private tokenService: TokenService, private restServices : RestapiService) {
+
+  }
   ngOnInit(): void {
     if (this.tokenService.getToken() === null) {
-      this.router.navigateByUrl('/signin');
-      window.location.pathname = '/signin';
-    } else {
-      this.getAllRepo();
-    }
+      this.router.navigateByUrl("/signin");
+      window.location.pathname = "/signin"
+      
+    } 
+    else {
+     
+        this.getAllRepo();
+       }
+
   }
+
 
   repoColumns: ColumnItem[] = [
     {
-      name: 'Employee Name',
+      name: 'Document Id',
       sortOrder: null,
       sortFn: (a: Repo, b: Repo) => a.id - b.id,
-      sortDirections: ['ascend', 'descend', null],
+      sortDirections: ['ascend', 'descend', null]
     },
     {
       name: 'Document Name',
       sortOrder: 'descend',
       sortFn: (a: Repo, b: Repo) => a.name.localeCompare(b.name),
-      sortDirections: ['ascend', 'descend', null],
+      sortDirections: ['ascend', 'descend', null]
     },
     {
       name: 'Asset Name',
@@ -66,45 +71,40 @@ export class KnowledgeRepoComponent implements OnInit {
       name: 'Uploaded Time',
       sortOrder: 'descend',
       sortFn: (a: Repo, b: Repo) => a.uploaded_time - b.uploaded_time,
-      sortDirections: ['ascend', 'descend', null],
-    },
+      sortDirections: ['ascend', 'descend', null]
+    }
   ];
+
 
   repoList: Repo[] = [];
   searchString: any;
-  searchResults: Repo[] = [];
+  searchResults: Repo[] = []
 
   getAllRepo() {
     this.restApiService.getAllRepo().subscribe(
-      (data) => {
-        console.log('Success', data);
+      data => {
+        console.log("Success", data)
         this.repoList = data.responseData;
         this.searchResults = this.repoList;
-        this.notification.success('Repo Details is Found!');
+        this.notification.success("Repo Details is Found!")
       },
-      (error) => {
-        console.log('Error occurred', error);
-        this.notification.error('Error getting the repo Details!');
+      error => {
+        console.log("Error occurred", error);
+        this.notification.error("Error getting the repo Details!")
       }
     );
   }
 
   filterData(event: any) {
     function ispositive(element: Repo, index: any, array: any) {
-      return (
-        element.name
-          .toLocaleLowerCase()
-          .includes(event.target.value.toLocaleLowerCase()) ||
-        element.asset_name
-          .toLocaleLowerCase()
-          .includes(event.target.value.toLocaleLowerCase())
-      );
+      return (element.name.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) ||
+        element.asset_name.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) )
     }
     this.searchResults = this.repoList.filter(ispositive);
   }
 
   isVisible: boolean = false;
-  isConfirmLoading = false;
+  isConfirmLoading=false
 
   showCreate() {
     this.isVisible = true;
@@ -117,19 +117,43 @@ export class KnowledgeRepoComponent implements OnInit {
     this.isVisible = false;
   }
 
-  handleDelete(id: any) {
+  handleDelete(id : any){
     this.deleteRepo(id);
   }
+  handleDownload(name : any)
+  {
+    this.downloadRepo(name)
+  }
 
-  deleteRepo(id: any) {
-    this.restServices.deleteRepo(id).subscribe(
-      (data) => {
-        this.notification.success('Repo Deleted Successfully.!');
+  downloadRepo(name : any)
+  {
+    this.restServices.downloadRepo(name).subscribe(
+      response=>{
+        let blob:Blob = response.body as Blob
+        let a = document.createElement('a')
+        a.download = name
+        a.href = window.URL.createObjectURL(blob);
+        a.click();
+
       },
-      (error) => {
-        console.log('Error Occured', error);
-        this.notification.error('Error Deleting Repo!');
+      error=>{
+        console.log("Error Occured", error);
+        this.notification.error("Error Downloading Repo!")
       }
-    );
+    )
+  }
+
+
+
+  deleteRepo(id: any){
+    this.restServices.deleteRepo(id).subscribe(
+      event =>{
+        this.notification.success("Repo Deleted Successfully.!")
+      },
+      error=>{
+        console.log("Error Occured", error);
+        this.notification.error("Error Deleting Repo!")
+      }
+    )
   }
 }

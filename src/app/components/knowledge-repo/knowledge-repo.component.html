@@ -16,15 +16,14 @@
     nzType="primary"
     (click)="showCreate()"
   >
-    <span nz-icon nzType="plus" nzTheme="outline"></span>Add
+    <span nz-icon nzType="cloud-upload" nzTheme="outline"></span>Add
   </button>
   <nz-modal
-    [nzStyle]="{ top: '20px' , width:'60%'}" [(nzVisible)]="isVisible" nzTitle="Create a Repositories"
+    [nzStyle]="{ top: '20px' , width:'40%'}" [(nzVisible)]="isVisible" nzTitle="Create a Repositories"
     nzCentered
     [nzFooter]="modalFooter"
     (nzOnCancel)="handleCancel()"
-    (nzOnOk)="handleOk()"
-  >
+    (nzOnOk)="handleOk()">
 
     <ng-container *nzModalContent>
       <app-create-repo></app-create-repo>
@@ -41,11 +40,11 @@
       <tr>
         <th
         *ngFor="let column of repoColumns" [nzSortOrder]="column.sortOrder" [nzSortFn]="column.sortFn"
-        [nzSortDirections]="column.sortDirections"
+        [nzSortDirections]="column.sortDirections" class="for-th"
         >
           {{ column.name }}
         </th>
-        <th>Actions</th>
+        <th class="for-th">Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -55,12 +54,19 @@
         <td>{{ data.asset_name }}</td>
         <td>{{ data.user.name }}</td>
         <td>{{ data.uploaded_time | date : "dd/MM/yyyy hh:ss a" }}</td>
-        <td>
-          <button id="asset-delete-button" nz-button nz-popconfirm nzPopconfirmTitle="Sure to Delete?"
-          (nzOnConfirm)="handleDelete(data.id)" nz-tooltip [nzTooltipTitle]="'Delete Repo'" [nzTooltipColor]="'red'">
-          <span nz-icon nzType="delete" nzTheme="twotone" [nzTwotoneColor]="'red'"></span>
+        <td id="btn-repo">
+        <button id="create-download-button" nz-button nz-popconfirm nzPopconfirmTitle="Proceed to download?"
+          (nzOnConfirm)="handleDownload(data.name)" nz-tooltip [nzTooltipTitle]="'Download Document'"
+          [nzTooltipColor]="'green'">
+          <span nz-icon nzType="cloud-download" nzTheme="outline" [nzTwotoneColor]="'green'"></span>
+          </button>
+        <button id="create-download-button" nz-button nz-popconfirm nzPopconfirmTitle="Sure to Delete?"
+        (nzOnConfirm)="handleDelete(data.id)" nz-tooltip [nzTooltipTitle]="'Delete Repo'" [nzTooltipColor]="'red'">
+        <span nz-icon nzType="delete" nzTheme="outline" [nzTwotoneColor]="'red'"></span>
         </button>
-        </td>
+        
+          </td>
+
       </tr>
     </tbody>
   </nz-table>
