@@ -105,7 +105,7 @@ export class ResourceplannerComponent implements OnInit {
 
   selectedUser: any;
   selectedItem: any;
-  disabledStartDate = (current: Date): boolean => {
+   disabledStartDate = (current: Date): boolean => {
     return current <= new Date();
   };
 
