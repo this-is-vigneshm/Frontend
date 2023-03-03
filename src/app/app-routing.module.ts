@@ -17,6 +17,8 @@ import { CreateRepoComponent } from './components/create-repo/create-repo.compon
 import { ResourcelistComponent } from './components/resourcelist/resourcelist.component';
 import { ResourceplannerComponent } from './components/resourceplanner/resourceplanner.component';
 import { CreateresourceComponent } from './components/createresource/createresource.component';
+import { InventoryCreateComponent } from './components/inventory-create/inventory-create.component';
+import { InventoryListComponent } from './components/inventory-list/inventory-list.component';
 import { WorkorderComponent } from './components/workorder/workorder.component';
 import { MyworkorderComponent } from './components/myworkorder/myworkorder.component';
 import { CreateWorkorderComponent } from './components/create-workorder/create-workorder.component';
@@ -41,6 +43,8 @@ const routes: Routes = [
   { path: 'resourceplanner', component: ResourceplannerComponent },
   { path: 'createresource', component: CreateresourceComponent },
   { path: 'reports', component: ReportsComponent },
+  {path:'inventory/create', component: InventoryCreateComponent},
+  {path:'inventory', component: InventoryListComponent},
   { path:'myworkorder',component:MyworkorderComponent},
   { path:'workorder', component: WorkorderComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' },

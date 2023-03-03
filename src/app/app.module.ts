@@ -36,6 +36,8 @@ import { CreateresourceComponent } from './components/createresource/createresou
 import { WorkorderComponent } from './components/workorder/workorder.component';
 import { CreateWorkorderComponent } from './components/create-workorder/create-workorder.component';
 import { MyworkorderComponent } from './components/myworkorder/myworkorder.component';
+import { InventoryCreateComponent } from './components/inventory-create/inventory-create.component';
+import { InventoryListComponent } from './components/inventory-list/inventory-list.component';
 registerLocaleData(en);
 
 @NgModule({
@@ -62,7 +64,9 @@ registerLocaleData(en);
     CreateresourceComponent,
     WorkorderComponent,
     CreateWorkorderComponent,
-    MyworkorderComponent
+    MyworkorderComponent,
+    InventoryCreateComponent,
+    InventoryListComponent
   ],
   imports: [
     BrowserModule,
