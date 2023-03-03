@@ -66,38 +66,10 @@ export class ResourceplannerComponent implements OnInit {
   employeeColumns: ColumnItem[] = [
     { name: 'Id' },
     { name: 'Email' },
-    { name: 'userName' },
+    { name: 'UserName' },
     { name: 'Phone Number' },
     { name: 'Department' },
     { name: 'Designation' },
-  ];
-
-  options = [
-    {
-      label: 'Users',
-      children: [
-        {
-          value: 'Employee',
-          label: 'Employee',
-          isLeaf: true,
-        },
-        {
-          value: 'Vendor',
-          label: 'Vendor',
-          isLeaf: true,
-        },
-        {
-          value: 'Contractor',
-          label: 'Contractor',
-          isLeaf: true,
-        },
-      ],
-    },
-    {
-      label: 'Inventory',
-      value: 'Inventory',
-      isLeaf: true,
-    },
   ];
 
   users = [
@@ -169,23 +141,45 @@ export class ResourceplannerComponent implements OnInit {
       window.location.pathname = '/signin';
     }
     this.userData = this.tokenService.getCurrentUserData();
-    this.getEmployeeDetails();
+  
   }
+ data = false
+  onCh(type: any): void{
+    this.restService.getEmployeesByTypes(type).subscribe(
+      (data) => {
+        console.log('Success', data);
+        this.employeeList = data.responseData;
+        this.searchResults = this.employeeList;
+        this.notification.success('Employee Details is Found!');
+        this.data = true
+        console.log(this.data)
+      },
+      (error) => {
+        console.log('Error occurred', error);
+        this.notification.error('Error getting the employee Details!');
+        this.data = false
+      }
+    );
+
+  }
+
 
   createresourceByData(resource: Resource) {
     resource.resourceType = 'User';
-    resource.userId = this.userData.userId;
-    this.restService.registerResource(resource).subscribe(
-      (data: any) => {
-        console.log('Success', data);
-        this.notification.success('Resource Created Successfully.');
-        this.router.navigateByUrl('/resourcelist');
-        this.handleClose();
-      },
-      (error: any) => {
-        console.log('Error occcured', error);
-      }
-    );
+    for(var i of this.userId){
+      resource.userId = i
+      this.restService.registerResource(resource).subscribe(
+        (data: any) => {
+          console.log('Success', data);
+          this.notification.success('Resource Created Successfully.');
+          this.router.navigateByUrl('/resourcelist');
+          this.handleClose();
+        },
+        (error: any) => {
+          console.log('Error occcured', error);
+        }
+      );}
+    
   }
   updateresourceData(resource: any) {
     console.log('Updating............');
@@ -213,30 +207,9 @@ export class ResourceplannerComponent implements OnInit {
   searchString: any;
   searchResults: any = [];
 
-  getEmployeeDetails() {
-    this.restService.getEmployees().subscribe(
-      (data) => {
-        console.log('Success', data);
-        this.employeeList = data.responseData;
-        this.searchResults = this.employeeList;
-        this.notification.success('Employee Details is Found!');
-      },
-      (error) => {
-        console.log('Error occurred', error);
-        this.notification.error('Error getting the employee Details!');
-      }
-    );
-  }
-  check = false;
-
+ user : any
+  userId : number[] = []
   onCheck(event: any) {
-    this.check = event;
-    console.log(event);
-  }
-  id = null;
-  a = false;
-  getId(event: any) {
-    console.log(event);
-    
+    this.userId.push(event)
   }
 }

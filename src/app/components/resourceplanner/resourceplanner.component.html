@@ -70,6 +70,8 @@
               nzAllowClear
               nzPlaceHolder="Select the Resource Type"
               style="width: 100%; border-radius: 100px"
+              [ngModel] = "user"
+              (ngModelChange)="onCh($event)"
               ><nz-option
                 *ngFor="let Resource of users"
                 [nzLabel]="Resource"
@@ -93,21 +95,23 @@
               </tr>
             </thead>
             <tbody>
+              <ng-container *ngIf="data;then D"></ng-container>
+              <ng-template #D>
               <tr *ngFor="let data of filterTable.data">
                 <td>
-                  <label
-                    nz-checkbox
-                    [ngModel]="a"
-                    (ngModelChange)="getId(data)"
-                  ></label>
+                  <input
+                  type="checkbox"
+                    (change)="onCheck(data.id)"
+                  />
                 </td>
                 <td>{{ data.id }}</td>
-                <td>{{ data.name }}</td>
                 <td>{{ data.email }}</td>
+                <td>{{ data.name }}</td>
                 <td>{{ data.phoneNumber }}</td>
                 <td>{{ data.department }}</td>
                 <td>{{ data.designation }}</td>
               </tr>
+            </ng-template>
             </tbody>
           </nz-table>
         </nz-form-item>

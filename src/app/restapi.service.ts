@@ -150,6 +150,9 @@ export class RestapiService {
       employee
     );
   }
+  public getEmployeesByTypes(usertype:string) {
+    return this.httpClient.get<ApiResponse>(`${this.baseUrl}/employees/usertype/${usertype}`);
+  }
 
   //Ticket APIS:
 
