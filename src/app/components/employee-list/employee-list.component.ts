@@ -7,6 +7,7 @@ import { RestapiService } from 'src/app/restapi.service';
 import { TokenService } from 'src/app/token.service';
 
 
+
 interface ColumnItem {
   name: string;
   sortOrder: NzTableSortOrder | null;
@@ -22,8 +23,10 @@ interface ColumnItem {
 })
 export class EmployeeListComponent implements OnInit {
 
+  options : string = ''
   userData:any;
   
+
   constructor(private restApiService: RestapiService, private notification: NzMessageService, private router: Router, private tokenService: TokenService) {
 
   }
@@ -66,6 +69,12 @@ export class EmployeeListComponent implements OnInit {
       sortDirections: ['ascend', 'descend', null],
     },
     {
+      name: 'username',
+      sortOrder: 'descend',
+      sortDirections: ['ascend', 'descend', null],
+      sortFn: (a: Employee, b: Employee) => a.username.localeCompare(b.username),
+    },
+    {
       name: 'Phone Number',
       sortOrder: 'descend',
       sortDirections: ['ascend', 'descend', null],
@@ -88,13 +97,39 @@ export class EmployeeListComponent implements OnInit {
       sortOrder: null,
       sortDirections: [],
       sortFn: null
+    },
+    {
+      name: 'Address',
+      sortOrder: 'descend',
+      sortDirections: ['ascend', 'descend', null],
+      sortFn: (a: Employee, b: Employee) => a.address.localeCompare(b.address),
+    },
+    {
+      name: 'Location',
+      sortOrder: 'descend',
+      sortDirections: ['ascend', 'descend', null],
+      sortFn: (a: Employee, b: Employee) => a.location.localeCompare(b.location),
+    },
+    {
+      name: 'usertype',
+      sortOrder: 'descend',
+      sortDirections: ['ascend', 'descend', null],
+      sortFn: (a: Employee, b: Employee) => a.usertype.localeCompare(b.usertype),
+    },
+    {
+      name: 'Resourceplanner',
+      sortOrder: 'descend',
+      sortDirections: ['ascend', 'descend', null],
+      sortFn: (a: Employee, b: Employee) => a.resourceplanner.localeCompare(b.resourceplanner),
     }
+    
   ];
 
 
   employeeList: any = [];
   searchString: any;
   searchResults: any = []
+
 
   getEmployeeDetails() {
     this.restApiService.getEmployees().subscribe(
@@ -111,15 +146,72 @@ export class EmployeeListComponent implements OnInit {
     );
   }
 
-  filterData(event: any) {
-    function ispositive(element: Employee, index: any, array: any) {
-      return (element.name.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) ||
-        element.email.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) ||
-        element.username.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) ||
-        element.department.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) ||
-        element.designation.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()))
-    }
-    this.searchResults = this.employeeList.filter(ispositive);
+
+  selectChange(a:any)
+  {
+    this.options = a
+    console.log(this.options)
+  }
+  
+  filterData1(options:any, event: any) {
+    console.log(options)
+    switch(options)
+    {
+      case 'all':
+        function ispositive1(element: Employee, index: any, array: any) {
+          return (element.name.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase())||
+          element.email.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase())|| 
+          element.username.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase())||
+          element.department.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase())||
+          element.designation.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase())||
+          element.address.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase())||
+          element.location.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase())||
+          element.usertype.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase())||
+          element.resourceplanner.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase())||
+          element.phoneNumber.toFixed().includes(event.target.value.toLocaleLowerCase()||
+          element.id.toFixed().includes(event.target.value.toLocaleLowerCase()))
+        )
+        }
+        this.searchResults= this.employeeList.filter(ispositive1);
+        break
+  
+      case 'name':
+        function ispositive2(element: Employee, index: any, array: any) {
+          return (element.name.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()))
+          
+        }
+        this.searchResults= this.employeeList.filter(ispositive2);
+        break
+      case 'department':
+        function ispositive3(element: Employee, index: any, array: any) {
+          return (element.department.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()))
+          
+        }
+        this.searchResults= this.employeeList.filter(ispositive3);
+      break
+      case 'Username':
+        function ispositive4(element: Employee, index: any, array: any) {
+          return (element.username.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()))
+          
+        }
+        this.searchResults= this.employeeList.filter(ispositive4);
+      break
+    
+      case 'Location':
+        function ispositive5(element: Employee, index: any, array: any) {
+          return (element.location.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()))
+          
+        }
+        this.searchResults= this.employeeList.filter(ispositive5);
+      break
+      case 'Usertype':
+        function ispositive6(element: Employee, index: any, array: any) {
+          return (element.usertype.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()))
+          
+        }
+        this.searchResults= this.employeeList.filter(ispositive6);
+      break
+  }
   }
 
   isCreateEmployeeModalVisible: boolean = false;
@@ -134,4 +226,6 @@ export class EmployeeListComponent implements OnInit {
   handleCreateEmployeeOk() {
     this.isCreateEmployeeModalVisible = false;
   }
-}
+
+
+ }

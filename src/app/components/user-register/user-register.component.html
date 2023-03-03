@@ -22,17 +22,86 @@
       <input nz-input formControlName="username" id="username" />
     </nz-form-control>
   </nz-form-item>
+
+    <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="phoneNumber" nzRequired>Phone Number</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" [nzValidateStatus]="validateForm.controls['phoneNumber']"
+      nzErrorTip="Please Enter your phone number!">
+      <nz-input-group >
+        <input formControlName="phoneNumber" id="'phoneNumber'" nz-input />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
   
-  <nz-form-item>
+  <!-- <nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="department">Department</nz-form-label>
     <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please enter the Department">
       <input nz-input formControlName="department" id="department" />
     </nz-form-control>
-  </nz-form-item>
+  </nz-form-item> -->
+
   <nz-form-item>
-    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="designation">Designation</nz-form-label>
-    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please enter the Designation">
-      <input nz-input formControlName="designation" id="designation" />
+    <nz-form-label style="color: #02050e;" [nzSm]="6" [nzXs]="24" nzRequired nzFor="department">
+      <span style="color: #030716;">Department</span>
+    </nz-form-label>
+    <nz-form-control nzErrorTip="Please Choose the department Name" id="department">
+      <nz-select nz-input formControlName="department"  nzShowSearch nzAllowClear
+        nzPlaceHolder="Select an department">
+        <nz-option *ngFor="let department of departList" [nzLabel]="department"
+          [nzValue]="department">{{department}}</nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label style="color: #020308;"  [nzSm]="6" [nzXs]="24" nzRequired nzFor="designation">
+      <span style="color: #01040f;">Designation</span>
+    </nz-form-label>
+    <nz-form-control nzErrorTip="Please Choose the designation">
+      <nz-select nz-input formControlName="designation" id="designation" nzShowSearch nzAllowClear
+        nzPlaceHolder="Select an designation">
+        <nz-option *ngFor="let designation of desList" [nzLabel]="designation"
+          [nzValue]="designation">{{designation}}</nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label style="color: #020308;"  [nzSm]="6" [nzXs]="24" nzRequired nzFor="Roles">
+      <span style="color: #01040f;">roles</span>
+    </nz-form-label>
+    <nz-form-control nzErrorTip="Please Choose the role">
+      <nz-select nz-input formControlName="roles" id="roes" nzShowSearch nzAllowClear
+        nzPlaceHolder="Select a role">
+        <nz-option *ngFor="let roles of rolesList" [nzLabel]="roles[0]"
+          [nzValue]="roles">{{roles}}</nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  
+  
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="address">address</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="please enter the address!">
+      <input nz-input formControlName="address" id="address" />
+    </nz-form-control>
+  </nz-form-item><nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="location">location</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="please enter the location!">
+      <input nz-input formControlName="location" id="location" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label style="color: #060606;"  [nzSm]="6" [nzXs]="24" nzRequired nzFor="usertype">
+      <span style="color: #0d0e0e;">Usertype</span>
+    </nz-form-label>
+    <nz-form-control nzErrorTip="Please Choose the Usertype">
+      <nz-select nz-input formControlName="usertype" id="usertype" nzShowSearch nzAllowClear
+        nzPlaceHolder="Select an usertype">
+        <nz-option *ngFor="let usertype of userList" [nzLabel]="usertype"
+          [nzValue]="usertype">{{usertype}}</nz-option>
+      </nz-select>
     </nz-form-control>
   </nz-form-item>
 
@@ -57,20 +126,16 @@
       </ng-template>
     </nz-form-control>
   </nz-form-item>
-
   <nz-form-item>
-    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="phoneNumber" nzRequired>Phone Number</nz-form-label>
-    <nz-form-control [nzSm]="14" [nzXs]="24" [nzValidateStatus]="validateForm.controls['phoneNumber']"
-      nzErrorTip="Please Enter your phone number!">
-      <nz-input-group >
-        <!-- <ng-template #addOnBeforeTemplate>
-          <nz-select formControlName="phoneNumberPrefix" class="phone-select">
-            <nz-option nzLabel="+91" nzValue="+91"></nz-option>
-            <nz-option nzLabel="+001" nzValue="+001"></nz-option>
-          </nz-select>
-        </ng-template> -->
-        <input formControlName="phoneNumber" id="'phoneNumber'" nz-input />
-      </nz-input-group>
+    <nz-form-label style="color: #01040e;"  [nzSm]="8" [nzXs]="24"   nzRequired nzFor="resourceplanner">
+      <span style="color: #03040b;">Enable Resourceplanner</span>
+    </nz-form-label>
+    <nz-form-control nzErrorTip="Please Choose the resourceplanner">
+      <nz-select nz-input formControlName="resourceplanner" id="resourceplanner" nzShowSearch nzAllowClear
+        nzPlaceHolder="Select a resourceplanner">
+        <nz-option *ngFor="let resourceplanner of rpList" [nzLabel]="resourceplanner"
+          [nzValue]="resourceplanner">{{resourceplanner}}</nz-option>
+      </nz-select>
     </nz-form-control>
   </nz-form-item>
 

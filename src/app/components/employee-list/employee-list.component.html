@@ -1,70 +1,83 @@
-<span
-  style="
-    font-family: math;
-    font-size: xx-large;
-    font-weight: 900;
-    margin-left: -58%;
-  "
-  >Employees</span
->
+<span style="    
+font-family: math;
+font-size: xx-large;
+font-weight: 900;
+margin-left: -60%;">Users</span>
 
-<input
-  nz-input
-  id="search-bar"
-  type="text"
-  (change)="filterData($event)"
-  placeholder="Search an Employee"
-/>
 
-<button
-  nz-button
-  nzType="primary"
-  id="create-user-button"
-  (click)="showCreateEmployeeModal()"
->
-  <span nz-icon nzType="plus" nzTheme="outline"></span>Add Employee
-</button>
+<ng-template #suffixIconSearch>
+</ng-template>
+<nz-input-group id="search-bar" [nzSuffix]="suffixIconSearch" style="width: 400px;"  >
+  <nz-select [ngModel]="'search an user'"  style="width: 200px;"(ngModelChange)="selectChange($event)">
+  
+    <nz-option [nzLabel]="'All'" [nzValue]="'all'"></nz-option>
+    <nz-option [nzLabel]="'By Name'" [nzValue]="'name'"></nz-option>
+    <nz-option [nzLabel]="'By Department'" [nzValue]="'department'" ></nz-option>
+    <nz-option [nzLabel]="'By Username'" [nzValue]="'Username'" ></nz-option>
+    <nz-option [nzLabel]="'By Location'" [nzValue]="'Location'" ></nz-option>
+    <nz-option [nzLabel]="'By Usertype'" [nzValue]="'Usertype'" ></nz-option>
+  </nz-select>
+  <div *ngIf="options=='all'">
+    <input type="Text" placeholder="Search an User" style="width: 200px;" (change)="filterData1(options, $event)" />
+  </div>
+  <div *ngIf="options=='name'">
+    <input type="Text" placeholder="Search an User" style="width: 200px;" (change)="filterData1(options, $event)" />
+  </div>
+  <div *ngIf="options=='department'">
+    <input type="Text" placeholder="Search an User" style="width: 200px;" (change)="filterData1(options,$event)" />
+  </div>
+  <div *ngIf="options=='Username'">
+    <input type="Text" placeholder="Search an User" style="width: 200px;" (change)="filterData1(options,$event)" />
+  </div>
+  <div *ngIf="options=='Location'">
+    <input type="Text" placeholder="Search an User" style="width: 200px;" (change)="filterData1(options,$event)" />
+  </div>
+  <div *ngIf="options=='Usertype'">
+    <input type="Text" placeholder="Search an User" style="width: 200px;" (change)="filterData1(options,$event)" />
+  </div>
+</nz-input-group>
+
+<button nz-button nzType="primary" id="create-user-button" (click)="showCreateEmployeeModal()"><span nz-icon nzType="user-add" nzTheme="outline"></span></button>
 
 <nz-table #filterTable [nzData]="searchResults">
-  <thead id="asset-table-head">
-    <tr>
-      <th
-        *ngFor="let column of employeeColumns"
-        [nzSortOrder]="column.sortOrder"
-        [nzSortFn]="column.sortFn"
-        [nzSortDirections]="column.sortDirections"
-      >
-        {{ column.name }}
-      </th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let data of filterTable.data">
-      <td>{{ data.id }}</td>
-      <td>{{ data.name }}</td>
-      <td>{{ data.email }}</td>
-      <td>{{ data.phoneNumber }}</td>
-      <td>{{ data.department }}</td>
-      <td>{{ data.designation }}</td>
-      <td>{{ data.roles }}</td>
-      <td>
-        <button nz-button nzType="default" nzDanger style="margin: 5px">
-          <span nz-icon nzType="delete" nzTheme="outline"></span>
-        </button>
-      </td>
-    </tr>
-  </tbody>
-</nz-table>
-<nz-modal
-  [nzStyle]="{ top: '20px', width: '60%' }"
-  [(nzVisible)]="isCreateEmployeeModalVisible"
-  nzTitle="Create an Ticket"
-  nzCentered
-  (nzOnCancel)="handleCreateEmployeeCancel()"
-  (nzOnOk)="handleCreateEmployeeOk()"
->
+    <thead id ="asset-table-head">
+      <tr >
+        <th *ngFor="let column of employeeColumns" [nzSortOrder]="column.sortOrder" [nzSortFn]="column.sortFn"
+          [nzSortDirections]="column.sortDirections">
+          {{ column.name }}
+        </th>
+        <th >Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of filterTable.data">
+        <td>{{ data.id }}</td>
+        <td>{{ data.name }}</td>
+        <td>{{ data.email }}</td>
+        <td>{{ data.username}}</td>
+        <td>{{ data.phoneNumber }}</td>
+        <td>{{ data.department }}</td>
+        <td>{{ data.designation }}</td>
+        <td>{{ data.roles }}</td>
+        <td>{{ data.address }}</td>
+        <td>{{ data.location }}</td>
+        <td>{{ data.usertype }}</td>
+        <td>{{ data.resourceplanner}}</td>
+        <td>
+          <!-- <button nz-button nzType="default" nzDanger style=" margin: 5px;">
+            <span nz-icon nzType="delete" nzTheme="outline" ></span>
+          </button> -->
+        </td>
+        <!-- <td>{{ data.location }}</td> -->
+      </tr>
+    </tbody>
+  </nz-table>
+
+
+<nz-modal [nzStyle]="{ top: '20px' , width:'60%'}" [(nzVisible)]="isCreateEmployeeModalVisible" nzTitle="Create an User"
+  nzCentered (nzOnCancel)="handleCreateEmployeeCancel()" (nzOnOk)="handleCreateEmployeeOk()">
   <ng-container *nzModalContent>
     <app-user-register (close)="handleCreateEmployeeOk()"></app-user-register>
   </ng-container>
 </nz-modal>
+

@@ -24,6 +24,34 @@ export class UserRegisterComponent implements OnInit{
     theme: 'twotone'
   };
 
+  departList = [
+    "d1",
+    "d2",
+    "d3"
+  ]
+
+  desList = [
+    "Service Analyst",
+    "Analyst"
+  ]
+
+  userList = [
+    "User",
+    "Vendor",
+    "Contract"
+  ]
+
+  rpList = [
+    "YES",
+    "NO"
+  ]
+
+  rolesList = [
+    ["Admin"],
+    ["Developer"]
+    ]
+
+
   constructor(private fb: UntypedFormBuilder, private msg: NzMessageService, private restApiService: RestapiService, private router: Router) {}
 
   submitForm(): void {
@@ -59,13 +87,17 @@ export class UserRegisterComponent implements OnInit{
       name: [null, [Validators.required]],
       email: [null, [Validators.email, Validators.required]],
       username: [null, [Validators.required]],
-      designation: [null, [Validators.required]],
+      phoneNumber: [null, [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
       department: [null, [Validators.required]],
+      designation: [null, [Validators.required]],
+      roles:[["ADMIN"]],
+      address: [null, [Validators.required]],
+      location: [null, [Validators.required]],
+      usertype: [null, [Validators.required]],
       password: [null, [Validators.required]],
       checkPassword: [null, [Validators.required, this.confirmationValidator]],
-      phoneNumber: [null, [Validators.required]],
-      roles:[["EMPLOYEE"]],
-      agree: [false, Validators.requiredTrue]
+      resourceplanner: [null,[Validators.required]],
+      agree: [false, Validators.requiredTrue],
     });
   }
 
