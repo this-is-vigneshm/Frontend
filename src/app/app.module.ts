@@ -43,6 +43,7 @@ import { ReportsComponent2 } from './components/reports2/reports2.component';
 import { BubbleReportComponent } from './components/bubble-report/bubble-report.component';
 import { ReportsTableComponent } from './components/reports-table/reports-table.component';
 import { InventoryListComponent } from './components/inventory-list/inventory-list.component';
+import { UpdatewostatusComponent } from './components/updatewostatus/updatewostatus.component';
 registerLocaleData(en);
 
 @NgModule({
@@ -77,8 +78,9 @@ registerLocaleData(en);
     ReportsComponent1, 
     ReportsComponent2, 
     ReportsTableComponent,
-    BubbleReportComponent
-  ],
+    BubbleReportComponent,
+    UpdatewostatusComponent
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,

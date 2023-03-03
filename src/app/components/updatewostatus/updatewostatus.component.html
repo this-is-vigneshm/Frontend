@@ -1,0 +1,15 @@
+<div >
+
+    <form  nz-form [formGroup]="form" nzLayout="vertical" (ngSubmit)="submitForm()">
+
+<nz-select nz-input formControlName="status" id="userId" nzShowSearch nzAllowClear nzPlaceHolder="Update workOrder Status">
+    <nz-option *ngFor="let status of statusList" [nzLabel]="status" [nzValue]="status" ></nz-option>
+   </nz-select>
+  <nz-form-item nz-row class="register-area">
+    <nz-form-control [nzOffset]="6">
+      <button nz-button nzType="primary">Update Status</button>
+    </nz-form-control>
+  </nz-form-item>
+
+</form>
+</div>

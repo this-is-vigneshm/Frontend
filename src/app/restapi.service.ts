@@ -9,6 +9,7 @@ import { LoginRefreshReq } from './models/LoginRefreshReq';
 import { LoginRequest } from './models/LoginRequest';
 import { Ticket } from './models/Ticket';
 import { UpdateStatusReq } from './models/UpdateStatusReq';
+import { UpdateWorkOrderStatusReq } from './models/UpdateWorkOrderStatusReq';
 import { TokenService } from './token.service';
 import { Resource } from './models/Resource';
 import { WorkOrder } from './models/WorkOrder';
@@ -303,6 +304,11 @@ export class RestapiService {
 
   public getAllResourceByWorkOrderId(workorderId:number) {
     return this.httpClient.get<ApiResponse>(`${this.baseUrl}/resource/wo/${workorderId}`);
+  }
+
+  
+  public updateWorkOrderStatus(workorderData: UpdateWorkOrderStatusReq){
+    return this.httpClient.put<ApiResponse>(`${this.baseUrl}/resource/status/`,workorderData);
   }
 
     //Reports
