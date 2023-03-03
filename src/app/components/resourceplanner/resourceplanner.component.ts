@@ -235,11 +235,8 @@ export class ResourceplannerComponent implements OnInit {
   }
   id = null;
   a = false;
-  getId(event: any, id: any) {
+  getId(event: any) {
     console.log(event);
-    if (event == true) {
-      this.id = id;
-      console.log(id);
-    }
+    
   }
 }

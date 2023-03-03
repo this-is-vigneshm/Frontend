@@ -64,7 +64,6 @@ ticketid = ""
   userData: any
   
 
-  ticketId='9463a47e-d3ef-435a-9d10-3424567b3f8e'
 
   validateForm!: UntypedFormGroup;
 
@@ -155,6 +154,8 @@ ngOnInit(): void {
    }
 
 }
+
+id : any
 createItemByData(workorder : WorkOrder, file: File) {
   workorder.employeeId = this.userData.userId
   workorder.status = "Active"
@@ -167,14 +168,15 @@ createItemByData(workorder : WorkOrder, file: File) {
        console.log("Success", data)
        this.notification.success("Workorder Created Successfully.")
       //  this.router.navigateByUrl("/");
-       this.handleClose()
+      this.isVisibleMiddle = true;
+      this.id = data.responseData
      },
      error => {
        console.log("Error occcured", error)
      }
    );
  }
- 
+ isb = false
  resources : Resource[] =[];
  searchResults:any
  getAllResource(){
@@ -193,14 +195,7 @@ createItemByData(workorder : WorkOrder, file: File) {
   );
 }
 
-showModalMiddle(): void {
-  this.isVisibleMiddle = true;
-  this.isa = true;
-}
-showModalMiddle1(): void {
-  this.isVisibleMiddle = true;
-  this.isa = false;
-}
+
 handleUpdateResource(data: any) {
   this.selectedResource = data;
   this.isVisibleMiddle = true;
@@ -237,9 +232,7 @@ a : any;
 isVisible = false;
 isConfirmLoading = false;
 
-showModal(): void {
-  this.isVisible = true;
-}
+
 onUpload() {
   this.loading = !this.loading;
   console.log(this.file);

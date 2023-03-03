@@ -54,7 +54,8 @@ export class CreateresourceComponent {
   Atype = ['Yes', 'No'];
 
   inventory: any;
-  workOrderId = '1';
+  @Input()
+  workOrderId :any;
 
   inventoryColumns: ColumnItem[] = [
     { name: 'Id' },

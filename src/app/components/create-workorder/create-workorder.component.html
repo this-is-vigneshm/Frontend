@@ -6,7 +6,7 @@
     <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="Name">
        <span style="color: rgb(0, 102, 255);"> Ticket ID</span> </nz-form-label>
     <nz-form-control  [nzSm]="9" [nzXs]="24" >
-      <input style="border-radius: 10px;" nz-input  id="name" placeholder= "TicketId" value="{{ticketId}}" [disabled]= "true">
+      <input style="border-radius: 10px;" nz-input  id="name" placeholder= "TicketId" value="{{ticketid}}" [disabled]= "true">
     </nz-form-control>
 </nz-form-item>
 
@@ -91,18 +91,60 @@
 
 <nz-form-item nz-row class="register-area">
   <nz-form-control [nzSpan]="14" [nzOffset]="0">
-    <button nz-button nzType="primary" id ="button" (click)="showModal()">
-      <span>Save & Add Resource</span>
-    </button>
-    <nz-modal
-      nzWidth = "900px"
-      [(nzVisible)]="isVisible"
-      nzTitle="Create or Add resource"
-      (nzOnCancel)="handleCancel()">
-      <ng-container *nzModalContent><app-resourcelist></app-resourcelist></ng-container>
-    </nz-modal>
+    <button
+  nz-button
+  nzType="primary"
+  id="create-resource-button"
+  (click)="isa=true"
+>
+  <span nz-icon nzType="carry-out" nzTheme="outline"></span>Add User
+</button>
 </nz-form-control>
 </nz-form-item>
+<nz-form-item>
+  <nz-form-control [nzSpan]="14" [nzOffset]="0">
+
+  <button
+  nz-button
+  nzType="primary"
+  id="create-resource-button"
+  (click)="isb = true"
+>
+  <span nz-icon nzType="carry-out" nzTheme="outline"></span>Add Inventory
+</button></nz-form-control>
+</nz-form-item>
+
+
+<nz-modal
+  [nzStyle]="{ top: '20px', width: '70%' }"
+  [nzWidth]="100"
+  [(nzVisible)]="isVisibleMiddle"
+  nzTitle="Resource Planner"
+  nzCentered
+  (nzOnCancel)="handleCreateResourceCancel()"
+  (nzOnOk)="handleCreateResourceSave()"
+>
+  <ng-container *nzModalContent>
+    <ng-container *ngIf="isa; then A"></ng-container>
+    <ng-template #A>
+      <app-resourceplanner
+        style="text-align: center"
+        (close)="handleCreateResourceSave()"
+        [workOrderId]="id.orderNo"
+      ></app-resourceplanner>
+    </ng-template>
+    <ng-container *ngIf="isb; then B"></ng-container>
+    <ng-template #B>
+      <app-createresource
+        style="text-align: center"
+        (close)="handleCreateResourceSave()"
+        [workOrderId]="id.orderNo"
+      ></app-createresource>
+    </ng-template>
+  </ng-container>
+</nz-modal>
+    
+
 
 <nz-form-item nz-row class="register-area" >
   <nz-form-control [nzSpan]="14" [nzOffset]="0">
