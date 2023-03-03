@@ -7,6 +7,7 @@ import { Asset } from 'src/app/models/Asset';
 import { Facility } from 'src/app/models/Facility';
 import { RestapiService } from 'src/app/restapi.service';
 import { TokenService } from 'src/app/token.service';
+import { NzUploadFile } from 'ng-zorro-antd/upload';
 
 
 @Component({
@@ -30,6 +31,20 @@ export class AssetCreateComponent implements OnInit {
 
   validateForm!: UntypedFormGroup;
 
+  categories = [
+    { name: "Boiler tube", value: "Electrical" },
+    { name: "Display", value: "Electronics" , id: "1"},
+    { name: "Ac motor", value: "Electronics", id: "2"},
+    { name: "Keyboard", value: "Electronics", id: "3"}
+  ]
+  departments = [
+    { name: "Facilities", id: "1"},
+    { name: "Employee", id: "2"}
+  ]
+  suppliers = [
+    { name: "Asus", id: "1"},
+    { name: "Lenovo", id: "2"}
+  ]
   submitForm(): void {
     if (this.validateForm.valid) {
       console.log('submit', this.validateForm.value);
@@ -75,7 +90,17 @@ export class AssetCreateComponent implements OnInit {
     if (this.assetData == null) {
       this.validateForm = this.fb.group({
         name: [null, [Validators.required]],
+        code: [null, [Validators.required]],
+        serialNo: [null, [Validators.required]],
         description: [null, [Validators.required]],
+        category: [null, [Validators.required]],
+        department: [null, [Validators.required]],
+        supplier: [null, [Validators.required]],
+        subAsset: [null, [Validators.required]],
+        system:[null,[Validators.required]],
+        priority: [null, [Validators.required]],
+        model: [null, [Validators.required]],
+        make: [null, [Validators.required]],
         price: [null, [Validators.required, Validators.pattern]],
         facilityCode: [null, [Validators.required]]
       });
@@ -84,7 +109,17 @@ export class AssetCreateComponent implements OnInit {
       this.validateForm = this.fb.group({
         id: [this.assetData.id, Validators.required],
         name: [this.assetData.name, [Validators.required]],
+        code: [this.assetData.code, [Validators.required]],
+        serialNo: [this.assetData.serialNo, [Validators.required]],
         description: [this.assetData.description, [Validators.required]],
+        category: [this.assetData.category, [Validators.required]],
+        department: [this.assetData.department, [Validators.required]],
+        supplier: [this.assetData.supplier, [Validators.required]],
+        subAsset: [this.assetData.subAsset, [Validators.required]],
+        system: [this.assetData.system,[Validators.required]],
+        priority: [this.assetData.priority, [Validators.required]],
+        model: [this.assetData.model, [Validators.required]],
+        make: [this.assetData.make, [Validators.required]],
         price: [this.assetData.price, [Validators.required, Validators.pattern]],
         facilityCode: [this.assetData.location.facilityCode, [Validators.required]]
       });
@@ -157,4 +192,14 @@ export class AssetCreateComponent implements OnInit {
       }
     );
   }
+  onStatusChange(event: any) {
+
+  }
+  defaultFileList: NzUploadFile[] = [
+
+  ];
+
+  fileList1 = [...this.defaultFileList];
+  fileList2 = [...this.defaultFileList];
 }
+
