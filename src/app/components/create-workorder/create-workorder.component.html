@@ -1,230 +1,205 @@
 <div id="workOrder">
-<div id="form-view">
-<form nz-form [formGroup]="validateForm" nzLayout="horizontal" (ngSubmit)="submitForm()" >
+  <div id="form-view">
+    <form nz-form [formGroup]="validateForm" nzLayout="horizontal" (ngSubmit)="submitForm()">
 
-  <nz-form-item>
-    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="Name">
-       <span style="color: rgb(0, 102, 255);"> Ticket ID</span> </nz-form-label>
-    <nz-form-control  [nzSm]="9" [nzXs]="24" >
-      <input style="border-radius: 10px;" nz-input  id="name" placeholder= "TicketId" value="{{ticketid}}" [disabled]= "true">
-    </nz-form-control>
-</nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="Name">
+          <span style="color: rgb(0, 102, 255);"> Ticket ID</span> </nz-form-label>
+        <nz-form-control [nzSm]="9" [nzXs]="24">
+          <input style="border-radius: 10px;" nz-input id="name" placeholder="TicketId" value="{{ticketid}}"
+            [disabled]="true">
+        </nz-form-control>
+      </nz-form-item>
 
-<nz-form-item>
-    <nz-form-label [nzSm]="6" [nzXs]="6" style="color: #3253dc;" >
-      <span style="color: #3253dc; align-items: flex-start;">WorkOrder Status</span>
-    </nz-form-label>
-    <nz-form-control  [nzSm]="9" [nzXs]="24" nzErrorTip="Please Choose the workOrder Status">
-      <nz-select nz-input formControlName="status" id="userId" nzShowSearch nzAllowClear nzPlaceHolder="Select the workOrder Status" style="text-align: left;">
-       <nz-option *ngFor="let status of statusTypes" [nzLabel]="status" [nzValue]="status" ></nz-option>
-      </nz-select>
-     </nz-form-control>
-</nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="6" style="color: #3253dc;">
+          <span style="color: #3253dc; align-items: flex-start;">WorkOrder Status</span>
+        </nz-form-label>
+        <nz-form-control [nzSm]="9" [nzXs]="24" nzErrorTip="Please Choose the workOrder Status">
+          <nz-select nz-input formControlName="status" id="userId" nzShowSearch nzAllowClear
+            nzPlaceHolder="Select the workOrder Status" style="text-align: left;">
+            <nz-option *ngFor="let status of statusTypes" [nzLabel]="status" [nzValue]="status"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
 
-<nz-form-item>
-    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="Created By"> 
-      <span style="color: rgb(0, 102, 255); align-items: flex-start;">WorkOrder Created By</span> 
-    </nz-form-label>
-    <nz-form-control  [nzSm]="9" [nzXs]="24">
-      <input style="border-radius: 10px;" nz-input  id="item-name" placeholder="Creater Name" value='{{name}}' [disabled]= "true"/>
-    </nz-form-control>
-</nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="Created By">
+          <span style="color: rgb(0, 102, 255); align-items: flex-start;">WorkOrder Created By</span>
+        </nz-form-label>
+        <nz-form-control [nzSm]="9" [nzXs]="24">
+          <input style="border-radius: 10px;" nz-input id="item-name" placeholder="Creater Name" value='{{name}}'
+            [disabled]="true" />
+        </nz-form-control>
+      </nz-form-item>
 
-<nz-form-item>
-    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="Creater Email Id">
-       <span style="color: rgb(0, 102, 255);">WorkOrder Creater Email Id</span> </nz-form-label>
-    <nz-form-control  [nzSm]="9" [nzXs]="24" nzErrorTip="Please Enter the EmailId">
-      <input style="border-radius: 10px;" nz-input  id="item-name" placeholder="Creater EmailId" value='{{emailId}}'  [disabled]= "true"/>
-    </nz-form-control>
-</nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="Creater Email Id">
+          <span style="color: rgb(0, 102, 255);">WorkOrder Creater Email Id</span> </nz-form-label>
+        <nz-form-control [nzSm]="9" [nzXs]="24" nzErrorTip="Please Enter the EmailId">
+          <input style="border-radius: 10px;" nz-input id="item-name" placeholder="Creater EmailId" value='{{emailId}}'
+            [disabled]="true" />
+        </nz-form-control>
+      </nz-form-item>
 
-<nz-form-item>
-    <nz-form-label  [nzSm]="6" [nzXs]="5" style="color:  rgb(0, 102, 255);" nzRequired nzFor="creater Tele No">
-      <span style="color: #3253dc;">WorkOrder Creater Tele No</span></nz-form-label>
-      <nz-form-control  [nzSm]="9" [nzXs]="24" nzErrorTip="Please Enter Your Phone Number">
-        <input nz-input  id="phoneNumber" placeholder=" Enter Your Creater TeleNo" value='{{phNo}}'  [disabled]= "true"/>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="5" style="color:  rgb(0, 102, 255);" nzRequired nzFor="creater Tele No">
+          <span style="color: #3253dc;">WorkOrder Creater Tele No</span></nz-form-label>
+        <nz-form-control [nzSm]="9" [nzXs]="24" nzErrorTip="Please Enter Your Phone Number">
+          <input nz-input id="phoneNumber" placeholder=" Enter Your Creater TeleNo" value='{{phNo}}'
+            [disabled]="true" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="Description">
+          <span style="color: rgb(0, 102, 255);">WorkOrder Description</span> </nz-form-label>
+        <nz-form-control [nzSm]="9" [nzXs]="24" nzErrorTip="Please Enter the Description">
+          <input style="border-radius: 10px;" nz-input formControlName="description" id="Description"
+            placeholder="Description" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="WorkSubject">
+          <span style="color: rgb(0, 102, 255);">WorkOrder WorkSubject</span> </nz-form-label>
+        <nz-form-control [nzSm]="9" [nzXs]="24" nzErrorTip="Please Enter the WorkSubject">
+          <input style="border-radius: 10px;" nz-input formControlName="workSubject" id="workSubject"
+            placeholder="WorkSubject" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="Task Details">
+          <span style="color: rgb(0, 102, 255);">WorkOrder Task Details</span> </nz-form-label>
+        <nz-form-control [nzSm]="9" [nzXs]="24" nzErrorTip="Please Enter the TaskDetails">
+          <nz-textarea-count [nzMaxCharacterCount]="400" style="border-radius: 10px;" nz-input>
+            <textarea rows="5" nz-input formControlName="taskDetails" id="taskDetails"
+              placeholder="taskDetails"></textarea>
+          </nz-textarea-count>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" style="color: #3253dc;" nzRequired nzFor="Estimated Cost">
+          <span style="color: #3253dc;">WorkOrder Estimated Cost</span></nz-form-label>
+        <nz-form-control [nzSm]="9" [nzXs]="24" nzErrorTip="Please Enter the WorkOrder cost!">
+          <input nz-input formControlName="workOrderCost" id="'workOrderCost'"
+            placeholder="Enter the Work Order Cost" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="9" nzFor="assetId">
+          <span style="color: #3253dc;">WorkOrder Execution Date</span>
+        </nz-form-label>
+        <nz-form-control [nzSm]="4" [nzXs]="24">
+          <nz-date-picker [nzSize]="size" formControlName="date" id="'date'" nz-input
+            placeholder="Enter the Date"></nz-date-picker>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item nz-row class="register-area">
+        <nz-form-control [nzSpan]="14" [nzOffset]="0">
+          <button nz-button nzType="primary" id="create-resource-button" (click)="changeA()">
+            <span nz-icon nzType="carry-out" nzTheme="outline"></span>Add User
+          </button>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control [nzSpan]="14" [nzOffset]="0">
+
+          <button nz-button nzType="primary" id="create-resource-button" (click)="changeB()">
+            <span nz-icon nzType="carry-out" nzTheme="outline"></span>Add Inventory
+          </button></nz-form-control>
+      </nz-form-item>
+
+
+      <nz-modal [nzStyle]="{ top: '20px', width: '70%' }" [nzWidth]="100" [(nzVisible)]="isVisibleMiddle"
+        nzTitle="Resource Planner" nzCentered (nzOnCancel)="handleCreateResourceCancel()"
+        (nzOnOk)="handleCreateResourceSave()">
+        <ng-container *nzModalContent>
+          <ng-container *ngIf="isa; then A"></ng-container>
+          <ng-template #A>
+            <app-resourceplanner style="text-align: center" (close)="handleCreateResourceSave()"
+              [workOrderId]="id.orderNo"></app-resourceplanner>
+          </ng-template>
+          <ng-container *ngIf="isb; then B"></ng-container>
+          <ng-template #B>
+            <app-createresource style="text-align: center" (close)="handleCreateResourceSave()"
+              [workOrderId]="id.orderNo"></app-createresource>
+          </ng-template>
+        </ng-container>
+      </nz-modal>
+
+
+
+      <nz-form-item nz-row class="register-area">
+        <nz-form-control [nzSpan]="14" [nzOffset]="0">
+          <button nz-button nzType="primary" (click)="onUpload()" id="create-workorder-submit"
+            style="color: rgb(234, 236, 239);">Create a WorkOrder</button>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </div>
+
+  <div>
+    <nz-form-item id="upload-view">
+      <nz-form-control nzErrorTip="Please Add an Attachment">
+        <input type="file" id="file" placeholder="File" (change)="handleChange($event)">
       </nz-form-control>
-</nz-form-item> 
-
-<nz-form-item>
-    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="Description">
-       <span style="color: rgb(0, 102, 255);">WorkOrder Description</span> </nz-form-label>
-    <nz-form-control  [nzSm]="9" [nzXs]="24" nzErrorTip="Please Enter the Description">
-      <input style="border-radius: 10px;" nz-input formControlName="description" id="Description" placeholder="Description" />
-    </nz-form-control>
-</nz-form-item>
-
-<nz-form-item>
-  <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="WorkSubject"> 
-    <span style="color: rgb(0, 102, 255);">WorkOrder WorkSubject</span> </nz-form-label>
-  <nz-form-control  [nzSm]="9" [nzXs]="24" nzErrorTip="Please Enter the WorkSubject">
-    <input style="border-radius: 10px;" nz-input formControlName="workSubject" id="workSubject" placeholder="WorkSubject" />
-  </nz-form-control>
-</nz-form-item>
-
-<nz-form-item>
-    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="Task Details">
-       <span style="color: rgb(0, 102, 255);">WorkOrder Task Details</span> </nz-form-label>
-    <nz-form-control  [nzSm]="9" [nzXs]="24" nzErrorTip="Please Enter the TaskDetails">
-      <nz-textarea-count [nzMaxCharacterCount]="400" style="border-radius: 10px;" nz-input >
-        <textarea rows="5"  nz-input formControlName="taskDetails" id="taskDetails" placeholder="taskDetails"></textarea>
-      </nz-textarea-count>
-    </nz-form-control>
-</nz-form-item>
-
-<nz-form-item>
-    <nz-form-label [nzSm]="6" [nzXs]="24" style="color: #3253dc;" nzRequired nzFor ="Estimated Cost">
-      <span style="color: #3253dc;">WorkOrder Estimated Cost</span></nz-form-label>
-    <nz-form-control [nzSm]="9" [nzXs]="24" nzErrorTip="Please Enter the WorkOrder cost!">
-      <input nz-input formControlName="workOrderCost" id="'workOrderCost'"  placeholder="Enter the Work Order Cost" />
-    </nz-form-control>
-</nz-form-item>
-
-<nz-form-item>
-    <nz-form-label  [nzSm]="6" [nzXs]="9" nzFor="assetId"> 
-      <span style="color: #3253dc;">WorkOrder Execution Date</span>
-    </nz-form-label>
-    <nz-form-control [nzSm]="4" [nzXs]="24">
-      <nz-date-picker [nzSize]="size" formControlName="date" id="'date'" nz-input placeholder="Enter the Date"></nz-date-picker>
-    </nz-form-control>
-</nz-form-item>  
-
-<nz-form-item nz-row class="register-area">
-  <nz-form-control [nzSpan]="14" [nzOffset]="0">
-    <button
-  nz-button
-  nzType="primary"
-  id="create-resource-button"
-  (click)="changeA()"
->
-  <span nz-icon nzType="carry-out" nzTheme="outline"></span>Add User
-</button>
-</nz-form-control>
-</nz-form-item>
-<nz-form-item>
-  <nz-form-control [nzSpan]="14" [nzOffset]="0">
-
-  <button
-  nz-button
-  nzType="primary"
-  id="create-resource-button"
-  (click)="changeB()"
->
-  <span nz-icon nzType="carry-out" nzTheme="outline"></span>Add Inventory
-</button></nz-form-control>
-</nz-form-item>
-
-
-<nz-modal
-  [nzStyle]="{ top: '20px', width: '70%' }"
-  [nzWidth]="100"
-  [(nzVisible)]="isVisibleMiddle"
-  nzTitle="Resource Planner"
-  nzCentered
-  (nzOnCancel)="handleCreateResourceCancel()"
-  (nzOnOk)="handleCreateResourceSave()"
->
-  <ng-container *nzModalContent>
-    <ng-container *ngIf="isa; then A"></ng-container>
-    <ng-template #A>
-      <app-resourceplanner
-        style="text-align: center"
-        (close)="handleCreateResourceSave()"
-        [workOrderId]="id.orderNo"
-      ></app-resourceplanner>
-    </ng-template>
-    <ng-container *ngIf="isb; then B"></ng-container>
-    <ng-template #B>
-      <app-createresource
-        style="text-align: center"
-        (close)="handleCreateResourceSave()"
-        [workOrderId]="id.orderNo"
-      ></app-createresource>
-    </ng-template>
-  </ng-container>
-</nz-modal>
-    
-
-
-<nz-form-item nz-row class="register-area" >
-  <nz-form-control [nzSpan]="14" [nzOffset]="0">
-    <button nz-button nzType="primary"  (click)="onUpload()" id="create-workorder-submit"  style="color: rgb(234, 236, 239);">Create a WorkOrder</button>
-  </nz-form-control>
-</nz-form-item>
-</form>
+    </nz-form-item>
+  </div>
 </div>
 
-<div>
-<nz-form-item id="upload-view">
-  <nz-form-control nzErrorTip="Please Add an Attachment">
-    <input type="file" id="file" placeholder="File" (change)="handleChange($event)">
-  </nz-form-control>
-</nz-form-item>
-</div>
-</div>
-
-<div *ngIf="condition"><nz-collapse [nzGhost]="true"  id="collapse">
-  <nz-collapse-panel>
-  <nz-table #filterTable [nzData]="searchResults">
-    <thead>
-      <tr>
-        <th *ngFor="let column of listOfColumns" [nzSortOrder]="column.sortOrder" [nzSortFn]="column.sortFn"
-          [nzSortDirections]="column.sortDirections" [nzFilterMultiple]="column.filterMultiple"
-          [nzFilters]="column.listOfFilter" [nzFilterFn]="column.filterFn">
-          {{ column.name }}
-        </th>
+<div *ngIf="condition"><nz-collapse [nzGhost]="true" id="collapse">
+    <nz-collapse-panel>
+      <nz-table #filterTable [nzData]="searchResults">
+        <thead>
+          <tr>
+            <th *ngFor="let column of listOfColumns" [nzSortOrder]="column.sortOrder" [nzSortFn]="column.sortFn"
+              [nzSortDirections]="column.sortDirections" [nzFilterMultiple]="column.filterMultiple"
+              [nzFilters]="column.listOfFilter" [nzFilterFn]="column.filterFn">
+              {{ column.name }}
+            </th>
           </tr>
-    </thead>
-    <tbody>
-      <ng-template ngFor let-data [ngForOf]="filterTable.data">
-        <tr>
-        <td>{{ data.userId }}</td>
-        <td>{{ data.resourceId }}</td>
-        <td>{{ data.resourceName }}</td>
-        </tr>
-       </ng-template>
-    </tbody>
-  </nz-table>
-  </nz-collapse-panel>
+        </thead>
+        <tbody>
+          <ng-template ngFor let-data [ngForOf]="filterTable.data">
+            <tr>
+              <td>{{ data.userId }}</td>
+              <td>{{ data.resourceId }}</td>
+              <td>{{ data.resourceName }}</td>
+            </tr>
+          </ng-template>
+        </tbody>
+      </nz-table>
+    </nz-collapse-panel>
   </nz-collapse></div>
 
 
 
-<nz-collapse  *ngIf="condition1" [nzGhost]="true"  id="collapse">
-<nz-collapse-panel>
-<nz-table #filterTable [nzData]="searchResults">
-  <thead>
-    <tr>
-      <th *ngFor="let column of listOfColumns1" [nzSortOrder]="column.sortOrder" [nzSortFn]="column.sortFn"
-        [nzSortDirections]="column.sortDirections" [nzFilterMultiple]="column.filterMultiple"
-        [nzFilters]="column.listOfFilter" [nzFilterFn]="column.filterFn">
-        {{ column.name }}
-      </th>
+<nz-collapse *ngIf="condition1" [nzGhost]="true" id="collapse">
+  <nz-collapse-panel>
+    <nz-table #filterTable [nzData]="searchResults">
+      <thead>
+        <tr>
+          <th *ngFor="let column of listOfColumns1" [nzSortOrder]="column.sortOrder" [nzSortFn]="column.sortFn"
+            [nzSortDirections]="column.sortDirections" [nzFilterMultiple]="column.filterMultiple"
+            [nzFilters]="column.listOfFilter" [nzFilterFn]="column.filterFn">
+            {{ column.name }}
+          </th>
         </tr>
-  </thead>
-  <tbody>
-    <ng-template ngFor let-data [ngForOf]="filterTable.data">
-      <tr>
-      <td>{{ data.inventoryId }}</td>
-      <td>{{ data.resourceName }}</td>
-      <td>{{ data.availability }}</td>
-      </tr>
-     </ng-template>
-  </tbody>
-</nz-table>
-</nz-collapse-panel>
+      </thead>
+      <tbody>
+        <ng-template ngFor let-data [ngForOf]="filterTable.data">
+          <tr>
+            <td>{{ data.inventoryId }}</td>
+            <td>{{ data.resourceName }}</td>
+            <td>{{ data.availability }}</td>
+          </tr>
+        </ng-template>
+      </tbody>
+    </nz-table>
+  </nz-collapse-panel>
 </nz-collapse>
-
-  
-
-
-  
-
-
-
-
-
-
-
-
-

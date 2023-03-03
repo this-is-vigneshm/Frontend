@@ -1,63 +1,30 @@
-<span
-  style="
+<span style="
     font-family: math;
     font-size: xx-large;
     font-weight: 900;
     margin-left: -66%;
-  "
-  >Assets</span
->
+  ">Assets</span>
 
-<input
-  nz-input
-  id="search-bar"
-  type="text"
-  [(ngModel)]="searchString"
-  (change)="filterAssets($event)"
-  placeholder="Search Assets"
-/>
+<input nz-input id="search-bar" type="text" [(ngModel)]="searchString" (change)="filterAssets($event)"
+  placeholder="Search Assets" />
 
-<button
-  nz-button
-  nzType="primary"
-  id="create-asset-button"
-  (click)="showModalMiddle()"
->
+<button nz-button nzType="primary" id="create-asset-button" (click)="showModalMiddle()">
   <span nz-icon nzType="plus" nzTheme="outline"></span>Create Assets
 </button>
 
-<nz-modal
-  [nzStyle]="{ top: '20px', width: '45%' }"
-  [nzWidth]="200"
-  [(nzVisible)]="isVisibleMiddle"
-  nzTitle="Create an Asset"
-  nzCentered
-  (nzOnCancel)="handleCreateAssetCancel()"
-  (nzOnOk)="handleCreateAssetOk()"
->
+<nz-modal [nzStyle]="{ top: '20px', width: '45%' }" [nzWidth]="200" [(nzVisible)]="isVisibleMiddle"
+  nzTitle="Create an Asset" nzCentered (nzOnCancel)="handleCreateAssetCancel()" (nzOnOk)="handleCreateAssetOk()">
   <ng-container *nzModalContent>
-    <app-asset-create
-      style="text-align: center"
-      [assetData]="selectedAsset"
-      (close)="handleCreateAssetOk()"
-    ></app-asset-create>
+    <app-asset-create style="text-align: center" [assetData]="selectedAsset"
+      (close)="handleCreateAssetOk()"></app-asset-create>
   </ng-container>
 </nz-modal>
 
-<nz-modal
-  [nzStyle]="{ top: '20px', width: '45%' }"
-  [(nzVisible)]="isCreatTicketVisible"
-  nzTitle="Create a Ticket"
-  nzCentered
-  (nzOnCancel)="handleCreateTicketCancel()"
-  (nzOnOk)="handleCreateTicketOk()"
->
+<nz-modal [nzStyle]="{ top: '20px', width: '45%' }" [(nzVisible)]="isCreatTicketVisible" nzTitle="Create a Ticket"
+  nzCentered (nzOnCancel)="handleCreateTicketCancel()" (nzOnOk)="handleCreateTicketOk()">
   <ng-container *nzModalContent>
-    <app-create-ticket
-      style="text-align: center"
-      [assetData]="selectedAsset"
-      (close)="handleCreateTicketOk()"
-    ></app-create-ticket>
+    <app-create-ticket style="text-align: center" [assetData]="selectedAsset"
+      (close)="handleCreateTicketOk()"></app-create-ticket>
   </ng-container>
 </nz-modal>
 
@@ -65,15 +32,9 @@
   <thead id="asset-table-head">
     <tr>
       <th></th>
-      <th
-        *ngFor="let column of listOfColumns"
-        [nzSortOrder]="column.sortOrder"
-        [nzSortFn]="column.sortFn"
-        [nzSortDirections]="column.sortDirections"
-        [nzFilterMultiple]="column.filterMultiple"
-        [nzFilters]="column.listOfFilter"
-        [nzFilterFn]="column.filterFn"
-      >
+      <th *ngFor="let column of listOfColumns" [nzSortOrder]="column.sortOrder" [nzSortFn]="column.sortFn"
+        [nzSortDirections]="column.sortDirections" [nzFilterMultiple]="column.filterMultiple"
+        [nzFilters]="column.listOfFilter" [nzFilterFn]="column.filterFn">
         {{ column.name }}
       </th>
       <th>Action</th>
@@ -91,78 +52,43 @@
         <td>{{ data.location.facilityCode }}</td>
 
         <td>
-          <button
-            id="asset-update-button"
-            nz-button
-            (click)="showCreateAssetModal(data)"
-            nz-tooltip
-            [nzTooltipTitle]="'Create Ticket'"
-            [nzTooltipColor]="'blue'"
-          >
+          <button id="asset-update-button" nz-button (click)="showCreateAssetModal(data)" nz-tooltip
+            [nzTooltipTitle]="'Create Ticket'" [nzTooltipColor]="'blue'">
             <span nz-icon nzType="plus-circle" nzTheme="twotone"></span>
           </button>
 
-          <button
-            id="asset-update-button"
-            nz-button
-            nz-popconfirm
-            nzPopconfirmTitle="Proceed to update?"
-            (nzOnConfirm)="handleUpdateAsset(data)"
-            nz-tooltip
-            [nzTooltipTitle]="'Update Asset'"
-            [nzTooltipColor]="'green'"
-          >
+          <button id="asset-update-button" nz-button nz-popconfirm nzPopconfirmTitle="Proceed to update?"
+            (nzOnConfirm)="handleUpdateAsset(data)" nz-tooltip [nzTooltipTitle]="'Update Asset'"
+            [nzTooltipColor]="'green'">
             <span nz-icon nzType="up-circle" nzTheme="twotone"></span>
           </button>
 
-          <button
-            id="asset-delete-button"
-            nz-button
-            nz-popconfirm
-            nzPopconfirmTitle="Sure to Delete?"
-            (nzOnConfirm)="handleDelete(data.id)"
-            nz-tooltip
-            [nzTooltipTitle]="'Delete Asset'"
-            [nzTooltipColor]="'red'"
-          >
-            <span
-              nz-icon
-              nzType="delete"
-              nzTheme="twotone"
-              [nzTwotoneColor]="'red'"
-            ></span>
+          <button id="asset-delete-button" nz-button nz-popconfirm nzPopconfirmTitle="Sure to Delete?"
+            (nzOnConfirm)="handleDelete(data.id)" nz-tooltip [nzTooltipTitle]="'Delete Asset'" [nzTooltipColor]="'red'">
+            <span nz-icon nzType="delete" nzTheme="twotone" [nzTwotoneColor]="'red'"></span>
           </button>
         </td>
       </tr>
       <tr [nzExpand]="data.expand">
-        <nz-table
-          #innerTable
-          [nzData]="searchResults"
-          nzSize="small"
-          [nzShowPagination]="false"
-        >
+        <nz-table #innerTable [nzData]="searchResults" nzSize="small" [nzShowPagination]="false">
           <thead>
             <tr>
-              <th
-                *ngFor="let column of innerColumns"
-                [nzSortOrder]="column.sortOrder"
-                [nzSortFn]="column.sortFn"
-                [nzSortDirections]="column.sortDirections"
-              >
+              <th *ngFor="let column of innerColumns" [nzSortOrder]="column.sortOrder" [nzSortFn]="column.sortFn"
+                [nzSortDirections]="column.sortDirections">
                 {{ column.name }}
               </th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>{{ data.createdTime | date : "dd/MM/yyyy hh:ss a" }}</td>
-              <td>{{ data.createdBy }}</td>
-              <td>{{ data.updatedTime | date : "dd/MM/yyyy hh:ss a" }}</td>
-              <td>{{ data.updatedBy }}</td>
-            </tr>
-          </tbody>
-        </nz-table>
-      </tr>
-    </ng-template>
+  <tbody>
+    <tr>
+      <td>{{ data.createdTime | date : "dd/MM/yyyy hh:ss a" }}</td>
+      <td>{{ data.createdBy }}</td>
+      <td>{{ data.updatedTime | date : "dd/MM/yyyy hh:ss a" }}</td>
+      <td>{{ data.updatedBy }}</td>
+    </tr>
   </tbody>
+</nz-table>
+</tr>
+</ng-template>
+</tbody>
 </nz-table>
