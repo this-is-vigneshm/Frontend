@@ -21,14 +21,18 @@
     "angular-jwt": "^0.1.11",
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.3",
+    "chart.js": "^4.2.1",
     "cron-parser": "^4.7.1",
     "d3": "^7.8.2",
     "dagre-compound": "^0.0.13",
+    "echarts": "^5.4.1",
     "jwt-decode": "^3.1.2",
     "monaco-editor": "^0.34.1",
     "ng-zorro-antd": "^15.0.3",
+    "ngx-echarts": "^15.0.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
+    "xlsx": "^0.18.5",
     "zone.js": "~0.12.0"
   },
   "devDependencies": {

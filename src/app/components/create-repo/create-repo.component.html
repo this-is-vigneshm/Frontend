@@ -1,10 +1,15 @@
-<form nz-form [formGroup]="form" class="login-form" (ngSubmit)="submitForm()">
+<form nz-form [formGroup]="form" class="login-form" (ngSubmit)="submitForm()" style = "padding: 5% 20% 5% 20%;"
+>
   <nz-form-item>
     <nz-form-label nzFor="asset_name"> 
-      <span style="color: #3253dc;">Asset Name</span>
+      <span style="color: #3253dc;">Select an asset</span>
     </nz-form-label>
-    <nz-form-control nzErrorTip="Please Select an Asset">
-      <input nz-input formControlName="asset_name" id="ticket-title" placeholder="Asset Name" />
+    <nz-form-control>
+      <nz-select nz-input formControlName="asset_name" id="asset_name" nzShowSearch nzAllowClear
+        nzPlaceHolder="Select the Asset">
+        <nz-option *ngFor="let asset of assetList" [nzLabel]="asset.name"
+           [nzValue]="asset.name"></nz-option>
+      </nz-select>
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>

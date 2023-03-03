@@ -4,16 +4,16 @@ import { Router, NavigationExtras } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { RestapiService } from 'src/app/restapi.service';
 import { Reports } from 'src/app/models/Reports';
-import { Chart, registerables } from 'chart.js';
-import { Ticket } from 'src/app/models/Ticket';
+import Chart from 'chart.js/auto';
+import { registerables } from 'chart.js';
 Chart.register(...registerables)
 
 @Component({
-  selector: 'app-reports',
-  templateUrl: './reports.component.html',
-  styleUrls: ['./reports.component.css']
-}) 
-export default class ReportsComponent implements OnInit{
+  selector: 'app-reports1',
+  templateUrl: './reports1.component.html',
+  styleUrls: ['./reports1.component.css']
+})
+export class ReportsComponent1 implements OnInit{
   constructor(private restApiService: RestapiService, private notification: NzMessageService, private router: Router, private tokenService: TokenService)
   {
   }
@@ -32,7 +32,7 @@ export default class ReportsComponent implements OnInit{
 
   repoList: Reports[] = [];
   getAllReports() {
-    this.restApiService.viewTimeline().subscribe(
+    this.restApiService.viewCalculateAmountSpent().subscribe(
       data => {
         console.log("Success", data)
         this.repoList = data.responseData;
@@ -48,12 +48,12 @@ export default class ReportsComponent implements OnInit{
 
   newChart(a : Reports[]) {
     this.myChart = new Chart( "myChart", {
-      type: 'bar',
+      type: 'doughnut',
       data: {
-        labels: a.map(m =>m.category),
+        labels: a.map(m=>m.category),
         datasets: [{
-          label:"# of tickets",
           data: a.map(m =>m.values),
+          hoverOffset : 10
         }],
       },
       options: {
@@ -79,5 +79,4 @@ export default class ReportsComponent implements OnInit{
     n = { queryParams:{ "listUuid" : aa}}
     this.router.navigate(["reports-table"], n)
   }
-
 }

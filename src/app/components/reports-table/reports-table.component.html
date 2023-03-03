@@ -1,0 +1,58 @@
+<span style="    
+font-family: math;
+font-size: xx-large;
+font-weight: 900;
+margin-left: -90%;">Reports</span>
+
+<div>
+  <button nz-button nzType="primary" id="create-asset-button" (click)="exportexcel()"><span nz-icon nzType="export" nzTheme="outline"></span>Export</button>
+<nz-table #editRowTable #filterTable nzBordered [nzData]="searchResults" id = "talbe" >
+  <thead id="asset-table-head">
+    <tr>
+      <th></th>
+      <th *ngFor="let column of listOfColumns" [nzSortOrder]="column.sortOrder" [nzSortFn]="column.sortFn"
+        [nzSortDirections]="column.sortDirections" [nzFilterMultiple]="column.filterMultiple"
+        [nzFilters]="column.listOfFilter" [nzFilterFn]="column.filterFn">
+        {{ column.name }}
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-template ngFor let-data [ngForOf]="filterTable.data">
+      <tr>
+        <td [(nzExpand)]="data.expand"></td>
+        <td>{{ data.uuid }}</td>
+        <td>{{ data.title }}</td>
+        <td>{{ data.description }}</td>
+        <td>{{ data.category }}</td>
+        <td>{{ data.status }}
+        </td>
+        <td>{{ data.employeeName }} ({{data.employeeMail}})</td>
+        <td>{{ data.expectedCompletionTime | date: 'dd/MM/yyyy hh:ss a' }}</td>
+       </tr>
+      <tr [nzExpand]="data.expand">
+        <nz-table #innerTable [nzData]="searchResults" nzSize="small" [nzShowPagination]="false">
+          <thead>
+            <tr>
+              <th *ngFor="let column of innerColumns" [nzSortOrder]="column.sortOrder" [nzSortFn]="column.sortFn"
+                [nzSortDirections]="column.sortDirections">
+                {{ column.name }}
+              </th>
+            </tr>
+          </thead>
+
+  <tbody>
+    <tr>
+      <td>{{ data.createdTime | date: 'dd/MM/yyyy hh:ss a' }}</td>
+      <td>{{ data.createdBy }}</td>
+      <td>{{ data.updatedTime | date: 'dd/MM/yyyy hh:ss a' }}</td>
+      <td>{{ data.updatedBy }}</td>
+      <td>{{ data.timeTaken / 3600000 }}</td>
+    </tr>
+  </tbody>
+</nz-table>
+</tr>
+</ng-template>
+</tbody>
+</nz-table>
+</div>

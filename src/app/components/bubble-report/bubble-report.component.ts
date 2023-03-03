@@ -3,17 +3,29 @@ import { TokenService } from 'src/app/token.service';
 import { Router, NavigationExtras } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { RestapiService } from 'src/app/restapi.service';
-import { Reports } from 'src/app/models/Reports';
-import { Chart, registerables } from 'chart.js';
-import { Ticket } from 'src/app/models/Ticket';
+import Chart from 'chart.js/auto';
+import { registerables } from 'chart.js';
+import { Reports3D } from 'src/app/models/reports3-d';
+import { BubbleChart } from 'src/app/models/bubble-chart';
 Chart.register(...registerables)
 
+interface datasets{
+  label:string
+  data : data[]
+}
+
+interface data{
+  x:any
+  y:any
+  r:any
+}
+
 @Component({
-  selector: 'app-reports',
-  templateUrl: './reports.component.html',
-  styleUrls: ['./reports.component.css']
-}) 
-export default class ReportsComponent implements OnInit{
+  selector: 'app-bubble-report',
+  templateUrl: './bubble-report.component.html',
+  styleUrls: ['./bubble-report.component.css']
+})
+export class BubbleReportComponent implements OnInit{
   constructor(private restApiService: RestapiService, private notification: NzMessageService, private router: Router, private tokenService: TokenService)
   {
   }
@@ -23,20 +35,20 @@ export default class ReportsComponent implements OnInit{
     if (this.tokenService.getToken() === null) {
       this.router.navigateByUrl("/signin");
       window.location.pathname = "/signin"
-      
     } 
     else {
      this.getAllReports();
     }
   }
 
-  repoList: Reports[] = [];
+  repoList: BubbleChart[] = [];
   getAllReports() {
-    this.restApiService.viewTimeline().subscribe(
+    this.restApiService.viewBubble().subscribe(
       data => {
         console.log("Success", data)
         this.repoList = data.responseData;
         this.notification.success("Reports is Found!")
+        console.log("hi",this.repoList)
         this.newChart(this.repoList);
       },
       error => {
@@ -46,38 +58,38 @@ export default class ReportsComponent implements OnInit{
     );
   }
 
-  newChart(a : Reports[]) {
+  data : datasets[] = []
+  d : data[] = []
+  
+  newChart(a : BubbleChart[]) {
+    for(var i of a)
+    {
+      var aa= 1
+      for(var j of i.label)
+      {
+        inner_loop:
+        for(var k of i.values)
+        {
+          for(var l of i.number)
+          { 
+            aa+=10 
+            this.d.push({x:aa,y:k,r:l*5})
+            break inner_loop
+        }
+        }
+      }
+      this.data.push({
+          label:i.category,
+          data: this.d
+        })
+    }
     this.myChart = new Chart( "myChart", {
-      type: 'bar',
+      type: 'bubble',
       data: {
-        labels: a.map(m =>m.category),
-        datasets: [{
-          label:"# of tickets",
-          data: a.map(m =>m.values),
-        }],
+        datasets:this.data
       },
-      options: {
-        'onClick' : (evt, chartElements) =>  {
-        this.handlecick(chartElements[0].index)
-        },
-        plugins: {
-          title: {
-              display: true,
-              text: 'Amount Spent Report',
-              font:{size:20},
-              align:'center'
-          }
-      }
-      }
     });
   }
 
-  handlecick(a : number)
-  {
-    let n : NavigationExtras
-    let aa =  this.repoList[a].listUuid
-    n = { queryParams:{ "listUuid" : aa}}
-    this.router.navigate(["reports-table"], n)
-  }
 
 }
