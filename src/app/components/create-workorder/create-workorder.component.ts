@@ -53,6 +53,9 @@ export class CreateWorkorderComponent implements OnInit{
 
   size: 'large' | 'small' | 'default' = 'default';
 
+@Input()
+ticketid = ""
+
   @Output()
   close: EventEmitter<void> = new EventEmitter<void>();
 
@@ -111,8 +114,10 @@ export class CreateWorkorderComponent implements OnInit{
     }
   }
 constructor(private fb: UntypedFormBuilder, private notification: NzMessageService, private restService: RestapiService,
-  private router: Router, private location: Location,private tokenService:TokenService,private msg: NzMessageService ,private modal: NzModalService) {    }
+  private router: Router, private location: Location,private tokenService:TokenService,private msg: NzMessageService ,private modal: NzModalService){   }
   
+  uuid : any
+
   form! : any;
   
   condition:boolean=false
@@ -146,6 +151,7 @@ ngOnInit(): void {
        workOrderCost: [null,[Validators.required,Validators.pattern('^-?[0-9]\\d*(\\.\\d{1,2})?$')]],
        date: [null,[Validators.required]], 
     });
+    console.log(this.ticketid)
    }
 
 }
@@ -156,7 +162,6 @@ createItemByData(workorder : WorkOrder, file: File) {
   workorder.phoneNumber = this.phNo
   workorder.name = this.name
   console.log('submit', this.validateForm.value);
-  console.log(workorder)
   this.restService.registerWo(workorder, file).subscribe(
      data => {
        console.log("Success", data)

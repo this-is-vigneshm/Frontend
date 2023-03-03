@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { Asset } from 'src/app/models/Asset';
 import { Ticket } from 'src/app/models/Ticket';
@@ -118,15 +118,15 @@ export class CreateTicketComponent implements OnInit {
     }
 
   }
-
+data : any = null
   createTicketAndMail(ticketData: Ticket) {
     ticketData.userId = this.userData.userId;
     this.restApiService.createTicketAndMail(ticketData).subscribe(
       data => {
         console.log("Success", data)
         this.notification.success("Ticket created Successfully.")
-        this.form.reset();
-        this.handleClose()
+        this.isVisible = true;
+        this.data = data.responseData
       },
       error => {
         console.log("Error occcured", error)
@@ -134,21 +134,22 @@ export class CreateTicketComponent implements OnInit {
       }
     );
   }
-ticketId : any
-  createTicketAndMailWithAttachment(ticketData: Ticket, file: File) {
+    createTicketAndMailWithAttachment(ticketData: Ticket, file: File) {
 
     this.restApiService.createTicketAndMailWithAttachment(ticketData, file).subscribe(
       data => {
         console.log("Success", data)
         this.notification.success("Ticket created Successfully.")
-        this.form.reset();
-        this.handleClose()
+        this.isVisible = true;
+        this.data = data.responseData
       },
       error => {
         console.log("Error occcured", error)
         this.notification.error("Ticket creation Failed")
       }
     );
+
+
   }
 
 
@@ -198,9 +199,6 @@ ticketId : any
     console.log(this.file);
   }
 
-  handleClose() {
-    this.isVisible = true;
-  }
 
   getAssets() {
     this.restApiService.getAssets().subscribe(

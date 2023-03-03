@@ -116,7 +116,7 @@
       <ng-template #modalTitle>Create WorkOrder</ng-template>
 
       <ng-container *nzModalContent>
-        <app-create-workorder></app-create-workorder>
+        <app-create-workorder [ticketid]="data.uuid"></app-create-workorder>
       </ng-container>
 
       <ng-template #modalFooter>
