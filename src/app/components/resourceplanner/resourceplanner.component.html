@@ -4,7 +4,7 @@
     <div class="align">
       <form class nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
         <nz-form-item>
-          <nz-form-label [nzSm]="6" [nzXs]="24"> WorkOrder Id</nz-form-label>
+          <nz-form-label [nzSm]="6" [nzXs]="24" > WorkOrder Id</nz-form-label>
           <nz-form-control
             [nzSm]="14"
             [nzXs]="24"
@@ -60,10 +60,29 @@
           <nz-form-label [nzSm]="6" [nzXs]="24">
             <span style="border-radius: 10px">Resource Type</span>
           </nz-form-label>
+          <nz-form-control [nzSm]="14"
+          [nzXs]="24">
+          <nz-select
+              nz-input
+              formControlName="availability"
+              id="Resource Type"
+              nzShowSearch
+              nzAllowClear
+              nzPlaceHolder="Select the Resource Type"
+              style="width: 100%; border-radius: 100px"
+              ><nz-option
+                *ngFor="let Resource of users"
+                [nzLabel]="Resource"
+                [nzValue]="Resource"
+              ></nz-option>
+          </nz-select>
+        </nz-form-control>
+        <br>
           <nz-table
             #filterTable
             [nzData]="employeeList"
             formControlName="resourceType"
+            style="padding-left: 20%;padding-top: 5%;"
           >
             <thead id="asset-table-head">
               <tr>
@@ -127,21 +146,15 @@
             [nzSm]="14"
             [nzXs]="24"
           >
-            <nz-select
-              nz-input
-              formControlName="availability"
-              id="Resource Type"
-              nzShowSearch
-              nzAllowClear
-              nzPlaceHolder="Select the Resource Type"
-              style="width: 100%; border-radius: 100px"
-              ><nz-option
-                *ngFor="let Resource of Atype"
-                [nzLabel]="Resource"
-                [nzValue]="Resource"
-              ></nz-option>
-            </nz-select>
-          </nz-form-control>
+          <input
+          style="border-radius: 10px"
+          nz-input
+          id="resource-name"
+          placeholder="Allocate Resource"
+          value="Yes"
+          [disabled]="true"
+        />
+        </nz-form-control>
         </nz-form-item>
         <nz-form-item nz-row class="register-area">
           <nz-form-control [nzSpan]="14" [nzOffset]="6">

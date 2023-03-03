@@ -57,7 +57,10 @@ export class ResourceplannerComponent implements OnInit {
 
   isusers: boolean = false;
 
-  workOrderId = 1;
+  @Input()
+  workOrderId :any;
+
+
   ColumnItem: any;
 
   employeeColumns: ColumnItem[] = [
@@ -98,14 +101,14 @@ export class ResourceplannerComponent implements OnInit {
   ];
 
   users = [
-    { id: 1, name: 'Employee' },
-    { id: 2, name: 'Vendor' },
-    { id: 3, name: 'Contractor' },
+    'Employee',
+    'Vendor',
+  'Contractor'
   ];
 
   selectedUser: any;
   selectedItem: any;
-   disabledStartDate = (current: Date): boolean => {
+  disabledStartDate = (current: Date): boolean => {
     return current <= new Date();
   };
 
