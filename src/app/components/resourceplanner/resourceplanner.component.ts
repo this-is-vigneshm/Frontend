@@ -44,8 +44,6 @@ export class ResourceplannerComponent implements OnInit {
   @Input()
   resourceData!: Resource | null;
 
- 
-
   isUpdateComponent: boolean = true;
 
   validateForm!: UntypedFormGroup;
@@ -175,7 +173,6 @@ export class ResourceplannerComponent implements OnInit {
         (data: any) => {
           console.log('Success', data);
           this.notification.success('Resource Created Successfully.');
-          this.router.navigateByUrl('/resourcelist');
           this.handleClose();
         },
         (error: any) => {

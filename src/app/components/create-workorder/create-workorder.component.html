@@ -125,12 +125,12 @@
           <ng-container *ngIf="isa; then A"></ng-container>
           <ng-template #A>
             <app-resourceplanner style="text-align: center" (close)="handleCreateResourceSave()"
-              [workOrderId]="id.orderNo"></app-resourceplanner>
+              [workOrderId]="id.orderNo" ></app-resourceplanner>
           </ng-template>
           <ng-container *ngIf="isb; then B"></ng-container>
           <ng-template #B>
             <app-createresource style="text-align: center" (close)="handleCreateResourceSave()"
-              [workOrderId]="id.orderNo"></app-createresource>
+              [workOrderId]="id.orderNo" ></app-createresource>
           </ng-template>
         </ng-container>
       </nz-modal>

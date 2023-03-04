@@ -17,49 +17,6 @@
   placeholder="Search Resource"
 />
 
-<button
-  nz-button
-  nzType="primary"
-  id="create-resource-button"
-  (click)="showModalMiddle()"
->
-  <span nz-icon nzType="carry-out" nzTheme="outline"></span>Add User
-</button>
-
-<button
-  nz-button
-  nzType="primary"
-  id="create-resource-button"
-  (click)="showModalMiddle1()"
->
-  <span nz-icon nzType="carry-out" nzTheme="outline"></span>Add Inventory
-</button>
-
-<nz-modal
-  [nzStyle]="{ top: '20px', width: '70%' }"
-  [nzWidth]="100"
-  [(nzVisible)]="isVisibleMiddle"
-  nzTitle="Resource Planner"
-  nzCentered
-  (nzOnCancel)="handleCreateResourceCancel()"
-  (nzOnOk)="handleCreateResourceSave()"
->
-  <ng-container *nzModalContent>
-    <ng-container *ngIf="isa; then A; else B"></ng-container>
-    <ng-template #A>
-      <app-resourceplanner
-        style="text-align: center"
-        (close)="handleCreateResourceSave()"
-      ></app-resourceplanner>
-    </ng-template>
-    <ng-template #B>
-      <app-createresource
-        style="text-align: center"
-        (close)="handleCreateResourceSave()"
-      ></app-createresource>
-    </ng-template>
-  </ng-container>
-</nz-modal>
 <nz-table #filterTable [nzData]="searchResults" >
   <thead id="resource-table-head">
     <tr>

@@ -58,6 +58,7 @@ export class CreateresourceComponent {
   @Input()
   workOrderId :any;
 
+
   inventoryColumns: ColumnItem[] = [
     { name: 'Id' },
     { name: 'Name' },
@@ -117,8 +118,6 @@ export class CreateresourceComponent {
       (data) => {
         console.log('Success', data);
         this.notification.success('Resource Created Successfully.');
-        this.router.navigateByUrl('/resourcelist');
-        this.handleClose();
       },
       (error) => {
         console.log('Error occcured', error);
@@ -152,5 +151,9 @@ export class CreateresourceComponent {
   getId(event: any) {
     this.inventoryId.push(event)
     console.log(this.inventoryId)
+  }
+  handleReset()
+  {
+    this.validateForm.reset()
   }
 }
