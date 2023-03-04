@@ -182,7 +182,7 @@ export class CreateWorkorderComponent implements OnInit {
   resources: Resource[] = [];
   searchResults: any
   getAllResource(id:any) {
-    this.restService.getAllResourceByWorkOrderId(id).subscribe(
+    this.restService.getAllResourceByWorkOrderCode(id).subscribe(
       data => {
         console.log("Data Obtained", data);
         this.notification.success("Resources List Obtained!");

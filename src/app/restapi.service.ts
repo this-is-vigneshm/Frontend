@@ -305,7 +305,7 @@ export class RestapiService {
     return this.httpClient.get<ApiResponse>(`${this.baseUrl}/employees/name/${empName}`);
   }
 
-  public getAllResourceByWorkOrderId(workorderId:number) {
+  public getAllResourceByWorkOrderCode(workorderId:String) {
     return this.httpClient.get<ApiResponse>(`${this.baseUrl}/resource/wo/${workorderId}`);
   }
 
