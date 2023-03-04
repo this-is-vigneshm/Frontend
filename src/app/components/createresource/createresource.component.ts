@@ -76,7 +76,6 @@ export class CreateresourceComponent {
     private tokenService: TokenService
   ) {
     this.validateForm = this.fb.group({
-      // workOrderId: [null, [Validators.required]],
       resourceId: [
         null,
         [
@@ -88,11 +87,8 @@ export class CreateresourceComponent {
         null,
         [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z ]+')],
       ],
-      // resourceType: [],
       startDate: [null, [Validators.required]],
       endDate: [null, [Validators.required, Validators.pattern]],
-      // availability: [null, [Validators.required]],
-
     });
   }
 
