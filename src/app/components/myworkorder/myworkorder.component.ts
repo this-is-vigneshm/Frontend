@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Output } from '@angular/core';
+import { EventEmitter } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
@@ -7,6 +8,7 @@ import { UpdateStatusReq } from 'src/app/models/UpdateStatusReq';
 import { RestapiService } from 'src/app/restapi.service';
 import { TokenService } from 'src/app/token.service';
 import { WorkOrderResp } from 'src/app/models/WorkOrderResp';
+import { outputAst } from '@angular/compiler';
 
 interface ColumnItem {
   name: string;
@@ -32,6 +34,9 @@ interface ItemData {
   styleUrls: ['./myworkorder.component.css']
 })
 export class MyworkorderComponent implements OnInit{
+
+  @Output()
+  worKOrderId : EventEmitter<number> = new EventEmitter<number>()
 
   Myworkorder: WorkOrderResp[] =[];
 
@@ -268,5 +273,10 @@ editId : string | null =null;
   handleCancel(): void {
     console.log('Button cancel clicked!');
     this.isVisible = false;
+  }
+
+  
+  onCheck(event: any) {
+    this.worKOrderId.emit(event)
   }
 }

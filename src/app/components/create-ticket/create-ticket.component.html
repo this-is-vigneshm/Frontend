@@ -114,7 +114,7 @@
   </nz-form-label>
   <br>
 
-  <div *ngIf="radioValue"><button nz-button nzType="primary" id="resource">Save and Add New</button>
+  <div *ngIf="radioValue"><button nz-button nzType="primary" id="resource">Create Ticket and Add New</button>
     <nz-modal
     nzWidth = "1200px"
       [(nzVisible)]="isVisible"
@@ -145,7 +145,7 @@
     <ng-template #modalTitle>Select a Existing WorkOrder</ng-template>
 
     <ng-container *nzModalContent>
-      <app-myworkorder></app-myworkorder>
+      <app-myworkorder (worKOrderId)="get($event)"></app-myworkorder>
     </ng-container>
 
 

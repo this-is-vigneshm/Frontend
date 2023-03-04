@@ -134,6 +134,21 @@ data : any = null
       }
     );
   }
+  createTicket(ticketData: Ticket) {
+    ticketData.userId = this.userData.userId;
+    this.restApiService.createTicketAndMail(ticketData).subscribe(
+      data => {
+        console.log("Success", data)
+        this.notification.success("Ticket created Successfully.")
+        this.data = data.responseData
+        this.isVisibleExisting = false;
+      },
+      error => {
+        console.log("Error occcured", error)
+        this.notification.error("Ticket creation Failed")
+      }
+    );
+  }
     createTicketAndMailWithAttachment(ticketData: Ticket, file: File) {
 
     this.restApiService.createTicketAndMailWithAttachment(ticketData, file).subscribe(
@@ -243,5 +258,17 @@ event.preventDefault()
 
   showModal(): void {
     this.isVisibleExisting = true;
+  }
+  get(event:any){
+    var formData = this.form.value;
+    var ticketData = new Ticket(formData.title, formData.description, formData.category,
+      formData.status, formData.employeeId, formData.issueType, formData.assetId,event, formData.userId, this.expectedTime);
+    if (this.file == null) {
+      console.log("Without Attachment", ticketData);
+      this.createTicket(ticketData)
+    } else {
+      console.log("With Attachment", ticketData, this.file);
+      this.createTicketAndMailWithAttachment(ticketData, this.file)
+    }
   }
 }

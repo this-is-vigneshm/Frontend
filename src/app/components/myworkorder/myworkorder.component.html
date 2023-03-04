@@ -19,7 +19,7 @@
   <tbody>
     <ng-template ngFor let-data [ngForOf]="filterTable.data">
       <tr>
-        <td><label nz-checkbox></label></td>
+        <td><input type="checkbox" (change)="onCheck(data.id)" /></td>
         <td [(nzExpand)]="data.expand"></td>
         <td>{{ data.orderNo }}</td>
         <td>{{ data.status }}</td>
