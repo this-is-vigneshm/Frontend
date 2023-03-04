@@ -98,7 +98,10 @@
             placeholder="Enter the Date"></nz-date-picker>
         </nz-form-control>
       </nz-form-item>
-
+      <nz-form-item>
+<button nz-button nzType="primary" (click)="getCaptcha($event)" id="create-workorder-submit">Add Resource</button>
+</nz-form-item>
+<div *ngIf="isClick">
       <nz-form-item nz-row class="register-area">
         <nz-form-control [nzSpan]="14" [nzOffset]="0">
           <button nz-button nzType="primary" id="create-resource-button" (click)="changeA()">
@@ -132,7 +135,7 @@
         </ng-container>
       </nz-modal>
 
-
+    </div>
 
       <nz-form-item nz-row class="register-area">
         <nz-form-control [nzSpan]="14" [nzOffset]="0">

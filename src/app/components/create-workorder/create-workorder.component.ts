@@ -337,5 +337,12 @@ changeB()
   this.isa= false
   this.isb = true
 }
+
+isClick = false
+getCaptcha(event:MouseEvent){
+console.log(event)
+this.isClick = !this.isClick
+event.preventDefault()
+}
 }
 

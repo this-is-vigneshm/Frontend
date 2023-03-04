@@ -44,8 +44,7 @@ export class ResourceplannerComponent implements OnInit {
   @Input()
   resourceData!: Resource | null;
 
-  @Output()
-  close: EventEmitter<void> = new EventEmitter<void>();
+ 
 
   isUpdateComponent: boolean = true;
 
@@ -59,6 +58,9 @@ export class ResourceplannerComponent implements OnInit {
 
   @Input()
   workOrderId :any;
+
+  @Output()
+  close: EventEmitter<void> = new EventEmitter<void>();
 
 
   ColumnItem: any;
@@ -212,5 +214,9 @@ export class ResourceplannerComponent implements OnInit {
   userId : number[] = []
   onCheck(event: any) {
     this.userId.push(event)
+  }
+  handleReset()
+  {
+    this.validateForm.reset()
   }
 }

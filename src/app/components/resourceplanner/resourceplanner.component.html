@@ -89,7 +89,7 @@
         </nz-form-item>
         <nz-form-item nz-row class="register-area">
           <nz-form-control [nzSpan]="14" [nzOffset]="6">
-            <button nz-button nzType="primary" id="create-button">
+            <button nz-button nzType="primary" id="create-button" (click)="handleReset()">
               SAVE AND ADD
             </button>
             <button style="right: -10px" nz-button nzType="primary" id="create-button" (click)="handleClose()">
