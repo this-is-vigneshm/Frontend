@@ -88,10 +88,10 @@ export class CreateresourceComponent {
         null,
         [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z ]+')],
       ],
-      resourceType: [],
+      // resourceType: [],
       startDate: [null, [Validators.required]],
       endDate: [null, [Validators.required, Validators.pattern]],
-      availability: [null, [Validators.required]],
+      // availability: [null, [Validators.required]],
 
     });
   }
@@ -113,7 +113,8 @@ export class CreateresourceComponent {
 
   createresourceByData(resource: Resource) {
     resource.resourceType = "Inventory"
-    resource.workOrderId = 1
+    resource.workOrderId = this.workOrderId
+    resource.availability = "Yes"
     for(var i of this.inventoryId){
     resource.userId = this.userData.userId;
     this.restService.registerResource(resource).subscribe(
