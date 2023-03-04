@@ -135,6 +135,15 @@ export class TicketsComponent implements OnInit{
       filterMultiple: true,
       listOfFilter: [],
       filterFn: null
+    },
+    {
+      name: 'work',
+      sortOrder: null,
+      sortFn: null,
+      sortDirections: ['ascend', 'descend', null],
+      filterMultiple: true,
+      listOfFilter: [],
+      filterFn: null
     }
   ];
 

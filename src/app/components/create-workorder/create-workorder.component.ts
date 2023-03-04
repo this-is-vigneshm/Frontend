@@ -58,7 +58,9 @@ export class CreateWorkorderComponent implements OnInit {
   ticketid = ""
 
   @Output()
-  close: EventEmitter<void> = new EventEmitter<void>();
+  close: EventEmitter<number> = new EventEmitter<number>();
+
+
 
   isUpdateComponent: boolean = false
 
@@ -217,11 +219,7 @@ export class CreateWorkorderComponent implements OnInit {
   }
 
 
-  handleClose() {
-    this.isUpdateComponent = false;
-    this.workorderData = null;
-    this.close.emit();
-  }
+ 
   handleChange(event: any) {
     this.file = event.target.files[0]
   }
@@ -346,6 +344,10 @@ export class CreateWorkorderComponent implements OnInit {
     console.log(event)
     this.isClick = !this.isClick
     event.preventDefault()
+  }
+  getHello(event:MouseEvent){
+    event.preventDefault()
+    this.close.emit(this.id.orderNo);
   }
   
 }

@@ -48,6 +48,7 @@ margin-left: -66%;">Queues</span>
         </td>
         <td>{{ data.employeeName }} ({{data.employeeMail}})</td>
         <td>{{ data.expectedCompletionTime | date: 'dd/MM/yyyy hh:ss a' }}</td>
+        <td>{{data.worKOrderId}}</td>
         <td>
           <button nz-button nz-popconfirm nzPopconfirmTitle="Sure to Update Status?"
             (nzOnConfirm)="showUpdateStatusModal(data)">
