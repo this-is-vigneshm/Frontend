@@ -55,7 +55,7 @@ export class ResourceplannerComponent implements OnInit {
   isusers: boolean = false;
 
   @Input()
-  workOrderId :any;
+  workOrderCode :any;
 
   @Output()
   close1: EventEmitter<number> = new EventEmitter<number>();
@@ -127,7 +127,7 @@ export class ResourceplannerComponent implements OnInit {
           [Validators.required],
         ],
         userId: [this.resourceData.userId, [Validators.required]],
-        workOrderId: [this.resourceData.workOrderId, [Validators.required]],
+        workOrderId: [this.resourceData.workOrderCode, [Validators.required]],
       });
     }
   }
@@ -165,7 +165,7 @@ export class ResourceplannerComponent implements OnInit {
 
 
   createresourceByData(resource: Resource) {
-    resource.workOrderId = this.workOrderId
+    resource.workOrderCode = this.workOrderCode
     resource.resourceType = 'User';
     for(var i of this.userId){
       resource.userId = i
@@ -199,7 +199,7 @@ export class ResourceplannerComponent implements OnInit {
     this.isUpdateComponent = false;
     this.resourceData = null;
     console.log("close")
-    this.close1.emit(this.workOrderId);
+    this.close1.emit(this.workOrderCode);
   }
 
   employeeList: any = [];

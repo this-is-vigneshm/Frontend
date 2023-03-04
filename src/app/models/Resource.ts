@@ -1,5 +1,5 @@
 export class Resource {
-  workOrderId: number;
+  workOrderCode: string;
   resourceId: number;
   resourceCode : string
   resourceName: string;
@@ -11,7 +11,7 @@ export class Resource {
   inventoryId: any;
 
   constructor(
-    workOrderId: number,
+    workOrderCode: string,
     resourceId: number,
     resourceCode : string,
     resourceName: string,
@@ -22,7 +22,7 @@ export class Resource {
     userId: number,
     inventoryId: number
   ) {
-    this.workOrderId = workOrderId;
+    this.workOrderCode = workOrderCode;
     this.resourceId = resourceId;
     this.resourceCode = resourceCode
     this.resourceName = resourceName;

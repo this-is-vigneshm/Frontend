@@ -56,7 +56,7 @@ export class CreateresourceComponent {
 
   inventory: any;
   @Input()
-  workOrderId: any;
+  workOrderCode: any;
 
 
   inventoryColumns: ColumnItem[] = [
@@ -110,7 +110,7 @@ export class CreateresourceComponent {
 
   createresourceByData(resource: Resource) {
     resource.resourceType = "Inventory"
-    resource.workOrderId = this.workOrderId
+    resource.workOrderCode = this.workOrderCode
     resource.availability = "Yes"
     for (var i of this.inventoryId) {
       resource.userId = null;
@@ -144,7 +144,7 @@ export class CreateresourceComponent {
   handleClose() {
     this.isUpdateComponent = false;
     this.resourceData = null;
-    this.close.emit(this.workOrderId);
+    this.close.emit(this.workOrderCode);
   }
   a = false;
   inventoryId: number[] = []

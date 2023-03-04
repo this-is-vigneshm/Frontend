@@ -12,6 +12,15 @@
       </nz-form-item>
 
       <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="workOrderCode">
+          <span style="color: rgb(0, 102, 255);">WorkOrder Code</span> </nz-form-label>
+        <nz-form-control [nzSm]="9" [nzXs]="24" nzErrorTip="Please Enter the WorkSubject">
+          <input style="border-radius: 10px;" nz-input formControlName="workOrderCode" id="workSubject"
+            placeholder="WorkSubject" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="6" style="color: #3253dc;">
           <span style="color: #3253dc; align-items: flex-start;">WorkOrder Status</span>
         </nz-form-label>
@@ -125,12 +134,12 @@
           <ng-container *ngIf="isa; then A"></ng-container>
           <ng-template #A>
             <app-resourceplanner style="text-align: center"
-              [workOrderId]="id.orderNo" (close1)="handleCreateResourceSave($event)" ></app-resourceplanner>
+              [workOrderCode]="id.workOrderCode" (close1)="handleCreateResourceSave($event)" ></app-resourceplanner>
           </ng-template>
           <ng-container *ngIf="isb; then B"></ng-container>
           <ng-template #B>
             <app-createresource style="text-align: center" 
-              [workOrderId]="id.orderNo" (close)="handleCreateResourceSave($event)"></app-createresource>
+              [workOrderCode]="id.workOrderCode" (close)="handleCreateResourceSave($event)"></app-createresource>
           </ng-template>
         </ng-container>
       </nz-modal>

@@ -4,10 +4,10 @@
     <div class="align">
       <form class nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
         <nz-form-item>
-          <nz-form-label [nzSm]="6" [nzXs]="24"> WorkOrder Id</nz-form-label>
+          <nz-form-label [nzSm]="6" [nzXs]="24"> WorkOrder Code</nz-form-label>
           <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please Enter the  WorkOrder Id">
             <input style="border-radius: 10px" nz-input id="resource-name" placeholder="Allocate Resource"
-              value="{{ workOrderId }}" [disabled]="true" />
+              value="{{ workOrderCode }}" [disabled]="true" />
           </nz-form-control>
         </nz-form-item>
         <nz-form-item>

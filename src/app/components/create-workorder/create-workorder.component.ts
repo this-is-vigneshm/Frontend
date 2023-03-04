@@ -146,6 +146,7 @@ export class CreateWorkorderComponent implements OnInit {
         // name: [null],
         // emailId: [null],
         // phoneNumber: [null,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")],
+        workOrderCode :  [null, [Validators.required,]],
         description: [null, [Validators.required, Validators.maxLength(200)]],
         workSubject: [null, [Validators.required,]],
         taskDetails: [null, [Validators.required,]],

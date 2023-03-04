@@ -4,7 +4,7 @@
     <div class="align">
       <form class nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
         <nz-form-item>
-          <nz-form-label [nzSm]="6" [nzXs]="24"> WorkOrder Id</nz-form-label>
+          <nz-form-label [nzSm]="6" [nzXs]="24"> WorkOrder Code</nz-form-label>
           <nz-form-control
             [nzSm]="14"
             [nzXs]="24"
@@ -16,7 +16,7 @@
               id="resource-name"
               placeholder="Allocate Resource"
               [disabled]="true"
-              value="{{ workOrderId }}"
+              value="{{ workOrderCode }}"
             />
           </nz-form-control>
         </nz-form-item>

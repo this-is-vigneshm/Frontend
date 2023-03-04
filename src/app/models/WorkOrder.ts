@@ -1,6 +1,7 @@
 export class WorkOrder {
 
     orderNo:number;
+    workOrderCode:string
     status: string;
     name: string;
     emailId: string;
@@ -17,11 +18,12 @@ export class WorkOrder {
     employeeId : number;
     expectedCompletionTime: number;
 
-    constructor(orderNo:number, status: string,
+    constructor(orderNo:number, workOrderCode: string,status: string,
         name: string, emailId: string,phoneNumber: number, description: string,workSubject: string,taskDetails:string,date:Date,workOrderCost:number, createdBy:string, createdTime: number, updatedBy: string,
         updatedTime: number, employeeId : number,expectedCompletionTime : number
      ) {
         this.orderNo = orderNo;
+        this.workOrderCode = workOrderCode
         this.status = status;
         this.name = name;
         this.emailId = emailId;

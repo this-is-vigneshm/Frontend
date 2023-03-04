@@ -51,7 +51,7 @@ export class ResourcelistComponent {
     {
       name: 'workerOrderId',
       sortOrder: null,
-      sortFn: (a: Resource, b: Resource) => a.workOrderId - b.workOrderId,
+      sortFn: null,
       sortDirections: ['ascend', 'descend', null],
       filterMultiple: true,
       listOfFilter: [],
