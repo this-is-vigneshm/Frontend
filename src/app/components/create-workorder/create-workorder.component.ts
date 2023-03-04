@@ -160,6 +160,7 @@ export class CreateWorkorderComponent implements OnInit {
 
   id: any
   createItemByData(workorder: WorkOrder, file: File) {
+    workorder.ticketId = this.ticketid
     workorder.employeeId = this.userData.userId
     workorder.status = "Active"
     workorder.emailId = this.emailId

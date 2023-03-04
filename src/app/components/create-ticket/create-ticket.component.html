@@ -133,7 +133,28 @@
         <button nz-button nzType="primary" (click)="handleOk()" [nzLoading]="isConfirmLoading">Ok</button>
       </ng-template>
     </nz-modal>
-    <span style="padding: 15px;"></span><button nz-button nzType="primary" id="resource">Add Existing</button></div>
+    <span style="padding: 15px;"></span><button nz-button nzType="primary" id="resource" (click)="showModal()" (click)="disable($event)">Add Existing</button></div>
+    <nz-modal
+    nzWidth = "1200px"
+    [(nzVisible)]="isVisibleExisting"
+    [nzTitle]="modalTitle"
+
+    [nzFooter]="modalFooter"
+    (nzOnCancel)="handleCancel()"
+  >
+    <ng-template #modalTitle>Select a Existing WorkOrder</ng-template>
+
+    <ng-container *nzModalContent>
+      <app-myworkorder></app-myworkorder>
+    </ng-container>
+
+
+    <ng-template #modalFooter>
+      <button nz-button nzType="default" (click)="handleCancel()">Cancel</button>
+      <button nz-button nzType="primary" (click)="handleOk()" [nzLoading]="isConfirmLoading">Ok</button>
+    </ng-template>
+  </nz-modal>
+
 <div *ngIf="!radioValue"><button nz-button nzType="primary" (click)="onUpload()" id="create-ticket-submit">Create a Ticket</button></div>
     
   </nz-form-item>

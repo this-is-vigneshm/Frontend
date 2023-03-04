@@ -7,6 +7,7 @@
   <thead id="myworkorder-table-head">
     <tr>
       <th></th>
+      <th></th>
       <th *ngFor="let column of listOfColumns" [nzSortOrder]="column.sortOrder" [nzSortFn]="column.sortFn"
         [nzSortDirections]="column.sortDirections" [nzFilterMultiple]="column.filterMultiple"
         [nzFilters]="column.listOfFilter" [nzFilterFn]="column.filterFn">
@@ -18,6 +19,7 @@
   <tbody>
     <ng-template ngFor let-data [ngForOf]="filterTable.data">
       <tr>
+        <td><label nz-checkbox></label></td>
         <td [(nzExpand)]="data.expand"></td>
         <td>{{ data.orderNo }}</td>
         <td>{{ data.status }}</td>

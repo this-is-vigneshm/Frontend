@@ -224,11 +224,24 @@ data : any = null
     this.isConfirmLoading = true;
     setTimeout(() => {
       this.isVisible = false;
+      this.isVisibleExisting = false;
       this.isConfirmLoading = false;
     }, 1000);
   }
 
   handleCancel(): void {
     this.isVisible = false;
+    this.isVisibleExisting = false;
+  }
+
+  isVisibleExisting = false;
+
+disable(event:MouseEvent){
+event.preventDefault()
+}
+
+
+  showModal(): void {
+    this.isVisibleExisting = true;
   }
 }
