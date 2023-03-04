@@ -1,10 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import {
-  UntypedFormBuilder,
-  UntypedFormControl,
-  UntypedFormGroup,
-  Validators,
-} from '@angular/forms';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import {
@@ -13,7 +7,6 @@ import {
   NzTableFilterList,
   NzTableFilterFn,
 } from 'ng-zorro-antd/table';
-import { NzUploadChangeParam } from 'ng-zorro-antd/upload';
 import { Resource } from 'src/app/models/Resource';
 
 import { RestapiService } from 'src/app/restapi.service';
