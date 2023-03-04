@@ -45,7 +45,7 @@ export class CreateresourceComponent {
   resourceData!: Resource | null;
 
   @Output()
-  close: EventEmitter<void> = new EventEmitter<void>();
+  close: EventEmitter<number> = new EventEmitter<number>();
 
   isUpdateComponent: boolean = true;
 
@@ -56,7 +56,7 @@ export class CreateresourceComponent {
 
   inventory: any;
   @Input()
-  workOrderId :any;
+  workOrderId: any;
 
 
   inventoryColumns: ColumnItem[] = [
@@ -97,7 +97,7 @@ export class CreateresourceComponent {
     if (this.validateForm.valid) {
       console.log('submit', this.validateForm.value);
       this.createresourceByData(this.validateForm.value);
-    } 
+    }
   }
   ngOnInit(): void {
     if (localStorage.getItem('access_token') === null) {
@@ -112,29 +112,29 @@ export class CreateresourceComponent {
     resource.resourceType = "Inventory"
     resource.workOrderId = this.workOrderId
     resource.availability = "Yes"
-    for(var i of this.inventoryId){
-    resource.userId = null;
-    this.restService.registerResource(resource).subscribe(
-      (data) => {
-        console.log('Success', data);
-        this.notification.success('Resource Created Successfully.');
-      },
-      (error) => {
-        console.log('Error occcured', error);
-      }
-    );
+    for (var i of this.inventoryId) {
+      resource.userId = null;
+      this.restService.registerResource(resource).subscribe(
+        (data) => {
+          console.log('Success', data);
+          this.notification.success('Resource Created Successfully.');
+          this.handleClose()
+        },
+        (error) => {
+          console.log('Error occcured', error);
+        }
+      );
     }
   }
 
 
-  inventoryItem : Inventory[] = []
-  getInventoryItem(){
+  inventoryItem: Inventory[] = []
+  getInventoryItem() {
     this.restService.getItem().subscribe(
-      (data:any)=>{
-        this.inventoryItem=data.responseData
+      (data: any) => {
+        this.inventoryItem = data.responseData
       },
-      (error:any)=>
-      {
+      (error: any) => {
         console.log('Error occcured', error);
       }
     )
@@ -144,16 +144,15 @@ export class CreateresourceComponent {
   handleClose() {
     this.isUpdateComponent = false;
     this.resourceData = null;
-    this.close.emit();
+    this.close.emit(this.workOrderId);
   }
   a = false;
-  inventoryId : number[] = []
+  inventoryId: number[] = []
   getId(event: any) {
     this.inventoryId.push(event)
     console.log(this.inventoryId)
   }
-  handleReset()
-  {
+  handleReset() {
     this.validateForm.reset()
   }
 }

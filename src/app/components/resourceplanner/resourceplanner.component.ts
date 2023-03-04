@@ -58,7 +58,7 @@ export class ResourceplannerComponent implements OnInit {
   workOrderId :any;
 
   @Output()
-  close: EventEmitter<void> = new EventEmitter<void>();
+  close1: EventEmitter<number> = new EventEmitter<number>();
 
 
   ColumnItem: any;
@@ -188,8 +188,6 @@ export class ResourceplannerComponent implements OnInit {
       (data) => {
         console.log('Success', data);
         this.notification.success('resource Updated Successfully.');
-        this.router.navigateByUrl('/resource');
-        this.handleClose();
       },
       (error) => {
         console.log('Error occcured', error);
@@ -200,7 +198,8 @@ export class ResourceplannerComponent implements OnInit {
   handleClose() {
     this.isUpdateComponent = false;
     this.resourceData = null;
-    this.close.emit();
+    console.log("close")
+    this.close1.emit(this.workOrderId);
   }
 
   employeeList: any = [];

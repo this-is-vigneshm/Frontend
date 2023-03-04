@@ -120,17 +120,17 @@
 
       <nz-modal [nzStyle]="{ top: '20px', width: '70%' }" [nzWidth]="100" [(nzVisible)]="isVisibleMiddle"
         nzTitle="Resource Planner" nzCentered (nzOnCancel)="handleCreateResourceCancel()"
-        (nzOnOk)="handleCreateResourceSave()">
+        (nzOnOk)="handleCreateResourceCancel()">
         <ng-container *nzModalContent>
           <ng-container *ngIf="isa; then A"></ng-container>
           <ng-template #A>
-            <app-resourceplanner style="text-align: center" (close)="handleCreateResourceSave()"
-              [workOrderId]="id.orderNo" ></app-resourceplanner>
+            <app-resourceplanner style="text-align: center"
+              [workOrderId]="id.orderNo" (close1)="handleCreateResourceSave($event)" ></app-resourceplanner>
           </ng-template>
           <ng-container *ngIf="isb; then B"></ng-container>
           <ng-template #B>
-            <app-createresource style="text-align: center" (close)="handleCreateResourceSave()"
-              [workOrderId]="id.orderNo" ></app-createresource>
+            <app-createresource style="text-align: center" 
+              [workOrderId]="id.orderNo" (close)="handleCreateResourceSave($event)"></app-createresource>
           </ng-template>
         </ng-container>
       </nz-modal>

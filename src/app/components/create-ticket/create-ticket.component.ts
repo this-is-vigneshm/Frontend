@@ -108,7 +108,7 @@ export class CreateTicketComponent implements OnInit {
   handleTicketCreation() {
     var formData = this.form.value;
     var ticketData = new Ticket(formData.title, formData.description, formData.category,
-      formData.status, formData.employeeId, formData.issueType, formData.assetId, formData.userId, this.expectedTime);
+      formData.status, formData.employeeId, formData.issueType, formData.assetId,0, formData.userId, this.expectedTime);
     if (this.file == null) {
       console.log("Without Attachment", ticketData);
       this.createTicketAndMail(ticketData)
