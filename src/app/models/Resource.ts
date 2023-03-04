@@ -1,6 +1,7 @@
 export class Resource {
   workOrderId: number;
   resourceId: number;
+  resourceCode : string
   resourceName: string;
   resourceType: string;
   availability: any;
@@ -12,6 +13,7 @@ export class Resource {
   constructor(
     workOrderId: number,
     resourceId: number,
+    resourceCode : string,
     resourceName: string,
     resourceType: string,
     availability: any,
@@ -22,6 +24,7 @@ export class Resource {
   ) {
     this.workOrderId = workOrderId;
     this.resourceId = resourceId;
+    this.resourceCode = resourceCode
     this.resourceName = resourceName;
     this.resourceType = resourceType;
     this.availability = availability;

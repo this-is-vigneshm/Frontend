@@ -97,7 +97,7 @@ export class ResourceplannerComponent implements OnInit {
     if (this.resourceData == null) {
       this.validateForm = this.fb.group({
         workOrderId: [null, [Validators.required]],
-        resourceId: [
+        resourceCode: [
           null,
           [
             Validators.required,
@@ -165,6 +165,7 @@ export class ResourceplannerComponent implements OnInit {
 
 
   createresourceByData(resource: Resource) {
+    resource.workOrderId = this.workOrderId
     resource.resourceType = 'User';
     for(var i of this.userId){
       resource.userId = i

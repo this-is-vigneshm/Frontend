@@ -76,7 +76,7 @@ export class CreateresourceComponent {
     private tokenService: TokenService
   ) {
     this.validateForm = this.fb.group({
-      resourceId: [
+      resourceCode: [
         null,
         [
           Validators.required,
@@ -112,7 +112,7 @@ export class CreateresourceComponent {
     resource.workOrderId = this.workOrderId
     resource.availability = "Yes"
     for(var i of this.inventoryId){
-    resource.userId = this.userData.userId;
+    resource.userId = null;
     this.restService.registerResource(resource).subscribe(
       (data) => {
         console.log('Success', data);
