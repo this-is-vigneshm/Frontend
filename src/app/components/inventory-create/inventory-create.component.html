@@ -1,45 +1,105 @@
 <div id="create-item-body">
-    <div id="create-item-form">
-      <h2 *ngIf="!isUpdateComponent;">Create Item</h2>
-  
-      <form class nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
-  
-        <nz-form-item>
-          <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="name"> <span style="color: rgb(0, 102, 255);">Item Name</span> </nz-form-label>
-          <nz-form-control  [nzSm]="14" [nzXs]="24" nzErrorTip="Please Enter the Item Name">
-            <input style="border-radius: 10px;" nz-input formControlName="name" id="item-name" placeholder="Item Name" />
-          </nz-form-control>
-        </nz-form-item>
-        <nz-form-item>
-          <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="code"> <span style="color: rgb(0, 102, 255);">Item code</span> </nz-form-label>
-          <nz-form-control  [nzSm]="14" [nzXs]="24" nzErrorTip="Please Enter the Item code">
-            <input style="border-radius: 10px;" nz-input formControlName="code" id="item-name" placeholder="Item code" />
-          </nz-form-control>
-        </nz-form-item>
-        <nz-form-item>
-            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="description" nzRequired><span style="color: rgb(0, 102, 255);">Description</span> </nz-form-label>
-            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please Enter the Description!">
-              <input style="border-radius: 10px;" nz-input id="description" formControlName="description" placeholder="Description" />
-            </nz-form-control>
-          </nz-form-item>
-        <nz-form-item>
-          <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="quantity"> <span style="color: rgb(0, 102, 255);">Quantity</span> </nz-form-label>
-          <nz-form-control  [nzSm]="14" [nzXs]="24" nzErrorTip="Please Enter the Quantity">
-            <input style="border-radius: 10px;" nz-input formControlName="quantity" id="Item-quantity" placeholder="Quantity" />
-          </nz-form-control>
-        </nz-form-item>
-        <nz-form-item>
-          <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="price"><span style="color: rgb(0, 102, 255);">Price (in Dollar)</span></nz-form-label>
-          <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please Enter the Item Price!">
-            <input style="border-radius: 10px;" formControlName="price" id="'price'" nz-input placeholder="Price in Dollars" />
-          </nz-form-control>
-        </nz-form-item>
-        <nz-form-item nz-row class="register-area">
-          <nz-form-control [nzSpan]="14" [nzOffset]="6">
-            <button nz-button nzType="primary" id="create-button">Submit</button>
-          </nz-form-control>
-        </nz-form-item>
-  
-      </form>
-    
+  <div id="create-item-form">
+    <h2 *ngIf="!isUpdateComponent">Create Item</h2>
+
+    <form class nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="name">
+          <span style="color: rgb(0, 102, 255)">Item Name</span>
+        </nz-form-label>
+        <nz-form-control
+          [nzSm]="14"
+          [nzXs]="24"
+          nzErrorTip="Please Enter Valid Item Name"
+        >
+          <input
+            style="border-radius: 10px"
+            nz-input
+            formControlName="name"
+            id="item-name"
+            placeholder="Item Name"
+          />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="code">
+          <span style="color: rgb(0, 102, 255)">Item code</span>
+        </nz-form-label>
+        <nz-form-control
+          [nzSm]="14"
+          [nzXs]="24"
+          nzErrorTip="Please Enter Valid Item Code "
+        >
+          <input
+            style="border-radius: 10px"
+            nz-input
+            formControlName="code"
+            id="item-name"
+            placeholder="Item code"
+          />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="description" nzRequired
+          ><span style="color: rgb(0, 102, 255)">Description</span>
+        </nz-form-label>
+        <nz-form-control
+          [nzSm]="14"
+          [nzXs]="24"
+          nzErrorTip="Please Enter the Description!"
+        >
+          <input
+            style="border-radius: 10px"
+            nz-input
+            id="description"
+            formControlName="description"
+            placeholder="Description"
+          />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="quantity">
+          <span style="color: rgb(0, 102, 255)">Quantity</span>
+        </nz-form-label>
+        <nz-form-control
+          [nzSm]="14"
+          [nzXs]="24"
+          nzErrorTip="Please Enter the Quantity"
+        >
+          <input
+            style="border-radius: 10px"
+            nz-input
+            formControlName="quantity"
+            id="Item-quantity"
+            placeholder="Quantity"
+          />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="price"
+          ><span style="color: rgb(0, 102, 255)"
+            >Price (in Dollar)</span
+          ></nz-form-label
+        >
+        <nz-form-control
+          [nzSm]="14"
+          [nzXs]="24"
+          nzErrorTip="Please Enter the Item Price!"
+        >
+          <input
+            style="border-radius: 10px"
+            formControlName="price"
+            id="'price'"
+            nz-input
+            placeholder="Price in Dollars"
+          />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item nz-row class="register-area">
+        <nz-form-control [nzSpan]="14" [nzOffset]="6">
+          <button nz-button nzType="primary" id="create-button">Submit</button>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
   </div>
+</div>

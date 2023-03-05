@@ -1,112 +1,309 @@
 <div id="create-asset-body">
   <div id="create-asset-form">
-    <h2 *ngIf="!isUpdateComponent;">Register Asset</h2>
+    <h2 *ngIf="!isUpdateComponent">Register Asset</h2>
     <!-- <ng-component #updateTitle><h2 >Create Asset using Data</h2></ng-component> -->
 
     <form class nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="name">
+          <span style="color: rgb(0, 102, 255)">Asset Name</span>
+        </nz-form-label>
+        <nz-form-control
+          [nzSm]="14"
+          [nzXs]="24"
+          nzErrorTip="Please Enter  Valid Asset Name"
+        >
+          <input
+            style="border-radius: 10px"
+            nz-input
+            formControlName="name"
+            id="asset-name"
+            placeholder="Asset Name"
+          />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="code">
+          <span style="color: rgb(0, 102, 255)">Asset Code</span>
+        </nz-form-label>
+        <nz-form-control
+          [nzSm]="14"
+          [nzXs]="24"
+          nzErrorTip="Please Enter Valid Asset Code"
+        >
+          <input
+            style="border-radius: 10px"
+            nz-input
+            formControlName="code"
+            id="asset-name"
+            placeholder="Asset Code"
+          />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="serialNo">
+          <span style="color: rgb(0, 102, 255)">Serial No</span>
+        </nz-form-label>
+        <nz-form-control
+          [nzSm]="14"
+          [nzXs]="24"
+          nzErrorTip="Please Enter Valid Serial No"
+        >
+          <input
+            style="border-radius: 10px"
+            nz-input
+            formControlName="serialNo"
+            id="asset-name"
+            placeholder="Serial No"
+          />
+        </nz-form-control>
+      </nz-form-item>
 
       <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="name"> <span style="color: rgb(0, 102, 255);">Asset Name</span> </nz-form-label>
-        <nz-form-control  [nzSm]="14" [nzXs]="24" nzErrorTip="Please Enter the Asset Name">
-          <input style="border-radius: 10px;" nz-input formControlName="name" id="asset-name" placeholder="Asset Name"/>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="description" nzRequired
+          ><span style="color: rgb(0, 102, 255)">Description</span>
+        </nz-form-label>
+        <nz-form-control
+          [nzSm]="14"
+          [nzXs]="24"
+          nzErrorTip="Please Enter the Description!"
+        >
+          <input
+            nz-input
+            id="description"
+            formControlName="description"
+            placeholder="Description"
+          />
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="code"> <span style="color: rgb(0, 102, 255);">Asset Code</span> </nz-form-label>
-        <nz-form-control  [nzSm]="14" [nzXs]="24" nzErrorTip="Please Enter the code">
-          <input style="border-radius: 10px;" nz-input formControlName="code" id="asset-name" placeholder="Asset Code" />
-        </nz-form-control>
-      </nz-form-item>
-      <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="serialNo"> <span style="color: rgb(0, 102, 255);">Serial No</span> </nz-form-label>
-        <nz-form-control  [nzSm]="14" [nzXs]="24" nzErrorTip="Please Enter the Serila No">
-          <input style="border-radius: 10px;" nz-input formControlName="serialNo" id="asset-name" placeholder="Serial No" />
-        </nz-form-control>
-      </nz-form-item>
-
-      <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="description" nzRequired><span style="color: rgb(0, 102, 255);">Description</span> </nz-form-label>
-        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please Enter the Description!">
-          <input nz-input id="description" formControlName="description" placeholder="Description" />
-        </nz-form-control>
-      </nz-form-item>
-      <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="facilityCode" nzRequired><span style="color: rgb(0, 102, 255);">Facility Name</span></nz-form-label>
-        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please Select a Facility Name">
-          <nz-select nz-input formControlName="facilityCode" id="facilityCode" nzShowSearch nzAllowClear
-            nzPlaceHolder="Select a Facility">
-            <nz-option *ngFor="let facility of facilities" [nzLabel]="facility.facilityName"
-              [nzValue]="facility.facilityCode">{{facility}}</nz-option>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="facilityCode" nzRequired
+          ><span style="color: rgb(0, 102, 255)"
+            >Facility Name</span
+          ></nz-form-label
+        >
+        <nz-form-control
+          [nzSm]="14"
+          [nzXs]="24"
+          nzErrorTip="Please Select Valid Facility Name"
+        >
+          <nz-select
+            nz-input
+            formControlName="facilityCode"
+            id="facilityCode"
+            nzShowSearch
+            nzAllowClear
+            nzPlaceHolder="Select a Facility"
+          >
+            <nz-option
+              *ngFor="let facility of facilities"
+              [nzLabel]="facility.facilityName"
+              [nzValue]="facility.facilityCode"
+              >{{ facility }}</nz-option
+            >
           </nz-select>
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" style="color: #3253dc;" nzRequired nzFor="category">
-          <span style="color: #3253dc;">Category</span></nz-form-label>
-        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please Select a Category">
-          <nz-select nz-input formControlName="category" id="category" nzShowSearch nzAllowClear
-            nzPlaceHolder="Select a Category">
-            <nz-option *ngFor="let category of categories" [nzLabel]="category.name +  ' (' + category.value + ')'"
-            [nzValue]="category.id" ></nz-option>
+        <nz-form-label
+          [nzSm]="6"
+          [nzXs]="24"
+          style="color: #3253dc"
+          nzRequired
+          nzFor="category"
+        >
+          <span style="color: #3253dc">Category</span></nz-form-label
+        >
+        <nz-form-control
+          [nzSm]="14"
+          [nzXs]="24"
+          nzErrorTip="Please Select a Category"
+        >
+          <nz-select
+            nz-input
+            formControlName="category"
+            id="category"
+            nzShowSearch
+            nzAllowClear
+            nzPlaceHolder="Select a Category"
+          >
+            <nz-option
+              *ngFor="let category of categories"
+              [nzLabel]="category.name + ' (' + category.value + ')'"
+              [nzValue]="category.id"
+            ></nz-option>
           </nz-select>
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" style="color: #3253dc;" nzRequired nzFor="department">
-          <span style="color: #3253dc;">Asset department</span></nz-form-label>
-        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please Select a Department">
-          <nz-select nz-input formControlName="department" id="department" nzShowSearch nzAllowClear
-            nzPlaceHolder="Select a Department">
-            <nz-option *ngFor="let Department of departments" [nzLabel]="Department.name"
-            [nzValue]="Department.id" ></nz-option>
+        <nz-form-label
+          [nzSm]="6"
+          [nzXs]="24"
+          style="color: #3253dc"
+          nzRequired
+          nzFor="department"
+        >
+          <span style="color: #3253dc">Asset department</span></nz-form-label
+        >
+        <nz-form-control
+          [nzSm]="14"
+          [nzXs]="24"
+          nzErrorTip="Please Select a Department"
+        >
+          <nz-select
+            nz-input
+            formControlName="department"
+            id="department"
+            nzShowSearch
+            nzAllowClear
+            nzPlaceHolder="Select a Department"
+          >
+            <nz-option
+              *ngFor="let Department of departments"
+              [nzLabel]="Department.name"
+              [nzValue]="Department.id"
+            ></nz-option>
           </nz-select>
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" style="color: #3253dc;" nzRequired nzFor="supplier">
-          <span style="color: #3253dc;">Supplier</span></nz-form-label>
-        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please Select a Supplier">
-          <nz-select nz-input formControlName="supplier" id="supplier" nzShowSearch nzAllowClear
-            nzPlaceHolder="Select a Supplier">
-            <nz-option *ngFor="let Supplier of suppliers" [nzLabel]="Supplier.name"
-            [nzValue]="Supplier.id" ></nz-option>
+        <nz-form-label
+          [nzSm]="6"
+          [nzXs]="24"
+          style="color: #3253dc"
+          nzRequired
+          nzFor="supplier"
+        >
+          <span style="color: #3253dc">Supplier</span></nz-form-label
+        >
+        <nz-form-control
+          [nzSm]="14"
+          [nzXs]="24"
+          nzErrorTip="Please Select a Supplier"
+        >
+          <nz-select
+            nz-input
+            formControlName="supplier"
+            id="supplier"
+            nzShowSearch
+            nzAllowClear
+            nzPlaceHolder="Select a Supplier"
+          >
+            <nz-option
+              *ngFor="let Supplier of suppliers"
+              [nzLabel]="Supplier.name"
+              [nzValue]="Supplier.id"
+            ></nz-option>
           </nz-select>
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="subAsset"><span style="color: rgb(0, 102, 255);">Sub Asset of</span> </nz-form-label>
-        <nz-form-control  [nzSm]="14" [nzXs]="24" nzErrorTip="Please Enter the subAsset">
-          <input style="border-radius: 10px;" nz-input formControlName="subAsset" id="asset-subasset" placeholder="Sub Asset of" />
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="subAsset"
+          ><span style="color: rgb(0, 102, 255)">Sub Asset of</span>
+        </nz-form-label>
+        <nz-form-control
+          [nzSm]="14"
+          [nzXs]="24"
+          nzErrorTip="Please Enter the Sub Asset"
+        >
+          <input
+            style="border-radius: 10px"
+            nz-input
+            formControlName="subAsset"
+            id="asset-subasset"
+            placeholder="Sub Asset of"
+          />
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="system"><span style="color: rgb(0, 102, 255);">System</span> </nz-form-label>
-        <nz-form-control  [nzSm]="14" [nzXs]="24" nzErrorTip="Please Enter the system">
-          <input style="border-radius: 10px;" nz-input formControlName="system" id="asset-system" placeholder="System" />
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="system"
+          ><span style="color: rgb(0, 102, 255)">System</span>
+        </nz-form-label>
+        <nz-form-control
+          [nzSm]="14"
+          [nzXs]="24"
+          nzErrorTip="Please Enter the System"
+        >
+          <input
+            style="border-radius: 10px"
+            nz-input
+            formControlName="system"
+            id="asset-system"
+            placeholder="System"
+          />
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="priority"><span style="color: rgb(0, 102, 255);">Priority</span> </nz-form-label>
-        <nz-form-control  [nzSm]="14" [nzXs]="24" nzErrorTip="Please Enter the Priority">
-          <input style="border-radius: 10px;" nz-input formControlName="priority" id="asset-priority" placeholder="Priority" />
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="priority"
+          ><span style="color: rgb(0, 102, 255)">Priority</span>
+        </nz-form-label>
+        <nz-form-control
+          [nzSm]="14"
+          [nzXs]="24"
+          nzErrorTip="Please Enter the Priority"
+        >
+          <input
+            style="border-radius: 10px"
+            nz-input
+            formControlName="priority"
+            id="asset-priority"
+            placeholder="Priority"
+          />
         </nz-form-control>
-        </nz-form-item>
-        <nz-form-item>
-          <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="model"><span style="color: rgb(0, 102, 255);">Model</span> </nz-form-label>
-          <nz-form-control  [nzSm]="14" [nzXs]="24" nzErrorTip="Please Enter the Model">
-            <input style="border-radius: 10px;" nz-input formControlName="model" id="asset-model" placeholder="Model" />
-          </nz-form-control>
-        </nz-form-item>
-        <nz-form-item>
-          <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="make"><span style="color: rgb(0, 102, 255);">Make</span> </nz-form-label>
-          <nz-form-control  [nzSm]="14" [nzXs]="24" nzErrorTip="Please Enter the Make">
-            <input style="border-radius: 10px;" nz-input formControlName="make" id="asset-model" placeholder="Make" />
-          </nz-form-control>
-        </nz-form-item>
+      </nz-form-item>
       <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="price"><span style="color: rgb(0, 102, 255);">Price (in Dollar)</span></nz-form-label>
-        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please Enter the Asset Price!">
-          <input formControlName="price" id="'price'" nz-input placeholder="Price in Dollars" />
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="model"
+          ><span style="color: rgb(0, 102, 255)">Model</span>
+        </nz-form-label>
+        <nz-form-control
+          [nzSm]="14"
+          [nzXs]="24"
+          nzErrorTip="Please Enter the Model"
+        >
+          <input
+            style="border-radius: 10px"
+            nz-input
+            formControlName="model"
+            id="asset-model"
+            placeholder="Model"
+          />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="make"
+          ><span style="color: rgb(0, 102, 255)">Make</span>
+        </nz-form-label>
+        <nz-form-control
+          [nzSm]="14"
+          [nzXs]="24"
+          nzErrorTip="Please Enter the Make"
+        >
+          <input
+            style="border-radius: 10px"
+            nz-input
+            formControlName="make"
+            id="asset-model"
+            placeholder="Make"
+          />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="price"
+          ><span style="color: rgb(0, 102, 255)"
+            >Price (in Dollar)</span
+          ></nz-form-label
+        >
+        <nz-form-control
+          [nzSm]="14"
+          [nzXs]="24"
+          nzErrorTip="Please Enter the Asset Price!"
+        >
+          <input
+            formControlName="price"
+            id="'price'"
+            nz-input
+            placeholder="Price in Dollars"
+          />
         </nz-form-control>
       </nz-form-item>
       <nz-form-item nz-row class="register-area">
@@ -114,33 +311,33 @@
           <button nz-button nzType="primary" id="create-button">Submit</button>
         </nz-form-control>
       </nz-form-item>
-
     </form>
     <div class="clearfix">
-      <nz-upload
-        nzAction=""
-        nzListType="picture"
-        [(nzFileList)]="fileList1"
-      >
+      <nz-upload nzAction="" nzListType="picture" [(nzFileList)]="fileList1">
         <button nz-button>
           <span nz-icon nzType="upload"></span>
           Upload an Image
         </button>
       </nz-upload>
     </div>
-  <br>
-  <div id="create-asset-file-upload" *ngIf="!isUpdateComponent;">
-    <h2>Create Assets By File </h2>
-    <nz-form-label [nzSm]="6" [nzXs]="24"> Upload </nz-form-label>
-    <nz-upload nzType="drag" [nzMultiple]="false" nzAction="http://localhost:8084/assets/csv/{{userData.userId}}"
-      (nzChange)="handleChange($event)">
-      <p class="ant-upload-drag-icon">
-        <span nz-icon nzType="inbox"></span>
-      </p>
-      <p class="ant-upload-text">Click or drag file to this area to upload</p>
-      <p class="ant-upload-hint">
-        Please upload Files with extenstions .csv / .xslx
-      </p>
-    </nz-upload>
+    <br />
+    <div id="create-asset-file-upload" *ngIf="!isUpdateComponent">
+      <h2>Create Assets By File</h2>
+      <nz-form-label [nzSm]="6" [nzXs]="24"> Upload </nz-form-label>
+      <nz-upload
+        nzType="drag"
+        [nzMultiple]="false"
+        nzAction="http://localhost:8084/assets/csv/{{ userData.userId }}"
+        (nzChange)="handleChange($event)"
+      >
+        <p class="ant-upload-drag-icon">
+          <span nz-icon nzType="inbox"></span>
+        </p>
+        <p class="ant-upload-text">Click or drag file to this area to upload</p>
+        <p class="ant-upload-hint">
+          Please upload Files with extenstions .csv / .xslx
+        </p>
+      </nz-upload>
+    </div>
   </div>
 </div>
