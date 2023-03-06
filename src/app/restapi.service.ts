@@ -319,6 +319,18 @@ export class RestapiService {
   public updateWorkOrderStatus(workorderData: UpdateWorkOrderStatusReq){
     return this.httpClient.put<ApiResponse>(`${this.baseUrl}/resource/status/`,workorderData);
   }
+  public downloadWorkOrderImg(id: number) {
+    return this.httpClient.get(
+      `${this.baseUrl}/workorder/download/${id}`,
+      { responseType: 'blob' }
+    );
+  }
+
+
+  public getWorkOrder(id: number) {
+    return this.httpClient.get<ApiResponse>(`${this.baseUrl}/workorder/${id}`);
+  }
+
 
     //Reports
 

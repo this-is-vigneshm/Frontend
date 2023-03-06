@@ -77,6 +77,7 @@ export class InventoryCreateComponent {
           null,
           [Validators.required, Validators.pattern('^[0-9]+(.[0-9]{0,2})?$')],
         ],
+        status:[null,[Validators.required]]
       });
     } else {
       this.isUpdateComponent = true;
@@ -90,6 +91,7 @@ export class InventoryCreateComponent {
           this.inventoryData.price,
           [Validators.required, Validators.pattern],
         ],
+        status:[this.inventoryData.status, [Validators.required]]
       });
     }
   }

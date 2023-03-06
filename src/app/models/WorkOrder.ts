@@ -1,6 +1,5 @@
 export class WorkOrder {
 
-    ticketId: string
     orderNo:number;
     workOrderCode:string
     status: string;
@@ -11,6 +10,7 @@ export class WorkOrder {
     workSubject: string;
     taskDetails: string;
     date: any;
+    fileName:string
     workOrderCost:number
     createdBy:string;
     createdTime: number;
@@ -19,11 +19,11 @@ export class WorkOrder {
     employeeId : number;
     expectedCompletionTime: number;
 
-    constructor(ticketId: string, orderNo:number, workOrderCode: string,status: string,
-        name: string, emailId: string,phoneNumber: number, description: string,workSubject: string,taskDetails:string,date:Date,workOrderCost:number, createdBy:string, createdTime: number, updatedBy: string,
+    constructor( orderNo:number, workOrderCode: string,status: string,
+        name: string, emailId: string,phoneNumber: number, description: string,workSubject: string,taskDetails:string,date:Date,fileName : string,workOrderCost:number, createdBy:string, createdTime: number, updatedBy: string,
         updatedTime: number, employeeId : number,expectedCompletionTime : number
      ) {
-        this.ticketId = ticketId
+       
         this.orderNo = orderNo;
         this.workOrderCode = workOrderCode
         this.status = status;
@@ -34,6 +34,7 @@ export class WorkOrder {
         this.workSubject = workSubject;
         this.taskDetails = taskDetails;
         this.date = date;
+        this.fileName = fileName
         this.workOrderCost = workOrderCost;
         this.createdBy = createdBy;
         this.createdTime = createdTime;

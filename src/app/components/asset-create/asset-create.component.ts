@@ -123,7 +123,6 @@ export class AssetCreateComponent implements OnInit {
         ],
         category: [null, [Validators.required]],
         department: [null, [Validators.required]],
-        supplier: [null, [Validators.required]],
         subAsset: [
           null,
           [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z ]+')],
@@ -135,7 +134,11 @@ export class AssetCreateComponent implements OnInit {
             Validators.pattern('^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ ]+$'),
           ],
         ],
+        supplier: [null, [Validators.required]],
+        status: [null, [Validators.required]],
         priority: [null, [Validators.required]],
+
+        make: [null, [Validators.required]],
         model: [
           null,
           [
@@ -143,7 +146,6 @@ export class AssetCreateComponent implements OnInit {
             Validators.pattern('^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ ]+$'),
           ],
         ],
-        make: [null, [Validators.required]],
         price: [
           null,
           [Validators.required, Validators.pattern('^[0-9]+(.[0-9]{0,2})?$')],
@@ -160,12 +162,13 @@ export class AssetCreateComponent implements OnInit {
         description: [this.assetData.description, [Validators.required]],
         category: [this.assetData.category, [Validators.required]],
         department: [this.assetData.department, [Validators.required]],
-        supplier: [this.assetData.supplier, [Validators.required]],
         subAsset: [this.assetData.subAsset, [Validators.required]],
         system: [this.assetData.system, [Validators.required]],
+        supplier: [this.assetData.supplier, [Validators.required]],
+        status: [this.assetData.status, [Validators.required]],
         priority: [this.assetData.priority, [Validators.required]],
-        model: [this.assetData.model, [Validators.required]],
         make: [this.assetData.make, [Validators.required]],
+        model: [this.assetData.model, [Validators.required]],
         price: [
           this.assetData.price,
           [Validators.required, Validators.pattern],

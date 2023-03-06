@@ -9,6 +9,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { Facility } from 'src/app/models/Facility';
 import { RestapiService } from 'src/app/restapi.service';
 import { TokenService } from 'src/app/token.service';
+import { NzButtonSize } from 'ng-zorro-antd/button';
 
 @Component({
   selector: 'app-create-facility',
@@ -112,4 +113,10 @@ export class CreateFacilityComponent implements OnInit {
   handleCloseEvent() {
     this.close.emit();
   }
+  loc:boolean = false
+  forLocation(event:MouseEvent){
+    event.preventDefault()
+    this.loc = !this.loc
+  }
+  size: NzButtonSize = 'small';
 }

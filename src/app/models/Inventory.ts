@@ -5,13 +5,14 @@ export class Inventory {
     description:string;
     quantity:number;
     price:number;
+    status:string;
     createdBy:string;
     createdTime: number;
     updatedBy: string;
     updatedTime: number;
     expand : boolean;
     userId : number;
-    constructor(id: number, name: string, code: number, description: string, quantity: number, price: number, 
+    constructor(id: number, name: string, code: number, description: string, quantity: number, price: number,status:string, 
         createdBy:string, createdTime: number, updatedBy: string,
        updatedTime: number,userId:number){
        this.id = id;
@@ -20,6 +21,7 @@ export class Inventory {
        this.description = description;
        this.quantity = quantity;
        this.price = price;
+       this.status = status
        this.createdBy = createdBy
        this.createdTime = createdTime
        this.updatedBy = updatedBy

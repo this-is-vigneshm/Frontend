@@ -26,6 +26,7 @@ import { InventoryListComponent } from './components/inventory-list/inventory-li
 import { WorkorderComponent } from './components/workorder/workorder.component';
 import { MyworkorderComponent } from './components/myworkorder/myworkorder.component';
 import { CreateWorkorderComponent } from './components/create-workorder/create-workorder.component';
+import { ViewWorkorderComponent } from './components/view-workorder/view-workorder.component';
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'assets/create', component: AssetCreateComponent },
@@ -35,6 +36,7 @@ const routes: Routes = [
   { path: 'tickets/self', component: TicketsComponent },
   { path: 'tickets/create', component: CreateTicketComponent },
   {path:'workorder/create', component: CreateWorkorderComponent},
+  {path:'view-workorder', component: ViewWorkorderComponent},
   { path: 'facilities', component: FacilitiesComponent },
   { path: 'facilities/create', component: CreateFacilityComponent },
   { path: 'signin', component: LoginComponent },

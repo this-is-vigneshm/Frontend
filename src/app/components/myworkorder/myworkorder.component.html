@@ -31,18 +31,15 @@
             [nzTooltipTitle]="'Update WorkOrder'" [nzTooltipColor]="'Green'" nz-popconfirm
             nzPopconfirmTitle="Proceed to Update"
             ></span></button>
-          <nz-modal [(nzVisible)]="isVisible" nzTitle="Update Workorder Status" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
-            <ng-container *nzModalContent>
-              <app-updatewostatus [workOrderData]="selectedWo"></app-updatewostatus>
-            </ng-container>
-          </nz-modal></td>
-        <td>
+         
           <button style=" border-color: rgb(224, 228, 234); background-color: white; border-radius: 5px;"><span nz-icon nzType="delete" nzTheme="twotone" [nzTwotoneColor]="'red'" nz-tooltip
             [nzTooltipTitle]="'Delete WorkOrder'" [nzTooltipColor]="'red'" nz-popconfirm
             nzPopconfirmTitle="Proceed to Delete"
             (nzOnConfirm)="handleDeleteWo(data.orderNo)"></span></button>
+            <button style=" border-color: rgb(224, 228, 234); background-color: white; border-radius: 5px;"    (click)="viewPage(data.orderNo)"><span nz-icon nzType="eye" nzTheme="twotone" ></span></button>
+            
         </td>
-           </tr>
+      </tr>
        <tr [nzExpand]="data.expand">
         <nz-table #innerTable [nzData]="searchResults" nzSize="small" [nzShowPagination]="false">
           <thead>
@@ -74,3 +71,13 @@
 </tbody>
 </nz-table>
 
+<nz-modal [nzVisible]="visible" [nzStyle]="{ top: '20px', width: '70%' }" nzTitle="View Work Order"
+            nzCentered (nzOnCancel)="handleCreateTicketOk()" (nzOnOk)="handleCreateTicketOk()" >
+              <app-view-workorder *nzModalContent [workOrderId]="viewId" (close)="closeView()"></app-view-workorder>
+            </nz-modal>
+
+            <nz-modal [(nzVisible)]="isVisible" nzTitle="Update Workorder Status" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+              <ng-container *nzModalContent>
+                <app-updatewostatus [workOrderData]="selectedWo"></app-updatewostatus>
+              </ng-container>
+            </nz-modal>

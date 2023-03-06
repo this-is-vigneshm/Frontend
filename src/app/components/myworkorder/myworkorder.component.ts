@@ -275,7 +275,22 @@ editId : string | null =null;
     this.isVisible = false;
   }
 
+  viewId : any
+  visible = false
+  viewPage(id : any){
+    this.viewId = id
+    this.visible = true
+  }
+
+  handleCreateTicketOk()
+  {
+    this.visible = false
+  }
   
+  closeView()
+  {
+    this.visible = false
+  }
   onCheck(event: any) {
     this.worKOrderId.emit(event)
   }
