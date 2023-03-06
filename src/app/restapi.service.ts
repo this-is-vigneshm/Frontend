@@ -204,6 +204,12 @@ export class RestapiService {
       `${this.baseUrl}/tickets/${ticketId}`
     );
   }
+
+  public setWOId(workOrderId : number, ticketId : string)
+  {
+    return this.httpClient.put<ApiResponse>(
+      `${this.baseUrl}/tickets/WOId/${ticketId}`,workOrderId)
+  }
   // Knowedge Repo
 
   
@@ -333,4 +339,5 @@ export class RestapiService {
     public getValues(listUuId : string[]) {
       return this.httpClient.get<ApiResponse>(`${this.baseUrl}/reports/values`, {params: { listId : listUuId}});
     }
+
 }

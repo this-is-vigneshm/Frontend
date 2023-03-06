@@ -58,7 +58,7 @@ export class CreateWorkorderComponent implements OnInit {
   ticketid = ""
 
   @Output()
-  close: EventEmitter<number> = new EventEmitter<number>();
+  close: EventEmitter<Map<string, any>> = new EventEmitter<Map<string, any>>();
 
 
 
@@ -345,9 +345,10 @@ export class CreateWorkorderComponent implements OnInit {
     this.isClick = !this.isClick
     event.preventDefault()
   }
+  map : Map<string, any> = new Map<string, any>()
   getHello(event:MouseEvent){
     event.preventDefault()
-    this.close.emit(this.id.orderNo);
+    this.close.emit(this.map.set(this.ticketid, this.id.orderNo));
   }
   
 }

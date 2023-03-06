@@ -8,6 +8,7 @@ export class TicketResp {
     status: string;
     employeeId: string;
     employeeDepartment: string;
+    workOrderId : number
     createdBy:string;
     createdTime: number;
     updatedBy: string;
@@ -19,7 +20,7 @@ export class TicketResp {
     constructor(uuid: string, title: string, description: string, 
         employeeName: string, employeeMail: string, category: string,
         status: string, employeeId: string, employeeDepartment: string,
-        createdBy:string, createdTime: number, updatedBy: string,
+        workOrderId : number, createdBy:string, createdTime: number, updatedBy: string,
         updatedTime: number, timeTaken: number, expectedCompletionTime:number) {
         this.uuid= uuid;
         this.title = title;
@@ -30,6 +31,7 @@ export class TicketResp {
         this.status = status
         this.employeeId = employeeId
         this.employeeDepartment = employeeDepartment
+        this.workOrderId = workOrderId
         this.createdBy = createdBy
         this.createdTime = createdTime
         this.updatedBy = updatedBy

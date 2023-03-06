@@ -44,21 +44,19 @@ export class CreateFacilityComponent implements OnInit {
         null,
         [
           Validators.required,
-          Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
+          // Validators.pattern('^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ ]+$'),
         ],
       ],
       addressLine2: [
         null,
         [
           Validators.required,
-          Validators.pattern('^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ ]+$'),
         ],
       ],
       addressLine3: [
         null,
         [
           Validators.required,
-          Validators.pattern('^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ ]+$'),
         ],
       ],
       city: [null, [Validators.required]],

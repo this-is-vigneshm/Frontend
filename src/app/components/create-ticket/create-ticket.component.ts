@@ -65,7 +65,7 @@ export class CreateTicketComponent implements OnInit {
   submitForm(): void {
     if (this.form.valid) {
       console.log('submit', this.form.value);
-      this.handleTicketCreation()
+      this.handleTicketCreation(0)
     } else {
       Object.values(this.form.controls).forEach(control => {
         if (control.invalid) {
@@ -105,10 +105,10 @@ export class CreateTicketComponent implements OnInit {
 
   }
 
-  handleTicketCreation() {
+  handleTicketCreation(workOrderId:number) {
     var formData = this.form.value;
     var ticketData = new Ticket(formData.title, formData.description, formData.category,
-      formData.status, formData.employeeId, formData.issueType, formData.assetId,0, formData.userId, this.expectedTime);
+      formData.status, formData.employeeId, formData.issueType, formData.assetId,workOrderId, formData.userId, this.expectedTime);
     if (this.file == null) {
       console.log("Without Attachment", ticketData);
       this.createTicketAndMail(ticketData)
@@ -125,7 +125,13 @@ data : any = null
       data => {
         console.log("Success", data)
         this.notification.success("Ticket created Successfully.")
-        this.isVisible = true;
+        if(this.isVisibleExisting == true)
+        {
+          this.isVisibleExisting = false
+        }
+        else{
+          this.isVisible = true
+        }
         this.data = data.responseData
       },
       error => {
@@ -134,13 +140,13 @@ data : any = null
       }
     );
   }
-  createTicket(ticketData: Ticket) {
-    ticketData.userId = this.userData.userId;
-    this.restApiService.createTicketAndMail(ticketData).subscribe(
+  createTicket(ticketId: string, WOId : number) {
+    this.restApiService.setWOId(WOId,ticketId).subscribe(
       data => {
         console.log("Success", data)
         this.notification.success("Ticket created Successfully.")
         this.data = data.responseData
+        this.isVisible = false
         this.isVisibleExisting = false;
       },
       error => {
@@ -260,15 +266,9 @@ event.preventDefault()
     this.isVisibleExisting = true;
   }
   get(event:any){
-    var formData = this.form.value;
-    var ticketData = new Ticket(formData.title, formData.description, formData.category,
-      formData.status, formData.employeeId, formData.issueType, formData.assetId,event, formData.userId, this.expectedTime);
     if (this.file == null) {
-      console.log("Without Attachment", ticketData);
-      this.createTicket(ticketData)
-    } else {
-      console.log("With Attachment", ticketData, this.file);
-      this.createTicketAndMailWithAttachment(ticketData, this.file)
-    }
+      console.log("Without Attachment", event);
+      this.createTicket(event.key(), event.get(event.key()))
+    } 
   }
 }
