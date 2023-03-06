@@ -31,7 +31,14 @@
       <li nz-menu-item routerLink="/facilities">View All Facitlities</li>
     </ul>
   </li>
-  <li
+  
+  <li nz-submenu class="navigation-button" nzTitle="WorkOrder" nzIcon="caret-down">
+    <ul>
+        <li nz-menu-item routerLink="/workorder/create">Add An WorkOrder</li>
+        <li nz-menu-item routerLink="/myworkorder">View All WorkOrders</li>
+    </ul>
+</li>
+<li
     *ngIf="isAdmin"
     nz-submenu
     class="navigation-button"
@@ -46,12 +53,6 @@
       </li>
     </ul>
   </li>
-  <li nz-submenu class="navigation-button" nzTitle="WorkOrder" nzIcon="caret-down">
-    <ul>
-        <li nz-menu-item routerLink="/workorder/create">Add An WorkOrder</li>
-        <li nz-menu-item routerLink="/myworkorder">View All WorkOrders</li>
-    </ul>
-</li>
   <li id="logout-button" nzPlacement="topRight">
     <span id="logout-button">
       <a nz-dropdown [nzDropdownMenu]="menu">
