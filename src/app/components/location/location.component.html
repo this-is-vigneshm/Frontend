@@ -1,1 +1,96 @@
-<p><input type="button" value="Add Location" nzType="primary"></p>
+<form  nz-form
+[formGroup]="validateForm"
+(ngSubmit)="submitForm()"
+[nzLayout]="'inline'" >
+
+<div nz-col [nzSpan]="12">
+    <nz-form-item >
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="addressLine1" nzRequired
+          >Address Line 1</nz-form-label
+        >
+        <nz-form-control
+          [nzSm]="14"
+          [nzXs]="24"
+          nzErrorTip="Please Enter The FAC Location Code!"
+        >
+          <input formControlName="addressLine1" id="addressLine1" nz-input />
+        </nz-form-control>
+      </nz-form-item>
+    
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="addressLine2" nzRequired
+          >Address Line 2</nz-form-label
+        >
+        <nz-form-control
+          [nzSm]="14"
+          [nzXs]="24"
+          nzErrorTip="Please Enter The FAC Location Code!"
+        >
+          <input formControlName="addressLine2" id="addressLine2" nz-input />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="addressLine3" nzRequired
+          >Address Line 3</nz-form-label
+        >
+        <nz-form-control
+          [nzSm]="14"
+          [nzXs]="24"
+          nzErrorTip="Please Enter The FAC Location Code!"
+        >
+          <input formControlName="addressLine3" id="addressLine3" nz-input />
+        </nz-form-control>
+      </nz-form-item>
+    
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="city" nzRequired
+          >City</nz-form-label
+        >
+        <nz-form-control
+          [nzSm]="14"
+          [nzXs]="24"
+          nzErrorTip="Please Enter The FAC Location Code!"
+        >
+          <input formControlName="city" id="city" nz-input />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="state" nzRequired
+          >State</nz-form-label
+        >
+        <nz-form-control
+          [nzSm]="14"
+          [nzXs]="24"
+          nzErrorTip="Please Enter The FAC Location Code!"
+        >
+          <input formControlName="state" id="state" nz-input />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="postalCode" nzRequired
+          >Postal Code</nz-form-label
+        >
+        <nz-form-control
+          [nzSm]="14"
+          [nzXs]="24"
+          nzErrorTip="Please Enter The FAC Location Code!"
+        >
+          <input formControlName="postalCode" id="postalCode" nz-input />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="country" nzRequired
+          >Country</nz-form-label
+        >
+        <nz-form-control
+          [nzSm]="14"
+          [nzXs]="24"
+          nzErrorTip="Please Enter The FAC Location Code!"
+        >
+          <input formControlName="country" id="country" nz-input />
+        </nz-form-control>
+      </nz-form-item>
+</div>
+
+    
+</form>

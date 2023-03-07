@@ -1,4 +1,4 @@
-<form nz-form [formGroup]="form" nzLayout="vertical" (ngSubmit)="submitForm()">
+<form nz-form [formGroup]="form" nzLayout="vertical" (ngSubmit)="submitForm()" style="text-align: left;">
 
   <nz-form-item>
     <nz-form-label style="color: #3253dc;" nzRequired nzFor="title">
@@ -9,7 +9,7 @@
     </nz-form-control>
   </nz-form-item>
 
-  <nz-form-item>
+  <nz-form-item >
     <nz-form-label style="color: #3253dc;" nzRequired nzFor="userId">
       <span style="color: #3253dc;">Raise this request on behalf of?</span>
     </nz-form-label>
@@ -113,9 +113,24 @@
     
   </nz-form-label>
   <br>
+  <nz-form-item nz-row class="register-area">
+    <nz-form-control [nzSpan]="14" [nzOffset]="6">
+      <div *ngIf="radioValue" style="width: 400px;margin-left : -100px"><button nz-button nzType="primary" id="resource">Create Ticket and Add New</button>
+    
+        <span style="padding: 15px;"></span>
+      <button nz-button nzType="primary" id="resource" (click)="showModal()" (click)="disable($event)">Add Existing</button>
+    </div>
+    <div *ngIf="!radioValue" style = "margin-left:15%"><button nz-button nzType="primary" (click)="onUpload()" id="create-ticket-submit">Create a Ticket</button></div>
 
-  <div *ngIf="radioValue"><button nz-button nzType="primary" id="resource">Create Ticket and Add New</button>
-    <nz-modal
+    </nz-form-control>
+  </nz-form-item>
+
+    
+  </nz-form-item>
+
+</form>
+
+<nz-modal
     nzWidth = "1200px"
       [(nzVisible)]="isVisible"
       [nzTitle]="modalTitle"
@@ -133,7 +148,7 @@
         <button nz-button nzType="primary" (click)="handleOk()" [nzLoading]="isConfirmLoading">Ok</button>
       </ng-template>
     </nz-modal>
-    <span style="padding: 15px;"></span><button nz-button nzType="primary" id="resource" (click)="showModal()" (click)="disable($event)">Add Existing</button></div>
+
     <nz-modal
     nzWidth = "1200px"
     [(nzVisible)]="isVisibleExisting"
@@ -154,9 +169,3 @@
       <button nz-button nzType="primary" (click)="handleOk()" [nzLoading]="isConfirmLoading">Ok</button>
     </ng-template>
   </nz-modal>
-
-<div *ngIf="!radioValue"><button nz-button nzType="primary" (click)="onUpload()" id="create-ticket-submit">Create a Ticket</button></div>
-    
-  </nz-form-item>
-
-</form>
