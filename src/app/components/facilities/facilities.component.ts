@@ -200,11 +200,7 @@ export class FacilitiesComponent implements OnInit{
       return ( element.facilityName.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) || 
       element.facilityCode.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) ||
       element.facilityType.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) ||
-      element.facilitySource.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) ||
-      element.addressLine1.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) || 
-      element.addressLine2.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) ||
-      element.addressLine3.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) ||
-      element.city.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase())
+      element.facilitySource.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) 
        )
     } 
     this.searchResults = this.facilities.filter(ispositive);

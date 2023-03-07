@@ -108,22 +108,22 @@
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
-<button nz-button nzType="primary" (click)="getCaptcha($event)" id="create-workorder-submit">Add Resource</button>
+        <nz-form-label [nzSm]="6" [nzXs]="2" nzFor="assetId">
+          <span style="color: #3253dc;">Add Resource</span>
+        </nz-form-label>
+<button nz-button nzType="primary" (click)="getCaptcha($event)" nzShape="round" style = "margin-left:7%;"><span nz-icon nzType="plus"></span></button>
 </nz-form-item>
 <div *ngIf="isClick">
-      <nz-form-item nz-row class="register-area">
-        <nz-form-control [nzSpan]="14" [nzOffset]="0">
+      <nz-form-item nz-row class="register-area" style = "margin-left:7%;">
+        <nz-form-control [nzSpan]="14" [nzOffset]="0" style = "margin-left:7%;">
           <button nz-button nzType="primary" id="create-resource-button" (click)="changeA()">
             <span nz-icon nzType="carry-out" nzTheme="outline"></span>Add User
           </button>
-        </nz-form-control>
-      </nz-form-item>
-      <nz-form-item>
-        <nz-form-control [nzSpan]="14" [nzOffset]="0">
-
+          <span style="padding: 15px;"></span>
           <button nz-button nzType="primary" id="create-resource-button" (click)="changeB()">
             <span nz-icon nzType="carry-out" nzTheme="outline"></span>Add Inventory
-          </button></nz-form-control>
+          </button>
+        </nz-form-control>
       </nz-form-item>
 
 
@@ -147,8 +147,8 @@
     </div>
 
       <nz-form-item nz-row class="register-area">
-        <nz-form-control [nzSpan]="14" [nzOffset]="0">
-          <button nz-button nzType="primary" (click)="onUpload()" (click)="getHello($event)" id="create-workorder-submit"
+        <nz-form-control [nzSpan]="14" [nzOffset]="0">  
+          <button nz-button nzType="primary"  (click)="getHello($event)" id="create-workorder-submit"
             style="color: rgb(234, 236, 239);">Create a WorkOrder</button>
         </nz-form-control>
       </nz-form-item>

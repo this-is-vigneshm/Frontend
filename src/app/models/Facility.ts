@@ -7,13 +7,6 @@ export class Facility {
     facilitySource: string;
     inactiveDate: string;
     facLocationCode: string;
-    addressLine1: string;
-    addressLine2: string;
-    addressLine3: string;
-    city: string;
-    state: string;
-    postalCode: number;
-    country: string;
     createdTime: number;
     createdBy: string;
     lastUpdatedTime: number;
@@ -27,10 +20,7 @@ export class Facility {
     public constructor(facilityId: number, facilityCode: string,
         facilityName: string, facilityType: string,
         facilitySource: string, inactiveDate: string,
-        facLocationCode: string, addressLine1: string,
-        addressLine2: string, addressLine3: string,
-        city: string, state: string, postalCode: number,
-        country: string, createdTime: number,  createdBy: string,
+        facLocationCode: string, createdTime: number,  createdBy: string,
         lastUpdatedTime: number, lastUpdatedBy: string,  dagRunId: string,
         taskIdJobId: string,  crossCodeFlag: boolean, userId:number) 
         {
@@ -41,13 +31,6 @@ export class Facility {
             this.facilitySource = facilitySource,
             this.inactiveDate = inactiveDate,
             this.facLocationCode = facLocationCode,
-            this.addressLine1 = addressLine1,
-            this.addressLine2 = addressLine2,
-            this.addressLine3 = addressLine3,
-            this.city = city,
-            this.state = state,
-            this.postalCode = postalCode,
-            this.country = country,
             this.createdTime = createdTime,
             this.createdBy = createdBy,
             this.lastUpdatedTime = lastUpdatedTime,

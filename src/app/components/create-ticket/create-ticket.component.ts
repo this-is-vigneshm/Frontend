@@ -48,10 +48,10 @@ export class CreateTicketComponent implements OnInit {
   ]
 
   categories = [
-    { name: "Low Priority", value: "Green" },
-    { name: "Medium Priority", value: "Yellow" },
-    { name: "High Priority", value: "Orange" },
-    { name: "Critical Issue", value: "Red" }
+    { name: "Green", value: "Low Priority" },
+    { name: "Yellow", value: "Medium Priority" },
+    { name: "Orange", value: "High Priority" },
+    { name: "Red", value: "Critical Issue" }
   ]
 
   issueTypes = [
@@ -125,12 +125,15 @@ data : any = null
       data => {
         console.log("Success", data)
         this.notification.success("Ticket created Successfully.")
-        if(this.isVisibleExisting == true)
+        if(this.isVisible==true||this.isVisibleExisting==true)
+        {
+          if(this.isVisibleExisting == true )
         {
           this.isVisibleExisting = false
         }
         else{
           this.isVisible = true
+        }
         }
         this.data = data.responseData
       },
@@ -194,19 +197,19 @@ data : any = null
 
   onStatusChange(event: any) {
     switch (event) {
-      case "Green":
+      case "Low Priority":
         this.expectedTime = new Date().getTime() + 1209600000;
         this.expectedTimeText = "14 Days";
         break;
-      case "Yellow":
+      case "Medium Priority":
         this.expectedTime = new Date().getTime() + 604800000;
         this.expectedTimeText = "7 Days";
         break;
-      case "Orange":
+      case "High Priority":
         this.expectedTime = new Date().getTime() + 86400000 ;
         this.expectedTimeText = "1 Day";
         break;
-      case "Red":
+      case "Critical Priority":
         this.expectedTime = new Date().getTime() + 14400000 ;
         this.expectedTimeText = "4 Hours";
         break;

@@ -1,0 +1,64 @@
+<nz-table #nestedTable [nzData]="searchResults" [nzPageSize]="10" *ngIf="loc1">
+    <thead>
+        <tr>
+            <th>Ex</th>
+            <th *ngFor="let column of locationColumns" [nzSortOrder]="column.sortOrder" [nzSortFn]="column.sortFn"
+                [nzSortDirections]="column.sortDirections">
+                {{ column.name }}
+            </th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-template ngFor let-data [ngForOf]="nestedTable.data">
+            <tr>
+                <td [(nzExpand)]="data.expand"></td>
+                <td>{{ data.id }}</td>
+                <td>{{ data.name }}</td>
+                <td>{{ data.description }}</td>
+
+                <td>
+                    {{ data.name +", " + data.addressLine1 +
+                    ", " + data.addressLine2 + ", " +data.addressLine3 +
+                    ", " +data.city + ", " +data.state +
+                    ", " +data.postalCode + ", " + data.country}}
+                </td>
+                <td>
+                    <button nz-button (click)="forLocation($event)"><span nz-icon nzType="plus" nzTheme="outline"></span></button>
+                    <button nz-button>
+                        <span nz-icon nzType="delete" nzTheme="twotone" [nzTwotoneColor]="'red'" nz-tooltip
+                            [nzTooltipTitle]="'Delete Facility'" [nzTooltipColor]="'red'" nz-popconfirm
+                            nzPopconfirmTitle="Proceed to update?"
+                            (nzOnConfirm)="handleDeleteLocation(data.facilityId)">
+                        </span>
+                    </button>
+                </td>
+            </tr>
+            <tr [nzExpand]="data.expand">
+                <nz-table #innerTable [nzData]="searchResults" nzSize="small" [nzShowPagination]="false">
+                    <thead>
+                        <tr>
+                            <th *ngFor="let column of innerColumns" [nzSortOrder]="column.sortOrder"
+                                [nzSortFn]="column.sortFn" [nzSortDirections]="column.sortDirections">
+                                {{ column.name }}
+                            </th>
+                        </tr>
+                    </thead>
+
+    <tbody>
+        <tr>
+            <td>{{ data.createdTime | date: 'dd/MM/yyyy hh:ss a' }}</td>
+            <td>{{ data.createdBy }}</td>
+            <td>{{ data.lastUpdatedTime | date: 'dd/MM/yyyy hh:ss a' }}</td>
+            <td>{{ data.lastUpdatedBy }}</td>
+        </tr>
+    </tbody>
+</nz-table>
+</tr>
+</ng-template>
+</tbody>
+</nz-table>
+
+<div *ngIf="loc">
+    building <button (click)="forLocation($event)"> back</button>
+</div>

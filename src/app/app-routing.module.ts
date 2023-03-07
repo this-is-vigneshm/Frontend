@@ -28,6 +28,7 @@ import { MyworkorderComponent } from './components/myworkorder/myworkorder.compo
 import { CreateWorkorderComponent } from './components/create-workorder/create-workorder.component';
 import { ViewWorkorderComponent } from './components/view-workorder/view-workorder.component';
 import { LocationComponent } from './components/location/location.component';
+import { LocationListComponent } from './components/location-list/location-list.component';
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'assets/create', component: AssetCreateComponent },
@@ -60,6 +61,7 @@ const routes: Routes = [
   {path:'bubble-report', component: BubbleReportComponent},
   {path:'reports-table', component: ReportsTableComponent},
   {path:'create-location', component: LocationComponent},
+  {path:'location-list', component: LocationListComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/' },
 ];

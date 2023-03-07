@@ -351,5 +351,9 @@ export class RestapiService {
     public getValues(listUuId : string[]) {
       return this.httpClient.get<ApiResponse>(`${this.baseUrl}/reports/values`, {params: { listId : listUuId}});
     }
+    //// locations
 
+    public getAllLocations(){
+      return this.httpClient.get<ApiResponse>(`${this.baseUrl}/locations/list`)
+    }
 }
