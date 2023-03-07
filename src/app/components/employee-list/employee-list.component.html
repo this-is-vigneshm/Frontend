@@ -2,13 +2,13 @@
 font-family: math;
 font-size: xx-large;
 font-weight: 900;
-margin-left: -60%;">Users</span>
+margin-left: -42%;">Users</span>
 
 
 <ng-template #suffixIconSearch>
 </ng-template>
-<nz-input-group id="search-bar" [nzSuffix]="suffixIconSearch" style="width: 400px;"  >
-  <nz-select [ngModel]="'search an user'"  style="width: 200px;"(ngModelChange)="selectChange($event)">
+<nz-input-group id="search-bar"[nzSuffix]="suffixIconSearch" style="width: 400px;"  >
+  <nz-select [ngModel]="'search an user'" style="width: 200px;"(ngModelChange)="selectChange($event)">
   
     <nz-option [nzLabel]="'All'" [nzValue]="'all'"></nz-option>
     <nz-option [nzLabel]="'By Name'" [nzValue]="'name'"></nz-option>
@@ -39,7 +39,7 @@ margin-left: -60%;">Users</span>
 
 <button nz-button nzType="primary" id="create-user-button" (click)="showCreateEmployeeModal()"><span nz-icon nzType="user-add" nzTheme="outline"></span></button>
 
-<nz-table #filterTable [nzData]="searchResults">
+<!-- <nz-table #filterTable [nzData]="searchResults">
     <thead id ="asset-table-head">
       <tr >
         <th *ngFor="let column of employeeColumns" [nzSortOrder]="column.sortOrder" [nzSortFn]="column.sortFn"
@@ -49,8 +49,8 @@ margin-left: -60%;">Users</span>
         <th >Status</th>
       </tr>
     </thead>
-    <tbody>
-      <tr *ngFor="let data of filterTable.data">
+    <tbody> -->
+      <!-- <tr *ngFor="let data of filterTable.data">
         <td>{{ data.id }}</td>
         <td>{{ data.name }}</td>
         <td>{{ data.email }}</td>
@@ -64,14 +64,67 @@ margin-left: -60%;">Users</span>
         <td>{{ data.usertype }}</td>
         <td>{{ data.resourceplanner}}</td>
         <td>
-          <!-- <button nz-button nzType="default" nzDanger style=" margin: 5px;">
+          <button nz-button nzType="default" nzDanger style=" margin: 5px;">
             <span nz-icon nzType="delete" nzTheme="outline" ></span>
           </button> -->
-        </td>
+        <!-- </td> -->
         <!-- <td>{{ data.location }}</td> -->
-      </tr>
+      <!-- </tr>
     </tbody>
-  </nz-table>
+  </nz-table> -->
+  <nz-table #filterTable [nzData]="searchResults">
+    <thead id="asset-table-head">
+      <tr>
+        <th></th>
+        <th *ngFor="let column of  employeeColumns" [nzSortOrder]="column.sortOrder" [nzSortFn]="column.sortFn"
+          [nzSortDirections]="column.sortDirections" >
+          {{ column.name }}
+        </th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      
+      <ng-template ngFor let-data [ngForOf]="filterTable.data">
+        <tr>
+        <td [(nzExpand)]="data.expand"></td>
+        <td>{{ data.id }}</td>
+        <td>{{ data.name }}</td>
+        <td>{{ data.email }}</td>
+        <td>{{ data.username}}</td>
+        <td>{{ data.phoneNumber }}</td>
+        <td>{{ data.department }}</td>
+        <td><button nz-button nz-popconfirm nzPopconfirmTitle="Sure you want to inactive an user ?"
+          
+          (nzOnConfirm)="Active(data.id)">
+          <span nz-icon nzType="edit" nzTheme="twotone"></span></button></td>
+        <td>
+      </tr>
+    
+      <tr [nzExpand]="data.expand">
+        <nz-table #innerTable [nzData]="searchResults" nzSize="small" [nzShowPagination]="false">
+          <thead>
+            <tr>
+              <th *ngFor="let column of innerColumns" [nzSortOrder]="column.sortOrder" [nzSortFn]="column.sortFn"
+                [nzSortDirections]="column.sortDirections">
+                {{ column.name }}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+             <tr>
+              <td>{{ data.designation }}</td>
+              <td>{{ data.roles }}</td>
+              <td>{{ data.address }}</td>
+              <td>{{ data.location }}</td>
+              <td>{{ data.usertype }}</td>
+              <td>{{ data.resourceplanner}}</td>
+              <td>{{ data.status}}</td>
+              </tr>
+           </tbody>
+        </nz-table>
+        
 
 
 <nz-modal [nzStyle]="{ top: '20px' , width:'60%'}" [(nzVisible)]="isCreateEmployeeModalVisible" nzTitle="Create an User"
@@ -80,4 +133,3 @@ margin-left: -60%;">Users</span>
     <app-user-register (close)="handleCreateEmployeeOk()"></app-user-register>
   </ng-container>
 </nz-modal>
-

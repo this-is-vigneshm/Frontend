@@ -1,0 +1,19 @@
+<form nz-form [formGroup]="validateForm"  (ngSubmit)="submitForm()">
+    <nz-form-item>
+      <nz-form-label [nzSpan]="7" nzRequired>Building Name</nz-form-label>
+      <nz-form-control [nzSpan]="12" nzErrorTip="Please Enter  Valid Building Name">
+        <input nz-input formControlName="name" placeholder="name" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="7" nzRequired>Location Name</nz-form-label>
+      <nz-form-control [nzSpan]="12" nzErrorTip="Please Enter  Valid Location Name">
+        <input nz-input formControlName="locationName" placeholder="locationName" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-control [nzOffset]="7" [nzSpan]="12">
+          <button nz-button nzType="primary">Submit</button>
+        </nz-form-control>
+      </nz-form-item>
+  </form>

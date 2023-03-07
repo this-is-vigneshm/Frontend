@@ -5,6 +5,7 @@ import { NzTableSortFn, NzTableSortOrder } from 'ng-zorro-antd/table';
 import { Employee } from 'src/app/models/Employee';
 import { RestapiService } from 'src/app/restapi.service';
 import { TokenService } from 'src/app/token.service';
+import { EmployeeStatus } from 'src/app/models/EmployeeStatus';
 
 
 
@@ -25,7 +26,7 @@ export class EmployeeListComponent implements OnInit {
 
   options : string = ''
   userData:any;
-  
+  expand = false
 
   constructor(private restApiService: RestapiService, private notification: NzMessageService, private router: Router, private tokenService: TokenService) {
 
@@ -38,6 +39,7 @@ export class EmployeeListComponent implements OnInit {
     } 
     else {
       this.userData = this.tokenService.getCurrentUserData();
+      console.log(this.userData)
        if(!this.userData.roles.includes("ADMIN")){
         this.notification.warning("You are not authorizaed to visit this page!")
         this.router.navigateByUrl("/home")
@@ -85,8 +87,9 @@ export class EmployeeListComponent implements OnInit {
       sortOrder: 'descend',
       sortDirections: ['ascend', 'descend', null],
       sortFn: (a: Employee, b: Employee) => a.department.localeCompare(b.department),
-    },
-    {
+    }];
+
+      innerColumns =[{
       name: 'Designation',
       sortOrder: 'descend',
       sortDirections: ['ascend', 'descend', null],
@@ -121,7 +124,14 @@ export class EmployeeListComponent implements OnInit {
       sortOrder: 'descend',
       sortDirections: ['ascend', 'descend', null],
       sortFn: (a: Employee, b: Employee) => a.resourceplanner.localeCompare(b.resourceplanner),
+    },
+    {
+      name: 'status',
+      sortOrder: 'descend',
+      sortDirections: ['ascend', 'descend', null],
+      sortFn: (a: Employee, b: Employee) => a.resourceplanner.localeCompare(b.resourceplanner),
     }
+    
     
   ];
 
@@ -227,5 +237,21 @@ export class EmployeeListComponent implements OnInit {
     this.isCreateEmployeeModalVisible = false;
   }
 
+
+  Active(data:any) {
+    var statusUpdate = new EmployeeStatus(data, "InActive", this.userData.userId);
+    console.log(statusUpdate)
+    this.restApiService.updateEmployeeStatus(data, statusUpdate ).subscribe(
+      data => {
+        console.log("Success", data)
+        this.notification.success("Employee Status updated Successfully!")
+      },
+      error => {
+        console.log(error)
+        this.notification.error("Error updating status!")
+      }
+    )
+   
+  }
 
  }

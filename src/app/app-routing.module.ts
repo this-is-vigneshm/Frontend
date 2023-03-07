@@ -29,6 +29,11 @@ import { CreateWorkorderComponent } from './components/create-workorder/create-w
 import { ViewWorkorderComponent } from './components/view-workorder/view-workorder.component';
 import { LocationComponent } from './components/location/location.component';
 import { LocationListComponent } from './components/location-list/location-list.component';
+import { BuildingCreateComponent } from './components/building-create/building-create.component';
+import { FloorCreateComponent } from './components/floor-create/floor-create.component';
+import { RoomCreateComponent } from './components/room-create/room-create.component';
+import { AreaCreateComponent } from './components/area-create/area-create.component';
+
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'assets/create', component: AssetCreateComponent },
@@ -62,6 +67,10 @@ const routes: Routes = [
   {path:'reports-table', component: ReportsTableComponent},
   {path:'create-location', component: LocationComponent},
   {path:'location-list', component: LocationListComponent},
+  {path:'floor-create', component:FloorCreateComponent},
+  {path:'building-create', component:BuildingCreateComponent},
+  {path:'room-create', component:RoomCreateComponent},
+  {path:'area-create', component:AreaCreateComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/' },
 ];

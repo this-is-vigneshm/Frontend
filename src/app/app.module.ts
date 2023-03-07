@@ -47,6 +47,10 @@ import { UpdatewostatusComponent } from './components/updatewostatus/updatewosta
 import { ViewWorkorderComponent } from './components/view-workorder/view-workorder.component';
 import { LocationComponent } from './components/location/location.component';
 import { LocationListComponent } from './components/location-list/location-list.component';
+import { BuildingCreateComponent } from './components/building-create/building-create.component';
+import { FloorCreateComponent } from './components/floor-create/floor-create.component';
+import { RoomCreateComponent } from './components/room-create/room-create.component';
+import { AreaCreateComponent } from './components/area-create/area-create.component';
 registerLocaleData(en);
 
 @NgModule({
@@ -85,7 +89,11 @@ registerLocaleData(en);
     UpdatewostatusComponent,
     ViewWorkorderComponent,
     LocationComponent,
-    LocationListComponent
+    LocationListComponent,
+    BuildingCreateComponent,
+    FloorCreateComponent,
+    RoomCreateComponent,
+    AreaCreateComponent
     ],
   imports: [
     BrowserModule,

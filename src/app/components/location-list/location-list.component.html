@@ -51,7 +51,9 @@
             <td>{{ data.createdBy }}</td>
             <td>{{ data.lastUpdatedTime | date: 'dd/MM/yyyy hh:ss a' }}</td>
             <td>{{ data.lastUpdatedBy }}</td>
+            
         </tr>
+        <tr><td><input/></td></tr>
     </tbody>
 </nz-table>
 </tr>
@@ -60,5 +62,6 @@
 </nz-table>
 
 <div *ngIf="loc">
+    <app-building-create></app-building-create>
     building <button (click)="forLocation($event)"> back</button>
 </div>

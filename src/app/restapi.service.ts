@@ -14,6 +14,11 @@ import { TokenService } from './token.service';
 import { Resource } from './models/Resource';
 import { WorkOrder } from './models/WorkOrder';
 import { Inventory } from './models/Inventory';
+import { Floor } from './models/Floor';
+import { Building } from './models/Building';
+import { Room } from './models/Room';
+import { EmployeeStatus } from './models/EmployeeStatus';
+
 // import { TicketRe } from './models/TicketResp';
 
 const reqOptions = {
@@ -152,6 +157,11 @@ export class RestapiService {
   }
   public getEmployeesByTypes(usertype:string) {
     return this.httpClient.get<ApiResponse>(`${this.baseUrl}/employees/usertype/${usertype}`);
+  }
+
+  public updateEmployeeStatus(id: number , employeeStatus : EmployeeStatus) {
+    return this.httpClient.put<ApiResponse>
+    (`${this.baseUrl}/employees/status/${id}`, employeeStatus);
   }
 
   //Ticket APIS:
@@ -355,5 +365,31 @@ export class RestapiService {
 
     public getAllLocations(){
       return this.httpClient.get<ApiResponse>(`${this.baseUrl}/locations/list`)
+    }
+
+    // building
+
+    public addBuilding(building : Building)
+    {
+      return this.httpClient.post<ApiResponse>(`${this.baseUrl}/building/save`,building)
+    }
+
+
+    // floor
+    public addFloor(floor : Floor)
+    {
+      return this.httpClient.post<ApiResponse>(`${this.baseUrl}/floor/save`,floor)
+    }
+
+    //room
+    public addRoom(room : Room)
+    {
+      return this.httpClient.post<ApiResponse>(`${this.baseUrl}/room/save`,room)
+    }
+
+    //  area
+    public addArea(room : Room)
+    {
+      return this.httpClient.post<ApiResponse>(`${this.baseUrl}/area/save`,room)
     }
 }

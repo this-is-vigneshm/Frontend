@@ -16,6 +16,19 @@ export class LocationComponent implements OnInit {
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
+      locationName: [
+        null,
+        [
+          Validators.required,
+        ],
+      ],description: [
+        null,
+        [
+          Validators.required,
+        ],
+      ],
+
+
       addressLine1: [
         null,
         [

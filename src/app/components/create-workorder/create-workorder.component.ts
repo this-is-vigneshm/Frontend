@@ -345,6 +345,8 @@ export class CreateWorkorderComponent implements OnInit {
     event.preventDefault()
   }
   map : Map<string, any> = new Map<string, any>()
+
+  
   getHello(event:MouseEvent){
     event.preventDefault()
     this.close.emit(this.map.set(this.ticketid, this.id.orderNo));
