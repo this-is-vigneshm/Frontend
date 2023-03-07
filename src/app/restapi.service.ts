@@ -389,7 +389,7 @@ export class RestapiService {
       return this.httpClient.post<ApiResponse>(`${this.baseUrl}/floor/save`,floor)
     }
     public getAllFloor(){
-      return this.httpClient.get<ApiResponse>(`${this.baseUrl}/floor/list`)
+      return this.httpClient.get<ApiResponse>(`${this.baseUrl}/floorsss/list`)
     }
 
     //room
