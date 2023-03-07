@@ -1,0 +1,17 @@
+nz-form-item{
+    margin: 20px;;
+}
+
+[nz-col] {
+    padding: 20px;
+}
+
+nz-form-label{
+    width: 200px;
+    font-weight: 500;
+}
+
+
+input{
+    border-radius: 7px;
+  }

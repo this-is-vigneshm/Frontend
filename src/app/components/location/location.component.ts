@@ -4,6 +4,10 @@ import {
   UntypedFormGroup,
   Validators,
 } from '@angular/forms';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { Locations } from 'src/app/models/locations';
+import { RestapiService } from 'src/app/restapi.service';
+import { TokenService } from 'src/app/token.service';
 @Component({
   selector: 'app-location',
   templateUrl: './location.component.html',
@@ -13,10 +17,11 @@ export class LocationComponent implements OnInit {
 
   validateForm!: UntypedFormGroup;
   a:any
-
+  userData:any
   ngOnInit(): void {
+    this.userData = this.tokenService.getCurrentUserData();
     this.validateForm = this.fb.group({
-      locationName: [
+      name: [
         null,
         [
           Validators.required,
@@ -57,11 +62,12 @@ export class LocationComponent implements OnInit {
 
   }
   constructor(
-    private fb: UntypedFormBuilder
+    private fb: UntypedFormBuilder, private restApi : RestapiService, private notification : NzMessageService, private tokenService:TokenService
   ) {}
   submitForm(): void {
     if (this.validateForm.valid) {
       console.log('submitted', this.validateForm.value);
+      this.handleLocationCreate(this.validateForm.value)
     } else {
       Object.values(this.validateForm.controls).forEach((control) => {
         if (control.invalid) {
@@ -72,5 +78,22 @@ export class LocationComponent implements OnInit {
     }
   }
 
+  handleLocationCreate(location : Locations){
+    location.userId = this.userData.userId;
+    this.restApi.createLocation(location).subscribe(
+      data=>{
+        console.log('Success', data)
+        this.notification.success('Location Created Successfully')
+        this.loc = true
+      },
+      error=>{
+        console.log("Failed", error)
+        this.notification.error('Failed')
+      }
+      
+    )
+  }
+
+  loc:boolean = false
 
 }

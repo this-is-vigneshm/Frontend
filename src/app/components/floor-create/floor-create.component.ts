@@ -40,13 +40,14 @@ export class FloorCreateComponent {
       });
     }
   }
-
+list:boolean=false
   handleFloorCreation(floor : Floor)
   {
     this.restApi.addFloor(floor).subscribe(
       data=>{
         console.log("Success", data)
         this.notification.success("Floor Created Successfully")
+        this.list=true
       },
       error=>{
         console.log("Failed", error)

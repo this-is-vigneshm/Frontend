@@ -43,13 +43,14 @@ export class BuildingCreateComponent {
       });
     }
   }
-
+flo:boolean=false
   handleBuildingCreation(building : Building)
   {
     this.restApi.addBuilding(building).subscribe(
       data=>{
         console.log("Success", data)
         this.notification.success("Building Created Successfully")
+        this.flo=true
       },
       error=>{
         console.log("Failed", error)

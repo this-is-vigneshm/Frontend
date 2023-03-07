@@ -51,6 +51,8 @@ import { BuildingCreateComponent } from './components/building-create/building-c
 import { FloorCreateComponent } from './components/floor-create/floor-create.component';
 import { RoomCreateComponent } from './components/room-create/room-create.component';
 import { AreaCreateComponent } from './components/area-create/area-create.component';
+import { BuildingListComponent } from './components/building-list/building-list.component';
+import { FloorListComponent } from './components/floor-list/floor-list.component';
 registerLocaleData(en);
 
 @NgModule({
@@ -93,7 +95,9 @@ registerLocaleData(en);
     BuildingCreateComponent,
     FloorCreateComponent,
     RoomCreateComponent,
-    AreaCreateComponent
+    AreaCreateComponent,
+    BuildingListComponent,
+    FloorListComponent,
     ],
   imports: [
     BrowserModule,

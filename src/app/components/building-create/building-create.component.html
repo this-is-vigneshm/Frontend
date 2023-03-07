@@ -1,13 +1,13 @@
-<form nz-form [formGroup]="validateForm"  (ngSubmit)="submitForm()">
+<form nz-form [formGroup]="validateForm"  (ngSubmit)="submitForm()" *ngIf="!flo">
     <nz-form-item>
-      <nz-form-label [nzSpan]="7" nzRequired>Building Name</nz-form-label>
-      <nz-form-control [nzSpan]="12" nzErrorTip="Please Enter  Valid Building Name">
+      <nz-form-label [nzSm]="14" [nzXs]="24"  nzRequired>Building Name</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24"  nzErrorTip="Please Enter  Valid Building Name">
         <input nz-input formControlName="name" placeholder="name" />
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
-      <nz-form-label [nzSpan]="7" nzRequired>Location Name</nz-form-label>
-      <nz-form-control [nzSpan]="12" nzErrorTip="Please Enter  Valid Location Name">
+      <nz-form-label [nzSm]="14" [nzXs]="24"  nzRequired>Location Name</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please Enter  Valid Location Name">
         <input nz-input formControlName="locationName" placeholder="locationName" />
       </nz-form-control>
     </nz-form-item>
@@ -17,3 +17,6 @@
         </nz-form-control>
       </nz-form-item>
   </form>
+  <div *ngIf="flo">
+    <app-building-list></app-building-list>
+  </div>

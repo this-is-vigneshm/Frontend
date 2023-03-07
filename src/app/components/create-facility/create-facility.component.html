@@ -93,7 +93,8 @@
     <nz-form-item>
       <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="Location" nzRequired
       >Add Location</nz-form-label
-    ><button nz-button nzType="primary" [nzSize]="size" nzShape="circle" (click)="forLocation($event)"><span nz-icon nzType="plus"></span></button>
+    > 
+    <button nz-button nzType="primary" [nzSize]="size" nzShape="circle" (click)="forLocation($event)" style="margin-top: 5px;"><span nz-icon nzType="plus"></span></button>
     </nz-form-item>
 
 <div *ngIf="loc">

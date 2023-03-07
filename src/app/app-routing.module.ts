@@ -33,6 +33,8 @@ import { BuildingCreateComponent } from './components/building-create/building-c
 import { FloorCreateComponent } from './components/floor-create/floor-create.component';
 import { RoomCreateComponent } from './components/room-create/room-create.component';
 import { AreaCreateComponent } from './components/area-create/area-create.component';
+import { BuildingListComponent } from './components/building-list/building-list.component';
+import { FloorListComponent } from './components/floor-list/floor-list.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -71,6 +73,8 @@ const routes: Routes = [
   {path:'building-create', component:BuildingCreateComponent},
   {path:'room-create', component:RoomCreateComponent},
   {path:'area-create', component:AreaCreateComponent},
+  {path:'building-list',component: BuildingListComponent},
+  {path:'floor-list',component: FloorListComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/' },
 ];

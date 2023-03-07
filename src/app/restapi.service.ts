@@ -18,6 +18,7 @@ import { Floor } from './models/Floor';
 import { Building } from './models/Building';
 import { Room } from './models/Room';
 import { EmployeeStatus } from './models/EmployeeStatus';
+import { Locations } from './models/locations';
 
 // import { TicketRe } from './models/TicketResp';
 
@@ -363,6 +364,10 @@ export class RestapiService {
     }
     //// locations
 
+    public createLocation(location: Locations){
+      return this.httpClient.post<ApiResponse>(`${this.baseUrl}/locations/save`,location);
+    }
+
     public getAllLocations(){
       return this.httpClient.get<ApiResponse>(`${this.baseUrl}/locations/list`)
     }
@@ -373,12 +378,18 @@ export class RestapiService {
     {
       return this.httpClient.post<ApiResponse>(`${this.baseUrl}/building/save`,building)
     }
+    public getAllBuilding(){
+      return this.httpClient.get<ApiResponse>(`${this.baseUrl}/building/list`)
+    }
 
 
     // floor
     public addFloor(floor : Floor)
     {
       return this.httpClient.post<ApiResponse>(`${this.baseUrl}/floor/save`,floor)
+    }
+    public getAllFloor(){
+      return this.httpClient.get<ApiResponse>(`${this.baseUrl}/floor/list`)
     }
 
     //room
