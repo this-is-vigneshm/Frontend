@@ -131,15 +131,6 @@ export class TicketsComponent implements OnInit{
       filterFn: null
     },
     {
-      name: 'Expected Completion Time',
-      sortOrder: null,
-      sortFn: (a: TicketResp, b: TicketResp) => a.expectedCompletionTime - b.expectedCompletionTime ,
-      sortDirections: ['ascend', 'descend', null],
-      filterMultiple: true,
-      listOfFilter: [],
-      filterFn: null
-    },
-    {
       name: 'work',
       sortOrder: null,
       sortFn: null,
@@ -185,6 +176,15 @@ export class TicketsComponent implements OnInit{
       sortFn: (a: TicketResp, b: TicketResp) => a.updatedBy.localeCompare(b.updatedBy),
       filterMultiple: false,
       listOfFilter:[],
+      filterFn: null
+    },
+    {
+      name: 'Expected Completion Time',
+      sortOrder: null,
+      sortFn: (a: TicketResp, b: TicketResp) => a.expectedCompletionTime - b.expectedCompletionTime ,
+      sortDirections: ['ascend', 'descend', null],
+      filterMultiple: true,
+      listOfFilter: [],
       filterFn: null
     },
     {

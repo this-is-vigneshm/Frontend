@@ -1,46 +1,46 @@
+<div>
+  <form nz-form [formGroup]="form" nzLayout="horizontal" (ngSubmit)="submitForm()" style="margin-right: 15%;">
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor=""><span style="color: rgb(0, 102, 255);">OrderNo</span> </nz-form-label>
+      <nz-form-control [nzSm]="12" [nzXs]="24" nzErrorTip="Please Choose the OrderNo">
+        <input nz-input id="orderNo" value="{{workOrderData.orderNo}}" disabled="true">
+      </nz-form-control>
+    </nz-form-item>
+    <!-- <span style="color: rgb(0, 102, 255);">Order No</span> -->
 
-
-  <nz-form-item>
-
-    <form  nz-form [formGroup]="form" nzLayout="horizontal" (ngSubmit)="submitForm()">
-      <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24"  nzRequired nzFor="">OrderNo</nz-form-label>
-        <nz-form-control [nzSm]="18" [nzXs]="24" nzErrorTip="Please Choose the OrderNo">
-          <input  id="orderNo" 
-        value="{{workOrderData.orderNo}}" disabled = "true">
-        </nz-form-control>
-      </nz-form-item>
-
-      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="">Status</nz-form-label>
-      <nz-select nz-input formControlName="status" id="userId" nzShowSearch nzAllowClear  nzPlaceHolder="Update workOrder Status">
-          <nz-option *ngFor="let status of statusList" [nzLabel]="status" [nzValue]="status" ></nz-option>
-         </nz-select>
-        <nz-form-item nz-row class="register-area">
-        </nz-form-item>
-   
-  <nz-form-item>
-    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="">Name</nz-form-label>
-    <nz-form-control [nzSm]="18" [nzXs]="24" nzErrorTip="">
-      <input  id="name" 
-        nzPlaceHolder="Edit an Name" value="{{workOrderData.name}}" disabled = "true">
-    </nz-form-control>
-  </nz-form-item>
-
-
-  
-  <nz-form-item>
-    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="userId">User Id</nz-form-label>
-    <nz-form-control [nzSm]="18" [nzXs]="24"nzErrorTip="Please Choose the User Id">
-      <nz-select nz-input formControlName="userId" id="userId" nzShowSearch nzAllowClear
-        nzPlaceHolder="Select an userId">
-        <nz-option *ngFor="let employee of employees" [nzLabel]="employee.id "
-          [nzValue]="employee.id">{{employee.id}}</nz-option>
+    <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor=""><span style="color: rgb(0, 102, 255);">Status</span></nz-form-label>
+    <nz-form-control [nzSm]="12" [nzXs]="24" nzErrorTip="Please Choose the Status">
+      <nz-select nz-input formControlName="status" id="userId" nzShowSearch nzAllowClear
+        nzPlaceHolder="Update workOrder Status">
+        <nz-option *ngFor="let status of statusList" [nzLabel]="status" [nzValue]="status"></nz-option>
       </nz-select>
     </nz-form-control>
-  </nz-form-item>
+    </nz-form-item>
 
-  <nz-form-item>     
-    <button nz-button nzType="primary">Update Status</button>
-  </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor=""><span style="color: rgb(0, 102, 255);">Name</span></nz-form-label>
+      <nz-form-control [nzSm]="12" [nzXs]="24" nzErrorTip="">
+        <input nz-input id="name" nzPlaceHolder="Edit an Name" value="{{workOrderData.name}}" disabled="true">
+      </nz-form-control>
+    </nz-form-item>
 
-</form>
+
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="userId"><span style="color: rgb(0, 102, 255);">User Id</span></nz-form-label>
+      <nz-form-control [nzSm]="12" [nzXs]="24" nzErrorTip="Please Choose the User Id">
+        <nz-select nz-input formControlName="userId" id="userId" nzShowSearch nzAllowClear
+          nzPlaceHolder="Select an userId">
+          <nz-option *ngFor="let employee of employees" [nzLabel]="employee.id "
+            [nzValue]="employee.id">{{employee.id}}</nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item style="margin-left: 35%;">
+      <button nz-button nzType="primary">Update Status</button>
+    </nz-form-item>
+
+  </form>
+</div>

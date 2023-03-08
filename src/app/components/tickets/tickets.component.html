@@ -6,7 +6,7 @@ margin-left: -66%;">Queues</span>
 
 <input nz-input id="search-bar" type="text" (change)="filterData($event)" placeholder="Search Tickets" />
 
-<button id="create-ticket-button" nz-button nzType="primary" (click)="showModalMiddle()"><span nz-icon nzType="plus" nzTheme="outline"></span>Create a Ticket</button>
+<button id="create-ticket-button" nz-button nzType="primary" (click)="showModalMiddle()"><span nz-icon nzType="plus" nzTheme="outline"></span></button>
 <nz-modal [nzStyle]="{ top: '20px' , width:'60%'}" [(nzVisible)]="isVisibleMiddle" nzTitle="Create a Service Ticket"
   nzCentered (nzOnCancel)="handleCreateTicketCancel()" (nzOnOk)="handleCreateTicketOk()">
   <ng-container *nzModalContent>
@@ -47,7 +47,6 @@ margin-left: -66%;">Queues</span>
           </nz-select>
         </td>
         <td>{{ data.employeeName }} ({{data.employeeMail}})</td>
-        <td>{{ data.expectedCompletionTime | date: 'dd/MM/yyyy hh:ss a' }}</td>
         <td>{{data.workOrderId}}</td>
         <td>
           <button  nz-button [nzSize]="size"  nzShape="circle" style=" border-color: rgb(224, 228, 234); background-color: #5cb85c; border-radius: 5px;"
@@ -73,6 +72,7 @@ margin-left: -66%;">Queues</span>
       <td>{{ data.createdBy }}</td>
       <td>{{ data.updatedTime | date: 'dd/MM/yyyy hh:ss a' }}</td>
       <td>{{ data.updatedBy }}</td>
+      <td>{{ data.expectedCompletionTime | date: 'dd/MM/yyyy hh:ss a' }}</td>
       <td>{{ data.timeTaken / 3600000 }}</td>
     </tr>
   </tbody>
