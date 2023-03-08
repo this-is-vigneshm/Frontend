@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
+import { NzButtonSize } from 'ng-zorro-antd/button';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
 import { NzTableFilterFn, NzTableFilterList, NzTableSortFn, NzTableSortOrder } from 'ng-zorro-antd/table';
@@ -28,6 +29,8 @@ export class InventoryListComponent {
   selectedInventory! : Inventory | null ;
 
   searchString : any ;
+
+  size: NzButtonSize='small'
 
   ngOnInit(): void {
     if(localStorage.getItem("access_token") === null){

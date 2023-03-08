@@ -1,76 +1,76 @@
 <div id="flex">
-    <div>
-      <form nz-form style="width: 1200%">
-        <nz-form-item>
-          <nz-form-label [nzSpan]="5">Order No</nz-form-label>
-          <nz-form-control [nzSpan]="12">
-            <input nz-input value="{{ workOrder[0].orderNo }}" />
-          </nz-form-control>
-        </nz-form-item>
-        <nz-form-item>
-          <nz-form-label [nzSpan]="5">Work Order Code</nz-form-label>
-          <nz-form-control [nzSpan]="12">
-            <input nz-input value="{{ workOrder[0].workOrderCode }}" />
-          </nz-form-control>
-        </nz-form-item>
-        <nz-form-item>
-          <nz-form-label [nzSpan]="5">Description</nz-form-label>
-          <nz-form-control [nzSpan]="12">
-            <input nz-input value="{{ workOrder[0].status }}" />
-          </nz-form-control>
-        </nz-form-item>
-        <nz-form-item>
-          <nz-form-label [nzSpan]="5">Status</nz-form-label>
-          <nz-form-control [nzSpan]="12">
-            <input nz-input value="{{ workOrder[0].name }}" />
-          </nz-form-control>
-        </nz-form-item>
-        <nz-form-item>
-          <nz-form-label [nzSpan]="5">Name</nz-form-label>
-          <nz-form-control [nzSpan]="12">
-            <input nz-input value="{{ workOrder[0].emailId }}" />
-          </nz-form-control>
-        </nz-form-item>
-        <nz-form-item>
-          <nz-form-label [nzSpan]="5">Email</nz-form-label>
-          <nz-form-control [nzSpan]="12">
-            <input nz-input value="{{ workOrder[0].phoneNumber }}" />
-          </nz-form-control>
-        </nz-form-item>
-        <nz-form-item>
-          <nz-form-label [nzSpan]="5">Phone Number</nz-form-label>
-          <nz-form-control [nzSpan]="12">
-            <input nz-input value="{{ workOrder[0].description }}" />
-          </nz-form-control>
-        </nz-form-item>
-        <nz-form-item>
-          <nz-form-label [nzSpan]="5">Work Subject</nz-form-label>
-          <nz-form-control [nzSpan]="12">
-            <input nz-input value="{{ workOrder[0].workSubject }}" />
-          </nz-form-control>
-        </nz-form-item>
-        <nz-form-item>
-          <nz-form-label [nzSpan]="5">Task Details</nz-form-label>
-          <nz-form-control [nzSpan]="12">
-            <input nz-input value="{{ workOrder[0].taskDetails }}" />
-          </nz-form-control>
-        </nz-form-item>
-        <nz-form-item>
-          <nz-form-label [nzSpan]="5">Date</nz-form-label>
-          <nz-form-control [nzSpan]="12">
-            <input nz-input value="{{ workOrder[0].date }}" />
-          </nz-form-control>
-        </nz-form-item>
-        <nz-form-item>
-          <nz-form-label [nzSpan]="5">Work Order Cost</nz-form-label>
-          <nz-form-control [nzSpan]="12">
-            <input nz-input value="{{ workOrder[0].workOrderCost }}" />
-          </nz-form-control>
-        </nz-form-item>
-      </form>
-    </div>
-  
-    <div style="width: 80%; margin-left:40% ; margin-top:20%; ">
-      <img [src]="imageToShow" style="width: 70%;  border:1px solid;border-color: rgb(55, 83, 239)" />
-    </div>
+  <div>
+    <form nz-form style="width: 1200%">
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" [nzSpan]="5"> <span style="color: rgb(0, 102, 255);">Order No</span></nz-form-label>
+        <nz-form-control [nzSpan]="12">
+          <input nz-input value="{{ workOrder[0].orderNo }}" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" [nzSpan]="5"><span style="color: rgb(0, 102, 255);">WorkOrder Code</span></nz-form-label>
+        <nz-form-control [nzSpan]="12">
+          <input nz-input value="{{ workOrder[0].workOrderCode }}" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" [nzSpan]="5"><span style="color: rgb(0, 102, 255);">Description</span></nz-form-label>
+        <nz-form-control [nzSpan]="12">
+          <input nz-input value="{{ workOrder[0].description}}" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" [nzSpan]="5"><span style="color: rgb(0, 102, 255);">Status</span></nz-form-label>
+        <nz-form-control [nzSpan]="12">
+          <input nz-input value="{{ workOrder[0].status}}" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" [nzSpan]="5"><span style="color: rgb(0, 102, 255);">Workorder Created By</span></nz-form-label>
+        <nz-form-control [nzSpan]="12">
+          <input nz-input value="{{ workOrder[0].name }}" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24"  [nzSpan]="5"><span style="color: rgb(0, 102, 255);">Creater EmailId</span></nz-form-label>
+        <nz-form-control [nzSpan]="12">
+          <input nz-input value="{{ workOrder[0].emailId}}" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24"[nzSpan]="5"><span style="color: rgb(0, 102, 255);">Creater Tele.No</span></nz-form-label>
+        <nz-form-control [nzSpan]="12">
+          <input nz-input value="{{ workOrder[0].phoneNumber}}" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24"[nzSpan]="5"><span style="color: rgb(0, 102, 255);">Work Subject</span></nz-form-label>
+        <nz-form-control [nzSpan]="12">
+          <input nz-input value="{{ workOrder[0].workSubject }}" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" [nzSpan]="5"><span style="color: rgb(0, 102, 255);">Task Details</span></nz-form-label>
+        <nz-form-control [nzSpan]="12">
+          <input nz-input value="{{ workOrder[0].taskDetails }}" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24"[nzSpan]="5"><span style="color: rgb(0, 102, 255);">Date</span></nz-form-label>
+        <nz-form-control [nzSpan]="12">
+          <input nz-input value="{{ workOrder[0].date }}" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24"  [nzSpan]="5"><span style="color: rgb(0, 102, 255);">WorkOrder Cost</span></nz-form-label>
+        <nz-form-control [nzSpan]="12">
+          <input nz-input value="{{ workOrder[0].workOrderCost }}" />
+        </nz-form-control>
+      </nz-form-item>
+    </form>
   </div>
+
+  <div style="width: 80%; margin-left:40% ; margin-top:20%; ">
+    <img [src]="imageToShow" style="width: 70%;  border:1px solid;border-color: rgb(55, 83, 239)" />
+  </div>
+</div>

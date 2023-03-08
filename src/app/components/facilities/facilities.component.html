@@ -6,7 +6,7 @@ margin-left: -66%;">Facilities</span>
 
 <input nz-input id="search-bar" type="text" (change)="filterData($event)" placeholder="Search a Facility" />
 <button nz-button nzType="primary" id="create-faclity-button" (click)="showCreateFacilityModal()"><span nz-icon
-        nzType="plus" nzTheme="outline"></span>Add Facility</button>
+    nzType="plus" nzTheme="outline"></span></button>
 
 <nz-modal [nzStyle]="{ top: '20px' , width:'60%'}" [(nzVisible)]="isCreateFacilityVisible" nzTitle="Create an Ticket"
     nzCentered (nzOnCancel)="handleCreateFacilityCancel()" (nzOnOk)="handleCreateFacilityOk()">
@@ -42,13 +42,20 @@ margin-left: -66%;">Facilities</span>
                     ", " +data.postalCode + ", " + data.country}}
                 </td>
                 <td>
-                    <button nz-button>
-                        <span nz-icon nzType="delete" nzTheme="twotone" [nzTwotoneColor]="'red'" nz-tooltip
+                   <!-- <button nz-button [nzSize]="size" nzShape="circle" style=" border-color: rgb(224, 228, 234); background-color: #d9534f; border-radius: 5px;">
+                        <span nz-icon nzType="delete" nzTheme="twotone" [nzTwotoneColor]="'white'" nz-tooltip
                             [nzTooltipTitle]="'Delete Facility'" [nzTooltipColor]="'red'" nz-popconfirm
                             nzPopconfirmTitle="Proceed to update?"
                             (nzOnConfirm)="handleDeleteFacility(data.facilityId)">
                         </span>
-                    </button>
+                    </button> -->
+
+             <button nz-button [nzSize]="size" nzShape="circle"
+             style=" border-color: rgb(224, 228, 234); background-color: #d9534f; border-radius: 5px;"
+             nz-button nz-popconfirm nzPopconfirmTitle="Sure to Delete?" (nzOnConfirm)="handleDeleteFacility(data.facilityId)" nz-tooltip
+             [nzTooltipTitle]="'Delete Facility'" [nzTooltipColor]="'red'">
+               <span nz-icon nzType="delete" nzTheme="twotone" [nzTwotoneColor]="'white'"></span>
+             </button>
                 </td>
             </tr>
             <tr [nzExpand]="data.expand">

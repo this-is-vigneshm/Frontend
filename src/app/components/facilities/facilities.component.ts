@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NzButtonSize } from 'ng-zorro-antd/button';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzTableFilterFn, NzTableFilterList, NzTableSortFn, NzTableSortOrder } from 'ng-zorro-antd/table';
 import { Facility } from 'src/app/models/Facility';
@@ -45,6 +46,8 @@ export class FacilitiesComponent implements OnInit{
 
   expandedRows : any = [];
 
+  size: NzButtonSize='small'
+  
   searchResults:any=[]
 
   ngOnInit(): void {

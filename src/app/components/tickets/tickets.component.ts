@@ -2,6 +2,7 @@ import { NonNullAssert } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { NzButtonSize } from 'ng-zorro-antd/button';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzTableFilterFn, NzTableFilterList, NzTableSortFn, NzTableSortOrder } from 'ng-zorro-antd/table';
 import {  TicketResp } from 'src/app/models/TicketResp';
@@ -39,6 +40,8 @@ export class TicketsComponent implements OnInit{
   tickets: TicketResp[] =[];
 
   userData: any ;
+
+  size: NzButtonSize='small'
 
   searchResults:any=[]
 

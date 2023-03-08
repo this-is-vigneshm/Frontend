@@ -18,6 +18,7 @@ import { Resource } from 'src/app/models/Resource';
 // import { Employee } from 'src/app/models/Employee';
 import { RestapiService } from 'src/app/restapi.service';
 import { TokenService } from 'src/app/token.service';
+import { differenceInCalendarDays, setHours } from 'date-fns';
 enableProdMode();
 
 interface ColumnItem {
@@ -65,9 +66,14 @@ export class CreateresourceComponent {
     { name: 'Quantity' },
   ];
 
-  disabledStartDate = (current: Date): boolean => {
-    return current <= new Date();
-  };
+  today = new Date();
+  disabledDate = (current: Date): boolean =>
+  differenceInCalendarDays(current, this.today) < 0;
+
+
+  startDate = new Date()
+  disabledEndDate = (current: Date): boolean =>
+  differenceInCalendarDays(current, this.startDate) < 0;
 
   constructor(
     private fb: UntypedFormBuilder,

@@ -95,10 +95,16 @@ margin-left: -42%;">Users</span>
         <td>{{ data.username}}</td>
         <td>{{ data.phoneNumber }}</td>
         <td>{{ data.department }}</td>
-        <td><button nz-button nz-popconfirm nzPopconfirmTitle="Sure you want to inactive an user ?"
+
+
+        <!-- <button nz-button [nzSize]="size"  nzShape="circle" style=" border-color: rgb(224, 228, 234); background-color: #5cb85c; border-radius: 5px;" (click)="showModal(data)"><span nz-icon nzType="edit" [nzTwotoneColor]="'white'"  nzTheme="twotone" nz-tooltip
+          [nzTooltipTitle]="'Update WorkOrder'" [nzTooltipColor]="'green'" nzIconfont="create-sharp"
+          ></span></button> -->
+
+        <td><button nz-button [nzSize]="size"  nzShape="circle" style=" border-color: rgb(224, 228, 234); background-color: #5cb85c; border-radius: 5px;" nz-popconfirm nzPopconfirmTitle="Sure you want to inactive an user ?"
           
           (nzOnConfirm)="Active(data.id)">
-          <span nz-icon nzType="edit" nzTheme="twotone"></span></button></td>
+          <span nz-icon nzType="edit" nzTheme="twotone" [nzTwotoneColor]="'white'"></span></button></td>
         <td>
       </tr>
     

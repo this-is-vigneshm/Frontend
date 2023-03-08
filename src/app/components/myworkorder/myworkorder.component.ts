@@ -9,6 +9,7 @@ import { RestapiService } from 'src/app/restapi.service';
 import { TokenService } from 'src/app/token.service';
 import { WorkOrderResp } from 'src/app/models/WorkOrderResp';
 import { outputAst } from '@angular/compiler';
+import { NzButtonSize } from 'ng-zorro-antd/button';
 
 interface ColumnItem {
   name: string;
@@ -41,6 +42,8 @@ export class MyworkorderComponent implements OnInit{
   Myworkorder: WorkOrderResp[] =[];
 
   userData: any ;
+
+  size: NzButtonSize='small'
 
 
   searchResults:any=[]

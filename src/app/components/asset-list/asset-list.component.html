@@ -8,9 +8,9 @@
 <input nz-input id="search-bar" type="text" [(ngModel)]="searchString" (change)="filterAssets($event)"
   placeholder="Search Assets" />
 
-<button nz-button nzType="primary" id="create-asset-button" (click)="showModalMiddle()">
-  <span nz-icon nzType="plus" nzTheme="outline"></span>Create Assets
-</button>
+  <button nz-button nzType="primary" id="create-asset-button" (click)="showModalMiddle()">
+    <span nz-icon nzType="plus" nzTheme="outline"></span>
+  </button>
 
 <nz-modal [nzStyle]="{ top: '20px', width: '45%' }" [nzWidth]="200" [(nzVisible)]="isVisibleMiddle"
   nzTitle="Create an Asset" nzCentered (nzOnCancel)="handleCreateAssetCancel()" (nzOnOk)="handleCreateAssetOk()">
@@ -52,20 +52,23 @@
         <td>{{ data.location.facilityCode }}</td>
 
         <td>
-          <button id="asset-update-button" nz-button (click)="showCreateAssetModal(data)" nz-tooltip
-            [nzTooltipTitle]="'Create Ticket'" [nzTooltipColor]="'blue'">
-            <span nz-icon nzType="plus-circle" nzTheme="twotone"></span>
+          <button nz-button [nzSize]="size"  nzShape="circle" style=" border-color: rgb(224, 228, 234); background-color: #f0ad4e; border-radius: 5px;"  
+          id="asset-update-button" nz-button (click)="showCreateAssetModal(data)" nz-tooltip
+            [nzTooltipTitle]="'Create Ticket'" [nzTooltipColor]="'orange'">
+            <span nz-icon nzType="plus-circle" nzTheme="twotone" [nzTwotoneColor]="'orange'"></span>
           </button>
 
-          <button id="asset-update-button" nz-button nz-popconfirm nzPopconfirmTitle="Proceed to update?"
+          <button  nz-button [nzSize]="size"  nzShape="circle" style=" border-color: rgb(224, 228, 234); background-color: #5cb85c; border-radius: 5px;"
+          id="asset-update-button" nz-button nz-popconfirm nzPopconfirmTitle="Proceed to update?"
             (nzOnConfirm)="handleUpdateAsset(data)" nz-tooltip [nzTooltipTitle]="'Update Asset'"
             [nzTooltipColor]="'green'">
-            <span nz-icon nzType="up-circle" nzTheme="twotone"></span>
+            <span nz-icon nzType="edit" nzTheme="twotone" [nzTwotoneColor]="'white'"></span>
           </button>
 
-          <button id="asset-delete-button" nz-button nz-popconfirm nzPopconfirmTitle="Sure to Delete?"
+          <button nz-button [nzSize]="size" nzShape="circle" style=" border-color: rgb(224, 228, 234); background-color: #d9534f; border-radius: 5px;"
+           id="asset-delete-button" nz-button nz-popconfirm nzPopconfirmTitle="Sure to Delete?"
             (nzOnConfirm)="handleDelete(data.id)" nz-tooltip [nzTooltipTitle]="'Delete Asset'" [nzTooltipColor]="'red'">
-            <span nz-icon nzType="delete" nzTheme="twotone" [nzTwotoneColor]="'red'"></span>
+            <span nz-icon nzType="delete" nzTheme="twotone" [nzTwotoneColor]="'white'"></span>
           </button>
         </td>
       </tr>

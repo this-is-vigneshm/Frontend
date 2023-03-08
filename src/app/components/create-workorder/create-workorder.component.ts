@@ -11,6 +11,7 @@ import { NzModalService } from 'ng-zorro-antd/modal';
 import { Employee } from 'src/app/models/Employee';
 import { Resource } from 'src/app/models/Resource';
 import { NzTableFilterFn, NzTableFilterList, NzTableSortFn, NzTableSortOrder } from 'ng-zorro-antd/table';
+import { differenceInCalendarDays, setHours } from 'date-fns';
 
 
 
@@ -351,6 +352,9 @@ export class CreateWorkorderComponent implements OnInit {
     event.preventDefault()
     this.close.emit(this.map.set(this.ticketid, this.id.orderNo));
   }
+  today = new Date();
+  disabledDate = (current: Date): boolean =>
+    differenceInCalendarDays(current, this.today) < 0
   
 }
 

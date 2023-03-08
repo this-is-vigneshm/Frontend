@@ -6,6 +6,7 @@ import { Employee } from 'src/app/models/Employee';
 import { RestapiService } from 'src/app/restapi.service';
 import { TokenService } from 'src/app/token.service';
 import { EmployeeStatus } from 'src/app/models/EmployeeStatus';
+import { NzButtonSize } from 'ng-zorro-antd/button';
 
 
 
@@ -27,6 +28,8 @@ export class EmployeeListComponent implements OnInit {
   options : string = ''
   userData:any;
   expand = false
+
+  size: NzButtonSize='small'
 
   constructor(private restApiService: RestapiService, private notification: NzMessageService, private router: Router, private tokenService: TokenService) {
 

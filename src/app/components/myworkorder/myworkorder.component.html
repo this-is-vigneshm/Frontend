@@ -27,17 +27,16 @@
         <td>{{ data.emailId }}</td>
         <td>{{ data.phoneNumber }}</td>
         <td>
-          <button nz-button style=" border-color: rgb(224, 228, 234); background-color: white; border-radius: 5px;" (click)="showModal(data)"><span nz-icon nzType="edit" nzTheme="outline" nz-tooltip
-            [nzTooltipTitle]="'Update WorkOrder'" [nzTooltipColor]="'Green'" nz-popconfirm
-            nzPopconfirmTitle="Proceed to Update"
+         <button nz-button [nzSize]="size"  nzShape="circle" style=" border-color: rgb(224, 228, 234); background-color: #5cb85c; border-radius: 5px;" (click)="showModal(data)"><span nz-icon nzType="edit" [nzTwotoneColor]="'white'"  nzTheme="twotone" nz-tooltip
+            [nzTooltipTitle]="'Update WorkOrder'" [nzTooltipColor]="'green'" nzIconfont="create-sharp"
             ></span></button>
-         
-          <button style=" border-color: rgb(224, 228, 234); background-color: white; border-radius: 5px;"><span nz-icon nzType="delete" nzTheme="twotone" [nzTwotoneColor]="'red'" nz-tooltip
+
+          <button nz-button [nzSize]="size" nzShape="circle" style=" border-color: rgb(224, 228, 234); background-color: #d9534f; border-radius: 5px;"><span nz-icon nzType="delete" nzTheme="twotone" [nzTwotoneColor]="'white'" nz-tooltip
             [nzTooltipTitle]="'Delete WorkOrder'" [nzTooltipColor]="'red'" nz-popconfirm
             nzPopconfirmTitle="Proceed to Delete"
             (nzOnConfirm)="handleDeleteWo(data.orderNo)"></span></button>
-            <button style=" border-color: rgb(224, 228, 234); background-color: white; border-radius: 5px;"    (click)="viewPage(data.orderNo)"><span nz-icon nzType="eye" nzTheme="twotone" ></span></button>
-            
+
+          <button nz-button [nzSize]="size"  nzShape="circle" style=" border-color: rgb(224, 228, 234); background-color: #f0ad4e; border-radius: 5px;"    (click)="viewPage(data.orderNo)"><span nz-icon nzType="eye" nzTheme="twotone" nzTwotoneColor="white" ></span></button>
         </td>
       </tr>
        <tr [nzExpand]="data.expand">

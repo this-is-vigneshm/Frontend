@@ -17,6 +17,8 @@ import { Employee } from 'src/app/models/Employee';
 import { Resource } from 'src/app/models/Resource';
 import { RestapiService } from 'src/app/restapi.service';
 import { TokenService } from 'src/app/token.service';
+import { differenceInCalendarDays, setHours } from 'date-fns';
+
 
 enableProdMode();
 
@@ -80,13 +82,14 @@ export class ResourceplannerComponent implements OnInit {
 
   selectedUser: any;
   selectedItem: any;
-  disabledStartDate = (current: Date): boolean => {
-    return current <= new Date();
-  };
+  today = new Date();
+  disabledDate = (current: Date): boolean =>
+  differenceInCalendarDays(current, this.today) < 0;
 
-  disabledEndDate = (current: Date): boolean => {
-    return current <= new Date();
-  };
+
+  startDate = new Date()
+  disabledEndDate = (current: Date): boolean =>
+  differenceInCalendarDays(current, this.startDate) < 0;
   constructor(
     private fb: UntypedFormBuilder,
     private notification: NzMessageService,

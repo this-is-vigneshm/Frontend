@@ -90,19 +90,11 @@
             Resource Schedule
           </nz-form-label>
           <nz-form-control nzErrorTip="Please Enter the Resource Schedule">
-            <nz-date-picker
-              style="right: 230px"
-              formControlName="startDate"
-              placeholder="Start Date"
-              [nzDisabledDate]="disabledStartDate"
-            >
-            </nz-date-picker>
-            <nz-date-picker
-              style="right: 200px"
-              formControlName="endDate"
-              placeholder="End Date"
-              [nzDisabledDate]="disabledStartDate"
-            ></nz-date-picker>
+            <nz-date-picker style="right: 230px" formControlName="startDate" placeholder="Start Date" [(ngModel)]="startDate"
+            [nzDisabledDate]="disabledDate">
+          </nz-date-picker>
+          <nz-date-picker style="right: 200px" formControlName="endDate" placeholder="End Date" 
+            [nzDisabledDate]="disabledEndDate"></nz-date-picker>
           </nz-form-control>
         </nz-form-item>
         <nz-form-item>
