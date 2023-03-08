@@ -22,13 +22,13 @@
       
     </nz-select>
     <div *ngIf="options=='all'">
-      <input type="Text" placeholder="Search Document" style="width: 200px;" (change)="filterData1(options, $event)" />
+      <input nz-input type="Text" placeholder="Search Document" style="width: 200px;" (change)="filterData1(options, $event)" />
     </div>
     <div *ngIf="options=='name'">
-      <input type="Text" placeholder="Search Document" style="width: 200px;" (change)="filterData1(options,$event)" />
+      <input nz-input type="Text" placeholder="Search Document" style="width: 200px;" (change)="filterData1(options,$event)" />
     </div>
     <div *ngIf="options=='assetname'">
-      <input type="Text" placeholder="Search Document" style="width: 200px;" (change)="filterData1(options,$event)" />
+      <input nz-input type="Text" placeholder="Search Document" style="width: 200px;" (change)="filterData1(options,$event)" />
     </div>
 
   </nz-input-group>

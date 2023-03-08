@@ -19,16 +19,16 @@
       
     </nz-select>
     <div *ngIf="options=='all'">
-      <input type="Text" placeholder="Search an asset" style="width: 200px;" (change)="filterdata1(options, $event)" />
+      <input nz-input type="Text" placeholder="Search an asset" style="width: 200px;" (change)="filterdata1(options, $event)" />
     </div>
     <div *ngIf="options=='name'">
-      <input type="Text" placeholder="Search an asset" style="width: 200px;" (change)="filterdata1(options,$event)" />
+      <input nz-input type="Text" placeholder="Search an asset" style="width: 200px;" (change)="filterdata1(options,$event)" />
     </div>
     <div *ngIf="options=='facilityName'">
-      <input type="Text" placeholder="Search an asset" style="width: 200px;" (change)="filterdata1(options,$event)" />
+      <input nz-input type="Text" placeholder="Search an asset" style="width: 200px;" (change)="filterdata1(options,$event)" />
     </div>
     <div *ngIf="options=='facilityCode'">
-      <input type="Text" placeholder="Search an asset" style="width: 200px;" (change)="filterdata1(options,$event)" />
+      <input nz-input type="Text" placeholder="Search an asset" style="width: 200px;" (change)="filterdata1(options,$event)" />
     </div>
   </nz-input-group>
 

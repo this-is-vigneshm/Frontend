@@ -20,19 +20,19 @@ margin-left: -66%;">Inventory</span>
       
     </nz-select>
     <div *ngIf="options=='all'">
-      <input type="Text" placeholder="search Workorder" style="width: 200px;" (change)="filterData1(options, $event)" />
+      <input nz-input type="Text" placeholder="search Workorder" style="width: 200px;" (change)="filterData1(options, $event)" />
     </div>
     <div *ngIf="options=='name'">
-      <input type="Text" placeholder="search Workorder" style="width: 200px;" (change)="filterData1(options,$event)" />
+      <input nz-input type="Text" placeholder="search Workorder" style="width: 200px;" (change)="filterData1(options,$event)" />
     </div>
     <div *ngIf="options=='code'">
-      <input type="Text" placeholder="search Workorder" style="width: 200px;" (change)="filterData1(options,$event)" />
+      <input nz-input type="Text" placeholder="search Workorder" style="width: 200px;" (change)="filterData1(options,$event)" />
     </div>
     <div *ngIf="options=='quantity'">
-      <input type="Text" placeholder="search Workorder" style="width: 200px;" (change)="filterData1(options,$event)" />
+      <input nz-input type="Text" placeholder="search Workorder" style="width: 200px;" (change)="filterData1(options,$event)" />
     </div>
     <div *ngIf="options=='price'">
-      <input type="Text" placeholder="search Workorder" style="width: 200px;" (change)="filterData1(options,$event)" />
+      <input nz-input type="Text" placeholder="search Workorder" style="width: 200px;" (change)="filterData1(options,$event)" />
     </div>
   </nz-input-group>
 

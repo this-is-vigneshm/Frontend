@@ -17,19 +17,19 @@ margin-left: -66%;">Facilities</span>
     <nz-option [nzLabel]="'By Facility Source'" [nzValue]="'facilitySource'" ></nz-option>
   </nz-select>
   <div *ngIf="options=='all'">
-    <input type="Text" placeholder="Search a facilities" style="width: 200px;" (change)="filterdata1(options, $event)" />
+    <input nz-input type="Text" placeholder="Search a facilities" style="width: 200px;" (change)="filterdata1(options, $event)" />
   </div>
   <div *ngIf="options=='name'">
-    <input type="Text" placeholder="Search a facilities" style="width: 200px;" (change)="filterdata1(options,$event)" />
+    <input nz-input type="Text" placeholder="Search a facilities" style="width: 200px;" (change)="filterdata1(options,$event)" />
   </div>
   <div *ngIf="options=='facilityType'">
-    <input type="Text" placeholder="Search a facilities" style="width: 200px;" (change)="filterdata1(options,$event)" />
+    <input nz-input type="Text" placeholder="Search a facilities" style="width: 200px;" (change)="filterdata1(options,$event)" />
   </div>
   <div *ngIf="options=='facilityCode'">
-    <input type="Text" placeholder="Search a facilities" style="width: 200px;" (change)="filterdata1(options,$event)" />
+    <input nz-input type="Text" placeholder="Search a facilities" style="width: 200px;" (change)="filterdata1(options,$event)" />
   </div>
   <div *ngIf="options=='facilitySource'">
-    <input type="Text" placeholder="Search a facilities" style="width: 200px;" (change)="filterdata1(options,$event)" />
+    <input nz-input type="Text" placeholder="Search a facilities" style="width: 200px;" (change)="filterdata1(options,$event)" />
   </div>
 </nz-input-group>
 <button nz-button nzType="primary" id="create-faclity-button" (click)="showCreateFacilityModal()"><span nz-icon

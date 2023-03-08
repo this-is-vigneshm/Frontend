@@ -217,6 +217,7 @@
       nzShowSearch
       nzAllowClear
       nzPlaceHolder="Select a Area/Room"
+      [ngModel]="''" (ngModelChange)="getId($event)"
     >
       <nz-option
         *ngFor="let arname of options"

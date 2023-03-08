@@ -18,16 +18,16 @@ margin-left: -55%;">WorkOrder</span>
     
   </nz-select>
   <div *ngIf="options=='all'">
-    <input type="Text" placeholder="search Workorder" style="width: 200px;" (change)="filterData1(options, $event)" />
+    <input nz-input type="Text" placeholder="search Workorder" style="width: 200px;" (change)="filterData1(options, $event)" />
   </div>
   <div *ngIf="options=='orderno'">
-    <input type="Text" placeholder="search Workorder" style="width: 200px;" (change)="filterData1(options,$event)" />
+    <input nz-input type="Text" placeholder="search Workorder" style="width: 200px;" (change)="filterData1(options,$event)" />
   </div>
   <div *ngIf="options=='status'">
-    <input type="Text" placeholder="search Workorder" style="width: 200px;" (change)="filterData1(options,$event)" />
+    <input nz-input type="Text" placeholder="search Workorder" style="width: 200px;" (change)="filterData1(options,$event)" />
   </div>
   <div *ngIf="options=='cost'">
-    <input type="Text" placeholder="search Workorder" style="width: 200px;" (change)="filterData1(options,$event)" />
+    <input nz-input type="Text" placeholder="search Workorder" style="width: 200px;" (change)="filterData1(options,$event)" />
   </div>
 </nz-input-group>
 <nz-table #editRowTable #filterTable nzBordered [nzData]="searchResults" >
