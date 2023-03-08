@@ -39,7 +39,7 @@ interface ChildrenItemData {
   styleUrls: ['./facilities.component.css']
 })
 export class FacilitiesComponent implements OnInit{
-
+  options : string = ''
   facilities : Facility[] =[];
 
   isExpandable : boolean = true;
@@ -197,7 +197,31 @@ export class FacilitiesComponent implements OnInit{
     );
   }
 
-  filterData(event : any){
+  // filterData(event : any){
+  //   function ispositive(element:Facility, index:any, array:any)
+  //   { 
+  //     return ( element.facilityName.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) || 
+  //     element.facilityCode.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) ||
+  //     element.facilityType.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) ||
+  //     element.facilitySource.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) 
+  //      )
+  //   } 
+  //   this.searchResults = this.facilities.filter(ispositive);
+  // }
+
+
+  selectChange(a:any)
+  {
+    this.options = a
+    console.log(this.options)
+  }
+  
+  filterdata1(options:any, event: any) {
+    console.log(options)
+    switch(options)
+    {
+      case 'all':
+       
     function ispositive(element:Facility, index:any, array:any)
     { 
       return ( element.facilityName.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) || 
@@ -207,8 +231,38 @@ export class FacilitiesComponent implements OnInit{
        )
     } 
     this.searchResults = this.facilities.filter(ispositive);
+    break
+  
+      case 'name':
+        function ispositive2(element: any, index: any, array: any) {
+          return (element.facilityName.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()))
+          
+        }
+        this.searchResults= this.facilities.filter(ispositive2);
+        break
+      case 'facilityType':
+        function ispositive3(element: any, index: any, array: any) {
+          return (element.facilityType.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()))
+          
+        }
+        this.searchResults= this.facilities.filter(ispositive3);
+      break
+      case 'facilityCode':
+        function ispositive4(element: any, index: any, array: any) {
+          return (element.facilityCode.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()))
+          
+        }
+        this.searchResults= this.facilities.filter(ispositive4);
+      break
+      case 'facilitySource':
+        function ispositive5(element: any, index: any, array: any) {
+          return (element.facilitySource.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()))
+          
+        }
+        this.searchResults= this.facilities.filter(ispositive5);
+      break
   }
-
+  }
   handleDeleteFacility(facilityId: any){
       this.restService.deleteFacility(facilityId).subscribe(
         data=>{

@@ -9,8 +9,8 @@ export class Asset{
      serialNo: number;
      description:string;
      location:Facility;
-     area: Area;
-     room: Room;
+     area: number;
+     room: number;
      category:string;
      department: string;
      subAsset: string;
@@ -34,8 +34,8 @@ export class Asset{
         serialNo: number,
         description:string,
         location:Facility,
-        area:Area,
-        room:Room,
+        area:number,
+        room:number,
         category:string,
         department: string,
         subAsset: string,

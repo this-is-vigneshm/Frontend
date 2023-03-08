@@ -23,7 +23,7 @@ interface ColumnItem {
   styleUrls: ['./asset-list.component.css']
 })
 export class AssetListComponent implements OnInit{
-
+  options : string = ''
   constructor(private restService:RestapiService, private router: Router, 
     private notification: NzMessageService,  private restApiService: RestapiService){
   }
@@ -148,20 +148,65 @@ export class AssetListComponent implements OnInit{
 
   searchResults :any;
 
-  filterAssets(event : any){
-    function ispositive(element:any, index:any, array:any)
-    { 
-      // return (element.name.includes(event.target.value))
+  // filterAssets(event : any){
+  //   function ispositive(element:any, index:any, array:any)
+  //   { 
+  //     // return (element.name.includes(event.target.value))
+  //     return ( element.name.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) ||
+  //     element.description.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) ||
+  //     element.location.facilityName.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) ||
+  //     element.location.facilityCode.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) ||
+  //     element.createdBy.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) ||
+  //     element.updatedBy.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) )
+  //   } 
+  //   this.searchResults = this.assetList.filter(ispositive);
+  // }
+  
+   selectChange(a:any)
+  {
+    this.options = a
+    console.log(this.options)
+  }
+  
+  filterdata1(options:any, event: any) {
+    console.log(options)
+    switch(options)
+    {
+      case 'all':
+        function ispositive1(element: any, index: any, array: any) {
       return ( element.name.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) ||
       element.description.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) ||
       element.location.facilityName.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) ||
       element.location.facilityCode.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) ||
       element.createdBy.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) ||
       element.updatedBy.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) )
-    } 
-    this.searchResults = this.assetList.filter(ispositive);
+        }
+        this.searchResults= this.assetList.filter(ispositive1);
+        break
+  
+      case 'name':
+        function ispositive2(element: any, index: any, array: any) {
+          return (element.name.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()))
+          
+        }
+        this.searchResults= this.assetList.filter(ispositive2);
+        break
+      case 'facilityName':
+        function ispositive3(element: any, index: any, array: any) {
+          return (element.location.facilityName.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()))
+          
+        }
+        this.searchResults= this.assetList.filter(ispositive3);
+      break
+      case 'facilityCode':
+        function ispositive4(element: any, index: any, array: any) {
+          return (element.location.facilityCode.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()))
+          
+        }
+        this.searchResults= this.assetList.filter(ispositive4);
+      break
   }
-
+  }
   getAssets(){
     this.restService.getAssets().subscribe(
       data=>{

@@ -38,7 +38,7 @@ export class MyworkorderComponent implements OnInit{
 
   @Output()
   worKOrderId : EventEmitter<number> = new EventEmitter<number>()
-
+  options : string = ''
   Myworkorder: WorkOrderResp[] =[];
 
   userData: any ;
@@ -193,19 +193,74 @@ showModal(workOrderData:any): void {
   this.selectedWo = workOrderData;
 }
 
-filterData(event : any){
-  function ispositive(element:WorkOrderResp, index:any, array:any)
-  { 
-    return ( element.name.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase())
+// filterData(event : any){
+//   function ispositive(element:WorkOrderResp, index:any, array:any)
+//   { 
+//     return ( element.name.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase())
+//      || element.emailId.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) 
+//     || element.description.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase())
+//     || element.taskDetails.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase())
+//     || element.createdBy.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase())
+//      || element.updatedBy.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()))
+//   } 
+//   // this.searchResults = this.WorkOrder.filter(ispositive);
+// }
+
+selectChange(a:any)
+  {
+    this.options = a
+    console.log(this.options)
+  }
+  
+  filterData1(options:any, event: any) {
+    console.log(options)
+    switch(options)
+    {
+    case 'all':
+    function ispositive1(element:WorkOrderResp, index:any, array:any)
+    { 
+      return ( element.name.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase())
      || element.emailId.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) 
     || element.description.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase())
     || element.taskDetails.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase())
     || element.createdBy.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase())
-     || element.updatedBy.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()))
-  } 
-  // this.searchResults = this.WorkOrder.filter(ispositive);
-}
+     || element.updatedBy.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase())
+     ||element.orderNo.toFixed().includes(event.target.value.toLocaleLowerCase())
+     ||element.status.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase())
+    ||element.workOrderCost.toFixed().includes(event.target.value.toLocaleLowerCase()))
+    } 
+    
+    this.searchResults = this.workorderList.filter(ispositive1);
+    break
 
+    case 'orderno':
+      function ispositive2(element: WorkOrderResp, index: any, array: any) {
+        return ( element.orderNo.toFixed().includes(event.target.value.toLocaleLowerCase()))
+        
+      }
+     
+      this.searchResults= this.workorderList.filter(ispositive2);
+    break
+
+    case 'status':
+      function ispositive3(element: WorkOrderResp, index: any, array: any) {
+        return (element.status.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()))
+        
+      }
+      
+      this.searchResults= this.workorderList.filter(ispositive3);
+    break
+  
+    case 'cost':
+      function ispositive4(element: WorkOrderResp, index: any, array: any) {
+        return (element.workOrderCost.toFixed().includes(event.target.value.toLocaleLowerCase()))
+        
+      }
+    
+      this.searchResults= this.workorderList.filter(ispositive4);
+    break
+}
+}
 editId : string | null =null;
   
   startEdit(id: string): void {

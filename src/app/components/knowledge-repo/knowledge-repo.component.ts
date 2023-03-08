@@ -22,7 +22,7 @@ export class KnowledgeRepoComponent implements OnInit {
 
   userData:any;
 
-  
+  options : string = ''
   assetData: any;
 
   constructor(private restApiService: RestapiService, private notification: NzMessageService, private router: Router, private tokenService: TokenService, private restServices : RestapiService) {
@@ -95,14 +95,53 @@ export class KnowledgeRepoComponent implements OnInit {
     );
   }
 
-  filterData(event: any) {
-    function ispositive(element: Repo, index: any, array: any) {
-      return (element.name.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) ||
-        element.asset_name.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) )
-    }
-    this.searchResults = this.repoList.filter(ispositive);
-  }
+  // filterData(event: any) {
+  //   function ispositive(element: Repo, index: any, array: any) {
+  //     return (element.name.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) ||
+  //       element.asset_name.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) )
+  //   }
+  //   this.searchResults = this.repoList.filter(ispositive);
+  // }
 
+  selectChange(a:any)
+  {
+    this.options = a
+    console.log(this.options)
+  }
+  
+  filterData1(options:any, event: any) {
+    console.log(options)
+    switch(options)
+    {
+    case 'all':
+    function ispositive1(element:Repo, index:any, array:any)
+    { 
+      return ( element.name.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) ||
+      element.asset_name.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()))
+    } 
+    
+    this.searchResults = this.repoList.filter(ispositive1);
+    break
+
+    case 'name':
+      function ispositive2(element: Repo, index: any, array: any) {
+        return (element.name.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()))
+        
+      }
+     
+      this.searchResults= this.repoList.filter(ispositive2);
+    break
+
+    case 'assetname':
+      function ispositive3(element: Repo, index: any, array: any) {
+        return (element.asset_name.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()))
+        
+      }
+      
+      this.searchResults= this.repoList.filter(ispositive3);
+    break
+    }
+  }
   isVisible: boolean = false;
   isConfirmLoading=false
 

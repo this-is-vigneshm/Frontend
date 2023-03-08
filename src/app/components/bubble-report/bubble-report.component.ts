@@ -64,16 +64,14 @@ export class BubbleReportComponent implements OnInit{
   newChart(a : BubbleChart[]) {
     for(var i of a)
     {
-      var aa= 1
+      inner_loop:
       for(var j of i.label)
       {
-        inner_loop:
         for(var k of i.values)
         {
           for(var l of i.number)
           { 
-            aa+=10 
-            this.d.push({x:aa,y:k,r:l*5})
+            this.d.push({x:l,y:k,r:l*5})
             break inner_loop
         }
         }
@@ -82,6 +80,7 @@ export class BubbleReportComponent implements OnInit{
           label:i.category,
           data: this.d
         })
+        this.d = []
     }
     this.myChart = new Chart( "myChart", {
       type: 'bubble',

@@ -27,7 +27,7 @@ export class InventoryListComponent {
   }
   
   selectedInventory! : Inventory | null ;
-
+  options : string = ''
   searchString : any ;
 
   size: NzButtonSize='small'
@@ -141,17 +141,76 @@ export class InventoryListComponent {
 
   searchResults :any;
 
-  filterItems(event : any){
-    function ispositive(element:any, index:any, array:any)
+  // filterItems(event : any){
+  //   function ispositive(element:any, index:any, array:any)
+  //   { 
+  //     // return (element.name.includes(event.target.value))
+  //     return ( element.name.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) ||
+  //     element.description.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) ||
+  //     element.createdBy.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) ||
+  //     element.updatedBy.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) )
+  //   } 
+  //   this.searchResults = this.inventoryList.filter(ispositive);
+  // }
+
+  selectChange(a:any)
+  {
+    this.options = a
+    console.log(this.options)
+  }
+  
+  filterData1(options:any, event: any) {
+    console.log(options)
+    switch(options)
+    {
+    case 'all':
+    function ispositive1(element:any, index:any, array:any)
     { 
-      // return (element.name.includes(event.target.value))
       return ( element.name.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) ||
       element.description.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) ||
-      element.createdBy.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) ||
+     element.createdBy.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) ||
       element.updatedBy.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) )
     } 
-    this.searchResults = this.inventoryList.filter(ispositive);
-  }
+    
+    this.searchResults = this.inventoryList.filter(ispositive1);
+    break
+
+    case 'name':
+      function ispositive2(element: any, index: any, array: any) {
+        return ( element.name.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) )
+        
+      }
+     
+      this.searchResults= this.inventoryList.filter(ispositive2);
+    break
+
+    case 'code':
+      function ispositive3(element: any, index: any, array: any) {
+        return (element.code.toFixed().includes(event.target.value.toLocaleLowerCase()))
+        
+      }
+      
+      this.searchResults= this.inventoryList.filter(ispositive3);
+    break
+  
+    case 'quantity':
+      function ispositive4(element:any, index: any, array: any) {
+        return (element.quantity.toFixed().includes(event.target.value.toLocaleLowerCase()))
+        
+      }
+    
+      this.searchResults= this.inventoryList.filter(ispositive4);
+    break
+    case 'price':
+      function ispositive5(element:any, index: any, array: any) {
+        return (element.price.toFixed().includes(event.target.value.toLocaleLowerCase()))
+        
+      }
+    
+      this.searchResults= this.inventoryList.filter(ispositive5);
+    break
+}
+}
 
   getItem(){
     this.restService.getItem().subscribe(

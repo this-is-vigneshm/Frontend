@@ -180,6 +180,8 @@
         nzShowSearch
         nzAllowClear
         nzPlaceHolder="Select a floor"
+        [ngModel]="' '"
+        (ngModelChange)="getAllRoomAndArea($event)"
       >
         <nz-option
           *ngFor="let floor of floors"
@@ -189,6 +191,41 @@
         >
       </nz-select>
         </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="location">
+          <span style="color: rgb(0, 102, 255)">Area or Room</span>
+        </nz-form-label>
+        <nz-form-control [nzSm]="5" [nzXs]="24">
+          <nz-input-group nzCompact>
+            <nz-select [ngModel]="'Sign Up'"
+            formControlName="raname" [ngModel]="' '" (ngModelChange)="getOptions($event)">
+              <nz-option [nzLabel]="'Area'" [nzValue]="'Area'"></nz-option>
+              <nz-option [nzLabel]="'Room'" [nzValue]="'Room'"></nz-option>
+            </nz-select>
+          </nz-input-group>
+        </nz-form-control>
+        <nz-form-control
+        [nzSm]="9"
+        [nzXs]="24"
+        nzErrorTip="select the area/room"
+      >
+      <nz-select
+      nz-input
+      formControlName="arname"
+      id="floor"
+      nzShowSearch
+      nzAllowClear
+      nzPlaceHolder="Select a Area/Room"
+    >
+      <nz-option
+        *ngFor="let arname of options"
+        [nzLabel]="arname.name"
+        [nzValue]="arname.id"
+        >{{ arname }}</nz-option
+      >
+    </nz-select>
+      </nz-form-control>
       </nz-form-item>
       <nz-form-item>
         <nz-form-label

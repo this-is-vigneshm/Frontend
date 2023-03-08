@@ -9,7 +9,29 @@
 >
 
 
-  <input nz-input id="search-bar" type="text" placeholder="Search Documents" />
+  <!-- <input nz-input id="search-bar" type="text" placeholder="Search Documents" /> -->
+  <ng-template #suffixIconSearch>
+  </ng-template>
+  <nz-input-group id="search-bar" [nzSuffix]="suffixIconSearch" style="width: 400px;">
+    <nz-select [ngModel]="'search Document'"  style="width: 200px;"(ngModelChange)="selectChange($event)">
+    
+      <nz-option [nzLabel]="'All'" [nzValue]="'all'"></nz-option>
+      <nz-option [nzLabel]="'By Document Name'" [nzValue]="'name'" ></nz-option>
+      <nz-option [nzLabel]="'By Asset Name'" [nzValue]="'assetname'" ></nz-option>
+
+      
+    </nz-select>
+    <div *ngIf="options=='all'">
+      <input type="Text" placeholder="Search Document" style="width: 200px;" (change)="filterData1(options, $event)" />
+    </div>
+    <div *ngIf="options=='name'">
+      <input type="Text" placeholder="Search Document" style="width: 200px;" (change)="filterData1(options,$event)" />
+    </div>
+    <div *ngIf="options=='assetname'">
+      <input type="Text" placeholder="Search Document" style="width: 200px;" (change)="filterData1(options,$event)" />
+    </div>
+
+  </nz-input-group>
   <button
     id="create-button"
     nz-button

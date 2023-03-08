@@ -4,8 +4,37 @@ font-size: xx-large;
 font-weight: 900;
 margin-left: -66%;">Inventory</span>
 
-<input nz-input id="search-bar" type="text" [(ngModel)]="searchString" (change)="filterItems($event)"
-  placeholder="Search Item" />
+<!-- <input nz-input id="search-bar" type="text" [(ngModel)]="searchString" (change)="filterItems($event)"
+  placeholder="Search Item" /> -->
+
+  <ng-template #suffixIconSearch>
+  </ng-template>
+  <nz-input-group id="search-bar" [nzSuffix]="suffixIconSearch" style="width: 400px;"  >
+    <nz-select [ngModel]="'search Workorder'"  style="width: 200px;"(ngModelChange)="selectChange($event)">
+    
+      <nz-option [nzLabel]="'All'" [nzValue]="'all'"></nz-option>
+      <nz-option [nzLabel]="'By name'" [nzValue]="'name'" ></nz-option>
+      <nz-option [nzLabel]="'By code'" [nzValue]="'code'" ></nz-option>
+      <nz-option [nzLabel]="'By quantity'" [nzValue]="'quantity'" ></nz-option>
+      <nz-option [nzLabel]="'By price'" [nzValue]="'price'" ></nz-option>
+      
+    </nz-select>
+    <div *ngIf="options=='all'">
+      <input type="Text" placeholder="search Workorder" style="width: 200px;" (change)="filterData1(options, $event)" />
+    </div>
+    <div *ngIf="options=='name'">
+      <input type="Text" placeholder="search Workorder" style="width: 200px;" (change)="filterData1(options,$event)" />
+    </div>
+    <div *ngIf="options=='code'">
+      <input type="Text" placeholder="search Workorder" style="width: 200px;" (change)="filterData1(options,$event)" />
+    </div>
+    <div *ngIf="options=='quantity'">
+      <input type="Text" placeholder="search Workorder" style="width: 200px;" (change)="filterData1(options,$event)" />
+    </div>
+    <div *ngIf="options=='price'">
+      <input type="Text" placeholder="search Workorder" style="width: 200px;" (change)="filterData1(options,$event)" />
+    </div>
+  </nz-input-group>
 
 
 <button nz-button nzType="primary" id="create-item-button" (click)="showModalMiddle()">

@@ -36,7 +36,7 @@ interface ItemData {
   styleUrls: ['./tickets.component.css']
 })
 export class TicketsComponent implements OnInit{
-
+  options : string = ''
   tickets: TicketResp[] =[];
 
   userData: any ;
@@ -214,21 +214,72 @@ export class TicketsComponent implements OnInit{
       )
   }
 
-  filterData(event : any){
-    function ispositive(element:TicketResp, index:any, array:any)
+  // filterData(event : any){
+  //   function ispositive(element:TicketResp, index:any, array:any)
+  //   { 
+  //     return ( element.title.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase())
+  //      || element.employeeName.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) ||
+  //     element.employeeMail.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) 
+  //     || element.category.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase())
+  //     || element.status.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) 
+  //     || element.employeeDepartment.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase())
+  //     || element.uuid.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase())
+  //      || element.updatedBy.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()))
+  //   } 
+  //   this.searchResults = this.tickets.filter(ispositive);
+  // }
+ 
+  selectChange(a:any)
+  {
+    this.options = a
+    console.log(this.options)
+  }
+  
+  filterData1(options:any, event: any) {
+    console.log(options)
+    switch(options)
+    {
+    case 'all':
+    function ispositive1(element:TicketResp, index:any, array:any)
     { 
-      return ( element.title.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase())
-       || element.employeeName.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) ||
-      element.employeeMail.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) 
+      return ( element.title.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) 
       || element.category.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase())
       || element.status.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()) 
-      || element.employeeDepartment.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase())
       || element.uuid.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase())
        || element.updatedBy.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()))
     } 
-    this.searchResults = this.tickets.filter(ispositive);
-  }
+    
+    this.searchResults = this.tickets.filter(ispositive1);
+    break
 
+    case 'title':
+      function ispositive2(element: TicketResp, index: any, array: any) {
+        return (element.title.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()))
+        
+      }
+     
+      this.searchResults= this.tickets.filter(ispositive2);
+    break
+
+    case 'category':
+      function ispositive3(element: TicketResp, index: any, array: any) {
+        return (element.category.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()))
+        
+      }
+      
+      this.searchResults= this.tickets.filter(ispositive3);
+    break
+  
+    case 'status':
+      function ispositive4(element: TicketResp, index: any, array: any) {
+        return (element.status.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()))
+        
+      }
+    
+      this.searchResults= this.tickets.filter(ispositive4);
+    break
+}
+}
   getMyTickets(empId: number){
     this.restApiService.getAllTicketsEmployeeId(empId).subscribe(
       data =>{

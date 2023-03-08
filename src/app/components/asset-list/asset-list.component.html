@@ -2,11 +2,35 @@
     font-family: math;
     font-size: xx-large;
     font-weight: 900;
-    margin-left: -66%;
+    margin-left: -50%;
   ">Assets</span>
 
-<input nz-input id="search-bar" type="text" [(ngModel)]="searchString" (change)="filterAssets($event)"
-  placeholder="Search Assets" />
+<!-- <input nz-input id="search-bar" type="text" [(ngModel)]="searchString" (change)="filterAssets($event)" -->
+  <!-- placeholder="Search Assets" /> -->
+  <ng-template #suffixIconSearch>
+  </ng-template>
+  <nz-input-group id="search-bar" [nzSuffix]="suffixIconSearch" style="width: 400px;"  >
+    <nz-select [ngModel]="'search an asset'"  style="width: 200px;"(ngModelChange)="selectChange($event)">
+    
+      <nz-option [nzLabel]="'All'" [nzValue]="'all'"></nz-option>
+      <nz-option [nzLabel]="'By Name'" [nzValue]="'name'" ></nz-option>
+      <nz-option [nzLabel]="'By Facility Name'" [nzValue]="'facilityName'" ></nz-option>
+      <nz-option [nzLabel]="'By Facility Code'" [nzValue]="'facilityCode'" ></nz-option>
+      
+    </nz-select>
+    <div *ngIf="options=='all'">
+      <input type="Text" placeholder="Search an asset" style="width: 200px;" (change)="filterdata1(options, $event)" />
+    </div>
+    <div *ngIf="options=='name'">
+      <input type="Text" placeholder="Search an asset" style="width: 200px;" (change)="filterdata1(options,$event)" />
+    </div>
+    <div *ngIf="options=='facilityName'">
+      <input type="Text" placeholder="Search an asset" style="width: 200px;" (change)="filterdata1(options,$event)" />
+    </div>
+    <div *ngIf="options=='facilityCode'">
+      <input type="Text" placeholder="Search an asset" style="width: 200px;" (change)="filterdata1(options,$event)" />
+    </div>
+  </nz-input-group>
 
   <button nz-button nzType="primary" id="create-asset-button" (click)="showModalMiddle()">
     <span nz-icon nzType="plus" nzTheme="outline"></span>

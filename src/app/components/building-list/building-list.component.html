@@ -16,13 +16,13 @@
                 <td>{{ data.name }}</td>
                 <td>
                     <button nz-button (click)="forLocation($event, data)"><span nz-icon nzType="plus" nzTheme="outline"></span></button>
-                    <button nz-button>
+                    <!-- <button nz-button>
                         <span nz-icon nzType="delete" nzTheme="twotone" [nzTwotoneColor]="'red'" nz-tooltip
                             [nzTooltipTitle]="'Delete Building'" [nzTooltipColor]="'red'" nz-popconfirm
                             nzPopconfirmTitle="Proceed to update?"
                             (nzOnConfirm)="handleDeleteLocation(data.id)">
                         </span>
-                    </button>
+                    </button> -->
 </tr>
 </ng-template>
 </tbody>

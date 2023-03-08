@@ -4,7 +4,32 @@ font-size: xx-large;
 font-weight: 900;
 margin-left: -66%;">Queues</span>
 
-<input nz-input id="search-bar" type="text" (change)="filterData($event)" placeholder="Search Tickets" />
+<!-- <input nz-input id="search-bar" type="text" (change)="filterData($event)" placeholder="Search Tickets" /> -->
+
+<ng-template #suffixIconSearch>
+</ng-template>
+<nz-input-group id="search-bar" [nzSuffix]="suffixIconSearch" style="width: 400px;"  >
+  <nz-select [ngModel]="'search a Ticket'"  style="width: 200px;"(ngModelChange)="selectChange($event)">
+  
+    <nz-option [nzLabel]="'All'" [nzValue]="'all'"></nz-option>
+    <nz-option [nzLabel]="'By Title'" [nzValue]="'title'" ></nz-option>
+    <nz-option [nzLabel]="'By Category'" [nzValue]="'category'" ></nz-option>
+    <nz-option [nzLabel]="'By Status'" [nzValue]="'status'" ></nz-option>
+    
+  </nz-select>
+  <div *ngIf="options=='all'">
+    <input type="Text" placeholder="Search a Ticket" style="width: 200px;" (change)="filterData1(options, $event)" />
+  </div>
+  <div *ngIf="options=='title'">
+    <input type="Text" placeholder="Search a Ticket" style="width: 200px;" (change)="filterData1(options,$event)" />
+  </div>
+  <div *ngIf="options=='category'">
+    <input type="Text" placeholder="Search a Ticket" style="width: 200px;" (change)="filterData1(options,$event)" />
+  </div>
+  <div *ngIf="options=='status'">
+    <input type="Text" placeholder="Search a Ticket" style="width: 200px;" (change)="filterData1(options,$event)" />
+  </div>
+</nz-input-group>
 
 <button id="create-ticket-button" nz-button nzType="primary" (click)="showModalMiddle()"><span nz-icon nzType="plus" nzTheme="outline"></span></button>
 <nz-modal [nzStyle]="{ top: '20px' , width:'60%'}" [(nzVisible)]="isVisibleMiddle" nzTitle="Create a Service Ticket"

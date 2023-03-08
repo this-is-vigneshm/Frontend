@@ -16,6 +16,9 @@ import { NzUploadFile } from 'ng-zorro-antd/upload';
 import { Locations } from 'src/app/models/locations';
 import { Building } from 'src/app/models/Building';
 import { Floor } from 'src/app/models/Floor';
+import { Area } from 'src/app/models/Area';
+import { Room } from 'src/app/models/Room';
+import { AssetReq } from 'src/app/models/AssetReq';
 
 @Component({
   selector: 'app-asset-create',
@@ -39,6 +42,10 @@ export class AssetCreateComponent implements OnInit {
   locations : Locations[] =[]
   buildings: Building[]= []
   floors: Floor[]= []
+  areas: Area[]=[]
+  rooms: Room[]=[]
+
+  options : any
 
   categories = [
     { name: 'Boiler tube', value: 'Electrical' },
@@ -58,7 +65,9 @@ export class AssetCreateComponent implements OnInit {
     if (this.validateForm.valid) {
       console.log('submit', this.validateForm.value);
       if (!this.isUpdateComponent) {
-        this.createAssetByData(this.validateForm.value);
+        var b = this.validateForm.value
+        var asset = new AssetReq(b.name, b.code, b.serialNo, b.description, b.facilityCode, this.areaId, this.roomId, b.category, b.department, b.subAsset, b.system, b.supplier, b.status, b.priority, b.make, b.model, b.price, this.userData.userId)
+        this.createAssetByData(asset);
       } else {
         this.updateAssetData(this.validateForm.value);
       }
@@ -128,10 +137,13 @@ export class AssetCreateComponent implements OnInit {
             Validators.pattern('^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ ]+$'),
           ],
         ],
+        facilityCode:[],
 
         location:[],
         building:[],
         floor:[],
+        raname:[],
+        arname:[],
         category: [null, [Validators.required]],
         department: [null, [Validators.required]],
         subAsset: [
@@ -161,7 +173,7 @@ export class AssetCreateComponent implements OnInit {
           null,
           [Validators.required, Validators.pattern('^[0-9]+(.[0-9]{0,2})?$')],
         ],
-        facilityCode: [null, [Validators.required]],
+
       });
     } else {
       this.isUpdateComponent = true;
@@ -192,7 +204,9 @@ export class AssetCreateComponent implements OnInit {
     }
   }
 
-  createAssetByData(asset: Asset) {
+  createAssetByData(asset: AssetReq) {
+    asset.room = this.roomId
+    asset.area = this.areaId
     asset.userId = this.userData.userId;
     this.restService.registerAsset(asset).subscribe(
       (data) => {
@@ -298,6 +312,55 @@ export class AssetCreateComponent implements OnInit {
         console.log('Floor Fetching Failed',error)
       }
     )
+  }
+  getAllRoomAndArea(id:any){
+    console.log(id)
+    
+    this.restService.getAllAreaByFloor(id).subscribe(
+      data=>{
+          console.log('Area Fetched Successfully', data)
+          this.areas = data.responseData;
+      },
+      error=>{
+        console.log('Area Fetching Failed',error)
+      }
+    )
+    this.restService.getAllRoomByFloor(id).subscribe(
+      data=>{
+          console.log('Room Fetched Successfully', data)
+          this.rooms = data.responseData;
+      },
+      error=>{
+        console.log('Room Fetching Failed',error)
+      }
+    )
+  }
+
+  selectedOption : any
+  getOptions(name : any)
+  {
+    this.selectedOption = name
+    if(name == "Area")
+    {
+      this.options = this.areas
+    }
+    else{
+      this.options = this.rooms
+    }
+  }
+  areaId:any
+  roomId:any
+  getId(id : any){
+    if(this.selectedOption == "Area")
+    {
+      this.areaId = id
+      this.roomId = 0
+    }
+    else{
+      this.areaId = 0
+      this.roomId = id
+    }
+
   }
 
 }

@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiResponse } from './models/ApiResponse';
@@ -20,6 +20,7 @@ import { Room } from './models/Room';
 import { EmployeeStatus } from './models/EmployeeStatus';
 import { Locations } from './models/locations';
 import { Area } from './models/Area';
+import { AssetReq } from './models/AssetReq';
 
 // import { TicketRe } from './models/TicketResp';
 
@@ -45,7 +46,7 @@ export class RestapiService {
         : '';
   }
 
-  public registerAsset(assetDto: Asset) {
+  public registerAsset(assetDto: AssetReq) {
     return this.httpClient.post<ApiResponse>(
       `${this.baseUrl}/assets/save`,
       assetDto
