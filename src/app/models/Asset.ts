@@ -1,4 +1,6 @@
+import { Area } from "./Area";
 import { Facility } from "./Facility";
+import { Room } from "./Room";
 
 export class Asset{
      id:number;
@@ -7,6 +9,8 @@ export class Asset{
      serialNo: number;
      description:string;
      location:Facility;
+     area: Area;
+     room: Room;
      category:string;
      department: string;
      subAsset: string;
@@ -30,6 +34,8 @@ export class Asset{
         serialNo: number,
         description:string,
         location:Facility,
+        area:Area,
+        room:Room,
         category:string,
         department: string,
         subAsset: string,
@@ -51,6 +57,8 @@ export class Asset{
         this.serialNo = serialNo;
         this.description = description;
         this.location = location;
+        this.area = area;
+        this.room = room;
         this.category = category;
         this.department = department;
         this.subAsset = subAsset;

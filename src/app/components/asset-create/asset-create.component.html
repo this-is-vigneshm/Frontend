@@ -104,6 +104,92 @@
           </nz-select>
         </nz-form-control>
       </nz-form-item>
+      <nz-form-item >
+        <nz-form-label [nzSm]="6" [nzXs]="24">
+          <span style="color: rgb(0, 102, 255)">Location</span>
+        </nz-form-label>
+        <nz-form-control
+          [nzSm]="14"
+          [nzXs]="24"
+          nzErrorTip="Please Enter Valid Location"
+        >
+        <nz-select
+          id="location"
+          formControlName="location"
+          nzShowSearch
+          nzAllowClear
+          nzPlaceHolder="Select a Location"
+         [ngModel] = "''"
+          (ngModelChange)="getAllBuilding($event)" 
+  
+         
+        >
+          <nz-option
+            *ngFor="let location of locations"
+            [nzLabel]="location.name"
+            [nzValue]="location.id"
+            >{{ location }}</nz-option
+          >
+        </nz-select>
+
+      
+       
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="building">
+          <span style="color: rgb(0, 102, 255)">Building</span>
+        </nz-form-label>
+        <nz-form-control
+          [nzSm]="14"
+          [nzXs]="24"
+          nzErrorTip="Please Enter Valid Building"
+        >
+        <nz-select
+        nz-input
+        formControlName="building"
+        id="building"
+        nzShowSearch
+        nzAllowClear
+        nzPlaceHolder="Select a building"
+        [ngModel] = "''"
+        (ngModelChange)="getAllFloor($event)"
+      >
+        <nz-option
+          *ngFor="let building of buildings"
+          [nzLabel]="building.name"
+          [nzValue]="building.id"
+          >{{ building }}</nz-option
+        >
+      </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="location">
+          <span style="color: rgb(0, 102, 255)">Floors</span>
+        </nz-form-label>
+        <nz-form-control
+          [nzSm]="14"
+          [nzXs]="24"
+          nzErrorTip="Please Enter Valid Floor"
+        >
+        <nz-select
+        nz-input
+        formControlName="floor"
+        id="floor"
+        nzShowSearch
+        nzAllowClear
+        nzPlaceHolder="Select a floor"
+      >
+        <nz-option
+          *ngFor="let floor of floors"
+          [nzLabel]="floor.name"
+          [nzValue]="floor.id"
+          >{{ floor }}</nz-option
+        >
+      </nz-select>
+        </nz-form-control>
+      </nz-form-item>
       <nz-form-item>
         <nz-form-label
           [nzSm]="6"
@@ -330,6 +416,8 @@
         </nz-form-control>
       </nz-form-item>
     </form>
+
+    
     <div class="clearfix">
       <nz-upload nzAction="" nzListType="picture" [(nzFileList)]="fileList1">
         <button nz-button>

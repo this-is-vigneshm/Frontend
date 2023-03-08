@@ -13,6 +13,9 @@ import { Facility } from 'src/app/models/Facility';
 import { RestapiService } from 'src/app/restapi.service';
 import { TokenService } from 'src/app/token.service';
 import { NzUploadFile } from 'ng-zorro-antd/upload';
+import { Locations } from 'src/app/models/locations';
+import { Building } from 'src/app/models/Building';
+import { Floor } from 'src/app/models/Floor';
 
 @Component({
   selector: 'app-asset-create',
@@ -33,6 +36,9 @@ export class AssetCreateComponent implements OnInit {
   facilities: Facility[] = [];
 
   validateForm!: UntypedFormGroup;
+  locations : Locations[] =[]
+  buildings: Building[]= []
+  floors: Floor[]= []
 
   categories = [
     { name: 'Boiler tube', value: 'Electrical' },
@@ -92,6 +98,7 @@ export class AssetCreateComponent implements OnInit {
       this.router.navigateByUrl('/signin');
       window.location.pathname = '/signin';
     }
+    this.getAllLocation()
     this.getAllFacilities();
     this.userData = this.tokenService.getCurrentUserData();
     if (this.assetData == null) {
@@ -121,6 +128,10 @@ export class AssetCreateComponent implements OnInit {
             Validators.pattern('^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ ]+$'),
           ],
         ],
+
+        location:[],
+        building:[],
+        floor:[],
         category: [null, [Validators.required]],
         department: [null, [Validators.required]],
         subAsset: [
@@ -250,4 +261,43 @@ export class AssetCreateComponent implements OnInit {
 
   fileList1 = [...this.defaultFileList];
   fileList2 = [...this.defaultFileList];
+
+  getAllLocation(){
+    this.restService.getAllLocations().subscribe(
+      data=>{
+          console.log('Location Fetched Successfully', data)
+          this.locations = data.responseData;
+      },
+      error=>{
+        console.log('Locations Fetching Failed',error)
+      }
+    )
+  }
+
+
+  getAllBuilding(id:any){
+    console.log(id)
+    this.restService.getAllBuildingByLocation(id).subscribe(
+      data=>{
+          console.log('Building Fetched Successfully', data)
+          this.buildings = data.responseData;
+      },
+      error=>{
+        console.log('Building Fetching Failed',error)
+      }
+    )
+  }
+  getAllFloor(id:any){
+    console.log(id)
+    this.restService.getAllFloorByBuilding(id).subscribe(
+      data=>{
+          console.log('Floor Fetched Successfully', data)
+          this.floors = data.responseData;
+      },
+      error=>{
+        console.log('Floor Fetching Failed',error)
+      }
+    )
+  }
+
 }
