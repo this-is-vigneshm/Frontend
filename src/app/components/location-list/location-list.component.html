@@ -24,7 +24,7 @@
                     ", " +data.postalCode + ", " + data.country}}
                 </td>
                 <td>
-                    <button nz-button (click)="forLocation($event)"><span nz-icon nzType="plus" nzTheme="outline"></span></button>
+                    <button nz-button (click)="forLoc($event, data.name)"><span nz-icon nzType="plus" nzTheme="outline"></span></button>
                     <button nz-button>
                         <span nz-icon nzType="delete" nzTheme="twotone" [nzTwotoneColor]="'red'" nz-tooltip
                             [nzTooltipTitle]="'Delete Facility'" [nzTooltipColor]="'red'" nz-popconfirm
@@ -62,6 +62,6 @@
 </nz-table>
 
 <div *ngIf="loc">
-    <app-building-create></app-building-create>
+    <app-building-create [locationName]="selectedLocation"></app-building-create>
     building <button (click)="forLocation($event)"> back</button>
 </div>

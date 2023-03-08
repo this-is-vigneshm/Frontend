@@ -8,7 +8,7 @@
     <nz-form-item>
       <nz-form-label [nzSm]="14" [nzXs]="24"  nzRequired>Location Name</nz-form-label>
       <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please Enter  Valid Location Name">
-        <input nz-input formControlName="locationName" placeholder="locationName" />
+        <input nz-input value="{{locationName}}" [disabled]="true" placeholder="locationName" />
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>

@@ -175,11 +175,19 @@ export class LocationListComponent {
       //   }
       // )
   }
+  selectedLocation : any
   loc1:boolean = true
   loc:boolean = false
   forLocation(event:MouseEvent){
     event.preventDefault()
     this.loc = !this.loc
     this.loc1 = !this.loc1
+
+  }
+  forLoc(event:MouseEvent, data:any){
+    event.preventDefault()
+    this.loc = !this.loc
+    this.loc1 = !this.loc1
+    this.selectedLocation = data
   }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Building } from 'src/app/models/Building';
 import { UntypedFormBuilder,
   UntypedFormControl,
@@ -19,13 +19,14 @@ export class BuildingCreateComponent {
 
   validateForm! : UntypedFormGroup;
 
+  @Input()
+  locationName:any
 
   constructor(private fb: UntypedFormBuilder, private restApi : RestapiService, private notification: NzMessageService
     ){
 
     this.validateForm = this.fb.group({
       name: ['', [Validators.required]],
-      locationName: ['', [Validators.required]],
 
   })}
 
@@ -46,6 +47,7 @@ export class BuildingCreateComponent {
 flo:boolean=false
   handleBuildingCreation(building : Building)
   {
+    building.locationName = this.locationName;
     this.restApi.addBuilding(building).subscribe(
       data=>{
         console.log("Success", data)
