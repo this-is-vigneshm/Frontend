@@ -19,6 +19,7 @@ import { Building } from './models/Building';
 import { Room } from './models/Room';
 import { EmployeeStatus } from './models/EmployeeStatus';
 import { Locations } from './models/locations';
+import { Area } from './models/Area';
 
 // import { TicketRe } from './models/TicketResp';
 
@@ -381,6 +382,9 @@ export class RestapiService {
     public getAllBuilding(){
       return this.httpClient.get<ApiResponse>(`${this.baseUrl}/building/list`)
     }
+    public getAllBuildingByLocation(id : number){
+      return this.httpClient.get<ApiResponse>(`${this.baseUrl}/building/location/${id}`)
+    }
 
 
     // floor
@@ -389,7 +393,10 @@ export class RestapiService {
       return this.httpClient.post<ApiResponse>(`${this.baseUrl}/floor/save`,floor)
     }
     public getAllFloor(){
-      return this.httpClient.get<ApiResponse>(`${this.baseUrl}/floorsss/list`)
+      return this.httpClient.get<ApiResponse>(`${this.baseUrl}/floor/list`)
+    }
+    public getAllFloorByBuilding(id : number){
+      return this.httpClient.get<ApiResponse>(`${this.baseUrl}/floor/building/${id}`)
     }
 
     //room
@@ -397,10 +404,16 @@ export class RestapiService {
     {
       return this.httpClient.post<ApiResponse>(`${this.baseUrl}/room/save`,room)
     }
+    public getAllRoomByFloor(id : number){
+      return this.httpClient.get<ApiResponse>(`${this.baseUrl}/room/floor/${id}`)
+    }
 
     //  area
-    public addArea(room : Room)
+    public addArea(area : Area)
     {
-      return this.httpClient.post<ApiResponse>(`${this.baseUrl}/area/save`,room)
+      return this.httpClient.post<ApiResponse>(`${this.baseUrl}/area/save`,area)
+    }
+    public getAllAreaByFloor(id : number){
+      return this.httpClient.get<ApiResponse>(`${this.baseUrl}/area/floor/${id}`)
     }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { Area } from 'src/app/models/Area';
@@ -12,13 +12,14 @@ export class AreaCreateComponent {
 
   validateForm! : UntypedFormGroup;
 
+  @Input()
+  floor : any
 
   constructor(private fb: UntypedFormBuilder, private restApi : RestapiService, private notification: NzMessageService
     ){
 
     this.validateForm = this.fb.group({
       name: ['', [Validators.required]],
-      floorName: ['', [Validators.required]],
 
   })}
 
@@ -39,6 +40,7 @@ export class AreaCreateComponent {
 
   handleBuildingCreation(area : Area)
   {
+    area.floorId = this.floor.id
     this.restApi.addArea(area).subscribe(
       data=>{
         console.log("Success", data)

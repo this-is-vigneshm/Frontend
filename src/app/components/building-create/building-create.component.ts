@@ -20,7 +20,7 @@ export class BuildingCreateComponent {
   validateForm! : UntypedFormGroup;
 
   @Input()
-  locationName:any
+  location:any
 
   constructor(private fb: UntypedFormBuilder, private restApi : RestapiService, private notification: NzMessageService
     ){
@@ -47,7 +47,7 @@ export class BuildingCreateComponent {
 flo:boolean=false
   handleBuildingCreation(building : Building)
   {
-    building.locationName = this.locationName;
+    building.locationId = this.location.id;
     this.restApi.addBuilding(building).subscribe(
       data=>{
         console.log("Success", data)

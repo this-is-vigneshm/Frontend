@@ -1,49 +1,47 @@
 import { Component, Input } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzTableFilterFn, NzTableFilterList, NzTableSortFn, NzTableSortOrder } from 'ng-zorro-antd/table';
-import { Building } from 'src/app/models/Building';
+import { Area } from 'src/app/models/Area';
 import { RestapiService } from 'src/app/restapi.service';
 
 interface ColumnItem {
   name: string;
   sortOrder: NzTableSortOrder | null;
-  sortFn: NzTableSortFn<Building> | null;
+  sortFn: NzTableSortFn<Area> | null;
   listOfFilter: NzTableFilterList;
-  filterFn: NzTableFilterFn<Building> | null;
+  filterFn: NzTableFilterFn<Area> | null;
   filterMultiple: boolean;
   sortDirections: NzTableSortOrder[];
 }
 @Component({
-  selector: 'app-building-list',
-  templateUrl: './building-list.component.html',
-  styleUrls: ['./building-list.component.css']
+  selector: 'app-area-list',
+  templateUrl: './area-list.component.html',
+  styleUrls: ['./area-list.component.css']
 })
-export class BuildingListComponent {
+export class AreaListComponent {
+
+@Input()
+floorId : any
 
 
 
-
-  @Input()
-  locationId : any
-
-
-  building: Building[] =[];
+area: Area[] =[];
 
 
 
   searchResults:any=[]
 
   ngOnInit(): void {
-    this.getAllBuildingByLocation(this.locationId);
+    this.getAllAreaByFloor(this.floorId);
   }
 
   constructor(private notification: NzMessageService, private restService: RestapiService){
   }
-  buildingColumns: ColumnItem[] = [
+areaColumns: ColumnItem[] = [
     {
       name: 'Id',
       sortOrder: null,
-      sortFn: (a: Building, b: Building) => a.id - b.id ,
+      sortFn: (a: Area, b: Area) => a.id - b.id ,
       sortDirections: ['ascend', 'descend', null],
       filterMultiple: true,
       listOfFilter: [],
@@ -52,7 +50,7 @@ export class BuildingListComponent {
     {
       name: 'Name',
       sortOrder: null,
-      sortFn: (a: Building, b: Building) => a.name.localeCompare(b.name),
+      sortFn: (a: Area, b: Area) => a.name.localeCompare(b.name),
       sortDirections: ['ascend', 'descend', null],
       filterMultiple: true,
       listOfFilter: [],
@@ -63,34 +61,35 @@ export class BuildingListComponent {
 
 
 
-  getAllBuilding(){
-    this.restService.getAllBuilding().subscribe(
+  // getAllFloor(){
+  //   this.restService.getAllFloor().subscribe(
+  //     data =>{
+  //       console.log("Data Obtained", data);
+  //       this.notification.success("floor List Obtained!");
+  //       this.floor =data.responseData ;
+  //       this.searchResults = this.floor
+  //     },
+  //     error=>{
+  //       console.log("Error Occurred", error);
+  //       this.notification.error("floor Fetching Failed!");
+  //     }
+  //   );
+  // }
+  getAllAreaByFloor(id:number){
+    this.restService.getAllAreaByFloor(id).subscribe(
       data =>{
         console.log("Data Obtained", data);
-        this.notification.success("Building List Obtained!");
-        this.building =data.responseData ;
-        this.searchResults = this.building
+        this.notification.success("AreaList Obtained!");
+        this.area =data.responseData ;
+        this.searchResults = this.area
       },
       error=>{
         console.log("Error Occurred", error);
-        this.notification.error("Building Fetching Failed!");
+        this.notification.error("Area Fetching Failed!");
       }
     );
   }
-  getAllBuildingByLocation(id:number){
-    this.restService.getAllBuildingByLocation(id).subscribe(
-      data =>{
-        console.log("Data Obtained", data);
-        this.notification.success("Building List Obtained!");
-        this.building =data.responseData ;
-        this.searchResults = this.building
-      },
-      error=>{
-        console.log("Error Occurred", error);
-        this.notification.error("Building Fetching Failed!");
-      }
-    );
-  }
+
 
 
   handleDeleteLocation(id: any){
@@ -105,13 +104,5 @@ export class BuildingListComponent {
       //   }
       // )
   }
-  item ! : Building | null
-  loc1:boolean = true
-  loc:boolean = false
-  forLocation(event:MouseEvent, data:any){
-    event.preventDefault()
-    this.loc = !this.loc
-    this.loc1 = !this.loc1
-    this.item = data;
-  }
 }
+

@@ -1,10 +1,10 @@
 export class Area {
     id : number
     name : string
-    floorName : string
-    constructor(id : number, name : string, floorName : string){
+    floorId : number
+    constructor(id : number, name : string, floorId : number){
         this.id = id
         this.name = name
-        this.floorName = floorName
+        this.floorId = floorId
         }
 }

@@ -175,7 +175,7 @@ export class LocationListComponent {
       //   }
       // )
   }
-  selectedLocation : any
+  selectedLocation! : Locations | null
   loc1:boolean = true
   loc:boolean = false
   forLocation(event:MouseEvent){

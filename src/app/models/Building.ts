@@ -1,10 +1,10 @@
 export class Building {
     id : number 
     name: string
-    locationName : string
-    constructor(id : number, name: string, locationName : string){
+    locationId : number
+    constructor(id : number, name: string, locationId : number){
         this.id = id
         this.name = name
-        this.locationName = locationName
+        this.locationId = locationId
     }
 }

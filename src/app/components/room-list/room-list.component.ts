@@ -1,49 +1,49 @@
 import { Component, Input } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzTableFilterFn, NzTableFilterList, NzTableSortFn, NzTableSortOrder } from 'ng-zorro-antd/table';
-import { Building } from 'src/app/models/Building';
+import { Room } from 'src/app/models/Room';
+
 import { RestapiService } from 'src/app/restapi.service';
 
 interface ColumnItem {
   name: string;
   sortOrder: NzTableSortOrder | null;
-  sortFn: NzTableSortFn<Building> | null;
+  sortFn: NzTableSortFn<Room> | null;
   listOfFilter: NzTableFilterList;
-  filterFn: NzTableFilterFn<Building> | null;
+  filterFn: NzTableFilterFn<Room> | null;
   filterMultiple: boolean;
   sortDirections: NzTableSortOrder[];
 }
+
 @Component({
-  selector: 'app-building-list',
-  templateUrl: './building-list.component.html',
-  styleUrls: ['./building-list.component.css']
+  selector: 'app-room-list',
+  templateUrl: './room-list.component.html',
+  styleUrls: ['./room-list.component.css']
 })
-export class BuildingListComponent {
+export class RoomListComponent {
+
+@Input()
+floorId : any
 
 
 
-
-  @Input()
-  locationId : any
-
-
-  building: Building[] =[];
+room: Room[] =[];
 
 
 
   searchResults:any=[]
 
   ngOnInit(): void {
-    this.getAllBuildingByLocation(this.locationId);
+    this.getAllRoomByFloor(this.floorId);
   }
 
   constructor(private notification: NzMessageService, private restService: RestapiService){
   }
-  buildingColumns: ColumnItem[] = [
+ roomColumns: ColumnItem[] = [
     {
       name: 'Id',
       sortOrder: null,
-      sortFn: (a: Building, b: Building) => a.id - b.id ,
+      sortFn: (a: Room, b: Room) => a.id - b.id ,
       sortDirections: ['ascend', 'descend', null],
       filterMultiple: true,
       listOfFilter: [],
@@ -52,7 +52,7 @@ export class BuildingListComponent {
     {
       name: 'Name',
       sortOrder: null,
-      sortFn: (a: Building, b: Building) => a.name.localeCompare(b.name),
+      sortFn: (a: Room, b: Room) => a.name.localeCompare(b.name),
       sortDirections: ['ascend', 'descend', null],
       filterMultiple: true,
       listOfFilter: [],
@@ -63,34 +63,35 @@ export class BuildingListComponent {
 
 
 
-  getAllBuilding(){
-    this.restService.getAllBuilding().subscribe(
+  // getAllFloor(){
+  //   this.restService.getAllFloor().subscribe(
+  //     data =>{
+  //       console.log("Data Obtained", data);
+  //       this.notification.success("floor List Obtained!");
+  //       this.floor =data.responseData ;
+  //       this.searchResults = this.floor
+  //     },
+  //     error=>{
+  //       console.log("Error Occurred", error);
+  //       this.notification.error("floor Fetching Failed!");
+  //     }
+  //   );
+  // }
+  getAllRoomByFloor(id:number){
+    this.restService.getAllRoomByFloor(id).subscribe(
       data =>{
         console.log("Data Obtained", data);
-        this.notification.success("Building List Obtained!");
-        this.building =data.responseData ;
-        this.searchResults = this.building
+        this.notification.success("room List Obtained!");
+        this.room =data.responseData ;
+        this.searchResults = this.room
       },
       error=>{
         console.log("Error Occurred", error);
-        this.notification.error("Building Fetching Failed!");
+        this.notification.error("room Fetching Failed!");
       }
     );
   }
-  getAllBuildingByLocation(id:number){
-    this.restService.getAllBuildingByLocation(id).subscribe(
-      data =>{
-        console.log("Data Obtained", data);
-        this.notification.success("Building List Obtained!");
-        this.building =data.responseData ;
-        this.searchResults = this.building
-      },
-      error=>{
-        console.log("Error Occurred", error);
-        this.notification.error("Building Fetching Failed!");
-      }
-    );
-  }
+
 
 
   handleDeleteLocation(id: any){
@@ -104,14 +105,5 @@ export class BuildingListComponent {
       //     this.notification.error("Could not delete Loaction!")
       //   }
       // )
-  }
-  item ! : Building | null
-  loc1:boolean = true
-  loc:boolean = false
-  forLocation(event:MouseEvent, data:any){
-    event.preventDefault()
-    this.loc = !this.loc
-    this.loc1 = !this.loc1
-    this.item = data;
   }
 }

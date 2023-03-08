@@ -8,7 +8,7 @@
     <nz-form-item>
       <nz-form-label [nzSpan]="7" nzRequired>Floor Name</nz-form-label>
       <nz-form-control [nzSpan]="12" nzErrorTip="Please Enter  Valid Floor Name">
-        <input nz-input formControlName="floorName" placeholder="floorName" />
+        <input nz-input value="{{floor.name}}" [disabled]="true" placeholder="floorName" />
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>

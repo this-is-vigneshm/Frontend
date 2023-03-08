@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { UntypedFormBuilder,
   UntypedFormControl,
   UntypedFormGroup,
@@ -16,13 +16,14 @@ export class FloorCreateComponent {
 
   validateForm! : UntypedFormGroup;
 
+  @Input()
+  building : any
 
   constructor(private fb: UntypedFormBuilder, private restApi : RestapiService, private notification: NzMessageService
     ){
 
     this.validateForm = this.fb.group({
       name: ['', [Validators.required]],
-      buildingName: ['', [Validators.required]],
 
   })}
 
@@ -43,6 +44,7 @@ export class FloorCreateComponent {
 list:boolean=false
   handleFloorCreation(floor : Floor)
   {
+    floor.buildingId = this.building.id
     this.restApi.addFloor(floor).subscribe(
       data=>{
         console.log("Success", data)
@@ -51,7 +53,7 @@ list:boolean=false
       },
       error=>{
         console.log("Failed", error)
-        this.notification.error("Floor to create Building")
+        this.notification.error("Failed to create Floor")
       }
     )
   }

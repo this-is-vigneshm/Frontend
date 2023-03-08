@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { Room } from 'src/app/models/Room';
@@ -12,13 +12,14 @@ import { RestapiService } from 'src/app/restapi.service';
 export class RoomCreateComponent {
   validateForm! : UntypedFormGroup;
 
+  @Input()
+  floor:any
 
   constructor(private fb: UntypedFormBuilder, private restApi : RestapiService, private notification: NzMessageService
     ){
 
     this.validateForm = this.fb.group({
       name: ['', [Validators.required]],
-      floorName: ['', [Validators.required]],
 
   })}
 
@@ -39,14 +40,15 @@ export class RoomCreateComponent {
 
   handleBuildingCreation(room : Room)
   {
+    room.floorId = this.floor.id
     this.restApi.addRoom(room).subscribe(
       data=>{
         console.log("Success", data)
-        this.notification.success("Building Created Successfully")
+        this.notification.success("Room Created Successfully")
       },
       error=>{
         console.log("Failed", error)
-        this.notification.error("Failed to create Building")
+        this.notification.error("Failed to create Room")
       }
     )
   }

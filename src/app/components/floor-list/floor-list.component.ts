@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzTableFilterFn, NzTableFilterList, NzTableSortFn, NzTableSortOrder } from 'ng-zorro-antd/table';
 import { Floor } from 'src/app/models/Floor';
@@ -24,7 +24,8 @@ export class FloorListComponent {
 
 
 
-
+@Input()
+buildingId : any
 
 
 
@@ -35,7 +36,7 @@ floor: Floor[] =[];
   searchResults:any=[]
 
   ngOnInit(): void {
-    this.getAllFloor();
+    this.getAllFloorByBuilding(this.buildingId);
   }
 
   constructor(private notification: NzMessageService, private restService: RestapiService){
@@ -68,13 +69,27 @@ floor: Floor[] =[];
     this.restService.getAllFloor().subscribe(
       data =>{
         console.log("Data Obtained", data);
-        this.notification.success("Building List Obtained!");
+        this.notification.success("floor List Obtained!");
         this.floor =data.responseData ;
         this.searchResults = this.floor
       },
       error=>{
         console.log("Error Occurred", error);
-        this.notification.error("Building Fetching Failed!");
+        this.notification.error("floor Fetching Failed!");
+      }
+    );
+  }
+  getAllFloorByBuilding(id:number){
+    this.restService.getAllFloorByBuilding(id).subscribe(
+      data =>{
+        console.log("Data Obtained", data);
+        this.notification.success("floor List Obtained!");
+        this.floor =data.responseData ;
+        this.searchResults = this.floor
+      },
+      error=>{
+        console.log("Error Occurred", error);
+        this.notification.error("floor Fetching Failed!");
       }
     );
   }
@@ -93,11 +108,20 @@ floor: Floor[] =[];
       //   }
       // )
   }
+  item!:Floor|null
   loc1:boolean = true
   loc:boolean = false
-  forLocation(event:MouseEvent){
+  loc2:boolean = false
+  forLocation(event:MouseEvent, data:any){
     event.preventDefault()
     this.loc = !this.loc
     this.loc1 = !this.loc1
+    this.item = data;
+  }
+  forLoc(event:MouseEvent, data:any){
+    event.preventDefault()
+    this.loc2 = !this.loc2
+    this.loc1 = !this.loc1
+    this.item = data;
   }
 }

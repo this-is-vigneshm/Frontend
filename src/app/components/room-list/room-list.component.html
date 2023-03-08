@@ -1,8 +1,7 @@
-
-<nz-table #nestedTable [nzData]="searchResults" [nzPageSize]="10" *ngIf="loc1">
+<nz-table #nestedTable [nzData]="searchResults" [nzPageSize]="10">
     <thead>
         <tr>
-            <th *ngFor="let column of buildingColumns" [nzSortOrder]="column.sortOrder" [nzSortFn]="column.sortFn"
+            <th *ngFor="let column of roomColumns" [nzSortOrder]="column.sortOrder" [nzSortFn]="column.sortFn"
                 [nzSortDirections]="column.sortDirections">
                 {{ column.name }}
             </th>
@@ -15,10 +14,9 @@
                 <td>{{ data.id }}</td>
                 <td>{{ data.name }}</td>
                 <td>
-                    <button nz-button (click)="forLocation($event, data)"><span nz-icon nzType="plus" nzTheme="outline"></span></button>
                     <button nz-button>
                         <span nz-icon nzType="delete" nzTheme="twotone" [nzTwotoneColor]="'red'" nz-tooltip
-                            [nzTooltipTitle]="'Delete Building'" [nzTooltipColor]="'red'" nz-popconfirm
+                            [nzTooltipTitle]="'Delete Room'" [nzTooltipColor]="'red'" nz-popconfirm
                             nzPopconfirmTitle="Proceed to update?"
                             (nzOnConfirm)="handleDeleteLocation(data.id)">
                         </span>
@@ -27,7 +25,3 @@
 </ng-template>
 </tbody>
 </nz-table>
-
-<div *ngIf="loc">
-<app-floor-create [building] = "item"></app-floor-create>
-</div>
