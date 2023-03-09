@@ -212,7 +212,6 @@ export class AssetCreateComponent implements OnInit {
         console.log('Success', data);
         this.notification.success('Asset Created Successfully.');
         this.router.navigateByUrl('/assets');
-        window.location.reload();
         this.handleClose();
 
       },
@@ -230,6 +229,7 @@ export class AssetCreateComponent implements OnInit {
         console.log('Success', data);
         this.notification.success('Asset Updated Successfully.');
         this.router.navigateByUrl('/assets');
+        window.location.reload();
         this.handleClose();
       },
       (error) => {
