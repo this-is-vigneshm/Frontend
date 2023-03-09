@@ -341,6 +341,17 @@ export class TicketsComponent implements OnInit{
   }
 
 
+  viewId : any
+  visible = false
+  viewPage(id : any){
+    this.viewId = id
+    this.visible = true
+  }
+
+  closeView()
+  {
+    this.visible = false
+  }
 
   isVisibleMiddle = false;
 

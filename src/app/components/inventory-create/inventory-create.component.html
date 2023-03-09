@@ -120,4 +120,11 @@
       </nz-form-item>
     </form>
   </div>
+  <div>
+    <nz-form-item id="upload-view">
+      <nz-form-control nzErrorTip="Please Add an Attachment">
+        <input formControlName="file" type="file" placeholder="file" (change)="handleChange($event)">
+      </nz-form-control>
+    </nz-form-item>
+  </div>
 </div>

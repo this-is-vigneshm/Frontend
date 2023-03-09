@@ -98,8 +98,11 @@ export class RestapiService {
   }
   //  inventory APIS
 
-  public registerItem(inventory : Inventory) {
-    return this.httpClient.post<ApiResponse>(`${this.baseUrl}/inventory/save`, inventory);
+  public registerItem(inventory : Inventory, file:File) {
+    var formData = new FormData()
+    formData.append("inventory", JSON.stringify(inventory));
+    formData.append("file", file);
+    return this.httpClient.post<ApiResponse>(`${this.baseUrl}/inventory/save`, formData);
   }
 
   public getItem() {
@@ -115,6 +118,9 @@ export class RestapiService {
 
   public deleteItem(itemId: number ) {
     return this.httpClient.delete<ApiResponse>(`${this.baseUrl}/inventory/${itemId}`);
+  }
+  public downloadInventoryImg(id: number) {
+    return this.httpClient.get(`${this.baseUrl}/inventory/download/${id}`,{ responseType: 'blob' });  
   }
 
   //Authenticate APIS:
@@ -222,6 +228,9 @@ export class RestapiService {
   {
     return this.httpClient.put<ApiResponse>(
       `${this.baseUrl}/tickets/WOId/${ticketId}`,workOrderId)
+  }
+  public downloadTicketImg(id: string) {
+    return this.httpClient.get(`${this.baseUrl}/tickets/download/${id}`,{ responseType: 'blob' });  
   }
   // Knowedge Repo
 

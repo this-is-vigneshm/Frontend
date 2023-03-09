@@ -1,0 +1,76 @@
+<div id="flex">
+    <div>
+      <form nz-form style="width: 1200%">
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" [nzSpan]="5"> <span style="color: rgb(0, 102, 255);">Ticket UUID</span></nz-form-label>
+          <nz-form-control [nzSpan]="12">
+            <input nz-input value="{{ ticket.uuid }}" />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" [nzSpan]="5"><span style="color: rgb(0, 102, 255);">Ticket Title</span></nz-form-label>
+          <nz-form-control [nzSpan]="12">
+            <input nz-input value="{{ ticket.title }}" />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" [nzSpan]="5"><span style="color: rgb(0, 102, 255);">Description</span></nz-form-label>
+          <nz-form-control [nzSpan]="12">
+            <input nz-input value="{{ ticket.description}}" />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" [nzSpan]="5"><span style="color: rgb(0, 102, 255);">Category</span></nz-form-label>
+          <nz-form-control [nzSpan]="12">
+            <input nz-input value="{{ ticket.category}}" />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" [nzSpan]="5"><span style="color: rgb(0, 102, 255);">Status</span></nz-form-label>
+          <nz-form-control [nzSpan]="12">
+            <input nz-input value="{{ ticket.status }}" />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24"  [nzSpan]="5"><span style="color: rgb(0, 102, 255);">Employee Name</span></nz-form-label>
+          <nz-form-control [nzSpan]="12">
+            <input nz-input value="{{ ticket.employeeName}}" />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24"[nzSpan]="5"><span style="color: rgb(0, 102, 255);">Issue Type</span></nz-form-label>
+          <nz-form-control [nzSpan]="12">
+            <input nz-input value="{{ ticket.issueTYpe}}" />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24"[nzSpan]="5"><span style="color: rgb(0, 102, 255);">Asset Id</span></nz-form-label>
+            <nz-form-control [nzSpan]="12">
+              <input nz-input value="{{ ticket.assetId}}" />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24"[nzSpan]="5"><span style="color: rgb(0, 102, 255);">WorkOrder Id</span></nz-form-label>
+            <nz-form-control [nzSpan]="12">
+              <input nz-input value="{{ ticket.workOrderId}}" />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24"[nzSpan]="5"><span style="color: rgb(0, 102, 255);">Time Taken</span></nz-form-label>
+            <nz-form-control [nzSpan]="12">
+              <input nz-input value="{{ ticket.timeTaken}}" />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24"[nzSpan]="5"><span style="color: rgb(0, 102, 255);">ExpectedCompletionTime</span></nz-form-label>
+            <nz-form-control [nzSpan]="12">
+              <input nz-input value="{{ ticket.expectedCompletionTime}}" />
+            </nz-form-control>
+          </nz-form-item>
+      </form>
+    </div>
+  
+    <div style="width: 80%; margin-left:40% ; margin-top:20%; ">
+      <img [src]="imageToShow" style="width: 70%;  border:1px solid;border-color: rgb(55, 83, 239)" />
+    </div>
+  </div>

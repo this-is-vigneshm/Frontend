@@ -49,6 +49,10 @@ margin-left: -66%;">Inventory</span>
       (close)="handleCreateItemOk()"></app-inventory-create>
   </ng-container>
 </nz-modal>
+<nz-modal [nzVisible]="visible" [nzStyle]="{ top: '20px', width: '70%' }" nzTitle="View Inventory"
+            nzCentered (nzOnCancel)="closeView()" (nzOnOk)="closeView()" >
+              <app-view-inventory *nzModalContent [inventoryId]="viewId" (close)="closeView()"></app-view-inventory>
+            </nz-modal>
 
 <nz-table #filterTable [nzData]="searchResults">
   <thead id="item-table">
@@ -84,6 +88,7 @@ margin-left: -66%;">Inventory</span>
           [nzTooltipTitle]="'Delete Asset'" [nzTooltipColor]="'red'">
             <span nz-icon nzType="delete" nzTheme="twotone" [nzTwotoneColor]="'white'"></span>
           </button>
+          <button nz-button [nzSize]="size"  nzShape="circle" style=" border-color: rgb(224, 228, 234); background-color: #f0ad4e; border-radius: 5px;"    (click)="viewPage(data.id)"><span nz-icon nzType="eye" nzTheme="twotone" nzTwotoneColor="white" ></span></button>
         </td>
       </tr>
       <tr [nzExpand]="data.expand">

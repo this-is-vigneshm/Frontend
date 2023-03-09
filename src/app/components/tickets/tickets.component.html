@@ -78,6 +78,8 @@ margin-left: -66%;">Queues</span>
           nz-popconfirm nzPopconfirmTitle="Sure to Update Status?"
             (nzOnConfirm)="showUpdateStatusModal(data)">
             <span nz-icon nzType="edit" nzTheme="twotone" [nzTwotoneColor]="'white'"></span></button>
+
+            <button nz-button [nzSize]="size"  nzShape="circle" style=" border-color: rgb(224, 228, 234); background-color: #f0ad4e; border-radius: 5px;"    (click)="viewPage(data.uuid)"><span nz-icon nzType="eye" nzTheme="twotone" nzTwotoneColor="white" ></span></button>
         </td>
       </tr>
       <tr [nzExpand]="data.expand">
@@ -113,3 +115,8 @@ margin-left: -66%;">Queues</span>
     <app-update-ticket-status [ticketData]="selectedTicket" (close)="handleUpdateStatusOk()"></app-update-ticket-status>
   </ng-container>
 </nz-modal>
+
+<nz-modal [nzVisible]="visible" [nzStyle]="{ top: '20px', width: '70%' }" nzTitle="View Inventory"
+            nzCentered (nzOnCancel)="closeView()" (nzOnOk)="closeView()" >
+              <app-view-ticket *nzModalContent [ticketId]="viewId" (close)="closeView()"></app-view-ticket>
+            </nz-modal>

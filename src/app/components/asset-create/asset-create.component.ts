@@ -229,7 +229,7 @@ export class AssetCreateComponent implements OnInit {
         console.log('Success', data);
         this.notification.success('Asset Updated Successfully.');
         this.router.navigateByUrl('/assets');
-        window.location.reload();
+        window.location.reload();~
         this.handleClose();
       },
       (error) => {

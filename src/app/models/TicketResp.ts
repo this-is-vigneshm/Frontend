@@ -11,6 +11,8 @@ export class TicketResp {
     issueTYpe : string
     assetId : string
     workOrderId : number
+    data : any
+    fileName : string
     createdBy:string;
     createdTime: number;
     updatedBy: string;
@@ -31,7 +33,8 @@ export class TicketResp {
         employeeDepartment: string,
         issueTYpe : string,
         assetId : string,
-        workOrderId : number,
+        workOrderId : number, data : any,
+        fileName : string,
         createdBy:string,
         createdTime: number,
         updatedBy: string,
@@ -50,6 +53,8 @@ export class TicketResp {
         this.issueTYpe = issueTYpe
         this.assetId=assetId
         this.workOrderId = workOrderId
+        this.data = data
+        this.fileName = fileName
         this.createdBy = createdBy
         this.createdTime = createdTime
         this.updatedBy = updatedBy

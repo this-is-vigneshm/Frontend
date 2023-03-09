@@ -27,12 +27,13 @@ export class InventoryCreateComponent {
   userData: any;
 
   validateForm!: UntypedFormGroup;
+  file: any;
 
   submitForm(): void {
     if (this.validateForm.valid) {
       console.log('submit', this.validateForm.value);
       if (!this.isUpdateComponent) {
-        this.createItemByData(this.validateForm.value);
+        this.createItemByData(this.validateForm.value,this.file);
       } else {
         this.updateItemData(this.validateForm.value);
       }
@@ -77,7 +78,8 @@ export class InventoryCreateComponent {
           null,
           [Validators.required, Validators.pattern('^[0-9]+(.[0-9]{0,2})?$')],
         ],
-        status:[null,[Validators.required]]
+        status:[null,[Validators.required]],
+
       });
     } else {
       this.isUpdateComponent = true;
@@ -95,10 +97,11 @@ export class InventoryCreateComponent {
       });
     }
   }
-
-  createItemByData(inventory: Inventory) {
+id : any;
+  createItemByData(inventory: Inventory,file:File) {
     inventory.userId = this.userData.userId;
-    this.restService.registerItem(inventory).subscribe(
+    inventory.id = this.id;
+    this.restService.registerItem(inventory, file).subscribe(
       (data) => {
         console.log('Success', data);
         this.notification.success('Item Created Successfully.');
@@ -110,6 +113,29 @@ export class InventoryCreateComponent {
       }
     );
   }
+
+  // createItemByData(workorder: WorkOrder, file: File) {
+  //   workorder.employeeId = this.userData.userId
+  //   workorder.status = "Active"
+  //   workorder.emailId = this.emailId
+  //   workorder.phoneNumber = this.phNo
+  //   workorder.name = this.name
+  //   console.log('submit', this.validateForm.value);
+  //   this.restService.registerWo(workorder, file).subscribe(
+  //     data => {
+  //       console.log("Success", data)
+  //       this.notification.success("Workorder Created Successfully.")
+  //       //  this.router.navigateByUrl("/");
+  //       this.isVisibleMiddle = true;
+  //       this.id = data.responseData
+  //     },
+  //     error => {
+  //       console.log("Error occcured", error)
+  //     }
+  //   );
+  // }
+
+
 
   updateItemData(inventory: any) {
     console.log('Updating............');
@@ -130,5 +156,9 @@ export class InventoryCreateComponent {
     this.isUpdateComponent = false;
     this.inventoryData = null;
     this.close.emit();
+  }
+
+  handleChange(event: any) {
+    this.file = event.target.files[0]
   }
 }
