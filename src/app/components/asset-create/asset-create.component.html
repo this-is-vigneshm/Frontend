@@ -94,6 +94,7 @@
             nzShowSearch
             nzAllowClear
             nzPlaceHolder="Select a Facility"
+            style="text-align: left;"
             [ngModel] = "''"
             (ngModelChange)="getLocationBycode($event)" 
           >
@@ -121,6 +122,7 @@
           nzShowSearch
           nzAllowClear
           nzPlaceHolder="Select a Location"
+          style="text-align: left;"
          [ngModel] = "''"
           (ngModelChange)="getAllBuilding($event)" 
   
@@ -154,6 +156,7 @@
         nzShowSearch
         nzAllowClear
         nzPlaceHolder="Select a building"
+        style="text-align: left;"
         [ngModel] = "''"
         (ngModelChange)="getAllFloor($event)"
       >
@@ -182,6 +185,7 @@
         nzShowSearch
         nzAllowClear
         nzPlaceHolder="Select a floor"
+        style="text-align: left;"
         [ngModel]="' '"
         (ngModelChange)="getAllRoomAndArea($event)"
       >
@@ -219,6 +223,7 @@
       nzShowSearch
       nzAllowClear
       nzPlaceHolder="Select a Area/Room"
+      style="text-align: left;"
       [ngModel]="''" (ngModelChange)="getId($event)"
     >
       <nz-option
@@ -252,6 +257,7 @@
             nzShowSearch
             nzAllowClear
             nzPlaceHolder="Select a Category"
+            style="text-align: left;"
           >
             <nz-option
               *ngFor="let category of categories"
@@ -283,6 +289,7 @@
             nzShowSearch
             nzAllowClear
             nzPlaceHolder="Select a Department"
+            style="text-align: left;"
           >
             <nz-option
               *ngFor="let Department of departments"
@@ -314,6 +321,7 @@
             nzShowSearch
             nzAllowClear
             nzPlaceHolder="Select a Supplier"
+            style="text-align: left;"
           >
             <nz-option
               *ngFor="let Supplier of suppliers"
@@ -458,13 +466,12 @@
     </form>
 
     
-    <div class="clearfix">
-      <nz-upload nzAction="" nzListType="picture" [(nzFileList)]="fileList1">
-        <button nz-button>
-          <span nz-icon nzType="upload"></span>
-          Upload an Image
-        </button>
-      </nz-upload>
+    <div>
+      <nz-form-item id="upload-view">
+        <nz-form-control nzErrorTip="Please Add an Attachment">
+          <input formControlName="file" type="file" placeholder="file" (change)="handleChange1($event)">
+        </nz-form-control>
+      </nz-form-item>
     </div>
     <br />
     <div id="create-asset-file-upload" *ngIf="!isUpdateComponent">

@@ -46,11 +46,11 @@ export class RestapiService {
         : '';
   }
 
-  public registerAsset(assetDto: AssetReq) {
-    return this.httpClient.post<ApiResponse>(
-      `${this.baseUrl}/assets/save`,
-      assetDto
-    );
+  public registerAsset(assetDto: AssetReq, file:File) {
+    var formData = new FormData()
+    formData.append("Asset", JSON.stringify(assetDto))
+    formData.append("file", file);
+    return this.httpClient.post<ApiResponse>(`${this.baseUrl}/assets/save`,formData);
   }
 
   public getAssets() {
@@ -95,6 +95,12 @@ export class RestapiService {
         },
       }
     );
+  }
+
+  public downloadImage(id : any){
+    return this.httpClient.get(`${this.baseUrl}/assets/download/${id}`,
+    { responseType: 'blob' }
+  );
   }
   //  inventory APIS
 

@@ -113,6 +113,13 @@
           />
         </nz-form-control>
       </nz-form-item>
+      <div>
+        <nz-form-item id="upload-view">
+          <nz-form-control nzErrorTip="Please Add an Attachment">
+            <input formControlName="file" type="file" placeholder="file" (change)="handleChange($event)">
+          </nz-form-control>
+        </nz-form-item>
+      </div>
       <nz-form-item nz-row class="register-area">
         <nz-form-control [nzSpan]="14" [nzOffset]="6">
           <button nz-button nzType="primary" id="create-button">Submit</button>
@@ -120,11 +127,5 @@
       </nz-form-item>
     </form>
   </div>
-  <div>
-    <nz-form-item id="upload-view">
-      <nz-form-control nzErrorTip="Please Add an Attachment">
-        <input formControlName="file" type="file" placeholder="file" (change)="handleChange($event)">
-      </nz-form-control>
-    </nz-form-item>
-  </div>
+
 </div>

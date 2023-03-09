@@ -36,6 +36,8 @@ export class AssetCreateComponent implements OnInit {
 
   userData: any;
 
+  file:any
+
   facilities: Facility[] = [];
 
   validateForm!: UntypedFormGroup;
@@ -67,7 +69,7 @@ export class AssetCreateComponent implements OnInit {
       if (!this.isUpdateComponent) {
         var b = this.validateForm.value
         var asset = new AssetReq(b.name, b.code, b.serialNo, b.description, b.facilityCode, this.areaId, this.roomId, b.category, b.department, b.subAsset, b.system, b.supplier, b.status, b.priority, b.make, b.model, b.price, this.userData.userId)
-        this.createAssetByData(asset);
+        this.createAssetByData(asset,this.file);
       } else {
         this.updateAssetData(this.validateForm.value);
       }
@@ -203,11 +205,11 @@ export class AssetCreateComponent implements OnInit {
     }
   }
 
-  createAssetByData(asset: AssetReq) {
+  createAssetByData(asset: AssetReq, file:File) {
     asset.room = this.roomId
     asset.area = this.areaId
     asset.userId = this.userData.userId;
-    this.restService.registerAsset(asset).subscribe(
+    this.restService.registerAsset(asset,file).subscribe(
       (data) => {
         console.log('Success', data);
         this.notification.success('Asset Created Successfully.');
@@ -363,6 +365,9 @@ export class AssetCreateComponent implements OnInit {
       this.roomId = id
     }
 
+  }
+  handleChange1(event: any) {
+    this.file = event.target.files[0]
   }
 
 }

@@ -280,5 +280,14 @@ export class AssetListComponent implements OnInit{
     this.selectedAsset = null;
     this.isCreatTicketVisible = false;
   }
+
+  viewId: any;
+  visible = false;
+  viewPage(id: any) {
+    this.viewId = id;
+    this.visible = true;
+  }  close() {
+    this.visible = false;
+  }
  
 }

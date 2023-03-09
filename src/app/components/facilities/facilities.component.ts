@@ -101,15 +101,6 @@ export class FacilitiesComponent implements OnInit{
       filterMultiple: false,
       listOfFilter:[],
       filterFn: null
-    },
-    {
-      name: 'Address ',
-      sortOrder: null,
-      sortDirections: ['ascend', 'descend', null],
-      sortFn: null,
-      filterMultiple: false,
-      listOfFilter:[],
-      filterFn: null
     }
   ];
 

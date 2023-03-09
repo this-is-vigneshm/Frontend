@@ -45,6 +45,7 @@ export class RoomCreateComponent {
       data=>{
         console.log("Success", data)
         this.notification.success("Room Created Successfully")
+        window.location.reload()
       },
       error=>{
         console.log("Failed", error)

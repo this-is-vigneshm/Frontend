@@ -45,6 +45,7 @@ export class AreaCreateComponent {
       data=>{
         console.log("Success", data)
         this.notification.success("Area Created Successfully")
+        window.location.reload()
       },
       error=>{
         console.log("Failed", error)
