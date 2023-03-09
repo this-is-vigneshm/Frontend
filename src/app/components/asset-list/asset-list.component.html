@@ -44,7 +44,7 @@
   </ng-container>
 </nz-modal>
 
-<nz-modal [nzStyle]="{ top: '20px', width: '45%' }" [(nzVisible)]="isCreatTicketVisible" nzTitle="Create a Ticket"
+<nz-modal [nzStyle]="{ top: '20px', width: '45%' }" [(nzVisible)]="isCreatTicketVisible" nzTitle="Update The Asset"
   nzCentered (nzOnCancel)="handleCreateTicketCancel()" (nzOnOk)="handleCreateTicketOk()">
   <ng-container *nzModalContent>
     <app-create-ticket style="text-align: center" [assetData]="selectedAsset"

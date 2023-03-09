@@ -1,5 +1,6 @@
 export class Locations {
     id: number;
+    facCode:string
     name:string;
     description:string;
     addressLine1: string;
@@ -16,13 +17,14 @@ export class Locations {
     expand: boolean = false;
     userId:number;
 
-    public constructor(id:number, name:string, description:string, addressLine1: string,
+    public constructor(id:number, facCode:string,name:string, description:string, addressLine1: string,
         addressLine2: string, addressLine3: string,
         city: string, state: string, postalCode: number,
         country: string, createdTime: number,  createdBy: string,
         lastUpdatedTime: number, lastUpdatedBy: string, userId:number) 
         {
             this.id = id,
+            this.facCode = facCode
             this.name = name,
             this.description = description,
             this.addressLine1 = addressLine1,

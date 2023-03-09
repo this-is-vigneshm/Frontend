@@ -373,6 +373,13 @@ export class RestapiService {
     public getAllLocations(){
       return this.httpClient.get<ApiResponse>(`${this.baseUrl}/locations/list`)
     }
+    public getLocationBycode(code : string){
+        return this.httpClient.get<ApiResponse>(`${this.baseUrl}/locations/code/${code}`)
+    }
+
+    public getLocation(id:number){
+      return this.httpClient.get<ApiResponse>(`${this.baseUrl}/locations/${id}`)
+    }
 
     // building
 
@@ -386,6 +393,9 @@ export class RestapiService {
     public getAllBuildingByLocation(id : number){
       return this.httpClient.get<ApiResponse>(`${this.baseUrl}/building/location/${id}`)
     }
+    public getbuilding(id:number){
+      return this.httpClient.get<ApiResponse>(`${this.baseUrl}/building/${id}`)
+    }
 
 
     // floor
@@ -398,6 +408,9 @@ export class RestapiService {
     }
     public getAllFloorByBuilding(id : number){
       return this.httpClient.get<ApiResponse>(`${this.baseUrl}/floor/building/${id}`)
+    }
+    public getFloor(id:number){
+      return this.httpClient.get<ApiResponse>(`${this.baseUrl}/floor/${id}`)
     }
 
     //room

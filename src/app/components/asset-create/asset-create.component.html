@@ -94,6 +94,8 @@
             nzShowSearch
             nzAllowClear
             nzPlaceHolder="Select a Facility"
+            [ngModel] = "''"
+            (ngModelChange)="getLocationBycode($event)" 
           >
             <nz-option
               *ngFor="let facility of facilities"

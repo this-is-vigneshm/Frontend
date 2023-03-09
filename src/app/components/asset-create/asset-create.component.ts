@@ -107,7 +107,6 @@ export class AssetCreateComponent implements OnInit {
       this.router.navigateByUrl('/signin');
       window.location.pathname = '/signin';
     }
-    this.getAllLocation()
     this.getAllFacilities();
     this.userData = this.tokenService.getCurrentUserData();
     if (this.assetData == null) {
@@ -213,7 +212,9 @@ export class AssetCreateComponent implements OnInit {
         console.log('Success', data);
         this.notification.success('Asset Created Successfully.');
         this.router.navigateByUrl('/assets');
+        window.location.reload();
         this.handleClose();
+
       },
       (error) => {
         console.log('Error occcured', error);
@@ -230,7 +231,6 @@ export class AssetCreateComponent implements OnInit {
         this.notification.success('Asset Updated Successfully.');
         this.router.navigateByUrl('/assets');
         this.handleClose();
-        window.location.reload();
       },
       (error) => {
         console.log('Error occcured', error);
@@ -277,8 +277,9 @@ export class AssetCreateComponent implements OnInit {
   fileList1 = [...this.defaultFileList];
   fileList2 = [...this.defaultFileList];
 
-  getAllLocation(){
-    this.restService.getAllLocations().subscribe(
+  getLocationBycode(code:string){
+    console.log(code)
+    this.restService.getLocationBycode(code).subscribe(
       data=>{
           console.log('Location Fetched Successfully', data)
           this.locations = data.responseData;

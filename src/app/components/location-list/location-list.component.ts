@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzTableFilterFn, NzTableFilterList, NzTableSortFn, NzTableSortOrder } from 'ng-zorro-antd/table';
 import { Locations } from 'src/app/models/locations';
@@ -46,8 +46,13 @@ export class LocationListComponent {
 
   searchResults:any=[]
 
+  @Input()
+  locId:any
+
   ngOnInit(): void {
-    this.getAllLocation();
+    console.log(this.locId)
+    this.getLocation(this.locId);
+    // this.getAllLocation()
   }
 
   constructor(private notification: NzMessageService, private restService: RestapiService){
@@ -94,48 +99,22 @@ export class LocationListComponent {
 
 
 
-  innerColumns : ColumnItem[] = [
-    {
-      name: 'Created Time',
-      sortOrder: 'ascend',
-      sortDirections: ['ascend', 'descend', null],
-      sortFn: (a: Locations, b: Locations) => a.createdTime - b.createdTime,
-      filterMultiple: false,
-      listOfFilter:[],
-      filterFn: null
-    },
-    {
-      name: 'Created By',
-      sortOrder: 'ascend',
-      sortDirections: ['ascend', 'descend', null],
-      sortFn: (a: Locations, b: Locations) => a.createdBy.localeCompare(b.createdBy),
-      filterMultiple: false,
-      listOfFilter:[],
-      filterFn: null
-    },
-    {
-      name: 'Updated Time',
-      sortOrder: 'ascend',
-      sortDirections: ['ascend', 'descend', null],
-      sortFn: (a: Locations, b: Locations) => a.lastUpdatedTime - b.lastUpdatedTime,
-      filterMultiple: false,
-      listOfFilter:[],
-      filterFn: null
-    },
-    {
-      name: 'Updated By',
-      sortOrder: 'ascend',
-      sortDirections: ['ascend', 'descend', null],
-      sortFn: (a: Locations, b: Locations) => a.lastUpdatedBy.localeCompare(b.lastUpdatedBy),
-      filterMultiple: false,
-      listOfFilter:[],
-      filterFn: null
-    }
-  ];
-
-
   getAllLocation(){
     this.restService.getAllLocations().subscribe(
+      data =>{
+        console.log("Data Obtained", data);
+        this.notification.success("Location List Obtained!");
+        this.locations =data.responseData ;
+        this.searchResults = this.locations
+      },
+      error=>{
+        console.log("Error Occurred", error);
+        this.notification.error("Location Fetching Failed!");
+      }
+    );
+  }
+  getLocation(id:number){
+    this.restService.getLocation(id).subscribe(
       data =>{
         console.log("Data Obtained", data);
         this.notification.success("Location List Obtained!");

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {
   UntypedFormBuilder,
   UntypedFormGroup,
@@ -18,7 +18,12 @@ export class LocationComponent implements OnInit {
   validateForm!: UntypedFormGroup;
   a:any
   userData:any
+
+  @Input()
+  facCode:any
+
   ngOnInit(): void {
+    console.log(this.facCode.facilityName)
     this.userData = this.tokenService.getCurrentUserData();
     this.validateForm = this.fb.group({
       name: [
@@ -77,14 +82,16 @@ export class LocationComponent implements OnInit {
       });
     }
   }
-
+locId : any
   handleLocationCreate(location : Locations){
+    location.facCode=this.facCode.facilityCode
     location.userId = this.userData.userId;
     this.restApi.createLocation(location).subscribe(
       data=>{
         console.log('Success', data)
         this.notification.success('Location Created Successfully')
         this.loc = true
+        this.locId = data.responseData.id
       },
       error=>{
         console.log("Failed", error)

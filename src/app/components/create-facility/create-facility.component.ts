@@ -66,6 +66,7 @@ export class CreateFacilityComponent implements OnInit {
       });
     }
   }
+  facCode!: Facility | null
 
   createFacility(facility: Facility) {
     facility.userId = this.userData.userId;
@@ -73,6 +74,7 @@ export class CreateFacilityComponent implements OnInit {
       (data) => {
         console.log('Success', data);
         this.notification.success('Facility Addded Successfully!');
+        this.facCode = data.responseData
         this.handleCloseEvent();
         this.addLoc = false
       },

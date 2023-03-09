@@ -1,6 +1,12 @@
 <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()" [nzLayout]="'inline'" style="width: 180%;" *ngIf="!loc">
 
   <div nz-col [nzSpan]="12">
+    <nz-form-item>
+      <nz-form-label [nzSm]="14" [nzXs]="24" nzFor="addressLine1" nzRequired>Facility Code </nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please Enter The ">
+        <input value="{{facCode.facilityCode}}" id="addressLine1" [disabled]="true" nz-input />
+      </nz-form-control>
+    </nz-form-item>
   <nz-form-item>
       <nz-form-label [nzSm]="14" [nzXs]="24" nzFor="addressLine1" nzRequired>Location Name</nz-form-label>
       <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please Enter The Location Name">
@@ -66,5 +72,5 @@
 
 </form>
 <div *ngIf="loc">
-  <app-location-list></app-location-list>
+  <app-location-list [locId] = "locId"></app-location-list>
 </div>
