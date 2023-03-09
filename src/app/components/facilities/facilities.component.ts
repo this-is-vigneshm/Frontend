@@ -268,6 +268,7 @@ export class FacilitiesComponent implements OnInit{
         data=>{
           console.log("Success", data);
           this.notification.success("Facility Deleted Successfully!")
+          window.location.reload();
         },
         error=>{
           console.log("Error Occured", error)

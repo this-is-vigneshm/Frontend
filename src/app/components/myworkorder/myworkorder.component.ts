@@ -292,6 +292,7 @@ editId : string | null =null;
       data=>{
         console.log("Success", data);
         this.notification.success("Workorder Deleted Successfully!")
+        window.location.reload()
       },
       error=>{
         console.log("Error Occured", error)

@@ -24,14 +24,12 @@ export class CreateFacilityComponent implements OnInit {
 
   userData: any;
 
+  addLoc:boolean=true
   ngOnInit(): void {
     this.validateForm = this.fb.group({
       facilityCode: [
         null,
-        [
-          Validators.required,
-          Validators.pattern('^-?[0-9]\\d*(\\.\\d{1,2})?$'),
-        ],
+        [Validators.required, Validators.pattern('[A-Z][A-Z ]+')],
       ],
       facilityName: [
         null,
@@ -41,32 +39,6 @@ export class CreateFacilityComponent implements OnInit {
       facilitySource: [null, [Validators.required]],
       inactiveDate: [null, []],
       facLocationCode: [null, []],
-      addressLine1: [
-        null,
-        [
-          Validators.required,
-          // Validators.pattern('^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ ]+$'),
-        ],
-      ],
-      addressLine2: [
-        null,
-        [
-          Validators.required,
-        ],
-      ],
-      addressLine3: [
-        null,
-        [
-          Validators.required,
-        ],
-      ],
-      city: [null, [Validators.required]],
-      state: [null, [Validators.required]],
-      postalCode: [null, [Validators.required]],
-      country: [null, [Validators.required]],
-      dagRunId: [null, []],
-      taskIdJobId: [null, []],
-      crossCodeFlag: [false, []],
     });
 
     this.userData = this.tokenService.getCurrentUserData();
@@ -102,6 +74,7 @@ export class CreateFacilityComponent implements OnInit {
         console.log('Success', data);
         this.notification.success('Facility Addded Successfully!');
         this.handleCloseEvent();
+        this.addLoc = false
       },
       (error) => {
         console.log('Error occured', error);

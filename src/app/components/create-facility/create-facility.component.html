@@ -90,11 +90,18 @@
         />
       </nz-form-control>
     </nz-form-item>
+
+    <nz-form-item nz-row class="register-area">
+      <nz-form-control [nzSpan]="14" [nzOffset]="6">
+        <button nz-button nzType="primary">Register</button>
+      </nz-form-control>
+    </nz-form-item>
+
     <nz-form-item>
       <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="Location" nzRequired
       >Add Location</nz-form-label
     > 
-    <button nz-button nzType="primary" [nzSize]="size" nzShape="circle" (click)="forLocation($event)" style="margin-top: 5px;"><span nz-icon nzType="plus"></span></button>
+    <button nz-button nzType="primary" [nzSize]="size" nzShape="circle" (click)="forLocation($event)" style="margin-top: 5px;" [disabled] = "addLoc"><span nz-icon nzType="plus"></span></button>
     </nz-form-item>
 
 <div *ngIf="loc">
@@ -140,10 +147,6 @@
         </nz-select>
       </nz-form-control>
     </nz-form-item> -->
-    <nz-form-item nz-row class="register-area">
-      <nz-form-control [nzSpan]="14" [nzOffset]="6">
-        <button nz-button nzType="primary">Register</button>
-      </nz-form-control>
-    </nz-form-item>
+
   </div>
 </form>

@@ -232,6 +232,7 @@ export class InventoryListComponent {
     this.restService.deleteItem(itemId).subscribe(
       data =>{
         this.notification.success("Inventory Deleted Successfully.!")
+        window.location.reload();
       },
       error=>{
         console.log("Error Occured", error);
