@@ -24,18 +24,10 @@ export class CreateFacilityComponent implements OnInit {
 
   userData: any;
 
-  addLoc:boolean=true
+  addLoc: boolean = true;
 
-  facilityType = [
-    { name: 'Rural'},
-    { name: 'Urban'},
-  ];
+  facilityType = [{ name: 'Rural' }, { name: 'Urban' }];
 
-
-
-
-
- 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
       facilityCode: [
@@ -76,7 +68,7 @@ export class CreateFacilityComponent implements OnInit {
       });
     }
   }
-  facCode!: Facility | null
+  facCode!: Facility | null;
 
   createFacility(facility: Facility) {
     facility.userId = this.userData.userId;
@@ -84,9 +76,9 @@ export class CreateFacilityComponent implements OnInit {
       (data) => {
         console.log('Success', data);
         this.notification.success('Facility Addded Successfully!');
-        this.facCode = data.responseData
+        this.facCode = data.responseData;
         this.handleCloseEvent();
-        this.addLoc = false
+        this.addLoc = false;
       },
       (error) => {
         console.log('Error occured', error);
@@ -98,10 +90,10 @@ export class CreateFacilityComponent implements OnInit {
   handleCloseEvent() {
     this.close.emit();
   }
-  loc:boolean = false
-  forLocation(event:MouseEvent){
-    event.preventDefault()
-    this.loc = !this.loc
+  loc: boolean = false;
+  forLocation(event: MouseEvent) {
+    event.preventDefault();
+    this.loc = !this.loc;
   }
   size: NzButtonSize = 'small';
 }
