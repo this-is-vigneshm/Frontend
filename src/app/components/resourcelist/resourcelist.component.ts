@@ -27,6 +27,11 @@ interface ColumnItem {
   styleUrls: ['./resourcelist.component.css'],
 })
 export class ResourcelistComponent {
+
+
+  
+
+
   constructor(
     private restService: RestapiService,
     private router: Router,
@@ -37,13 +42,19 @@ export class ResourcelistComponent {
   selectedResource!: Resource | null;
   searchString: any;
   userData: any;
+  @Input()
+  workorderCode : any
+
+  @Output()
+  innertable : EventEmitter<void> = new EventEmitter<void>()
+
 
   ngOnInit(): void {
     if (localStorage.getItem('access_token') === null) {
       this.router.navigateByUrl('/signin');
       window.location.pathname = '/signin';
     } else {
-      this.getResource();
+      this.getResource(this.workorderCode);
     }
   }
 
@@ -75,17 +86,6 @@ export class ResourcelistComponent {
       filterMultiple: true,
       listOfFilter: [],
       filterFn: null,
-    },
-    {
-      name: 'resourceType',
-      sortOrder: 'descend',
-      sortFn: (a: Resource, b: Resource) =>
-        a.resourceType.localeCompare(b.resourceType),
-      sortDirections: ['ascend', 'descend', null],
-      listOfFilter: [],
-      filterFn: (description: string, item: Resource) =>
-        item.resourceType.indexOf(description) !== -1,
-      filterMultiple: true,
     },
     {
       name: 'availability',
@@ -126,7 +126,7 @@ export class ResourcelistComponent {
   ];
   resourceList: Resource[] = [];
 
-  searchResults: any;
+  searchResults: Resource[] = [];
 
   filterResource(event: any) {
     function ispositive(element: any, index: any, array: any) {
@@ -155,13 +155,20 @@ export class ResourcelistComponent {
     this.searchResults = this.resourceList.filter(ispositive);
   }
 
-  getResource() {
-    this.restService.getAllResource().subscribe(
+  getResource(id:any) {
+    this.restService.getAllResourceByWorkOrderCode(id).subscribe(
       (data) => {
         this.resourceList = data.responseData;
-        this.searchResults = this.resourceList;
+       for(var i of this.resourceList)
+       {
+        if(i.resourceType == "User")
+        {
+          this.searchResults.push(i)
+        }
+       }
         console.log(this.resourceList);
         this.notification.success('Resource List is available!');
+        this.innertable.emit();
       },
       (error) => {
         console.log('Error Occured', error);
@@ -174,6 +181,7 @@ export class ResourcelistComponent {
     this.restService.deleteById(resourceId).subscribe(
       (data) => {
         this.notification.success('Resource Deleted Successfully.!');
+        window.location.reload()
       },
       (error) => {
         console.log('Error Occured', error);
@@ -185,35 +193,8 @@ export class ResourcelistComponent {
   handleDelete(resourceId: any) {
     this.deleteById(resourceId);
   }
-
-  isVisibleMiddle = false;
-
-  isa = false;
-
-  showModalMiddle(): void {
-    this.isVisibleMiddle = true;
-    this.isa = true;
-  }
-  showModalMiddle1(): void {
-    this.isVisibleMiddle = true;
-    this.isa = false;
-  }
-
-  handleUpdateResource(data: any) {
-    this.selectedResource = data;
-    this.isVisibleMiddle = true;
-  }
-  handleCreateResourceSave(): void {
-    this.selectedResource = null;
-    this.isVisibleMiddle = false;
-  }
-
-  handleCreateResourceCancel(): void {
-    this.selectedResource = null;
-    this.isVisibleMiddle = false;
-  }
+ 
   id = null
-  a = false
   getId(event: any, id:any){
     console.log(event)
     if(event == true)

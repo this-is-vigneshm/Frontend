@@ -29,7 +29,20 @@ floorId : any
 
 room: Room[] =[];
 
-
+panels = [
+  {
+    active: true,
+    disabled: false,
+    name: 'Room',
+    icon: 'tool',
+    customStyle: {
+      background: '#ffffff',
+      'border-radius': '10px',
+      'margin-bottom': '5px',
+      border: '0px'
+    }
+  }
+];
 
   searchResults:any=[]
 
@@ -60,7 +73,12 @@ room: Room[] =[];
     }
   ];
 
+  done(event:any){
 
+    window.location.reload()
+    this.notification.success("Loction created Successfully")
+
+  }
 
 
   // getAllFloor(){

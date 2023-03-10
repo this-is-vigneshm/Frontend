@@ -170,6 +170,7 @@ export class ResourceplannerComponent implements OnInit {
   createresourceByData(resource: Resource) {
     resource.workOrderCode = this.workOrderCode
     resource.resourceType = 'User';
+    resource.availability = "Yes"
     for(var i of this.userId){
       resource.userId = i
       this.restService.registerResource(resource).subscribe(

@@ -384,15 +384,15 @@
 </div>
 
 <div *ngIf="condition">
-  <nz-collapse [nzGhost]="true" id="collapse">
-    <nz-collapse-panel>
-      <app-resource-list></app-resource-list>
+  <nz-collapse [nzGhost]="true" id="collapse" >
+    <nz-collapse-panel [nzHeader]="'Users'">
+      <app-resourcelist [workorderCode]="workOrderCode" (innertable)="innerTable1()"></app-resourcelist>
     </nz-collapse-panel>
   </nz-collapse>
 </div>
 
-<nz-collapse *ngIf="condition1" [nzGhost]="true" id="collapse">
-  <nz-collapse-panel>
-    <app-resourcelist></app-resourcelist>
+<nz-collapse *ngIf="condition1" [nzGhost]="true" id="collapse" >
+  <nz-collapse-panel [nzHeader]="'Inventory'">
+    <app-resource-list [workOrderId]="workOrderCode" (dropDown)="innerTable()"></app-resource-list>
   </nz-collapse-panel>
 </nz-collapse>
