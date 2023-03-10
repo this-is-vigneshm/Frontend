@@ -260,37 +260,6 @@ export class CreateWorkorderComponent implements OnInit {
 
 
 
-  listOfColumns1: ColumnItem[] = [
-    {
-      name: 'Inventory Id',
-      sortOrder: null,
-      sortFn: (a: Resource, b: Resource) => a.inventoryId - b.inventoryId,
-      sortDirections: ['ascend', 'descend', null],
-      filterMultiple: true,
-      listOfFilter: [],
-      filterFn: null
-    },
-    {
-      name: 'Resource Name',
-      sortOrder: 'descend',
-      sortFn: (a: Resource, b: Resource) => a.resourceName.localeCompare(b.resourceName),
-      sortDirections: ['ascend', 'descend', null],
-      filterMultiple: true,
-      listOfFilter: [],
-      filterFn: null
-    },
-    {
-      name: 'Availability',
-      sortOrder: 'descend',
-      sortFn: (a: Resource, b: Resource) => a.availability.localeCompare(b.availability),
-      sortDirections: ['ascend', 'descend', null],
-      filterMultiple: true,
-      listOfFilter: [],
-      filterFn: null
-    }
-
-  ];
-
   changeA() {
     this.isa = true
     this.isb = false
