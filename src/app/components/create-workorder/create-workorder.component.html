@@ -1,6 +1,6 @@
 <div id="workOrder">
   <div id="form-view">
-    <form nz-form [formGroup]="validateForm" nzLayout="horizontal" (ngSubmit)="submitForm()">
+    <form nz-form [formGroup]="validateForm" nzLayout="vertical" (ngSubmit)="submitForm()">
 
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="Name">
@@ -13,7 +13,7 @@
 
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="workOrderCode">
-          <span style="color: rgb(0, 102, 255);">WorkOrder Code</span> </nz-form-label>
+          <span style="color: rgb(0, 102, 255);">Mention the Workorder Code?          </span> </nz-form-label>
         <nz-form-control [nzSm]="9" [nzXs]="24" nzErrorTip="Please Enter the WorkSubject">
           <input style="border-radius: 10px;" nz-input formControlName="workOrderCode" id="workSubject"
             placeholder="workOrderCode" />
@@ -22,7 +22,8 @@
 
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="6" style="color: #3253dc;">
-          <span style="color: #3253dc; align-items: flex-start;">WorkOrder Status</span>
+          <span style="color: #3253dc; align-items: flex-start;">What is the status of the Workorder?
+          </span>
         </nz-form-label>
         <nz-form-control [nzSm]="9" [nzXs]="24" nzErrorTip="Please Choose the workOrder Status">
           <nz-select nz-input formControlName="status" id="userId" nzShowSearch nzAllowClear
@@ -34,7 +35,7 @@
 
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="Created By">
-          <span style="color: rgb(0, 102, 255); align-items: flex-start;">WorkOrder Created By</span>
+          <span style="color: rgb(0, 102, 255); align-items: flex-start;">Who is created the Workorder?</span>
         </nz-form-label>
         <nz-form-control [nzSm]="9" [nzXs]="24">
           <input style="border-radius: 10px;" nz-input id="item-name" placeholder="Creater Name" value='{{name}}'
@@ -62,7 +63,7 @@
 
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="Description">
-          <span style="color: rgb(0, 102, 255);">WorkOrder Description</span> </nz-form-label>
+          <span style="color: rgb(0, 102, 255);">Enter the Workorder description</span> </nz-form-label>
         <nz-form-control [nzSm]="9" [nzXs]="24" nzErrorTip="Please Enter the Description">
           <input style="border-radius: 10px;" nz-input formControlName="description" id="Description"
             placeholder="Description" />
@@ -71,7 +72,7 @@
 
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="WorkSubject">
-          <span style="color: rgb(0, 102, 255);">WorkOrder WorkSubject</span> </nz-form-label>
+          <span style="color: rgb(0, 102, 255);">Mention the Workorder subject?</span> </nz-form-label>
         <nz-form-control [nzSm]="9" [nzXs]="24" nzErrorTip="Please Enter the WorkSubject">
           <input style="border-radius: 10px;" nz-input formControlName="workSubject" id="workSubject"
             placeholder="WorkSubject" />
@@ -80,7 +81,7 @@
 
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="Task Details">
-          <span style="color: rgb(0, 102, 255);">WorkOrder Task Details</span> </nz-form-label>
+          <span style="color: rgb(0, 102, 255);">Mention the Workorder Task details?</span> </nz-form-label>
         <nz-form-control [nzSm]="9" [nzXs]="24" nzErrorTip="Please Enter the TaskDetails">
           <nz-textarea-count [nzMaxCharacterCount]="400" style="border-radius: 10px;" nz-input>
             <textarea rows="5" nz-input formControlName="taskDetails" id="taskDetails"
@@ -91,7 +92,7 @@
 
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" style="color: #3253dc;" nzRequired nzFor="Estimated Cost">
-          <span style="color: #3253dc;">WorkOrder Estimated Cost</span></nz-form-label>
+          <span style="color: #3253dc;">What is the Workorder Estimated Cost?</span></nz-form-label>
         <nz-form-control [nzSm]="9" [nzXs]="24" nzErrorTip="Please Enter the WorkOrder cost!">
           <input nz-input formControlName="workOrderCost" id="'workOrderCost'"
             placeholder="Enter the Work Order Cost" />
@@ -100,7 +101,8 @@
 
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="9" nzFor="assetId">
-          <span style="color: #3253dc;">WorkOrder Execution Date</span>
+          <span style="color: #3253dc;">Mention the Workorder Execution Date?
+          </span>
         </nz-form-label>
         <nz-form-control [nzSm]="4" [nzXs]="24">
           <nz-date-picker [nzSize]="size" formControlName="date" id="'date'" nz-input

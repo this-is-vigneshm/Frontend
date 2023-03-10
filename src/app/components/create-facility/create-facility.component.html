@@ -13,7 +13,8 @@
         nzRequired
         nzTooltipTitle="Facility code should be unique!"
       >
-        <span style="color: #3253dc">Facility Code</span>
+        <span style="color: #3253dc">Mention the Facility Code
+        </span>
       </nz-form-label>
       <nz-form-control
         [nzSm]="14"
@@ -26,7 +27,7 @@
 
     <nz-form-item>
       <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="facilityName"
-        ><span style="color: #3253dc">Facility Name</span></nz-form-label
+        ><span style="color: #3253dc">Mention the Facility Name</span></nz-form-label
       >
       <nz-form-control
         [nzSm]="14"
@@ -38,22 +39,20 @@
     </nz-form-item>
 
     <nz-form-item>
-      <nz-form-label [nzSm]="6" [nzXs]="24" style="color: #3253dc"nzRequired nzFor="facilityType">
-        <span style="color: #3253dc">Facility Type</span></nz-form-label>
-      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please Select a facilityType">
-        <nz-select nz-input formControlName="facilityType" id="facilityType" nzShowSearch nzAllowClear 
-        nzPlaceHolder="Select a facilityType" style="text-align: left;">
-          <nz-option
-            *ngFor="let facilityType of facilityType"
-            [nzLabel]="facilityType.name"
-            [nzValue] = "facilityType.name"
-          ></nz-option>
-        </nz-select>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="facilityType"
+        ><span style="color: #3253dc">Mention the Facility Type</span></nz-form-label
+      >
+      <nz-form-control
+        [nzSm]="14"
+        [nzXs]="24"
+        nzErrorTip="Please enter the facilityType!"
+      >
+        <input nz-input formControlName="facilityType" id="facilityType" />
       </nz-form-control>
-    </nz-form-item> 
+    </nz-form-item>
     <nz-form-item>
       <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="facilitySource" nzRequired
-        ><span style="color: #3253dc">Facility Source</span> </nz-form-label
+        ><span style="color: #3253dc">Mention the Facility Source</span> </nz-form-label
       >
       <nz-form-control
         [nzSm]="14"
@@ -65,7 +64,7 @@
     </nz-form-item>
     <nz-form-item>
       <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="inactiveDate"
-        ><span style="color: #3253dc">Inactive Date</span> </nz-form-label
+        ><span style="color: #3253dc">Enter the Inactive Date</span> </nz-form-label
       >
       <nz-form-control
         [nzSm]="14"
