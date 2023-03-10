@@ -1,5 +1,5 @@
-<div id="create-asset-form">
-  <div style="display: flex; margin-left: 90px; margin-top: -50px">
+<div id="create-user-form">
+  <div style="display: flex; margin-left: 90px; margin-top: 10px">
     <div>
       <span
         ><img
@@ -13,7 +13,7 @@
       <span>
         <h2
           style="
-            margin-top: -1px;
+            margin-top: -5px;
             color: rgba(38, 38, 202, 0.733);
             font-size: 20pt;
             font-weight: 700;
@@ -31,7 +31,7 @@
   <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
     <nz-form-item>
       <nz-form-label
-        [nzSm]="8"
+        [nzSm]="4"
         [nzXs]="24"
         nzFor="name"
         nzRequired
@@ -40,7 +40,7 @@
         <span style="color: #052df7">Fullname</span>
       </nz-form-label>
       <nz-form-control
-        [nzSm]="40"
+        [nzSm]="10"
         [nzXs]="24"
         nzErrorTip="Please Enter your full Name!"
       >
@@ -49,11 +49,11 @@
     </nz-form-item>
 
     <nz-form-item>
-      <nz-form-label [nzSm]="8" [nzXs]="24" nzRequired nzFor="email"
+      <nz-form-label [nzSm]="4" [nzXs]="24" nzRequired nzFor="email"
         ><span style="color: #052df7">Email</span>
       </nz-form-label>
       <nz-form-control
-        [nzSm]="40"
+        [nzSm]="10"
         [nzXs]="24"
         nzErrorTip="The input is not valid E-mail!"
       >
@@ -62,11 +62,11 @@
     </nz-form-item>
 
     <nz-form-item>
-      <nz-form-label [nzSm]="8" [nzXs]="24" nzRequired nzFor="username"
+      <nz-form-label [nzSm]="4" [nzXs]="24" nzRequired nzFor="username"
         ><span style="color: #052df7">Username</span>
       </nz-form-label>
       <nz-form-control
-        [nzSm]="40"
+        [nzSm]="10"
         [nzXs]="24"
         nzErrorTip="Please enter the username"
       >
@@ -75,11 +75,11 @@
     </nz-form-item>
 
     <nz-form-item>
-      <nz-form-label [nzSm]="8" [nzXs]="24" nzRequired nzFor="phoneNumber">
+      <nz-form-label [nzSm]="4" [nzXs]="24" nzRequired nzFor="phoneNumber">
         <span style="color: #052df7">PhoneNumber</span>
       </nz-form-label>
       <nz-form-control
-        [nzSm]="40"
+        [nzSm]="10"
         [nzXs]="24"
         [nzValidateStatus]="validateForm.controls['phoneNumber']"
         nzErrorTip="Please Enter your phone number!"
@@ -98,7 +98,7 @@
     <nz-form-item>
       <nz-form-label
         style="color: #052df7"
-        [nzSm]="8"
+        [nzSm]="4"
         [nzXs]="24"
         nzRequired
         nzFor="department"
@@ -106,6 +106,7 @@
         <span style="color: #052df7">Department</span>
       </nz-form-label>
       <nz-form-control
+      [nzSm]="10" [nzXs]="24"
         nzErrorTip="Please Choose the department Name"
         id="department"
       >
@@ -129,14 +130,14 @@
     <nz-form-item>
       <nz-form-label
         style="color: #052df7"
-        [nzSm]="8"
+        [nzSm]="4"
         [nzXs]="24"
         nzRequired
         nzFor="designation"
       >
         <span style="color: #052df7">Designation</span>
       </nz-form-label>
-      <nz-form-control nzErrorTip="Please Choose the designation">
+      <nz-form-control  [nzSm]="10" [nzXs]="24"nzErrorTip="Please Choose the designation">
         <nz-select
           nz-input
           formControlName="designation"
@@ -158,14 +159,14 @@
     <nz-form-item>
       <nz-form-label
         style="color: #052df7"
-        [nzSm]="8"
+        [nzSm]="4"
         [nzXs]="24"
         nzRequired
         nzFor="Roles"
       >
         <span style="color: #052df7">roles</span>
       </nz-form-label>
-      <nz-form-control nzErrorTip="Please Choose the role">
+      <nz-form-control [nzSm]="10" [nzXs]="24" nzErrorTip="Please Choose the role">
         <nz-select
           nz-input
           formControlName="roles"
@@ -185,22 +186,22 @@
     </nz-form-item>
 
     <nz-form-item>
-      <nz-form-label [nzSm]="8" [nzXs]="24" nzRequired nzFor="address">
+      <nz-form-label [nzSm]="4" [nzXs]="24" nzRequired nzFor="address">
         <span style="color: #3253dc">Address</span></nz-form-label
       >
       <nz-form-control
-        [nzSm]="40"
+        [nzSm]="10"
         [nzXs]="24"
         nzErrorTip="please enter the address!"
       >
         <input nz-input formControlName="address" id="name" />
       </nz-form-control> </nz-form-item
     ><nz-form-item>
-      <nz-form-label [nzSm]="8" [nzXs]="24" nzFor="location"
+      <nz-form-label [nzSm]="4" [nzXs]="24" nzFor="location"
         ><span style="color: #052df7">Location</span>
       </nz-form-label>
       <nz-form-control
-        [nzSm]="40"
+        [nzSm]="10"
         [nzXs]="24"
         nzErrorTip="please enter the location!"
       >
@@ -211,14 +212,14 @@
     <nz-form-item>
       <nz-form-label
         style="color: #052df7"
-        [nzSm]="8"
+        [nzSm]="4"
         [nzXs]="24"
         nzRequired
         nzFor="usertype"
       >
         <span style="color: #052df7">Usertype</span>
       </nz-form-label>
-      <nz-form-control nzErrorTip="Please Choose the Usertype">
+      <nz-form-control [nzSm]="10" [nzXs]="24" nzErrorTip="Please Choose the Usertype">
         <nz-select
           nz-input
           formControlName="usertype"
@@ -238,11 +239,11 @@
     </nz-form-item>
 
     <nz-form-item>
-      <nz-form-label [nzSm]="8" [nzXs]="24" nzFor="password" nzRequired
+      <nz-form-label [nzSm]="4" [nzXs]="24" nzFor="password" nzRequired
         ><span style="color: #052df7">password</span>
       </nz-form-label>
       <nz-form-control
-        [nzSm]="40"
+        [nzSm]="10"
         [nzXs]="24"
         nzErrorTip="Please input your password!"
       >
@@ -257,10 +258,10 @@
     </nz-form-item>
 
     <nz-form-item>
-      <nz-form-label [nzSm]="8" [nzXs]="24" nzFor="checkPassword" nzRequired
+      <nz-form-label [nzSm]="4" [nzXs]="24" nzFor="checkPassword" nzRequired
         ><span style="color: #052df7">CheckPassword</span>
       </nz-form-label>
-      <nz-form-control [nzSm]="40" [nzXs]="24" [nzErrorTip]="errorTpl">
+      <nz-form-control [nzSm]="10" [nzXs]="24" [nzErrorTip]="errorTpl">
         <input
           nz-input
           type="password"
@@ -280,14 +281,14 @@
     <nz-form-item>
       <nz-form-label
         style="color: #052df7"
-        [nzSm]="8"
+        [nzSm]="4"
         [nzXs]="24"
         nzRequired
         nzFor="resourceplanner"
       >
-        <span style="color: #052df7">Enable Resourceplanner</span>
+        <span style="color: #052df7">Enable Resource</span>
       </nz-form-label>
-      <nz-form-control nzErrorTip="Please Choose the resourceplanner">
+      <nz-form-control [nzSm]="10" [nzXs]="24" nzErrorTip="Please Choose the resourceplanner">
         <nz-select
           nz-input
           formControlName="resourceplanner"
@@ -308,7 +309,7 @@
 
     <nz-form-item nz-row class="register-area">
       <nz-form-control
-        [nzSpan]="14"
+        [nzSpan]="10"
         [nzOffset]="6"
         nzErrorTip="Please Agree to terms and conditions!"
       >
@@ -319,7 +320,7 @@
     </nz-form-item>
 
     <nz-form-item nz-row class="register-area">
-      <nz-form-control [nzSpan]="14" [nzOffset]="6">
+      <nz-form-control [nzSpan]="10" [nzOffset]="6">
         <button nz-button nzType="primary">Register</button>
       </nz-form-control>
     </nz-form-item>

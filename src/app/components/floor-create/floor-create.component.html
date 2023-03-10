@@ -5,14 +5,16 @@
         <input nz-input formControlName="name" placeholder="name" />
       </nz-form-control>
     </nz-form-item>
+    <br>
     <nz-form-item>
       <nz-form-label [nzSm]="14" [nzXs]="24" [nzSpan]="7" nzRequired>Building Name</nz-form-label>
       <nz-form-control [nzSm]="14" [nzXs]="24" [nzSpan]="12" nzErrorTip="Please Enter  Valid Location Name">
         <input nz-input value="{{building.name}}" [disabled]="true" placeholder="Building Name" />
       </nz-form-control>
     </nz-form-item>
+    <br>
     <nz-form-item>
-        <nz-form-control [nzOffset]="7" [nzSpan]="12">
+        <nz-form-control [nzOffset]="7" [nzSpan]="12" [nzPull]="8">
           <button nz-button nzType="primary">Submit</button>
         </nz-form-control>
       </nz-form-item>

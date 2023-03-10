@@ -27,6 +27,20 @@ floorId : any
 
 area: Area[] =[];
 
+panels = [
+  {
+    active: true,
+    disabled: false,
+    name: 'Area',
+    icon: 'tool',
+    customStyle: {
+      background: '#ffffff',
+      'border-radius': '10px',
+      'margin-bottom': '5px',
+      border: '0px'
+    }
+  }
+];
 
 
   searchResults:any=[]

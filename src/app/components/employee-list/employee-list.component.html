@@ -40,7 +40,7 @@ margin-left: -42%;">Users</span>
 <button nz-button nzType="primary" id="create-user-button" (click)="showCreateEmployeeModal()"><span nz-icon nzType="user-add" nzTheme="outline"></span></button>
 <nz-modal [nzStyle]="{ top: '20px' , width:'60%'}" [(nzVisible)]="isCreateEmployeeModalVisible" nzTitle="Create an User"
   nzCentered (nzOnCancel)="handleCreateEmployeeCancel()" (nzOnOk)="handleCreateEmployeeOk()">
-  <ng-container *nzModalContent>
+  <ng-container *nzModalContent >
     <app-user-register (close)="handleCreateEmployeeOk()"></app-user-register>
   </ng-container>
 </nz-modal>
