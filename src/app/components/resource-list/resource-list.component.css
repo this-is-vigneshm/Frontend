@@ -1,0 +1,44 @@
+#button {
+    border-radius: 22px;
+    margin-right: 1%;
+    margin-bottom: 1%;
+    height: 49px;
+    width: 180px;
+    font-size: large;
+    font-family: ui-serif;
+  }
+  
+  #create-resource-button {
+    float: right;
+    border-radius: 14px;
+    margin-right: 1%;
+    margin-bottom: 3%;
+    height: 45px;
+    width: 170px;
+    font-size: large;
+    font-family: ui-serif;
+  }
+  #search-bar {
+    width: 14%;
+    height: 45px;
+    border-radius: 14px;
+    float: right;
+    margin-right: 1%;
+  }
+  /* button {
+    box-shadow: 0 0 5px rgb(7, 22, 240), 0 0 25px rgb(5, 68, 240);
+  }
+  button :hover {
+    box-shadow: 0 0 5px rgb(9, 63, 239), 0 0 25px rgb(7, 41, 238),
+      0 0 50px rgb(5, 52, 238), 0 0 100px rgb(5, 53, 243);
+  }
+  input {
+    box-shadow: 0 0 5px rgb(6, 38, 243), 0 0 25px rgb(5, 29, 245);
+  }
+  input :hover {
+    box-shadow: 0 0 5px rgb(5, 52, 243), 0 0 25px rgb(4, 36, 244),
+      0 0 50px rgb(8, 57, 236), 0 0 100px rgb(7, 11, 234);
+  } */
+  #tbl{
+    width: 20px;
+  }

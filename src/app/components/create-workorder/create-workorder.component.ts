@@ -46,7 +46,7 @@ export class CreateWorkorderComponent implements OnInit {
 
 
   @Input()
-  workorderData!: WorkOrder | null;
+  workOrderData! : WorkOrder | null;
 
   size: 'large' | 'small' | 'default' = 'default';
 
@@ -56,12 +56,12 @@ export class CreateWorkorderComponent implements OnInit {
   @Output()
   close: EventEmitter<number> = new EventEmitter<number>();
 
+  @Output()
+  done : EventEmitter<Map<string, number>> = new EventEmitter<Map<string, number>>();
+
   isUpdateComponent: boolean = false
 
   userData: any
-
-  @Output()
-  done : EventEmitter<Map<string, number>> = new EventEmitter<Map<string, number>>();
 
 
   validateForm!: UntypedFormGroup;
@@ -137,7 +137,7 @@ export class CreateWorkorderComponent implements OnInit {
     console.log(this.userData)
     this.getEmployees(this.userData.userId)
 
-    if (this.workorderData == null) {
+    if (this.workOrderData == null) {
       this.validateForm = this.fb.group({
         status: ["In Progress"],
         // name: [null],
@@ -150,7 +150,20 @@ export class CreateWorkorderComponent implements OnInit {
         workOrderCost: [null, [Validators.required, Validators.pattern('^-?[0-9]\\d*(\\.\\d{1,2})?$')]],
         date: [null, [Validators.required]],
       });
-      console.log(this.ticketid)
+    }
+    else{
+      this.validateForm = this.fb.group({
+        status: ["In Progress"],
+        // name: [null],
+        // emailId: [null],
+        // phoneNumber: [null,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")],
+        workOrderCode :  [this.workOrderData.workOrderCode, [Validators.required,]],
+        description: [this.workOrderData.description, [Validators.required, Validators.maxLength(200)]],
+        workSubject: [this.workOrderData.workSubject, [Validators.required,]],
+        taskDetails: [this.workOrderData.taskDetails, [Validators.required,]],
+        workOrderCost: [this.workOrderData.workOrderCost, [Validators.required, Validators.pattern('^-?[0-9]\\d*(\\.\\d{1,2})?$')]],
+        date: [this.workOrderData.date, [Validators.required]],
+      });
     }
 
   }
@@ -179,21 +192,7 @@ export class CreateWorkorderComponent implements OnInit {
   isb = false
   resources: Resource[] = [];
   searchResults: any
-  getAllResource(id:any) {
-    this.restService.getAllResourceByWorkOrderCode(id).subscribe(
-      data => {
-        console.log("Data Obtained", data);
-        this.notification.success("Resources List Obtained!");
-        this.resources = data.responseData;
-        this.searchResults = this.resources;
-        this.condition = true
-      },
-      error => {
-        console.log("Error Occurred", error);
-        this.notification.error("Resources Fetching Failed!");
-      }
-    );
-  }
+
 
 
   handleUpdateResource(data: any) {
@@ -203,8 +202,6 @@ export class CreateWorkorderComponent implements OnInit {
   handleCreateResourceSave(id : any): void {
     this.selectedResource = null;
     this.isVisibleMiddle = false;
-    console.log(id)
-    this.getAllResource(id)
   }
 
   handleCreateResourceCancel(): void {
@@ -215,7 +212,7 @@ export class CreateWorkorderComponent implements OnInit {
 
   handleClose() {
     this.isUpdateComponent = false;
-    this.workorderData = null;
+    this.workOrderData = null;
     this.close.emit();
   }
   handleChange(event: any) {
@@ -261,35 +258,6 @@ export class CreateWorkorderComponent implements OnInit {
     this.isVisible = false;
   }
 
-  listOfColumns: ColumnItem[] = [
-    {
-      name: 'User Id',
-      sortOrder: null,
-      sortFn: (a: Resource, b: Resource) => a.userId - b.userId,
-      sortDirections: ['ascend', 'descend', null],
-      filterMultiple: true,
-      listOfFilter: [],
-      filterFn: null
-    },
-    {
-      name: 'Resource Id',
-      sortOrder: 'descend',
-      sortFn: (a: Resource, b: Resource) => a.resourceId - b.resourceId,
-      sortDirections: ['ascend', 'descend', null],
-      filterMultiple: true,
-      listOfFilter: [],
-      filterFn: null
-    },
-    {
-      name: 'Resource Name',
-      sortOrder: 'descend',
-      sortFn: (a: Resource, b: Resource) => a.resourceName.localeCompare(b.resourceName),
-      sortDirections: ['ascend', 'descend', null],
-      filterMultiple: true,
-      listOfFilter: [],
-      filterFn: null
-    }
-  ];
 
 
   listOfColumns1: ColumnItem[] = [

@@ -22,16 +22,15 @@ interface ColumnItem {
 }
 
 @Component({
-  selector: 'app-resourcelist',
-  templateUrl: './resourcelist.component.html',
-  styleUrls: ['./resourcelist.component.css'],
+  selector: 'app-resource-list',
+  templateUrl: './resource-list.component.html',
+  styleUrls: ['./resource-list.component.css']
 })
-export class ResourcelistComponent {
+export class ResourceListComponent {
   constructor(
     private restService: RestapiService,
     private router: Router,
     private notification: NzMessageService,
-    private restApiService: RestapiService
   ) {}
 
   selectedResource!: Resource | null;
@@ -115,9 +114,9 @@ export class ResourcelistComponent {
       filterFn: null,
     },
     {
-      name: 'userId',
+      name: 'inventoryId',
       sortOrder: null,
-      sortFn: (a: Resource, b: Resource) => a.userId - b.userId,
+      sortFn: (a: Resource, b: Resource) => a.inventoryId - b.inventoryId,
       sortDirections: ['ascend', 'descend', null],
       filterMultiple: true,
       listOfFilter: [],

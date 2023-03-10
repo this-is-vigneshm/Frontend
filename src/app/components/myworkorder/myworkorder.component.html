@@ -102,8 +102,8 @@ margin-left: -55%;">WorkOrder</span>
               <app-view-workorder *nzModalContent [workOrderId]="viewId" (close)="closeView()"></app-view-workorder>
             </nz-modal>
 
-            <nz-modal [(nzVisible)]="isVisible" nzTitle="Update Workorder Status" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+            <nz-modal [(nzVisible)]="isVisible"  [nzStyle]="{ top: '20px', width: '60%' }"  nzTitle="Update Workorder Status" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
               <ng-container *nzModalContent>
-                <app-updatewostatus [workOrderData]="selectedWo"></app-updatewostatus>
+                <app-create-workorder [workOrderData]="selectedWo"></app-create-workorder>
               </ng-container>
             </nz-modal>
