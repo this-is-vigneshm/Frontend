@@ -1,3 +1,31 @@
+<div style="display: flex; margin-left: 90px; margin-top: -5px">
+  <div>
+    <span
+      ><img
+        src="../../../assets/Facility.png"
+        width="35px"
+        height="35px"
+        style="margin-top: 14px"
+    /></span>
+  </div>
+  <div style="margin-left: 20px">
+    <span>
+      <h2
+        style="
+          margin-top: -1px;
+          color: rgba(38, 38, 202, 0.733);
+          font-size: 20pt;
+          font-weight: 700;
+        "
+      >
+        Create a Facility
+      </h2>
+      <h4 style="margin-top: -17px; margin-right: -17px">
+        This is the Facility creation page!
+      </h4></span
+    >
+  </div>
+</div>
 <form
   nz-form
   [formGroup]="validateForm"
@@ -13,8 +41,7 @@
         nzRequired
         nzTooltipTitle="Facility code should be unique!"
       >
-        <span style="color: #3253dc">Mention the Facility Code
-        </span>
+        <span style="color: #3253dc">Mention the Facility Code </span>
       </nz-form-label>
       <nz-form-control
         [nzSm]="14"
@@ -27,7 +54,9 @@
 
     <nz-form-item>
       <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="facilityName"
-        ><span style="color: #3253dc">Mention the Facility Name</span></nz-form-label
+        ><span style="color: #3253dc"
+          >Mention the Facility Name</span
+        ></nz-form-label
       >
       <nz-form-control
         [nzSm]="14"
@@ -40,26 +69,36 @@
 
     <nz-form-item>
       <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="facilityType"
-        ><span style="color: #3253dc">Mention the Facility Type</span></nz-form-label
+        ><span style="color: #3253dc"
+          >Mention the Facility Type</span
+        ></nz-form-label
       >
       <nz-form-control
         [nzSm]="14"
         [nzXs]="24"
         nzErrorTip="Please enter the facilityType!"
       >
-      <nz-select nz-input formControlName="facilityType" id="facilityType" nzShowSearch nzAllowClear 
-      nzPlaceHolder="Select a facilityType" style="text-align: left;">
-        <nz-option
-          *ngFor="let facilityType of facilityType"
-          [nzLabel]="facilityType.name"
-          [nzValue]="facilityType.name"
-        ></nz-option>
-      </nz-select>      </nz-form-control>
+        <nz-select
+          nz-input
+          formControlName="facilityType"
+          id="facilityType"
+          nzShowSearch
+          nzAllowClear
+          nzPlaceHolder="Select a facilityType"
+          style="text-align: left"
+        >
+          <nz-option
+            *ngFor="let facilityType of facilityType"
+            [nzLabel]="facilityType.name"
+            [nzValue]="facilityType.name"
+          ></nz-option>
+        </nz-select>
+      </nz-form-control>
     </nz-form-item>
     <nz-form-item>
       <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="facilitySource" nzRequired
-        ><span style="color: #3253dc">Mention the Facility Source</span> </nz-form-label
-      >
+        ><span style="color: #3253dc">Mention the Facility Source</span>
+      </nz-form-label>
       <nz-form-control
         [nzSm]="14"
         [nzXs]="24"
@@ -70,8 +109,8 @@
     </nz-form-item>
     <nz-form-item>
       <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="inactiveDate"
-        ><span style="color: #3253dc">Enter the Inactive Date</span> </nz-form-label
-      >
+        ><span style="color: #3253dc">Enter the Inactive Date</span>
+      </nz-form-label>
       <nz-form-control
         [nzSm]="14"
         [nzXs]="24"
@@ -89,14 +128,24 @@
 
     <nz-form-item>
       <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="Location" nzRequired
-      >Add Location</nz-form-label
-    > 
-    <button nz-button nzType="primary" [nzSize]="size" nzShape="circle" (click)="forLocation($event)" style="margin-top: 5px;" [disabled] = "addLoc"><span nz-icon nzType="plus"></span></button>
+        >Add Location</nz-form-label
+      >
+      <button
+        nz-button
+        nzType="primary"
+        [nzSize]="size"
+        nzShape="circle"
+        (click)="forLocation($event)"
+        style="margin-top: 5px"
+        [disabled]="addLoc"
+      >
+        <span nz-icon nzType="plus"></span>
+      </button>
     </nz-form-item>
 
-<div *ngIf="loc">
-  <app-location [facCode]="facCode"></app-location>
-</div>
+    <div *ngIf="loc">
+      <app-location [facCode]="facCode"></app-location>
+    </div>
     <!-- <nz-form-item>
       <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="dagRunId"
         >DAG Run ID</nz-form-label
@@ -137,16 +186,14 @@
         </nz-select>
       </nz-form-control>
     </nz-form-item> -->
-
   </div>
 </form>
-
 
 <nz-collapse [nzBordered]="false">
   <nz-collapse-panel
     #p
     *ngFor="let panel of panels; let isFirst = first"
-    [nzHeader]="panel.name" 
+    [nzHeader]="panel.name"
     [nzActive]="panel.active"
     [ngStyle]="panel.customStyle"
     [nzExpandedIcon]="!isFirst ? panel.icon || expandedIcon : undefined"
@@ -154,7 +201,12 @@
     <p>{{ panel.name }} content</p>
     <ng-template #expandedIcon let-active>
       {{ active }}
-      <span nz-icon nzType="caret-right" class="ant-collapse-arrow" [nzRotate]="p.nzActive ? 90 : -90"></span>
+      <span
+        nz-icon
+        nzType="caret-right"
+        class="ant-collapse-arrow"
+        [nzRotate]="p.nzActive ? 90 : -90"
+      ></span>
     </ng-template>
   </nz-collapse-panel>
 </nz-collapse>

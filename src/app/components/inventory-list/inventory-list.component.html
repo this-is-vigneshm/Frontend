@@ -1,65 +1,133 @@
-<span style="    
-font-family: math;
-font-size: xx-large;
-font-weight: 900;
-margin-left: -66%;">Inventory</span>
+<span
+  style="
+    font-family: math;
+    font-size: xx-large;
+    font-weight: 900;
+    margin-left: -66%;
+  "
+  >Inventory</span
+>
 
 <!-- <input nz-input id="search-bar" type="text" [(ngModel)]="searchString" (change)="filterItems($event)"
   placeholder="Search Item" /> -->
 
-  <ng-template #suffixIconSearch>
-  </ng-template>
-  <nz-input-group id="search-bar" [nzSuffix]="suffixIconSearch" style="width: 400px;"  >
-    <nz-select [ngModel]="'search Workorder'"  style="width: 200px;"(ngModelChange)="selectChange($event)">
-    
-      <nz-option [nzLabel]="'All'" [nzValue]="'all'"></nz-option>
-      <nz-option [nzLabel]="'By name'" [nzValue]="'name'" ></nz-option>
-      <nz-option [nzLabel]="'By code'" [nzValue]="'code'" ></nz-option>
-      <nz-option [nzLabel]="'By quantity'" [nzValue]="'quantity'" ></nz-option>
-      <nz-option [nzLabel]="'By price'" [nzValue]="'price'" ></nz-option>
-      
-    </nz-select>
-    <div *ngIf="options=='all'">
-      <input nz-input type="Text" placeholder="search Workorder" style="width: 200px;" (change)="filterData1(options, $event)" />
-    </div>
-    <div *ngIf="options=='name'">
-      <input nz-input type="Text" placeholder="search Workorder" style="width: 200px;" (change)="filterData1(options,$event)" />
-    </div>
-    <div *ngIf="options=='code'">
-      <input nz-input type="Text" placeholder="search Workorder" style="width: 200px;" (change)="filterData1(options,$event)" />
-    </div>
-    <div *ngIf="options=='quantity'">
-      <input nz-input type="Text" placeholder="search Workorder" style="width: 200px;" (change)="filterData1(options,$event)" />
-    </div>
-    <div *ngIf="options=='price'">
-      <input nz-input type="Text" placeholder="search Workorder" style="width: 200px;" (change)="filterData1(options,$event)" />
-    </div>
-  </nz-input-group>
+<ng-template #suffixIconSearch> </ng-template>
+<nz-input-group
+  id="search-bar"
+  [nzSuffix]="suffixIconSearch"
+  style="width: 400px"
+>
+  <nz-select
+    [ngModel]="'search Workorder'"
+    style="width: 200px"
+    (ngModelChange)="selectChange($event)"
+  >
+    <nz-option [nzLabel]="'All'" [nzValue]="'all'"></nz-option>
+    <nz-option [nzLabel]="'By name'" [nzValue]="'name'"></nz-option>
+    <nz-option [nzLabel]="'By code'" [nzValue]="'code'"></nz-option>
+    <nz-option [nzLabel]="'By quantity'" [nzValue]="'quantity'"></nz-option>
+    <nz-option [nzLabel]="'By price'" [nzValue]="'price'"></nz-option>
+  </nz-select>
+  <div *ngIf="options == 'all'">
+    <input
+      nz-input
+      type="Text"
+      placeholder="search Workorder"
+      style="width: 200px"
+      (change)="filterData1(options, $event)"
+    />
+  </div>
+  <div *ngIf="options == 'name'">
+    <input
+      nz-input
+      type="Text"
+      placeholder="search Workorder"
+      style="width: 200px"
+      (change)="filterData1(options, $event)"
+    />
+  </div>
+  <div *ngIf="options == 'code'">
+    <input
+      nz-input
+      type="Text"
+      placeholder="search Workorder"
+      style="width: 200px"
+      (change)="filterData1(options, $event)"
+    />
+  </div>
+  <div *ngIf="options == 'quantity'">
+    <input
+      nz-input
+      type="Text"
+      placeholder="search Workorder"
+      style="width: 200px"
+      (change)="filterData1(options, $event)"
+    />
+  </div>
+  <div *ngIf="options == 'price'">
+    <input
+      nz-input
+      type="Text"
+      placeholder="search Workorder"
+      style="width: 200px"
+      (change)="filterData1(options, $event)"
+    />
+  </div>
+</nz-input-group>
 
+<button
+  nz-button
+  nzType="primary"
+  id="create-item-button"
+  (click)="showModalMiddle()"
+>
+  <span nz-icon nzType="plus" nzTheme="outline"></span>
+</button>
 
-<button nz-button nzType="primary" id="create-item-button" (click)="showModalMiddle()">
-  <span nz-icon nzType="plus" nzTheme="outline"></span></button>
-
-<nz-modal [nzStyle]="{ top: '20px' , width:'45%'}" [nzWidth]="200" [(nzVisible)]="isVisibleMiddle"
-  nzTitle="Create an Item" nzCentered (nzOnCancel)="handleCreateItemCancel()" (nzOnOk)="handleCreateItemOk()">
-
-
+<nz-modal
+  [nzStyle]="{ top: '20px', width: '60%' }"
+  [nzWidth]="200"
+  [(nzVisible)]="isVisibleMiddle"
+  nzTitle="Create an Item"
+  nzCentered
+  (nzOnCancel)="handleCreateItemCancel()"
+  (nzOnOk)="handleCreateItemOk()"
+>
   <ng-container *nzModalContent>
-    <app-inventory-create style="text-align: center;" [inventoryData]="selectedInventory"
-      (close)="handleCreateItemOk()"></app-inventory-create>
+    <app-inventory-create
+      style="text-align: center"
+      [inventoryData]="selectedInventory"
+      (close)="handleCreateItemOk()"
+    ></app-inventory-create>
   </ng-container>
 </nz-modal>
-<nz-modal [nzVisible]="visible" [nzStyle]="{ top: '20px', width: '70%' }" nzTitle="View Inventory"
-            nzCentered (nzOnCancel)="closeView()" (nzOnOk)="closeView()" >
-              <app-view-inventory *nzModalContent [inventoryId]="viewId" (close)="closeView()"></app-view-inventory>
-            </nz-modal>
+<nz-modal
+  [nzVisible]="visible"
+  [nzStyle]="{ top: '20px', width: '70%' }"
+  nzTitle="View Inventory"
+  nzCentered
+  (nzOnCancel)="closeView()"
+  (nzOnOk)="closeView()"
+>
+  <app-view-inventory
+    *nzModalContent
+    [inventoryId]="viewId"
+    (close)="closeView()"
+  ></app-view-inventory>
+</nz-modal>
 
 <nz-table #filterTable [nzData]="searchResults">
   <thead id="item-table">
     <tr>
       <th></th>
-      <th *ngFor="let column of listOfColumns" [nzSortOrder]="column.sortOrder" [nzSortFn]="column.sortFn"
-        [nzSortDirections]="column.sortDirections" [nzFilters]="column.listOfFilter" [nzFilterFn]="column.filterFn">
+      <th
+        *ngFor="let column of listOfColumns"
+        [nzSortOrder]="column.sortOrder"
+        [nzSortFn]="column.sortFn"
+        [nzSortDirections]="column.sortDirections"
+        [nzFilters]="column.listOfFilter"
+        [nzFilterFn]="column.filterFn"
+      >
         {{ column.name }}
       </th>
       <th>Action</th>
@@ -71,46 +139,110 @@ margin-left: -66%;">Inventory</span>
         <td [(nzExpand)]="data.expand"></td>
         <td>{{ data.id }}</td>
         <td>{{ data.name }}</td>
-        <td>{{ data.code}}</td>
-        <td>{{ data.description}}</td>
-        <td>{{ data.quantity}}</td>
-        <td>{{ data.price}}</td>
+        <td>{{ data.code }}</td>
+        <td>{{ data.description }}</td>
+        <td>{{ data.quantity }}</td>
+        <td>{{ data.price }}</td>
         <td>
-          <button nz-button [nzSize]="size" nzShape="circle"
-            style=" border-color: rgb(224, 228, 234); background-color: #5cb85c; border-radius: 5px;" id="update-button"
-            nz-button nz-popconfirm nzPopconfirmTitle="Proceed to update?" (nzOnConfirm)="handleUpdateItem(data)"
-            nz-tooltip [nzTooltipTitle]="'Update Asset'" [nzTooltipColor]="'green'">
-            <span nz-icon nzType="edit" nzTheme="twotone" [nzTwotoneColor]="'white'"></span>
+          <button
+            nz-button
+            [nzSize]="size"
+            nzShape="circle"
+            style="
+              border-color: rgb(224, 228, 234);
+              background-color: #5cb85c;
+              border-radius: 5px;
+            "
+            id="update-button"
+            nz-button
+            nz-popconfirm
+            nzPopconfirmTitle="Proceed to update?"
+            (nzOnConfirm)="handleUpdateItem(data)"
+            nz-tooltip
+            [nzTooltipTitle]="'Update Asset'"
+            [nzTooltipColor]="'green'"
+          >
+            <span
+              nz-icon
+              nzType="edit"
+              nzTheme="twotone"
+              [nzTwotoneColor]="'white'"
+            ></span>
           </button>
-          <button nz-button [nzSize]="size" nzShape="circle"
-          style=" border-color: rgb(224, 228, 234); background-color: #d9534f; border-radius: 5px;" id="delete-button"
-          nz-button nz-popconfirm nzPopconfirmTitle="Sure to Delete?" (nzOnConfirm)="handleDelete(data.id)" nz-tooltip
-          [nzTooltipTitle]="'Delete Asset'" [nzTooltipColor]="'red'">
-            <span nz-icon nzType="delete" nzTheme="twotone" [nzTwotoneColor]="'white'"></span>
+          <button
+            nz-button
+            [nzSize]="size"
+            nzShape="circle"
+            style="
+              border-color: rgb(224, 228, 234);
+              background-color: #d9534f;
+              border-radius: 5px;
+            "
+            id="delete-button"
+            nz-button
+            nz-popconfirm
+            nzPopconfirmTitle="Sure to Delete?"
+            (nzOnConfirm)="handleDelete(data.id)"
+            nz-tooltip
+            [nzTooltipTitle]="'Delete Asset'"
+            [nzTooltipColor]="'red'"
+          >
+            <span
+              nz-icon
+              nzType="delete"
+              nzTheme="twotone"
+              [nzTwotoneColor]="'white'"
+            ></span>
           </button>
-          <button nz-button [nzSize]="size"  nzShape="circle" style=" border-color: rgb(224, 228, 234); background-color: #f0ad4e; border-radius: 5px;"    (click)="viewPage(data.id)"><span nz-icon nzType="eye" nzTheme="twotone" nzTwotoneColor="white" ></span></button>
+          <button
+            nz-button
+            [nzSize]="size"
+            nzShape="circle"
+            style="
+              border-color: rgb(224, 228, 234);
+              background-color: #f0ad4e;
+              border-radius: 5px;
+            "
+            (click)="viewPage(data.id)"
+          >
+            <span
+              nz-icon
+              nzType="eye"
+              nzTheme="twotone"
+              nzTwotoneColor="white"
+            ></span>
+          </button>
         </td>
       </tr>
       <tr [nzExpand]="data.expand">
-        <nz-table #innerTable [nzData]="searchResults" nzSize="small" [nzShowPagination]="false">
+        <nz-table
+          #innerTable
+          [nzData]="searchResults"
+          nzSize="small"
+          [nzShowPagination]="false"
+        >
           <thead>
             <tr>
-              <th *ngFor="let column of innerColumns" [nzSortOrder]="column.sortOrder" [nzSortFn]="column.sortFn"
-                [nzSortDirections]="column.sortDirections">
+              <th
+                *ngFor="let column of innerColumns"
+                [nzSortOrder]="column.sortOrder"
+                [nzSortFn]="column.sortFn"
+                [nzSortDirections]="column.sortDirections"
+              >
                 {{ column.name }}
               </th>
             </tr>
           </thead>
-  <tbody>
-    <tr>
-      <td>{{ data.createdTime | date: 'dd/MM/yyyy hh:ss a' }}</td>
-      <td>{{ data.createdBy }}</td>
-      <td>{{ data.updatedTime | date: 'dd/MM/yyyy hh:ss a' }}</td>
-      <td>{{ data.updatedBy }}</td>
-    </tr>
+          <tbody>
+            <tr>
+              <td>{{ data.createdTime | date : "dd/MM/yyyy hh:ss a" }}</td>
+              <td>{{ data.createdBy }}</td>
+              <td>{{ data.updatedTime | date : "dd/MM/yyyy hh:ss a" }}</td>
+              <td>{{ data.updatedBy }}</td>
+            </tr>
+          </tbody>
+        </nz-table>
+      </tr>
+    </ng-template>
   </tbody>
-</nz-table>
-</tr>
-</ng-template>
-</tbody>
 </nz-table>

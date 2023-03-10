@@ -1,54 +1,116 @@
-<span style="
+<span
+  style="
     font-family: math;
     font-size: xx-large;
     font-weight: 900;
     margin-left: -50%;
-  ">Assets</span>
+  "
+  >Assets</span
+>
 
 <!-- <input nz-input id="search-bar" type="text" [(ngModel)]="searchString" (change)="filterAssets($event)" -->
-  <!-- placeholder="Search Assets" /> -->
-  <ng-template #suffixIconSearch>
-  </ng-template>
-  <nz-input-group id="search-bar" [nzSuffix]="suffixIconSearch" style="width: 400px;"  >
-    <nz-select [ngModel]="'search an asset'"  style="width: 200px;"(ngModelChange)="selectChange($event)">
-    
-      <nz-option [nzLabel]="'All'" [nzValue]="'all'"></nz-option>
-      <nz-option [nzLabel]="'By Name'" [nzValue]="'name'" ></nz-option>
-      <nz-option [nzLabel]="'By Facility Name'" [nzValue]="'facilityName'" ></nz-option>
-      <nz-option [nzLabel]="'By Facility Code'" [nzValue]="'facilityCode'" ></nz-option>
-      
-    </nz-select>
-    <div *ngIf="options=='all'">
-      <input nz-input type="Text" placeholder="Search an asset" style="width: 200px;" (change)="filterdata1(options, $event)" />
-    </div>
-    <div *ngIf="options=='name'">
-      <input nz-input type="Text" placeholder="Search an asset" style="width: 200px;" (change)="filterdata1(options,$event)" />
-    </div>
-    <div *ngIf="options=='facilityName'">
-      <input nz-input type="Text" placeholder="Search an asset" style="width: 200px;" (change)="filterdata1(options,$event)" />
-    </div>
-    <div *ngIf="options=='facilityCode'">
-      <input nz-input type="Text" placeholder="Search an asset" style="width: 200px;" (change)="filterdata1(options,$event)" />
-    </div>
-  </nz-input-group>
+<!-- placeholder="Search Assets" /> -->
+<ng-template #suffixIconSearch> </ng-template>
+<nz-input-group
+  id="search-bar"
+  [nzSuffix]="suffixIconSearch"
+  style="width: 400px"
+>
+  <nz-select
+    [ngModel]="'search an asset'"
+    style="width: 200px"
+    (ngModelChange)="selectChange($event)"
+  >
+    <nz-option [nzLabel]="'All'" [nzValue]="'all'"></nz-option>
+    <nz-option [nzLabel]="'By Name'" [nzValue]="'name'"></nz-option>
+    <nz-option
+      [nzLabel]="'By Facility Name'"
+      [nzValue]="'facilityName'"
+    ></nz-option>
+    <nz-option
+      [nzLabel]="'By Facility Code'"
+      [nzValue]="'facilityCode'"
+    ></nz-option>
+  </nz-select>
+  <div *ngIf="options == 'all'">
+    <input
+      nz-input
+      type="Text"
+      placeholder="Search an asset"
+      style="width: 200px"
+      (change)="filterdata1(options, $event)"
+    />
+  </div>
+  <div *ngIf="options == 'name'">
+    <input
+      nz-input
+      type="Text"
+      placeholder="Search an asset"
+      style="width: 200px"
+      (change)="filterdata1(options, $event)"
+    />
+  </div>
+  <div *ngIf="options == 'facilityName'">
+    <input
+      nz-input
+      type="Text"
+      placeholder="Search an asset"
+      style="width: 200px"
+      (change)="filterdata1(options, $event)"
+    />
+  </div>
+  <div *ngIf="options == 'facilityCode'">
+    <input
+      nz-input
+      type="Text"
+      placeholder="Search an asset"
+      style="width: 200px"
+      (change)="filterdata1(options, $event)"
+    />
+  </div>
+</nz-input-group>
 
-  <button nz-button nzType="primary" id="create-asset-button" (click)="showModalMiddle()">
-    <span nz-icon nzType="plus" nzTheme="outline"></span>
-  </button>
+<button
+  nz-button
+  nzType="primary"
+  id="create-asset-button"
+  (click)="showModalMiddle()"
+>
+  <span nz-icon nzType="plus" nzTheme="outline"></span>
+</button>
 
-<nz-modal [nzStyle]="{ top: '20px', width: '45%' }" [nzWidth]="200" [(nzVisible)]="isVisibleMiddle"
-  nzTitle="Create an Asset" nzCentered (nzOnCancel)="handleCreateAssetCancel()" (nzOnOk)="handleCreateAssetOk()">
+<nz-modal
+  [nzStyle]="{ top: '20px', width: '45%' }"
+  [nzWidth]="200"
+  [(nzVisible)]="isVisibleMiddle"
+  nzTitle="Create an Asset"
+  nzCentered
+  (nzOnCancel)="handleCreateAssetCancel()"
+  (nzOnOk)="handleCreateAssetOk()"
+>
   <ng-container *nzModalContent>
-    <app-asset-create style="text-align: center" [assetData]="selectedAsset"
-      (close)="handleCreateAssetOk()"></app-asset-create>
+    <app-asset-create
+      style="text-align: center"
+      [assetData]="selectedAsset"
+      (close)="handleCreateAssetOk()"
+    ></app-asset-create>
   </ng-container>
 </nz-modal>
 
-<nz-modal [nzStyle]="{ top: '20px', width: '45%' }" [(nzVisible)]="isCreatTicketVisible" nzTitle="Update The Asset"
-  nzCentered (nzOnCancel)="handleCreateTicketCancel()" (nzOnOk)="handleCreateTicketOk()">
+<nz-modal
+  [nzStyle]="{ top: '20px', width: '60%' }"
+  [(nzVisible)]="isCreatTicketVisible"
+  nzTitle="Update The Asset"
+  nzCentered
+  (nzOnCancel)="handleCreateTicketCancel()"
+  (nzOnOk)="handleCreateTicketOk()"
+>
   <ng-container *nzModalContent>
-    <app-create-ticket style="text-align: center" [assetData]="selectedAsset"
-      (close)="handleCreateTicketOk()"></app-create-ticket>
+    <app-create-ticket
+      style="text-align: center"
+      [assetData]="selectedAsset"
+      (close)="handleCreateTicketOk()"
+    ></app-create-ticket>
   </ng-container>
 </nz-modal>
 <nz-modal
@@ -66,9 +128,15 @@
   <thead id="asset-table-head">
     <tr>
       <th></th>
-      <th *ngFor="let column of listOfColumns" [nzSortOrder]="column.sortOrder" [nzSortFn]="column.sortFn"
-        [nzSortDirections]="column.sortDirections" [nzFilterMultiple]="column.filterMultiple"
-        [nzFilters]="column.listOfFilter" [nzFilterFn]="column.filterFn">
+      <th
+        *ngFor="let column of listOfColumns"
+        [nzSortOrder]="column.sortOrder"
+        [nzSortFn]="column.sortFn"
+        [nzSortDirections]="column.sortDirections"
+        [nzFilterMultiple]="column.filterMultiple"
+        [nzFilters]="column.listOfFilter"
+        [nzFilterFn]="column.filterFn"
+      >
         {{ column.name }}
       </th>
       <th>Room</th>
@@ -86,68 +154,134 @@
         <td>{{ data.price }}</td>
         <td>{{ data.location.facilityName }}</td>
         <td>{{ data.location.facilityCode }}</td>
-        <td>{{ data.room}}</td>
-        <td>{{ data.area}}</td>
+        <td>{{ data.room }}</td>
+        <td>{{ data.area }}</td>
 
         <td>
-          <button nz-button [nzSize]="size"  nzShape="circle" style=" border-color: rgb(224, 228, 234); background-color: #f0ad4e; border-radius: 5px;"  
-          id="asset-update-button" nz-button (click)="showCreateAssetModal(data)" nz-tooltip
-            [nzTooltipTitle]="'Create Ticket'" [nzTooltipColor]="'orange'">
-            <span nz-icon nzType="plus-circle" nzTheme="twotone" [nzTwotoneColor]="'orange'"></span>
+          <button
+            nz-button
+            [nzSize]="size"
+            nzShape="circle"
+            style="
+              border-color: rgb(224, 228, 234);
+              background-color: #f0ad4e;
+              border-radius: 5px;
+            "
+            id="asset-update-button"
+            nz-button
+            (click)="showCreateAssetModal(data)"
+            nz-tooltip
+            [nzTooltipTitle]="'Create Ticket'"
+            [nzTooltipColor]="'orange'"
+          >
+            <span
+              nz-icon
+              nzType="plus-circle"
+              nzTheme="twotone"
+              [nzTwotoneColor]="'orange'"
+            ></span>
           </button>
 
-          <button  nz-button [nzSize]="size"  nzShape="circle" style=" border-color: rgb(224, 228, 234); background-color: #5cb85c; border-radius: 5px;"
-          id="asset-update-button" nz-button nz-popconfirm nzPopconfirmTitle="Proceed to update?"
-            (nzOnConfirm)="handleUpdateAsset(data)" nz-tooltip [nzTooltipTitle]="'Update Asset'"
-            [nzTooltipColor]="'green'">
-            <span nz-icon nzType="edit" nzTheme="twotone" [nzTwotoneColor]="'white'"></span>
+          <button
+            nz-button
+            [nzSize]="size"
+            nzShape="circle"
+            style="
+              border-color: rgb(224, 228, 234);
+              background-color: #5cb85c;
+              border-radius: 5px;
+            "
+            id="asset-update-button"
+            nz-button
+            nz-popconfirm
+            nzPopconfirmTitle="Proceed to update?"
+            (nzOnConfirm)="handleUpdateAsset(data)"
+            nz-tooltip
+            [nzTooltipTitle]="'Update Asset'"
+            [nzTooltipColor]="'green'"
+          >
+            <span
+              nz-icon
+              nzType="edit"
+              nzTheme="twotone"
+              [nzTwotoneColor]="'white'"
+            ></span>
           </button>
 
-          <button nz-button [nzSize]="size" nzShape="circle" style=" border-color: rgb(224, 228, 234); background-color: #d9534f; border-radius: 5px;"
-           id="asset-delete-button" nz-button nz-popconfirm nzPopconfirmTitle="Sure to Delete?"
-            (nzOnConfirm)="handleDelete(data.id)" nz-tooltip [nzTooltipTitle]="'Delete Asset'" [nzTooltipColor]="'red'">
-            <span nz-icon nzType="delete" nzTheme="twotone" [nzTwotoneColor]="'white'"></span>
+          <button
+            nz-button
+            [nzSize]="size"
+            nzShape="circle"
+            style="
+              border-color: rgb(224, 228, 234);
+              background-color: #d9534f;
+              border-radius: 5px;
+            "
+            id="asset-delete-button"
+            nz-button
+            nz-popconfirm
+            nzPopconfirmTitle="Sure to Delete?"
+            (nzOnConfirm)="handleDelete(data.id)"
+            nz-tooltip
+            [nzTooltipTitle]="'Delete Asset'"
+            [nzTooltipColor]="'red'"
+          >
+            <span
+              nz-icon
+              nzType="delete"
+              nzTheme="twotone"
+              [nzTwotoneColor]="'white'"
+            ></span>
           </button>
           <button
-          nz-button
-          [nzSize]="size"
-          nzShape="circle"
-          style="
-            border-color: rgb(224, 228, 234);
-            background-color: #f0ad4e;
-            border-radius: 5px;
-          "
-          (click)="viewPage(data.id)"
-        >
-          <span
-            nz-icon
-            nzType="eye"
-            nzTheme="twotone"
-            nzTwotoneColor="white"
-          ></span>
-        </button>
+            nz-button
+            [nzSize]="size"
+            nzShape="circle"
+            style="
+              border-color: rgb(224, 228, 234);
+              background-color: #f0ad4e;
+              border-radius: 5px;
+            "
+            (click)="viewPage(data.id)"
+          >
+            <span
+              nz-icon
+              nzType="eye"
+              nzTheme="twotone"
+              nzTwotoneColor="white"
+            ></span>
+          </button>
         </td>
       </tr>
       <tr [nzExpand]="data.expand">
-        <nz-table #innerTable [nzData]="searchResults" nzSize="small" [nzShowPagination]="false">
+        <nz-table
+          #innerTable
+          [nzData]="searchResults"
+          nzSize="small"
+          [nzShowPagination]="false"
+        >
           <thead>
             <tr>
-              <th *ngFor="let column of innerColumns" [nzSortOrder]="column.sortOrder" [nzSortFn]="column.sortFn"
-                [nzSortDirections]="column.sortDirections">
+              <th
+                *ngFor="let column of innerColumns"
+                [nzSortOrder]="column.sortOrder"
+                [nzSortFn]="column.sortFn"
+                [nzSortDirections]="column.sortDirections"
+              >
                 {{ column.name }}
               </th>
             </tr>
           </thead>
-  <tbody>
-    <tr>
-      <td>{{ data.createdTime | date : "dd/MM/yyyy hh:ss a" }}</td>
-      <td>{{ data.createdBy }}</td>
-      <td>{{ data.updatedTime | date : "dd/MM/yyyy hh:ss a" }}</td>
-      <td>{{ data.updatedBy }}</td>
-    </tr>
+          <tbody>
+            <tr>
+              <td>{{ data.createdTime | date : "dd/MM/yyyy hh:ss a" }}</td>
+              <td>{{ data.createdBy }}</td>
+              <td>{{ data.updatedTime | date : "dd/MM/yyyy hh:ss a" }}</td>
+              <td>{{ data.updatedBy }}</td>
+            </tr>
+          </tbody>
+        </nz-table>
+      </tr>
+    </ng-template>
   </tbody>
-</nz-table>
-</tr>
-</ng-template>
-</tbody>
 </nz-table>

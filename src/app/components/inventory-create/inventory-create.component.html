@@ -1,8 +1,41 @@
 <div id="create-inventory-body">
   <div id="create-item-form">
-    <h2 *ngIf="!isUpdateComponent">Create Item</h2>
-
-    <form class nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+    <div style="display: flex; margin-left: 150px; margin-top: -50px">
+      <div>
+        <span
+          ><img
+            src="../../../assets/Inventory.png"
+            width="35px"
+            height="35px"
+            style="margin-top: 14px"
+        /></span>
+      </div>
+      <div style="margin-left: 20px">
+        <span>
+          <h2
+            *ngIf="!isUpdateComponent"
+            style="
+              margin-top: -1px;
+              color: rgba(38, 38, 202, 0.733);
+              font-size: 20pt;
+              font-weight: 700;
+            "
+          >
+            Create An Inventory Item
+          </h2>
+          <h4 style="margin-top: -17px; margin-right: 90px">
+            This is the Inventory creation page!
+          </h4></span
+        >
+      </div>
+    </div>
+    <form
+      class
+      nz-form
+      [formGroup]="validateForm"
+      (ngSubmit)="submitForm()"
+      style="margin-top: 30px"
+    >
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="name">
           <span style="color: rgb(0, 102, 255)">Item Name</span>
@@ -117,7 +150,7 @@
             nzShowSearch
             nzAllowClear
             nzPlaceHolder="Select a status"
-            style="text-align: left;"
+            style="text-align: left"
           >
             <nz-option
               *ngFor="let status of status"
@@ -131,7 +164,12 @@
       <div>
         <nz-form-item id="upload-view">
           <nz-form-control nzErrorTip="Please Add an Attachment">
-            <input formControlName="file" type="file" placeholder="file" (change)="handleChange($event)">
+            <input
+              formControlName="file"
+              type="file"
+              placeholder="file"
+              (change)="handleChange($event)"
+            />
           </nz-form-control>
         </nz-form-item>
       </div>
@@ -142,5 +180,4 @@
       </nz-form-item>
     </form>
   </div>
-
 </div>
