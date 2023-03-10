@@ -1,7 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzTableFilterFn, NzTableFilterList, NzTableSortFn, NzTableSortOrder } from 'ng-zorro-antd/table';
+import { delay } from 'rxjs';
 import { Room } from 'src/app/models/Room';
+
 
 import { RestapiService } from 'src/app/restapi.service';
 
@@ -74,11 +76,19 @@ panels = [
   ];
 
   done(event:any){
-
-    window.location.reload()
+  
     this.notification.success("Loction created Successfully")
+    setTimeout(function(){
+      window.location.reload()
+    },3000);
+    
+
 
   }
+  
+
+
+
 
 
   // getAllFloor(){
