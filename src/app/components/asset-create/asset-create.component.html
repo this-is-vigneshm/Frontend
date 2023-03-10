@@ -332,21 +332,33 @@
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="subAsset"
-          ><span style="color: rgb(0, 102, 255)">Sub Asset of</span>
-        </nz-form-label>
+        <nz-form-label
+          [nzSm]="6"
+          [nzXs]="24"
+          style="color: #3253dc"
+          nzRequired
+          nzFor="subAsset"
+        >
+          <span style="color: #3253dc">Sub Asset of</span></nz-form-label
+        >
         <nz-form-control
           [nzSm]="14"
           [nzXs]="24"
-          nzErrorTip="Please Enter the Sub Asset"
+          nzErrorTip="Please Select a subAsset"
         >
-          <input
-            style="border-radius: 10px"
+          <nz-select
             nz-input
             formControlName="subAsset"
-            id="asset-subasset"
-            placeholder="Sub Asset of"
-          />
+            id="supplier"
+            nzShowSearch
+            nzAllowClear
+            nzPlaceHolder="Select a subAsset"
+            style="text-align: left;"
+          >
+            <nz-option
+              *ngFor="let subAsset of subAsset"
+            ></nz-option>
+          </nz-select>
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>

@@ -29,6 +29,11 @@ export class InventoryCreateComponent {
   validateForm!: UntypedFormGroup;
   file: any;
 
+  status = [
+    { name: 'Available' },
+    { name: 'Not Available'},
+  ];
+
   submitForm(): void {
     if (this.validateForm.valid) {
       console.log('submit', this.validateForm.value);

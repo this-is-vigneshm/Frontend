@@ -38,6 +38,10 @@ export class AssetCreateComponent implements OnInit {
 
   file:any
 
+  
+ subAsset = [
+];
+
   facilities: Facility[] = [];
 
   validateForm!: UntypedFormGroup;
