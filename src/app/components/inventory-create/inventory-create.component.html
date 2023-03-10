@@ -96,23 +96,38 @@
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="description" nzRequired
-          ><span style="color: rgb(0, 102, 255)">Status</span>
-        </nz-form-label>
+        <nz-form-label
+          [nzSm]="6"
+          [nzXs]="24"
+          style="color: #3253dc"
+          nzRequired
+          nzFor="status"
+        >
+          <span style="color: #3253dc">Status</span></nz-form-label
+        >
         <nz-form-control
           [nzSm]="14"
           [nzXs]="24"
-          nzErrorTip="Please Enter the Status!"
+          nzErrorTip="Please Select a Status"
         >
-          <input
-            style="border-radius: 10px"
+          <nz-select
             nz-input
-            id="Status"
             formControlName="status"
-            placeholder="Status"
-          />
+            id="status"
+            nzShowSearch
+            nzAllowClear
+            nzPlaceHolder="Select a status"
+            style="text-align: left;"
+          >
+            <nz-option
+              *ngFor="let status of status"
+              [nzLabel]="status.name"
+              [nzValue]="status.name"
+            ></nz-option>
+          </nz-select>
         </nz-form-control>
       </nz-form-item>
+
       <div>
         <nz-form-item id="upload-view">
           <nz-form-control nzErrorTip="Please Add an Attachment">

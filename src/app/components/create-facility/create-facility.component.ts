@@ -26,6 +26,14 @@ export class CreateFacilityComponent implements OnInit {
 
   addLoc:boolean=true
 
+  facilityType = [
+    { name: 'Rural'},
+    { name: 'Urban'},
+  ];
+
+
+
+
 
  
   ngOnInit(): void {

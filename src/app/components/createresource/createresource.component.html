@@ -4,7 +4,8 @@
     <div class="align">
       <form class nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
         <nz-form-item>
-          <nz-form-label [nzSm]="6" [nzXs]="24"> WorkOrder Code</nz-form-label>
+          <nz-form-label [nzSm]="6" [nzXs]="24"> Mention the Workorder Code
+</nz-form-label>
           <nz-form-control
             [nzSm]="14"
             [nzXs]="24"
@@ -22,7 +23,7 @@
         </nz-form-item>
         <nz-form-item>
           <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="resourceCode">
-            Resource Code</nz-form-label
+            Mention the Resource Code?</nz-form-label
           >
           <nz-form-control
             [nzSm]="14"
@@ -40,7 +41,7 @@
         </nz-form-item>
         <nz-form-item>
           <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="name">
-            Resource Name</nz-form-label
+            Mention the Resource Name?</nz-form-label
           >
           <nz-form-control
             [nzSm]="14"
@@ -58,7 +59,8 @@
         </nz-form-item>
         <nz-form-item>
           <nz-form-label [nzSm]="6" [nzXs]="24">
-            <span style="border-radius: 10px">Resource Type</span>
+            <span style="border-radius: 10px">Which type this resource belongs to?
+            </span>
           </nz-form-label>
           <nz-table #filterTable [nzData]="inventoryItem" style="padding-top: 2%;padding-left: 10%;">
             <thead id="asset-table-head">
@@ -87,7 +89,7 @@
         </nz-form-item>
         <nz-form-item>
           <nz-form-label [nzSm]="6" [nzXs]="24">
-            Resource Schedule
+            Schedule the Resource
           </nz-form-label>
           <nz-form-control nzErrorTip="Please Enter the Resource Schedule">
             <nz-date-picker style="right: 230px" formControlName="startDate" placeholder="Start Date" [(ngModel)]="startDate"
@@ -105,7 +107,7 @@
           [nzSm]="6"
           [nzXs]="24"
         >
-          <span style="border-radius: 10px">Resource Availability</span>
+          <span style="border-radius: 10px">Mention the Availability of the Resource?</span>
         </nz-form-label>
         <nz-form-control
           nzErrorTip="Please Select a Resource Availability"

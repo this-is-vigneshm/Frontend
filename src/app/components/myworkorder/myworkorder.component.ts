@@ -60,6 +60,7 @@ export class MyworkorderComponent implements OnInit{
     } 
     else {
       this.userData = this.tokenService.getCurrentUserData();
+      this.getAllWorkOrders()
     }
 }
 listOfColumns: ColumnItem[] = [
