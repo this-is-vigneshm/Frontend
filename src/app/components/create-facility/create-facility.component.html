@@ -47,8 +47,14 @@
         [nzXs]="24"
         nzErrorTip="Please enter the facilityType!"
       >
-        <input nz-input formControlName="facilityType" id="facilityType" />
-      </nz-form-control>
+      <nz-select nz-input formControlName="facilityType" id="facilityType" nzShowSearch nzAllowClear 
+      nzPlaceHolder="Select a facilityType" style="text-align: left;">
+        <nz-option
+          *ngFor="let facilityType of facilityType"
+          [nzLabel]="facilityType.name"
+          [nzValue]="facilityType.name"
+        ></nz-option>
+      </nz-select>      </nz-form-control>
     </nz-form-item>
     <nz-form-item>
       <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="facilitySource" nzRequired
