@@ -168,26 +168,7 @@
 
 <div *ngIf="condition"><nz-collapse [nzGhost]="true" id="collapse">
     <nz-collapse-panel>
-      <nz-table #filterTable [nzData]="searchResults">
-        <thead>
-          <tr>
-            <th *ngFor="let column of listOfColumns" [nzSortOrder]="column.sortOrder" [nzSortFn]="column.sortFn"
-              [nzSortDirections]="column.sortDirections" [nzFilterMultiple]="column.filterMultiple"
-              [nzFilters]="column.listOfFilter" [nzFilterFn]="column.filterFn">
-              {{ column.name }}
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <ng-template ngFor let-data [ngForOf]="filterTable.data">
-            <tr>
-              <td>{{ data.userId }}</td>
-              <td>{{ data.resourceId }}</td>
-              <td>{{ data.resourceName }}</td>
-            </tr>
-          </ng-template>
-        </tbody>
-      </nz-table>
+      <app-resourcelist></app-resourcelist>
     </nz-collapse-panel>
   </nz-collapse></div>
 
@@ -195,25 +176,6 @@
 
 <nz-collapse *ngIf="condition1" [nzGhost]="true" id="collapse">
   <nz-collapse-panel>
-    <nz-table #filterTable [nzData]="searchResults">
-      <thead>
-        <tr>
-          <th *ngFor="let column of listOfColumns1" [nzSortOrder]="column.sortOrder" [nzSortFn]="column.sortFn"
-            [nzSortDirections]="column.sortDirections" [nzFilterMultiple]="column.filterMultiple"
-            [nzFilters]="column.listOfFilter" [nzFilterFn]="column.filterFn">
-            {{ column.name }}
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <ng-template ngFor let-data [ngForOf]="filterTable.data">
-          <tr>
-            <td>{{ data.inventoryId }}</td>
-            <td>{{ data.resourceName }}</td>
-            <td>{{ data.availability }}</td>
-          </tr>
-        </ng-template>
-      </tbody>
-    </nz-table>
+    <app-resource-list></app-resource-list>
   </nz-collapse-panel>
 </nz-collapse>

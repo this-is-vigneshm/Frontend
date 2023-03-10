@@ -58,6 +58,7 @@ import { RoomListComponent } from './components/room-list/room-list.component';
 import { ViewTicketComponent } from './components/view-ticket/view-ticket.component';
 import { ViewInventoryComponent } from './components/view-inventory/view-inventory.component';
 import { ViewAssetComponent } from './components/view-asset/view-asset.component';
+import { ResourceListComponent } from './components/resource-list/resource-list.component';
 registerLocaleData(en);
 
 @NgModule({
@@ -108,6 +109,7 @@ registerLocaleData(en);
     ViewTicketComponent,
     ViewInventoryComponent,
     ViewAssetComponent,
+    ResourceListComponent,
     ],
   imports: [
     BrowserModule,
