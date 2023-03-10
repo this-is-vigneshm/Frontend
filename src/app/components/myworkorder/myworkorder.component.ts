@@ -60,13 +60,6 @@ export class MyworkorderComponent implements OnInit{
     } 
     else {
       this.userData = this.tokenService.getCurrentUserData();
-       if(!this.userData.roles.includes("ADMIN")){
-        this.notification.warning("You are not authorizaed to visit this page!")
-        this.router.navigateByUrl("/home")
-       }else{
-        this.getAllWorkOrders();
-       }
-     
     }
 }
 listOfColumns: ColumnItem[] = [

@@ -116,7 +116,7 @@ margin-left: -66%;">Queues</span>
   </ng-container>
 </nz-modal>
 
-<nz-modal [nzVisible]="visible" [nzStyle]="{ top: '20px', width: '70%' }" nzTitle="View Inventory"
+<nz-modal [nzVisible]="visible" [nzStyle]="{ top: '20px', width: '70%' }" nzTitle="View Ticket"
             nzCentered (nzOnCancel)="closeView()" (nzOnOk)="closeView()" >
               <app-view-ticket *nzModalContent [ticketId]="viewId" (close)="closeView()"></app-view-ticket>
             </nz-modal>

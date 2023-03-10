@@ -236,6 +236,7 @@ export class RestapiService {
       `${this.baseUrl}/tickets/WOId/${ticketId}`,workOrderId)
   }
   public downloadTicketImg(id: string) {
+    console.log(id)
     return this.httpClient.get(`${this.baseUrl}/tickets/download/${id}`,{ responseType: 'blob' });  
   }
   // Knowedge Repo

@@ -24,7 +24,6 @@ export class ViewTicketComponent {
     private restApi: RestapiService ) {}
   ngOnInit(): void {
     this.getTicket(this.ticketId);
-    this.retreiveImage(this.ticketId);
   }
 
   getTicket(ticketId: string) {
@@ -32,7 +31,7 @@ export class ViewTicketComponent {
       (data) => {
         console.log('success', data);
         this.ticket = data.responseData;
-       
+        this.retreiveImage(this.ticket.uuid);
       },
       (error) => {
         console.log('Failed to fetch Ticket Details', error);
@@ -41,6 +40,7 @@ export class ViewTicketComponent {
   }
 
   retreiveImage(id: string) {
+    console.log(id)
     this.restApi.downloadTicketImg(id).subscribe(image => this.createImage(image)
     );
   }

@@ -125,7 +125,7 @@ data : any = null
       data => {
         console.log("Success", data)
         this.notification.success("Ticket created Successfully.")
-        if(this.isVisible==true||this.isVisibleExisting==true)
+        if(this.radioValue===true)
         {
           if(this.isVisibleExisting == true )
         {
@@ -164,7 +164,16 @@ data : any = null
       data => {
         console.log("Success", data)
         this.notification.success("Ticket created Successfully.")
-        this.isVisible = true;
+        if(this.radioValue===true)
+        {
+          if(this.isVisibleExisting == true )
+        {
+          this.isVisibleExisting = false
+        }
+        else{
+          this.isVisible = true
+        }
+        }
         this.data = data.responseData
       },
       error => {
