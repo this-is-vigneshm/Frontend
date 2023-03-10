@@ -34,8 +34,10 @@ export class ResourceListComponent {
   ) {}
 
   @Input()
+  workOrderId : any
   
-
+  @Output()
+  dropDown : EventEmitter<void> = new EventEmitter<void>
 
   selectedResource!: Resource | null;
   searchString: any;
@@ -46,7 +48,7 @@ export class ResourceListComponent {
       this.router.navigateByUrl('/signin');
       window.location.pathname = '/signin';
     } else {
-      this.getResource();
+      this.getResource(this.workOrderId);
     }
   }
 
@@ -78,17 +80,6 @@ export class ResourceListComponent {
       filterMultiple: true,
       listOfFilter: [],
       filterFn: null,
-    },
-    {
-      name: 'resourceType',
-      sortOrder: 'descend',
-      sortFn: (a: Resource, b: Resource) =>
-        a.resourceType.localeCompare(b.resourceType),
-      sortDirections: ['ascend', 'descend', null],
-      listOfFilter: [],
-      filterFn: (description: string, item: Resource) =>
-        item.resourceType.indexOf(description) !== -1,
-      filterMultiple: true,
     },
     {
       name: 'availability',
@@ -129,7 +120,7 @@ export class ResourceListComponent {
   ];
   resourceList: Resource[] = [];
 
-  searchResults: any;
+  searchResults: Resource[] = [];
 
   filterResource(event: any) {
     function ispositive(element: any, index: any, array: any) {
@@ -158,17 +149,25 @@ export class ResourceListComponent {
     this.searchResults = this.resourceList.filter(ispositive);
   }
 
-  getResource() {
-    this.restService.getAllResource().subscribe(
-      (data) => {
+
+  
+  getResource(id : any) {
+    this.restService.getAllResourceByWorkOrderCode(id).subscribe(
+      data => {
+        console.log("Data Obtained", data);
+        this.notification.success("Resources List Obtained!");
         this.resourceList = data.responseData;
-        this.searchResults = this.resourceList;
-        console.log(this.resourceList);
-        this.notification.success('Resource List is available!');
+        for(var i of this.resourceList)
+       {
+        if(i.resourceType == "Inventory")
+        {
+          this.searchResults.push(i)
+        }
+       }
       },
-      (error) => {
-        console.log('Error Occured', error);
-        this.notification.error('Error Fetching Resource List!');
+      error => {
+        console.log("Error Occurred", error);
+        this.notification.error("Resources Fetching Failed!");
       }
     );
   }
@@ -177,6 +176,7 @@ export class ResourceListComponent {
     this.restService.deleteById(resourceId).subscribe(
       (data) => {
         this.notification.success('Resource Deleted Successfully.!');
+        window.location.reload()
       },
       (error) => {
         console.log('Error Occured', error);

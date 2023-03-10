@@ -1,21 +1,4 @@
-<span
-  style="
-    font-family: math;
-    font-size: xx-large;
-    font-weight: 900;
-    margin-left: -50%;
-  "
-  >Resource</span
->
 
-<input
-  nz-input
-  id="search-bar"
-  type="text"
-  [(ngModel)]="searchString"
-  (change)="filterResource($event)"
-  placeholder="Search Resource"
-/>
 
 <nz-table #filterTable [nzData]="searchResults" >
   <thead id="resource-table-head">
@@ -40,7 +23,6 @@
         <td>{{ data.workOrderCode }}</td>
         <td>{{ data.resourceCode }}</td>
         <td>{{ data.resourceName }}</td>
-        <td>{{ data.resourceType }}</td>
         <td>{{ data.availability }}</td>
         <td>{{ data.startDate }}</td>
         <td>{{ data.endDate }}</td>
