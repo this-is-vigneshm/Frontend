@@ -20,7 +20,6 @@
 <nz-table #filterTable [nzData]="searchResults" >
   <thead id="resource-table-head">
     <tr>
-      <th>Select</th>
       <th
         *ngFor="let column of listOfColumns"
         [nzSortOrder]="column.sortOrder"
@@ -37,19 +36,15 @@
   <tbody>
     <ng-template ngFor let-data [ngForOf]="filterTable.data">
       <tr>
-        <td><label nz-checkbox [ngModel]="a" (ngModelChange)="getId($event, data.resourceId)"></label></td>
-        <td>{{ data.workOrderId }}</td>
+        <td>{{ data.workOrderCode }}</td>
         <td>{{ data.resourceCode }}</td>
         <td>{{ data.resourceName }}</td>
         <td>{{ data.resourceType }}</td>
-        <!-- <td>{{ data.availability }}</td>
+        <td>{{ data.availability }}</td>
         <td>{{ data.startDate }}</td>
         <td>{{ data.endDate }}</td>
         <td>{{ data.userId }}</td>
         <td>{{ data.inventoryId }}</td>
-        <td>{{ data.Name }}</td>
-        <td>{{ data.Department }}</td>
-        <td>{{ data.Roles }}</td> -->
       </tr>
     </ng-template>
   </tbody>
