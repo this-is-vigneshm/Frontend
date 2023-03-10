@@ -33,6 +33,10 @@ export class ResourceListComponent {
     private notification: NzMessageService,
   ) {}
 
+  @Input()
+  
+
+
   selectedResource!: Resource | null;
   searchString: any;
   userData: any;
@@ -184,35 +188,8 @@ export class ResourceListComponent {
   handleDelete(resourceId: any) {
     this.deleteById(resourceId);
   }
-
-  isVisibleMiddle = false;
-
-  isa = false;
-
-  showModalMiddle(): void {
-    this.isVisibleMiddle = true;
-    this.isa = true;
-  }
-  showModalMiddle1(): void {
-    this.isVisibleMiddle = true;
-    this.isa = false;
-  }
-
-  handleUpdateResource(data: any) {
-    this.selectedResource = data;
-    this.isVisibleMiddle = true;
-  }
-  handleCreateResourceSave(): void {
-    this.selectedResource = null;
-    this.isVisibleMiddle = false;
-  }
-
-  handleCreateResourceCancel(): void {
-    this.selectedResource = null;
-    this.isVisibleMiddle = false;
-  }
+ 
   id = null
-  a = false
   getId(event: any, id:any){
     console.log(event)
     if(event == true)

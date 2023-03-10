@@ -1,32 +1,52 @@
 
-<nz-table #nestedTable [nzData]="searchResults" [nzPageSize]="10" *ngIf="loc1">
-    <thead>
-        <tr>
-            <th *ngFor="let column of buildingColumns" [nzSortOrder]="column.sortOrder" [nzSortFn]="column.sortFn"
-                [nzSortDirections]="column.sortDirections">
-                {{ column.name }}
-            </th>
-            <th>Action</th>
+<nz-collapse [nzBordered]="false">
+    <nz-collapse-panel
+      #p
+      *ngFor="let panel of panels; let isFirst = first"
+      [nzHeader]="panel.name" 
+      [nzActive]="panel.active"
+      [ngStyle]="panel.customStyle"
+      [nzExpandedIcon]="!isFirst ? panel.icon || expandedIcon : undefined"
+    >
+      <p>
+        <nz-table #nestedTable [nzData]="searchResults" [nzPageSize]="10"  [nzShowPagination]="false">
+            <thead>
+                <tr>
+                    <th *ngFor="let column of buildingColumns" [nzSortOrder]="column.sortOrder" [nzSortFn]="column.sortFn"
+                        [nzSortDirections]="column.sortDirections">
+                        {{ column.name }}
+                    </th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-template ngFor let-data [ngForOf]="nestedTable.data">
+                    <tr>
+                        <td>{{ data.id }}</td>
+                        <td>{{ data.name }}</td>
+                        <td>
+                            <button nz-button (click)="forLocation($event, data)"><span nz-icon nzType="plus" nzTheme="outline"></span></button>
+                            <!-- <button nz-button>
+                                <span nz-icon nzType="delete" nzTheme="twotone" [nzTwotoneColor]="'red'" nz-tooltip
+                                    [nzTooltipTitle]="'Delete Building'" [nzTooltipColor]="'red'" nz-popconfirm
+                                    nzPopconfirmTitle="Proceed to update?"
+                                    (nzOnConfirm)="handleDeleteLocation(data.id)">
+                                </span>
+                            </button> -->
         </tr>
-    </thead>
-    <tbody>
-        <ng-template ngFor let-data [ngForOf]="nestedTable.data">
-            <tr>
-                <td>{{ data.id }}</td>
-                <td>{{ data.name }}</td>
-                <td>
-                    <button nz-button (click)="forLocation($event, data)"><span nz-icon nzType="plus" nzTheme="outline"></span></button>
-                    <!-- <button nz-button>
-                        <span nz-icon nzType="delete" nzTheme="twotone" [nzTwotoneColor]="'red'" nz-tooltip
-                            [nzTooltipTitle]="'Delete Building'" [nzTooltipColor]="'red'" nz-popconfirm
-                            nzPopconfirmTitle="Proceed to update?"
-                            (nzOnConfirm)="handleDeleteLocation(data.id)">
-                        </span>
-                    </button> -->
-</tr>
-</ng-template>
-</tbody>
-</nz-table>
+        </ng-template>
+        </tbody>
+        </nz-table>
+      </p>
+      <ng-template #expandedIcon let-active>
+        {{ active }}
+
+        <span nz-icon nzType="plus" class="ant-collapse-arrow" [nzRotate]="p.nzActive ? 90 : -90"></span>
+      </ng-template>
+    </nz-collapse-panel>
+  </nz-collapse>
+
+
 
 <div *ngIf="loc">
 <app-floor-create [building] = "item"></app-floor-create>
