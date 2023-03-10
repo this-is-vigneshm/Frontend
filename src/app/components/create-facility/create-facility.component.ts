@@ -25,6 +25,44 @@ export class CreateFacilityComponent implements OnInit {
   userData: any;
 
   addLoc:boolean=true
+
+
+  panels = [
+    {
+      active: true,
+      disabled: false,
+      name: 'This is panel header 1',
+      customStyle: {
+        background: '#f7f7f7',
+        'border-radius': '4px',
+        'margin-bottom': '24px',
+        border: '0px'
+      }
+    },
+    {
+      active: false,
+      disabled: true,
+      name: 'This is panel header 2',
+      icon: 'double-right',
+      customStyle: {
+        background: '#f7f7f7',
+        'border-radius': '4px',
+        'margin-bottom': '24px',
+        border: '0px'
+      }
+    },
+    {
+      active: false,
+      disabled: false,
+      name: 'This is panel header 3',
+      customStyle: {
+        background: '#f7f7f7',
+        'border-radius': '4px',
+        'margin-bottom': '24px',
+        border: '0px'
+      }
+    }
+  ];
   ngOnInit(): void {
     this.validateForm = this.fb.group({
       facilityCode: [
@@ -38,7 +76,6 @@ export class CreateFacilityComponent implements OnInit {
       facilityType: [null, [Validators.required]],
       facilitySource: [null, [Validators.required]],
       inactiveDate: [null, []],
-      facLocationCode: [null, []],
     });
 
     this.userData = this.tokenService.getCurrentUserData();
