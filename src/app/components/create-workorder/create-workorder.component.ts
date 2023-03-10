@@ -195,6 +195,8 @@ export class CreateWorkorderComponent implements OnInit {
 
 
 
+  workOrderCode : any
+  
   handleUpdateResource(data: any) {
     this.selectedResource = data;
     this.isVisibleMiddle = true;
@@ -202,6 +204,8 @@ export class CreateWorkorderComponent implements OnInit {
   handleCreateResourceSave(id : any): void {
     this.selectedResource = null;
     this.isVisibleMiddle = false;
+    this.workOrderCode = id
+    this.condition = true
   }
 
   handleCreateResourceCancel(): void {
@@ -288,6 +292,14 @@ export class CreateWorkorderComponent implements OnInit {
 
   disabledDate = (current: Date): boolean =>
   differenceInCalendarDays(current, this.today) < 0;
+
+  innerTable(){
+    this.condition = true
+  }
+
+  innerTable1(){
+    this.condition1 = true
+  }
   
 }
 
