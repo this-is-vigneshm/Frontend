@@ -37,15 +37,14 @@ export class RoomCreateComponent {
       });
     }
   }
-
+list:boolean=false
   handleBuildingCreation(room : Room)
   {
     room.floorId = this.floor.id
     this.restApi.addRoom(room).subscribe(
       data=>{
         console.log("Success", data)
-        this.notification.success("Room Created Successfully")
-        window.location.reload()
+       this.list = true
       },
       error=>{
         console.log("Failed", error)

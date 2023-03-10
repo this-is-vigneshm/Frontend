@@ -103,6 +103,12 @@ areaColumns: ColumnItem[] = [
       }
     );
   }
+  done(event:any){
+
+    window.location.reload()
+    this.notification.success("Loction created Successfully")
+
+  }
 
 
 

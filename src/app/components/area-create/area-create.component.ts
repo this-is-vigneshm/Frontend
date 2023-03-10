@@ -38,6 +38,7 @@ export class AreaCreateComponent {
     }
   }
 
+  list:boolean = false
   handleBuildingCreation(area : Area)
   {
     area.floorId = this.floor.id
@@ -45,7 +46,8 @@ export class AreaCreateComponent {
       data=>{
         console.log("Success", data)
         this.notification.success("Area Created Successfully")
-        window.location.reload()
+        this.list = true
+
       },
       error=>{
         console.log("Failed", error)
