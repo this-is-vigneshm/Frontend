@@ -31,6 +31,20 @@ buildingId : any
 
 floor: Floor[] =[];
 
+panels = [
+  {
+    active: true,
+    disabled: false,
+    name: 'Floor',
+    icon: 'tool',
+    customStyle: {
+      background: '#ffffff',
+      'border-radius': '10px',
+      'margin-bottom': '5px',
+      border: '0px'
+    }
+  }
+];
 
 
   searchResults:any=[]

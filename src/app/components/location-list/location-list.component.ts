@@ -57,6 +57,22 @@ export class LocationListComponent {
 
   constructor(private notification: NzMessageService, private restService: RestapiService){
   }
+
+  panels = [
+    {
+      active: true,
+      disabled: false,
+      name: 'Location',
+      icon: 'tool',
+      customStyle: {
+        background: '#ffffff',
+        'border-radius': '10px',
+        'margin-bottom': '5px',
+        border: '0px'
+      }
+    }
+  ];
+
   locationColumns: ColumnItem[] = [
     {
       name: 'Id',
@@ -160,13 +176,11 @@ export class LocationListComponent {
   forLocation(event:MouseEvent){
     event.preventDefault()
     this.loc = !this.loc
-    this.loc1 = !this.loc1
 
   }
   forLoc(event:MouseEvent, data:any){
     event.preventDefault()
     this.loc = !this.loc
-    this.loc1 = !this.loc1
     this.selectedLocation = data
   }
 }

@@ -112,7 +112,9 @@ export class AssetCreateComponent implements OnInit {
     if (localStorage.getItem('access_token') === null) {
       this.router.navigateByUrl('/signin');
       window.location.pathname = '/signin';
+      
     }
+    this.getAssets();
     this.getAllFacilities();
     this.userData = this.tokenService.getCurrentUserData();
     if (this.assetData == null) {
@@ -153,7 +155,7 @@ export class AssetCreateComponent implements OnInit {
         department: [null, [Validators.required]],
         subAsset: [
           null,
-          [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z ]+')],
+          [Validators.required, Validators.pattern('^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ ]+$')],
         ],
         system: [
           null,
@@ -321,6 +323,21 @@ export class AssetCreateComponent implements OnInit {
       }
     )
   }
+  assetList : any
+  getAssets() {
+    this.restService.getAssets().subscribe(
+      data => {
+        this.assetList = data.responseData;
+        console.log(this.assetList)
+      },
+      error => {
+        console.log("Error Occured", error);
+        this.notification.error("Error Fetching Asset List!")
+      }
+
+    )
+  }
+
   getAllRoomAndArea(id:any){
     console.log(id)
     

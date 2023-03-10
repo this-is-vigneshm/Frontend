@@ -30,6 +30,21 @@ export class BuildingListComponent {
   building: Building[] =[];
 
 
+  panels = [
+    {
+      active: true,
+      disabled: false,
+      name: 'Building',
+      icon: 'tool',
+      customStyle: {
+        background: '#ffffff',
+        'border-radius': '10px',
+        'margin-bottom': '5px',
+        border: '0px'
+      }
+    }
+  ];
+
 
   searchResults:any=[]
 

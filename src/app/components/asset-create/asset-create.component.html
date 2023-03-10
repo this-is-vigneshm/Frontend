@@ -355,9 +355,8 @@
             nzPlaceHolder="Select a subAsset"
             style="text-align: left;"
           >
-            <nz-option
-              *ngFor="let subAsset of subAsset"
-            ></nz-option>
+          <nz-option *ngFor="let asset of assetList" [nzLabel]="asset.name +  ' (' + asset.id + ')'"
+          [nzValue]="asset.id"></nz-option>
           </nz-select>
         </nz-form-control>
       </nz-form-item>

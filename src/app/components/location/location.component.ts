@@ -22,20 +22,7 @@ export class LocationComponent implements OnInit {
   @Input()
   facCode:any
 
-  panels = [
-    {
-      active: true,
-      disabled: false,
-      name: 'This is panel header 1',
-      icon: 'tool',
-      customStyle: {
-        background: '#f7f7f7',
-        'border-radius': '4px',
-        'margin-bottom': '24px',
-        border: '0px'
-      }
-    }
-  ];
+
 
   ngOnInit(): void {
     console.log(this.facCode.facilityName)
