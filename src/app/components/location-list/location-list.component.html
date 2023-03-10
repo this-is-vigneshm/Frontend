@@ -1,41 +1,61 @@
-<nz-table #nestedTable [nzData]="searchResults" [nzPageSize]="10" *ngIf="loc1">
-    <thead>
-        <tr>
-            <th *ngFor="let column of locationColumns" [nzSortOrder]="column.sortOrder" [nzSortFn]="column.sortFn"
-                [nzSortDirections]="column.sortDirections">
-                {{ column.name }}
-            </th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        <ng-template ngFor let-data [ngForOf]="nestedTable.data">
-            <tr>
-                <td>{{ data.id }}</td>
-                <td>{{ data.name }}</td>
-                <td>{{ data.description }}</td>
+<nz-collapse [nzBordered]="false">
+    <nz-collapse-panel
+      #p
+      *ngFor="let panel of panels; let isFirst = first"
+      [nzHeader]="panel.name" 
+      [nzActive]="panel.active"
+      [ngStyle]="panel.customStyle"
+      [nzExpandedIcon]="!isFirst ? panel.icon || expandedIcon : undefined"
+    >
+      <p>
+        <nz-table #nestedTable [nzData]="searchResults" [nzShowPagination]="false" [nzPageSize]="10" *ngIf="loc1">
+            <thead>
+                <tr>
+                    <th *ngFor="let column of locationColumns" [nzSortOrder]="column.sortOrder" [nzSortFn]="column.sortFn"
+                        [nzSortDirections]="column.sortDirections">
+                        {{ column.name }}
+                    </th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-template ngFor let-data [ngForOf]="nestedTable.data">
+                    <tr>
+                        <td>{{ data.id }}</td>
+                        <td>{{ data.name }}</td>
+                        <td>{{ data.description }}</td>
+        
+                        <td>
+                            {{ data.name +", " + data.addressLine1 +
+                            ", " + data.addressLine2 + ", " +data.addressLine3 +
+                            ", " +data.city + ", " +data.state +
+                            ", " +data.postalCode + ", " + data.country}}
+                        </td>
+                        <td>
+                            <button nz-button (click)="forLoc($event, data)"><span nz-icon nzType="plus" nzTheme="outline"></span></button>
+                            <!-- <button nz-button>
+                                <span nz-icon nzType="delete" nzTheme="twotone" [nzTwotoneColor]="'red'" nz-tooltip
+                                    [nzTooltipTitle]="'Delete location'" [nzTooltipColor]="'red'" nz-popconfirm
+                                    nzPopconfirmTitle="Proceed to update?"
+                                    (nzOnConfirm)="handleDeleteLocation(data.id)">
+                                </span>
+                            </button> -->
+                        </td>
+                    </tr>
+        
+        </ng-template>
+        </tbody>
+        </nz-table>
+      </p>
+      <ng-template #expandedIcon let-active>
+        {{ active }}
 
-                <td>
-                    {{ data.name +", " + data.addressLine1 +
-                    ", " + data.addressLine2 + ", " +data.addressLine3 +
-                    ", " +data.city + ", " +data.state +
-                    ", " +data.postalCode + ", " + data.country}}
-                </td>
-                <td>
-                    <button nz-button (click)="forLoc($event, data)"><span nz-icon nzType="plus" nzTheme="outline"></span></button>
-                    <!-- <button nz-button>
-                        <span nz-icon nzType="delete" nzTheme="twotone" [nzTwotoneColor]="'red'" nz-tooltip
-                            [nzTooltipTitle]="'Delete location'" [nzTooltipColor]="'red'" nz-popconfirm
-                            nzPopconfirmTitle="Proceed to update?"
-                            (nzOnConfirm)="handleDeleteLocation(data.id)">
-                        </span>
-                    </button> -->
-                </td>
-            </tr>
+        <span nz-icon nzType="plus" class="ant-collapse-arrow" [nzRotate]="p.nzActive ? 90 : -90"></span>
+      </ng-template>
+    </nz-collapse-panel>
+  </nz-collapse>
 
-</ng-template>
-</tbody>
-</nz-table>
+
 
 <div *ngIf="loc">
     <app-building-create [location]="selectedLocation"></app-building-create>

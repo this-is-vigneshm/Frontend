@@ -30,12 +30,12 @@
   nz-form
   [formGroup]="validateForm"
   (ngSubmit)="submitForm()"
-  [nzLayout]="'inline'"
+  [nzLayout]="'vertical'"
 >
   <div nz-col [nzSpan]="12">
     <nz-form-item>
       <nz-form-label
-        [nzSm]="6"
+        [nzSm]="15"
         [nzXs]="24"
         nzFor="facilityCode"
         nzRequired
@@ -53,10 +53,8 @@
     </nz-form-item>
 
     <nz-form-item>
-      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="facilityName"
-        ><span style="color: #3253dc"
-          >Mention the Facility Name</span
-        ></nz-form-label
+      <nz-form-label [nzSm]="15" [nzXs]="24" nzRequired nzFor="facilityName"
+        ><span style="color: #3253dc">Mention the Facility Name</span></nz-form-label
       >
       <nz-form-control
         [nzSm]="14"
@@ -68,10 +66,8 @@
     </nz-form-item>
 
     <nz-form-item>
-      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="facilityType"
-        ><span style="color: #3253dc"
-          >Mention the Facility Type</span
-        ></nz-form-label
+      <nz-form-label [nzSm]="15" [nzXs]="24" nzRequired nzFor="facilityType"
+        ><span style="color: #3253dc">Mention the Facility Type</span></nz-form-label
       >
       <nz-form-control
         [nzSm]="14"
@@ -96,9 +92,9 @@
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
-      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="facilitySource" nzRequired
-        ><span style="color: #3253dc">Mention the Facility Source</span>
-      </nz-form-label>
+      <nz-form-label [nzSm]="15" [nzXs]="24" nzFor="facilitySource" nzRequired
+        ><span style="color: #3253dc">Mention the Facility Source</span> </nz-form-label
+      >
       <nz-form-control
         [nzSm]="14"
         [nzXs]="24"
@@ -108,9 +104,9 @@
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
-      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="inactiveDate"
-        ><span style="color: #3253dc">Enter the Inactive Date</span>
-      </nz-form-label>
+      <nz-form-label [nzSm]="15" [nzXs]="24" nzFor="inactiveDate"
+        ><span style="color: #3253dc">Enter the Inactive Date</span> </nz-form-label
+      >
       <nz-form-control
         [nzSm]="14"
         [nzXs]="24"
@@ -121,26 +117,16 @@
     </nz-form-item>
 
     <nz-form-item nz-row class="register-area">
-      <nz-form-control [nzSpan]="14" [nzOffset]="6">
+      <nz-form-control [nzSpan]="14" [nzOffset]="-10">
         <button nz-button nzType="primary">Register</button>
       </nz-form-control>
     </nz-form-item>
 
     <nz-form-item>
-      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="Location" nzRequired
-        >Add Location</nz-form-label
-      >
-      <button
-        nz-button
-        nzType="primary"
-        [nzSize]="size"
-        nzShape="circle"
-        (click)="forLocation($event)"
-        style="margin-top: 5px"
-        [disabled]="addLoc"
-      >
-        <span nz-icon nzType="plus"></span>
-      </button>
+      <nz-form-label [nzSm]="15" [nzXs]="24" nzFor="Location" nzRequired
+      >Add Location</nz-form-label
+    > 
+    <button nz-button nzType="primary" [nzSize]="size" nzShape="circle" (click)="forLocation($event)" style="margin-top: 5px;" [disabled] = "addLoc"><span nz-icon nzType="plus"></span></button>
     </nz-form-item>
 
     <div *ngIf="loc">
