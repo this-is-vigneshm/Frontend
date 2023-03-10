@@ -144,6 +144,8 @@ data : any = null
     );
   }
   createTicket(ticketId: string, WOId : number) {
+    console.log(ticketId)
+    console.log(WOId)
     this.restApiService.setWOId(WOId,ticketId).subscribe(
       data => {
         console.log("Success", data)
@@ -278,9 +280,9 @@ event.preventDefault()
     this.isVisibleExisting = true;
   }
   get(event:any){
-    if (this.file == null) {
-      console.log("Without Attachment", event);
-      this.createTicket(event.key(), event.get(event.key()))
-    } 
+    this.isVisible = false 
+    for(var i of event.keys()){
+    this.createTicket(i, event.get(i))
   }
+}
 }

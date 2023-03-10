@@ -10,17 +10,12 @@ import { Location } from '@angular/common';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { Employee } from 'src/app/models/Employee';
 import { Resource } from 'src/app/models/Resource';
-import { NzTableFilterFn, NzTableFilterList, NzTableSortFn, NzTableSortOrder } from 'ng-zorro-antd/table';
 import { differenceInCalendarDays, setHours } from 'date-fns';
+import { NzTableFilterFn, NzTableFilterList, NzTableSortFn, NzTableSortOrder } from 'ng-zorro-antd/table';
 
 
 
-interface Person {
-  key: string;
-  name: string;
-  age: number;
-  address: string;
-}
+
 interface ColumnItem {
   name: string;
   sortOrder: NzTableSortOrder | null;
@@ -59,15 +54,14 @@ export class CreateWorkorderComponent implements OnInit {
   ticketid = ""
 
   @Output()
-  close: EventEmitter<Map<string, any>> = new EventEmitter<Map<string, any>>();
-
-
+  close: EventEmitter<number> = new EventEmitter<number>();
 
   isUpdateComponent: boolean = false
 
   userData: any
 
-
+  @Output()
+  done : EventEmitter<Map<string, number>> = new EventEmitter<Map<string, number>>();
 
 
   validateForm!: UntypedFormGroup;
@@ -219,7 +213,11 @@ export class CreateWorkorderComponent implements OnInit {
   }
 
 
- 
+  handleClose() {
+    this.isUpdateComponent = false;
+    this.workorderData = null;
+    this.close.emit();
+  }
   handleChange(event: any) {
     this.file = event.target.files[0]
   }
@@ -236,11 +234,6 @@ export class CreateWorkorderComponent implements OnInit {
   isVisible = false;
   isConfirmLoading = false;
 
-
-  onUpload() {
-    this.loading = !this.loading;
-    console.log(this.file);
-  }
   handleOk(): void {
     this.isConfirmLoading = true;
     setTimeout(() => {
@@ -345,16 +338,19 @@ export class CreateWorkorderComponent implements OnInit {
     this.isClick = !this.isClick
     event.preventDefault()
   }
-  map : Map<string, any> = new Map<string, any>()
-
-  
-  getHello(event:MouseEvent){
+  map : Map<string, number> = new Map
+  getHello(event : MouseEvent)
+  {
     event.preventDefault()
-    this.close.emit(this.map.set(this.ticketid, this.id.orderNo));
+    this.map.set(this.ticketid, this.id.orderNo)
+
+    this.done.emit(this.map)
   }
+
   today = new Date();
+
   disabledDate = (current: Date): boolean =>
-    differenceInCalendarDays(current, this.today) < 0
+  differenceInCalendarDays(current, this.today) < 0;
   
 }
 
