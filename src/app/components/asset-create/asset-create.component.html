@@ -1,9 +1,43 @@
-<div id="create-asset-body" >
+<div id="create-asset-body">
   <div id="create-asset-form">
-    <h2 *ngIf="!isUpdateComponent">Register Asset</h2>
+    <div style="display: flex; margin-left: 90px; margin-top: -50px">
+      <div>
+        <span
+          ><img
+            src="../../../assets/AssetsImg.png"
+            width="35px"
+            height="35px"
+            style="margin-top: 14px"
+        /></span>
+      </div>
+      <div style="margin-left: 20px">
+        <span>
+          <h2
+            *ngIf="!isUpdateComponent"
+            style="
+              margin-top: -1px;
+              color: rgba(38, 38, 202, 0.733);
+              font-size: 20pt;
+              font-weight: 700;
+            "
+          >
+            Register An Asset
+          </h2>
+          <h4 style="margin-top: -17px; margin-right: 20px">
+            This is the Asset creation page!
+          </h4></span
+        >
+      </div>
+    </div>
     <!-- <ng-component #updateTitle><h2 >Create Asset using Data</h2></ng-component> -->
 
-    <form class nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+    <form
+      class
+      nz-form
+      [formGroup]="validateForm"
+      (ngSubmit)="submitForm()"
+      style="margin-top: 30px"
+    >
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="name">
           <span style="color: rgb(0, 102, 255)">Asset Name</span>
@@ -94,9 +128,9 @@
             nzShowSearch
             nzAllowClear
             nzPlaceHolder="Select a Facility"
-            style="text-align: left;"
-            [ngModel] = "''"
-            (ngModelChange)="getLocationBycode($event)" 
+            style="text-align: left"
+            [ngModel]="''"
+            (ngModelChange)="getLocationBycode($event)"
           >
             <nz-option
               *ngFor="let facility of facilities"
@@ -107,7 +141,7 @@
           </nz-select>
         </nz-form-control>
       </nz-form-item>
-      <nz-form-item >
+      <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24">
           <span style="color: rgb(0, 102, 255)">Location</span>
         </nz-form-label>
@@ -116,28 +150,23 @@
           [nzXs]="24"
           nzErrorTip="Please Enter Valid Location"
         >
-        <nz-select
-          id="location"
-          formControlName="location"
-          nzShowSearch
-          nzAllowClear
-          nzPlaceHolder="Select a Location"
-          style="text-align: left;"
-         [ngModel] = "''"
-          (ngModelChange)="getAllBuilding($event)" 
-  
-         
-        >
-          <nz-option
-            *ngFor="let location of locations"
-            [nzLabel]="location.name"
-            [nzValue]="location.id"
-            >{{ location }}</nz-option
+          <nz-select
+            id="location"
+            formControlName="location"
+            nzShowSearch
+            nzAllowClear
+            nzPlaceHolder="Select a Location"
+            style="text-align: left"
+            [ngModel]="''"
+            (ngModelChange)="getAllBuilding($event)"
           >
-        </nz-select>
-
-      
-       
+            <nz-option
+              *ngFor="let location of locations"
+              [nzLabel]="location.name"
+              [nzValue]="location.id"
+              >{{ location }}</nz-option
+            >
+          </nz-select>
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
@@ -149,24 +178,24 @@
           [nzXs]="24"
           nzErrorTip="Please Enter Valid Building"
         >
-        <nz-select
-        nz-input
-        formControlName="building"
-        id="building"
-        nzShowSearch
-        nzAllowClear
-        nzPlaceHolder="Select a building"
-        style="text-align: left;"
-        [ngModel] = "''"
-        (ngModelChange)="getAllFloor($event)"
-      >
-        <nz-option
-          *ngFor="let building of buildings"
-          [nzLabel]="building.name"
-          [nzValue]="building.id"
-          >{{ building }}</nz-option
-        >
-      </nz-select>
+          <nz-select
+            nz-input
+            formControlName="building"
+            id="building"
+            nzShowSearch
+            nzAllowClear
+            nzPlaceHolder="Select a building"
+            style="text-align: left"
+            [ngModel]="''"
+            (ngModelChange)="getAllFloor($event)"
+          >
+            <nz-option
+              *ngFor="let building of buildings"
+              [nzLabel]="building.name"
+              [nzValue]="building.id"
+              >{{ building }}</nz-option
+            >
+          </nz-select>
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
@@ -178,24 +207,24 @@
           [nzXs]="24"
           nzErrorTip="Please Enter Valid Floor"
         >
-        <nz-select
-        nz-input
-        formControlName="floor"
-        id="floor"
-        nzShowSearch
-        nzAllowClear
-        nzPlaceHolder="Select a floor"
-        style="text-align: left;"
-        [ngModel]="' '"
-        (ngModelChange)="getAllRoomAndArea($event)"
-      >
-        <nz-option
-          *ngFor="let floor of floors"
-          [nzLabel]="floor.name"
-          [nzValue]="floor.id"
-          >{{ floor }}</nz-option
-        >
-      </nz-select>
+          <nz-select
+            nz-input
+            formControlName="floor"
+            id="floor"
+            nzShowSearch
+            nzAllowClear
+            nzPlaceHolder="Select a floor"
+            style="text-align: left"
+            [ngModel]="' '"
+            (ngModelChange)="getAllRoomAndArea($event)"
+          >
+            <nz-option
+              *ngFor="let floor of floors"
+              [nzLabel]="floor.name"
+              [nzValue]="floor.id"
+              >{{ floor }}</nz-option
+            >
+          </nz-select>
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
@@ -204,36 +233,41 @@
         </nz-form-label>
         <nz-form-control [nzSm]="5" [nzXs]="24">
           <nz-input-group nzCompact>
-            <nz-select [ngModel]="'Sign Up'"
-            formControlName="raname" [ngModel]="' '" (ngModelChange)="getOptions($event)">
+            <nz-select
+              [ngModel]="'Sign Up'"
+              formControlName="raname"
+              [ngModel]="' '"
+              (ngModelChange)="getOptions($event)"
+            >
               <nz-option [nzLabel]="'Area'" [nzValue]="'Area'"></nz-option>
               <nz-option [nzLabel]="'Room'" [nzValue]="'Room'"></nz-option>
             </nz-select>
           </nz-input-group>
         </nz-form-control>
         <nz-form-control
-        [nzSm]="9"
-        [nzXs]="24"
-        nzErrorTip="select the area/room"
-      >
-      <nz-select
-      nz-input
-      formControlName="arname"
-      id="floor"
-      nzShowSearch
-      nzAllowClear
-      nzPlaceHolder="Select a Area/Room"
-      style="text-align: left;"
-      [ngModel]="''" (ngModelChange)="getId($event)"
-    >
-      <nz-option
-        *ngFor="let arname of options"
-        [nzLabel]="arname.name"
-        [nzValue]="arname.id"
-        >{{ arname }}</nz-option
-      >
-    </nz-select>
-      </nz-form-control>
+          [nzSm]="9"
+          [nzXs]="24"
+          nzErrorTip="select the area/room"
+        >
+          <nz-select
+            nz-input
+            formControlName="arname"
+            id="floor"
+            nzShowSearch
+            nzAllowClear
+            nzPlaceHolder="Select a Area/Room"
+            style="text-align: left"
+            [ngModel]="''"
+            (ngModelChange)="getId($event)"
+          >
+            <nz-option
+              *ngFor="let arname of options"
+              [nzLabel]="arname.name"
+              [nzValue]="arname.id"
+              >{{ arname }}</nz-option
+            >
+          </nz-select>
+        </nz-form-control>
       </nz-form-item>
       <nz-form-item>
         <nz-form-label
@@ -257,7 +291,7 @@
             nzShowSearch
             nzAllowClear
             nzPlaceHolder="Select a Category"
-            style="text-align: left;"
+            style="text-align: left"
           >
             <nz-option
               *ngFor="let category of categories"
@@ -289,7 +323,7 @@
             nzShowSearch
             nzAllowClear
             nzPlaceHolder="Select a Department"
-            style="text-align: left;"
+            style="text-align: left"
           >
             <nz-option
               *ngFor="let Department of departments"
@@ -321,7 +355,7 @@
             nzShowSearch
             nzAllowClear
             nzPlaceHolder="Select a Supplier"
-            style="text-align: left;"
+            style="text-align: left"
           >
             <nz-option
               *ngFor="let Supplier of suppliers"
@@ -353,7 +387,7 @@
             nzShowSearch
             nzAllowClear
             nzPlaceHolder="Select a subAsset"
-            style="text-align: left;"
+            style="text-align: left"
           >
           <nz-option *ngFor="let asset of assetList" [nzLabel]="asset.name +  ' (' + asset.id + ')'"
           [nzValue]="asset.id"></nz-option>
@@ -476,11 +510,15 @@
       </nz-form-item>
     </form>
 
-    
     <div>
       <nz-form-item id="upload-view">
         <nz-form-control nzErrorTip="Please Add an Attachment">
-          <input formControlName="file" type="file" placeholder="file" (change)="handleChange1($event)">
+          <input
+            formControlName="file"
+            type="file"
+            placeholder="file"
+            (change)="handleChange1($event)"
+          />
         </nz-form-control>
       </nz-form-item>
     </div>

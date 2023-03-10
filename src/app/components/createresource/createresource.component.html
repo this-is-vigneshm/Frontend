@@ -1,11 +1,40 @@
 <div id="create-resource-body">
   <div id="create-resource-form">
-    <h2>Add Resource Planner</h2>
+    <div style="display: flex; margin-left: 90px; margin-top: -50px">
+      <div>
+        <span
+          ><img
+            src="../../../assets/Resource.png"
+            width="35px"
+            height="35px"
+            style="margin-top: 14px"
+        /></span>
+      </div>
+      <div style="margin-left: 20px">
+        <span>
+          <h2
+            *ngIf="!isUpdateComponent"
+            style="
+              margin-top: -1px;
+              color: rgba(38, 38, 202, 0.733);
+              font-size: 20pt;
+              font-weight: 700;
+            "
+          >
+            Create a Resource
+          </h2>
+          <h4 style="margin-top: -17px; margin-right: 20px">
+            This is the Resource creation page!
+          </h4></span
+        >
+      </div>
+    </div>
     <div class="align">
       <form class nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
         <nz-form-item>
-          <nz-form-label [nzSm]="6" [nzXs]="24"> Mention the Workorder Code
-</nz-form-label>
+          <nz-form-label [nzSm]="6" [nzXs]="24">
+            Mention the Workorder Code
+          </nz-form-label>
           <nz-form-control
             [nzSm]="14"
             [nzXs]="24"
@@ -59,10 +88,15 @@
         </nz-form-item>
         <nz-form-item>
           <nz-form-label [nzSm]="6" [nzXs]="24">
-            <span style="border-radius: 10px">Which type this resource belongs to?
+            <span style="border-radius: 10px"
+              >Which type this resource belongs to?
             </span>
           </nz-form-label>
-          <nz-table #filterTable [nzData]="inventoryItem" style="padding-top: 2%;padding-left: 10%;">
+          <nz-table
+            #filterTable
+            [nzData]="inventoryItem"
+            style="padding-top: 2%; padding-left: 10%"
+          >
             <thead id="asset-table-head">
               <tr>
                 <th>Select</th>
@@ -75,7 +109,7 @@
               <tr *ngFor="let data of filterTable.data">
                 <td>
                   <input
-                  type="checkbox"
+                    type="checkbox"
                     [ngModel]="a"
                     (change)="getId(data.id)"
                   />
@@ -92,41 +126,57 @@
             Schedule the Resource
           </nz-form-label>
           <nz-form-control nzErrorTip="Please Enter the Resource Schedule">
-            <nz-date-picker style="right: 230px" formControlName="startDate" placeholder="Start Date" [(ngModel)]="startDate"
-            [nzDisabledDate]="disabledDate">
-          </nz-date-picker>
-          <nz-date-picker style="right: 200px" formControlName="endDate" placeholder="End Date" 
-            [nzDisabledDate]="disabledEndDate"></nz-date-picker>
+            <nz-date-picker
+              style="right: 230px"
+              formControlName="startDate"
+              placeholder="Start Date"
+              [(ngModel)]="startDate"
+              [nzDisabledDate]="disabledDate"
+            >
+            </nz-date-picker>
+            <nz-date-picker
+              style="right: 200px"
+              formControlName="endDate"
+              placeholder="End Date"
+              [nzDisabledDate]="disabledEndDate"
+            ></nz-date-picker>
           </nz-form-control>
         </nz-form-item>
         <nz-form-item>
           <nz-form-label
-          style="width: 150px"
-          nzRequired
-          nzFor="Resource Availability"
-          [nzSm]="6"
-          [nzXs]="24"
-        >
-          <span style="border-radius: 10px">Mention the Availability of the Resource?</span>
-        </nz-form-label>
-        <nz-form-control
-          nzErrorTip="Please Select a Resource Availability"
-          [nzSm]="14"
-          [nzXs]="24"
-        >
-        <input
-        style="border-radius: 10px"
-        nz-input
-        id="resource-name"
-        placeholder="Allocate Resource"
-        value="Yes"
-        [disabled]="true"
-      />
+            style="width: 150px"
+            nzRequired
+            nzFor="Resource Availability"
+            [nzSm]="6"
+            [nzXs]="24"
+          >
+            <span style="border-radius: 10px"
+              >Mention the Availability of the Resource?</span
+            >
+          </nz-form-label>
+          <nz-form-control
+            nzErrorTip="Please Select a Resource Availability"
+            [nzSm]="14"
+            [nzXs]="24"
+          >
+            <input
+              style="border-radius: 10px"
+              nz-input
+              id="resource-name"
+              placeholder="Allocate Resource"
+              value="Yes"
+              [disabled]="true"
+            />
           </nz-form-control>
         </nz-form-item>
         <nz-form-item nz-row class="register-area">
           <nz-form-control [nzSpan]="14" [nzOffset]="6">
-            <button nz-button nzType="primary" id="create-button" (click)="handleReset()">
+            <button
+              nz-button
+              nzType="primary"
+              id="create-button"
+              (click)="handleReset()"
+            >
               SAVE AND ADD
             </button>
             <button
@@ -134,7 +184,7 @@
               nz-button
               nzType="primary"
               id="create-button"
-              >
+            >
               SAVE AND CLOSE
             </button>
           </nz-form-control>

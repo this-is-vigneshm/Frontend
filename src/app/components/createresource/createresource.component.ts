@@ -118,7 +118,9 @@ export class CreateresourceComponent {
     resource.resourceType = "Inventory"
     resource.workOrderCode = this.workOrderCode
     resource.availability = "Yes"
+    console.log(this.inventoryId)
     for (var i of this.inventoryId) {
+      resource.inventoryId = i
       resource.userId = null;
       this.restService.registerResource(resource).subscribe(
         (data) => {

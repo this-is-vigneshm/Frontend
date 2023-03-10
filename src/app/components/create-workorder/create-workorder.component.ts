@@ -192,21 +192,7 @@ export class CreateWorkorderComponent implements OnInit {
   isb = false
   resources: Resource[] = [];
   searchResults: any
-  getAllResource(id:any) {
-    this.restService.getAllResourceByWorkOrderCode(id).subscribe(
-      data => {
-        console.log("Data Obtained", data);
-        this.notification.success("Resources List Obtained!");
-        this.resources = data.responseData;
-        this.searchResults = this.resources;
-        this.condition = true
-      },
-      error => {
-        console.log("Error Occurred", error);
-        this.notification.error("Resources Fetching Failed!");
-      }
-    );
-  }
+
 
 
   handleUpdateResource(data: any) {
@@ -216,8 +202,6 @@ export class CreateWorkorderComponent implements OnInit {
   handleCreateResourceSave(id : any): void {
     this.selectedResource = null;
     this.isVisibleMiddle = false;
-    console.log(id)
-    this.getAllResource(id)
   }
 
   handleCreateResourceCancel(): void {
@@ -274,35 +258,6 @@ export class CreateWorkorderComponent implements OnInit {
     this.isVisible = false;
   }
 
-  listOfColumns: ColumnItem[] = [
-    {
-      name: 'User Id',
-      sortOrder: null,
-      sortFn: (a: Resource, b: Resource) => a.userId - b.userId,
-      sortDirections: ['ascend', 'descend', null],
-      filterMultiple: true,
-      listOfFilter: [],
-      filterFn: null
-    },
-    {
-      name: 'Resource Id',
-      sortOrder: 'descend',
-      sortFn: (a: Resource, b: Resource) => a.resourceId - b.resourceId,
-      sortDirections: ['ascend', 'descend', null],
-      filterMultiple: true,
-      listOfFilter: [],
-      filterFn: null
-    },
-    {
-      name: 'Resource Name',
-      sortOrder: 'descend',
-      sortFn: (a: Resource, b: Resource) => a.resourceName.localeCompare(b.resourceName),
-      sortDirections: ['ascend', 'descend', null],
-      filterMultiple: true,
-      listOfFilter: [],
-      filterFn: null
-    }
-  ];
 
 
   listOfColumns1: ColumnItem[] = [
