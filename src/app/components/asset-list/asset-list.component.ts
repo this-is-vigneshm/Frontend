@@ -101,7 +101,7 @@ export class AssetListComponent implements OnInit{
       filterMultiple: false,
       listOfFilter:[],
       filterFn: null
-    }
+    },
   ];
 
 
@@ -288,6 +288,31 @@ export class AssetListComponent implements OnInit{
     this.visible = true;
   }  close() {
     this.visible = false;
+  }
+
+  rooms:any
+  areas:any
+  getAllRoomAndArea(id:any){
+    console.log(id)
+    
+    this.restService.getAllAreaByFloor(id).subscribe(
+      data=>{
+          console.log('Area Fetched Successfully', data)
+          this.areas = data.responseData;
+      },
+      error=>{
+        console.log('Area Fetching Failed',error)
+      }
+    )
+    this.restService.getAllRoomByFloor(id).subscribe(
+      data=>{
+          console.log('Room Fetched Successfully', data)
+          this.rooms = data.responseData;
+      },
+      error=>{
+        console.log('Room Fetching Failed',error)
+      }
+    )
   }
  
 }

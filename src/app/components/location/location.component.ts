@@ -22,6 +22,8 @@ export class LocationComponent implements OnInit {
   @Input()
   facCode:any
 
+  
+
   ngOnInit(): void {
     console.log(this.facCode.facilityName)
     this.userData = this.tokenService.getCurrentUserData();

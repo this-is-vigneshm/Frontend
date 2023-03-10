@@ -71,6 +71,8 @@
         [nzFilters]="column.listOfFilter" [nzFilterFn]="column.filterFn">
         {{ column.name }}
       </th>
+      <th>Room</th>
+      <th>Area</th>
       <th>Action</th>
     </tr>
   </thead>
@@ -84,6 +86,8 @@
         <td>{{ data.price }}</td>
         <td>{{ data.location.facilityName }}</td>
         <td>{{ data.location.facilityCode }}</td>
+        <td>{{ data.room}}</td>
+        <td>{{ data.area}}</td>
 
         <td>
           <button nz-button [nzSize]="size"  nzShape="circle" style=" border-color: rgb(224, 228, 234); background-color: #f0ad4e; border-radius: 5px;"  

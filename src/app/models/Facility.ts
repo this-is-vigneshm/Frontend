@@ -6,7 +6,6 @@ export class Facility {
     facilityType: string;
     facilitySource: string;
     inactiveDate: string;
-    facLocationCode: string;
     createdTime: number;
     createdBy: string;
     lastUpdatedTime: number;
@@ -16,8 +15,7 @@ export class Facility {
 
     public constructor(facilityId: number, facilityCode: string,
         facilityName: string, facilityType: string,
-        facilitySource: string, inactiveDate: string,
-        facLocationCode: string, createdTime: number,  createdBy: string,
+        facilitySource: string, inactiveDate: string, createdTime: number,  createdBy: string,
         lastUpdatedTime: number, lastUpdatedBy: string, userId:number) 
         {
             this.facilityId = facilityId,
@@ -26,7 +24,6 @@ export class Facility {
             this.facilityType = facilityType,
             this.facilitySource = facilitySource,
             this.inactiveDate = inactiveDate,
-            this.facLocationCode = facLocationCode,
             this.createdTime = createdTime,
             this.createdBy = createdBy,
             this.lastUpdatedTime = lastUpdatedTime,
