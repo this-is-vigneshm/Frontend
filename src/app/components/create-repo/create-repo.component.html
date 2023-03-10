@@ -1,28 +1,80 @@
-<form nz-form [formGroup]="form" class="login-form" (ngSubmit)="submitForm()" style = "padding: 5% 20% 5% 20%;"
+<div style="display: flex; margin-left: 90px; margin-top: 10px">
+  <div>
+    <span
+      ><img
+        src="../../../assets/KnowledgeRepo.png"
+        width="35px"
+        height="35px"
+        style="margin-top: 14px"
+    /></span>
+  </div>
+  <div style="margin-left: 20px">
+    <span>
+      <h2
+        style="
+          margin-top: -1px;
+          color: rgba(38, 38, 202, 0.733);
+          font-size: 20pt;
+          font-weight: 700;
+        "
+      >
+        Create a Repository
+      </h2>
+      <h4 style="margin-top: -17px; margin-right: 10px">
+        This is the Repository creation page!
+      </h4></span
+    >
+  </div>
+</div>
+
+<form
+  nz-form
+  [formGroup]="form"
+  class="login-form"
+  (ngSubmit)="submitForm()"
+  style="margin-top: 20px"
 >
   <nz-form-item>
-    <nz-form-label nzFor="asset_name"> 
-      <span style="color: #3253dc;">Select an asset</span>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="asset_name">
+      <span style="color: #3253dc">Select an asset</span>
     </nz-form-label>
-    <nz-form-control>
-      <nz-select nz-input formControlName="asset_name" id="asset_name" nzShowSearch nzAllowClear
-        nzPlaceHolder="Select the Asset">
-        <nz-option *ngFor="let asset of assetList" [nzLabel]="asset.name"
-           [nzValue]="asset.name"></nz-option>
+    <nz-form-control [nzSm]="10" [nzXs]="24">
+      <nz-select
+        nz-input
+        formControlName="asset_name"
+        id="asset_name"
+        nzShowSearch
+        nzAllowClear
+        nzPlaceHolder="Select the Asset"
+      >
+        <nz-option
+          *ngFor="let asset of assetList"
+          [nzLabel]="asset.name"
+          [nzValue]="asset.name"
+        ></nz-option>
       </nz-select>
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
-    <nz-form-label nzFor="file"><span style="color: #3253dc;">Attach a Document</span></nz-form-label>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="file"
+      ><span style="color: #3253dc">Attach a Document</span></nz-form-label
+    >
     <nz-form-control nzErrorTip="Please Add an Attachment">
       <!-- <span>Click here or drag your File to upload</span> -->
-      <input type="file" id="file" placeholder="File" (change)="onChange($event)">
+      <input
+        type="file"
+        id="file"
+        placeholder="File"
+        (change)="onChange($event)"
+      />
     </nz-form-control>
   </nz-form-item>
 
   <nz-form-item nz-row class="register-area">
     <nz-form-control [nzOffset]="6">
-      <button nz-button nzType="primary"  id="create-repo-submit">Create a Repo</button>
+      <button nz-button nzType="primary" id="create-repo-submit">
+        Create a Repo
+      </button>
     </nz-form-control>
   </nz-form-item>
 </form>
