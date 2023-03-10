@@ -3,69 +3,72 @@
   <div nz-col [nzSpan]="12">
     <nz-form-item>
       <nz-form-label [nzSm]="14" [nzXs]="24" nzFor="addressLine1" nzRequired>Facility Code </nz-form-label>
-      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please Enter The ">
+      <nz-form-control [nzSm]="20" [nzXs]="24" nzErrorTip="Please Enter The ">
         <input value="{{facCode.facilityCode}}" id="addressLine1" [disabled]="true" nz-input />
       </nz-form-control>
     </nz-form-item>
   <nz-form-item>
       <nz-form-label [nzSm]="14" [nzXs]="24" nzFor="addressLine1" nzRequired>Location Name</nz-form-label>
-      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please Enter The Location Name">
+      <nz-form-control [nzSm]="20" [nzXs]="24" nzErrorTip="Please Enter The Location Name">
         <input formControlName="name" id="addressLine1" nz-input />
       </nz-form-control>
     </nz-form-item>
   <nz-form-item>
       <nz-form-label [nzSm]="14" [nzXs]="24" nzFor="addressLine1" nzRequired>Description</nz-form-label>
-      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please Enter The Location Description!">
+      <nz-form-control [nzSm]="20" [nzXs]="24" nzErrorTip="Please Enter The Location Description!">
         <input formControlName="description" id="addressLine1" nz-input />
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
       <nz-form-label [nzSm]="14" [nzXs]="24" nzFor="addressLine1" nzRequired>Address Line 1</nz-form-label>
-      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please Enter The AddressLine1">
+      <nz-form-control [nzSm]="20" [nzXs]="24" nzErrorTip="Please Enter The AddressLine1">
         <input formControlName="addressLine1" id="addressLine1" nz-input />
       </nz-form-control>
     </nz-form-item>
 
     <nz-form-item>
       <nz-form-label [nzSm]="14" [nzXs]="24" nzFor="addressLine2" nzRequired>Address Line 2</nz-form-label>
-      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please Enter The Address Line 2">
+      <nz-form-control [nzSm]="20" [nzXs]="24" nzErrorTip="Please Enter The Address Line 2">
         <input formControlName="addressLine2" id="addressLine2" nz-input />
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
       <nz-form-label [nzSm]="14" [nzXs]="24" nzFor="addressLine3" nzRequired>Address Line 3</nz-form-label>
-      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please Enter The Address Line 3">
+      <nz-form-control [nzSm]="20" [nzXs]="24" nzErrorTip="Please Enter The Address Line 3">
         <input formControlName="addressLine3" id="addressLine3" nz-input />
       </nz-form-control>
     </nz-form-item>
 
     <nz-form-item>
       <nz-form-label [nzSm]="14" [nzXs]="24" nzFor="city" nzRequired>City</nz-form-label>
-      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please Enter The City">
+      <nz-form-control [nzSm]="20" [nzXs]="24" nzErrorTip="Please Enter The City">
         <input formControlName="city" id="city" nz-input />
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
       <nz-form-label [nzSm]="14" [nzXs]="24" nzFor="state" nzRequired>State</nz-form-label>
-      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please Enter The State">
+      <nz-form-control [nzSm]="20" [nzXs]="24" nzErrorTip="Please Enter The State">
         <input formControlName="state" id="state" nz-input />
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
       <nz-form-label [nzSm]="14" [nzXs]="24" nzFor="postalCode" nzRequired>Postal Code</nz-form-label>
-      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please Enter The Postal Code">
+      <nz-form-control [nzSm]="20" [nzXs]="24" nzErrorTip="Please Enter The Postal Code">
         <input formControlName="postalCode" id="postalCode" nz-input />
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
       <nz-form-label [nzSm]="14" [nzXs]="24" nzFor="country" nzRequired>Country</nz-form-label>
-      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please Enter The Country">
+      <nz-form-control [nzSm]="20" [nzXs]="24" nzErrorTip="Please Enter The Country">
         <input formControlName="country" id="country" nz-input />
       </nz-form-control>
     </nz-form-item>
     <nz-form-item >
-      <span style="margin-left: 68%;"></span>
-        <button nz-button nzType="primary" >Submit</button>      
+      <nz-form-control [nzPull]="12">
+        <span style="margin-left: 68%;"></span>
+        <button nz-button nzType="primary" >Submit</button>  
+      </nz-form-control>
+    
     </nz-form-item>
   </div>
 

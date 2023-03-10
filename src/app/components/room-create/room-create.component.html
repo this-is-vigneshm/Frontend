@@ -1,6 +1,6 @@
 <form nz-form [formGroup]="validateForm"  (ngSubmit)="submitForm()">
     <nz-form-item>
-      <nz-form-label [nzSpan]="7" nzRequired>Room Name</nz-form-label>
+      <nz-form-label [nzSpan]="7" nzRequired>Mention the Room Name</nz-form-label>
       <nz-form-control [nzSpan]="12" nzErrorTip="Please Enter  Valid Room Name">
         <input nz-input formControlName="name" placeholder="name" />
       </nz-form-control>
@@ -12,7 +12,7 @@
         <input nz-input value="{{floor.name}}" [disabled]="true" placeholder="floorName" />
       </nz-form-control>
     </nz-form-item>
-    <br>
+  <br>
     <nz-form-item>
         <nz-form-control [nzOffset]="7" [nzSpan]="12" [nzPull]="8">
           <button nz-button nzType="primary">Submit</button>
