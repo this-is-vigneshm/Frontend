@@ -167,7 +167,7 @@ export class CreateWorkorderComponent implements OnInit {
       data => {
         console.log("Success", data)
         this.notification.success("Workorder Created Successfully.")
-        this.getHello(data.responseData.workOrderCode)
+        this.getHello(data.responseData.orderNo)
       },
       error => {
         console.log("Error occcured", error)
@@ -335,7 +335,6 @@ export class CreateWorkorderComponent implements OnInit {
     this.restService.deleteById(resourceId).subscribe(
       (data) => {
         this.notification.success('Resource Deleted Successfully.!');
-        window.location.reload()
       },
       (error) => {
         console.log('Error Occured', error);
