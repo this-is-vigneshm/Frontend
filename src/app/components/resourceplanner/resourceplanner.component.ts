@@ -176,15 +176,15 @@ resource : Resource[] = []
       this.restService.registerResource(resource).subscribe(
         (data: any) => {
           console.log('Success', data);
-          this.resource = data.responseData
+          this.resource.push(data.responseData)
           this.notification.success('Resource Created Successfully.');
-          this.handleClose();
         },
         (error: any) => {
           console.log('Error occcured', error);
         }
-      );}
-    
+      );
+    }
+    this.handleClose();
   }
   updateresourceData(resource: any) {
     console.log('Updating............');
@@ -203,7 +203,6 @@ resource : Resource[] = []
   handleClose() {
     this.isUpdateComponent = false;
     this.resourceData = null;
-    console.log("close")
     this.close1.emit(this.resource);
   }
 

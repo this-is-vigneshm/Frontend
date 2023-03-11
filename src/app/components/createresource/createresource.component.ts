@@ -19,6 +19,7 @@ import { Resource } from 'src/app/models/Resource';
 import { RestapiService } from 'src/app/restapi.service';
 import { TokenService } from 'src/app/token.service';
 import { differenceInCalendarDays, setHours } from 'date-fns';
+import { delay } from 'rxjs';
 enableProdMode();
 
 interface ColumnItem {
@@ -119,7 +120,6 @@ export class CreateresourceComponent {
     resource.resourceType = "Inventory"
     resource.workOrderCode = this.workOrderCode
     resource.availability = "Yes"
-    console.log(this.inventoryId)
     for (var i of this.inventoryId) {
       resource.inventoryId = i
       resource.userId = null;
@@ -127,16 +127,15 @@ export class CreateresourceComponent {
         (data) => {
           console.log('Success', data);
           this.notification.success('Resource Created Successfully.');
-          this.resource = data.responseData
-          this.handleClose()
+          this.resource.push( data.responseData)
         },
         (error) => {
           console.log('Error occcured', error);
         }
       );
     }
+    this.handleClose()
   }
-
 
   inventoryItem: Inventory[] = []
   getInventoryItem() {
@@ -152,15 +151,14 @@ export class CreateresourceComponent {
   }
 
   handleClose() {
-    this.isUpdateComponent = false;
-    this.resourceData = null;
-    this.close.emit(this.resource);
+    this.close.emit(this.resource)
   }
   a = false;
   inventoryId: number[] = []
   getId(event: any) {
     this.inventoryId.push(event)
   }
+
   handleReset() {
     this.validateForm.reset()
   }

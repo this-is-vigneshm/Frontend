@@ -156,10 +156,7 @@ export class CreateWorkorderComponent implements OnInit {
 
   }
   code : any
-  workOrderCode(id : any){
-    console.log(id)
-    this.code = id
-  }
+
   createItemByData(workorder: WorkOrder, file: File) {
     workorder.employeeId = this.userData.userId
     workorder.status = "Active"
@@ -189,6 +186,7 @@ export class CreateWorkorderComponent implements OnInit {
 
 
   handleCreateResourceSave(id : any): void {
+    console.log(id)
     this.selectedResource = null;
     this.isVisibleMiddle = false;
     this.resourcesUser = id
@@ -196,6 +194,7 @@ export class CreateWorkorderComponent implements OnInit {
   }
 
   handleCreateResourceSave1(id : any): void {
+    console.log(id)
     this.selectedResource = null;
     this.isVisibleMiddle = false;
     this.resourcesInventory = id
