@@ -45,7 +45,10 @@
                         </td>
                     </tr>
                     <tr [nzExpand]="data.expand">
-                        <app-building-list></app-building-list>
+                        <div *ngIf="data.expand">
+                            <app-building-list [locationId]="data.id"></app-building-list>
+                        </div>
+                        
                       </tr>
         </ng-template>
         </tbody>

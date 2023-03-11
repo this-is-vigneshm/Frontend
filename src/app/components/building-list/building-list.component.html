@@ -3,6 +3,7 @@
         <nz-table #nestedTable [nzData]="searchResults" [nzPageSize]="10"  [nzShowPagination]="false">
             <thead>
                 <tr>
+                    <th></th>
                     <th *ngFor="let column of buildingColumns" [nzSortOrder]="column.sortOrder" [nzSortFn]="column.sortFn"
                         [nzSortDirections]="column.sortDirections">
                         {{ column.name }}
@@ -27,7 +28,9 @@
                             </button> -->
         </tr>
         <tr [nzExpand]="data.expand">
-<app-floor-list></app-floor-list>
+            <div *ngIf="data.expand">
+                <app-floor-list [buildingId]="data.id"></app-floor-list>
+            </div>    
         </tr>
         </ng-template>
         </tbody>
