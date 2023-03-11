@@ -49,6 +49,8 @@ export class FacilitiesComponent implements OnInit{
   size: NzButtonSize='small'
   
   searchResults:any=[]
+  
+  facData!: Facility | null
 
   ngOnInit(): void {
     this.getAllFacilities();
@@ -104,36 +106,13 @@ export class FacilitiesComponent implements OnInit{
     }
   ];
 
-
+  isFacVisibleMiddle:boolean=false
+  handleupdate(data:any){
+    this.facData=data
+    this.isFacVisibleMiddle = true
+  }
 
   innerColumns : ColumnItem[] = [
-    {
-      name: 'DAG Run Id',
-      sortOrder: null,
-      sortFn: null ,
-      sortDirections: ['ascend', 'descend', null],
-      filterMultiple: true,
-      listOfFilter: [],
-      filterFn: null
-    },
-    {
-      name: 'Task & Job ID',
-      sortOrder: 'descend',
-      sortFn: null,
-      sortDirections: ['ascend', 'descend', null],
-      filterMultiple: true,
-      listOfFilter: [],
-      filterFn: null
-    },
-    {
-      name: 'IS_CROSS_CODE_FLAG',
-      sortOrder: 'descend',
-      sortFn: null,
-      sortDirections: ['ascend', 'descend', null],
-      filterMultiple: true,
-      listOfFilter: [],
-      filterFn: null
-    },
     {
       name: 'Created Time',
       sortOrder: 'ascend',
@@ -279,9 +258,11 @@ export class FacilitiesComponent implements OnInit{
   // }
   handleCreateFacilityOk(): void {
     this.isCreateFacilityVisible = false;
+    this.isFacVisibleMiddle = false;
   }
 
   handleCreateFacilityCancel(): void {
     this.isCreateFacilityVisible = false;
+    this.isFacVisibleMiddle = false;
   }
 }
