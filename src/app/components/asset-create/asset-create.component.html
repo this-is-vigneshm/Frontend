@@ -1,6 +1,6 @@
 <div id="create-asset-body" >
   <div id="create-asset-form">
-    <div style="display: flex; margin-left: -60px; margin-top: -40px">
+    <div style="display: flex; margin-left: -60px; margin-top: -60px">
       <div>
         <span
           ><img
@@ -13,7 +13,6 @@
       <div style="margin-left: 20px">
         <span>
           <h2
-            *ngIf="!isUpdateComponent"
             style="
               margin-top: -1px;
               color: rgba(38, 38, 202, 0.733);
@@ -23,7 +22,7 @@
           >
             Register An Asset
           </h2>
-          <h4 style="margin-top: -17px; margin-right: 20px; margin-bottom: 10px;">
+          <h4 style="margin-top: -17px; margin-right: 20px; margin-bottom: 30px;">
             This is the Asset creation page!
           </h4></span
         >
@@ -370,7 +369,7 @@
           <span style="color: #3253dc">Sub Asset of</span></nz-form-label
         >
         <nz-form-control
-          [nzSm]="14"
+          [nzSm]="20"
           [nzXs]="24"
           nzErrorTip="Please Select a subAsset"
         >
@@ -497,6 +496,17 @@
           />
         </nz-form-control>
       </nz-form-item>
+
+
+      <div>
+        <nz-form-item id="upload-view">
+          <nz-form-control nzErrorTip="Please Add an Attachment">
+            <input formControlName="file" type="file" placeholder="file" (change)="handleChange1($event)">
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+      
       <nz-form-item nz-row class="register-area">
         <nz-form-control [nzSpan]="20" [nzOffset]="6">
           <button nz-button nzType="primary" id="create-button">Submit</button>
@@ -505,14 +515,8 @@
     </form>
 
     
-    <div>
-      <nz-form-item id="upload-view">
-        <nz-form-control nzErrorTip="Please Add an Attachment">
-          <input formControlName="file" type="file" placeholder="file" (change)="handleChange1($event)">
-        </nz-form-control>
-      </nz-form-item>
-    </div>
-    <br />
+
+
     <div id="create-asset-file-upload" *ngIf="!isUpdateComponent">
       <h2>Create Assets By File</h2>
       <nz-form-label [nzSm]="14" [nzXs]="24"> Upload </nz-form-label>

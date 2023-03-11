@@ -1,7 +1,5 @@
-[nz-form-item] {
-  padding: auto;
-  padding-left: 0px;
-  padding-right: 0px;
+[nz-form] {
+  padding: 1% 39% 10% 15%;
 }
 table {
   width: 100%;
@@ -10,7 +8,7 @@ table {
 
 table th,
 table td {
-  border: 1px solid black;
+  border: 1px solid rgb(45, 8, 212);
   padding: 5px;
 }
 

@@ -1,7 +1,7 @@
 <span style="    
 font-family: math;
 font-size: xx-large;
-font-weight: 900;
+font-weight: 70%;
 margin-left: -50%;">WorkOrder</span>
 
 <!-- <input nz-input id="search-bar" type="text" (change)="filterData($event)" placeholder="Search WorkOrders" /> -->
@@ -78,17 +78,11 @@ margin-left: -50%;">WorkOrder</span>
           </thead>
 <tbody>
     <tr>
-      <!-- <td>{{ data.createdBy }}</td>
-      <td>{{ data.createdTime }}</td>
-      <td>{{ data.updatedBy }}</td>
-      <td>{{ data.updatedTime }}</td>
-      <td>{{ data.timeTaken }}</td> -->
       <td>{{ data.description }}</td>
       <td>{{ data.workSubject }}</td>
       <td>{{ data.taskDetails }}</td>
       <td>{{ data.workOrderCost }}</td>
       <td>{{ data.date }}</td>
-      <!-- <td>{{ data.expectedCompletionTime }}</td> -->
     </tr>
   </tbody>
 </nz-table>
@@ -101,8 +95,7 @@ margin-left: -50%;">WorkOrder</span>
             nzCentered (nzOnCancel)="handleCreateTicketOk()" (nzOnOk)="handleCreateTicketOk()" >
               <app-view-workorder *nzModalContent [workOrderId]="viewId" (close)="closeView()"></app-view-workorder>
             </nz-modal>
-
-            <nz-modal [(nzVisible)]="isVisible"  [nzStyle]="{ top: '20px', width: '60%' }"  nzTitle="Update Workorder Status" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+            <nz-modal [(nzVisible)]="isVisible"  [nzStyle]="{ top: '20px', width: '75%' }"  nzTitle="Update Workorder Status" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
               <ng-container *nzModalContent>
                 <app-create-workorder [workOrderData]="selectedWo"></app-create-workorder>
               </ng-container>
