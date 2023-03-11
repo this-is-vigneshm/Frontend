@@ -119,6 +119,7 @@ export class RestapiService {
   }
 
   public updateItem(itemId: number ,inventory : Inventory) {
+    console.log(itemId)
     return this.httpClient.put<ApiResponse>(`${this.baseUrl}/inventory/${itemId}`, inventory);
   }
 

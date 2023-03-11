@@ -89,7 +89,7 @@ export class InventoryCreateComponent {
     } else {
       this.isUpdateComponent = true;
       this.validateForm = this.fb.group({
-        id: [this.inventoryData, Validators.required],
+        id: [this.inventoryData.id, Validators.required],
         name: [this.inventoryData.name, [Validators.required]],
         code: [this.inventoryData.code, [Validators.required]],
         description: [this.inventoryData.description, [Validators.required]],
