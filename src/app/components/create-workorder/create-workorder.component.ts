@@ -134,9 +134,6 @@ export class CreateWorkorderComponent implements OnInit {
     if (this.workOrderData == null) {
       this.validateForm = this.fb.group({
         status: ["In Progress"],
-        // name: [null],
-        // emailId: [null],
-        // phoneNumber: [null,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")],
         workOrderCode :  [null, [Validators.required,]],
         description: [null, [Validators.required, Validators.maxLength(200)]],
         workSubject: [null, [Validators.required,]],
@@ -148,9 +145,6 @@ export class CreateWorkorderComponent implements OnInit {
     else{
       this.validateForm = this.fb.group({
         status: ["In Progress"],
-        // name: [null],
-        // emailId: [null],
-        // phoneNumber: [null,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")],
         workOrderCode :  [this.workOrderData.workOrderCode, [Validators.required,]],
         description: [this.workOrderData.description, [Validators.required, Validators.maxLength(200)]],
         workSubject: [this.workOrderData.workSubject, [Validators.required,]],
@@ -161,22 +155,22 @@ export class CreateWorkorderComponent implements OnInit {
     }
 
   }
-
-  id: any
+  code : any
+  workOrderCode(id : any){
+    console.log(id)
+    this.code = id
+  }
   createItemByData(workorder: WorkOrder, file: File) {
     workorder.employeeId = this.userData.userId
     workorder.status = "Active"
     workorder.emailId = this.emailId
     workorder.phoneNumber = this.phNo
     workorder.name = this.name
-    console.log('submit', this.validateForm.value);
     this.restService.registerWo(workorder, file).subscribe(
       data => {
         console.log("Success", data)
         this.notification.success("Workorder Created Successfully.")
-        //  this.router.navigateByUrl("/");
-        this.isVisibleMiddle = true;
-        this.id = data.responseData
+        this.getHello(data.responseData.workOrderCode)
       },
       error => {
         console.log("Error occcured", error)
@@ -184,18 +178,28 @@ export class CreateWorkorderComponent implements OnInit {
     );
   }
   isb = false
-  resources: Resource[] = [];
+  resourcesUser: Resource[] = [];
+  resourcesInventory: Resource[] = [];
   searchResults: any
   
   handleUpdateResource(data: any) {
     this.selectedResource = data;
     this.isVisibleMiddle = true;
   }
+
+
   handleCreateResourceSave(id : any): void {
     this.selectedResource = null;
     this.isVisibleMiddle = false;
-    this.resources = id
+    this.resourcesUser = id
     this.condition = true
+  }
+
+  handleCreateResourceSave1(id : any): void {
+    this.selectedResource = null;
+    this.isVisibleMiddle = false;
+    this.resourcesInventory = id
+    this.condition1 = true
   }
 
   handleCreateResourceCancel(): void {
@@ -257,11 +261,13 @@ export class CreateWorkorderComponent implements OnInit {
   changeA(event : MouseEvent) {
     this.isa = true
     this.isb = false
+    this.isVisibleMiddle = true;
     event.preventDefault()
   }
   changeB(event : MouseEvent) {
     this.isa = false
     this.isb = true
+    this.isVisibleMiddle = true;
     event.preventDefault()
   }
 
@@ -272,10 +278,12 @@ export class CreateWorkorderComponent implements OnInit {
     event.preventDefault()
   }
   map : Map<string, number> = new Map
-  getHello()
-  {
-    this.map.set(this.ticketid, this.id.orderNo)
 
+
+
+  getHello(code : any)
+  {
+    this.map.set(this.ticketid, code)
     this.done.emit(this.map)
   }
 
@@ -284,13 +292,6 @@ export class CreateWorkorderComponent implements OnInit {
   disabledDate = (current: Date): boolean =>
   differenceInCalendarDays(current, this.today) < 0;
 
-  innerTable(){
-    this.condition = true
-  }
-
-  innerTable1(){
-    this.condition1 = true
-  }
   listOfColumns: ColumnItem[] = [
     {
       name: 'resourceCode',
@@ -311,7 +312,26 @@ export class CreateWorkorderComponent implements OnInit {
       name: 'userId'
     },
   ]; 
-
+  listOfColumns1: ColumnItem[] = [
+    {
+      name: 'resourceCode',
+    },
+    {
+      name: 'resourceName',
+    },
+    {
+      name: 'availability',
+    },
+    {
+      name: 'startDate',
+    },
+    {
+      name: 'endDate',
+    },
+    {
+      name: 'inventoryId'
+    },
+  ];
   deleteById(resourceId: any) {
     this.restService.deleteById(resourceId).subscribe(
       (data) => {

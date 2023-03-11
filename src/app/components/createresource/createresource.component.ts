@@ -46,7 +46,7 @@ export class CreateresourceComponent {
   resourceData!: Resource | null;
 
   @Output()
-  close: EventEmitter<number> = new EventEmitter<number>();
+  close: EventEmitter<Resource[]> = new EventEmitter<Resource[]>();
 
   isUpdateComponent: boolean = true;
 
@@ -114,6 +114,7 @@ export class CreateresourceComponent {
     this.getInventoryItem()
   }
 
+  resource : Resource[] = []
   createresourceByData(resource: Resource) {
     resource.resourceType = "Inventory"
     resource.workOrderCode = this.workOrderCode
@@ -126,6 +127,7 @@ export class CreateresourceComponent {
         (data) => {
           console.log('Success', data);
           this.notification.success('Resource Created Successfully.');
+          this.resource = data.responseData
           this.handleClose()
         },
         (error) => {
@@ -152,13 +154,12 @@ export class CreateresourceComponent {
   handleClose() {
     this.isUpdateComponent = false;
     this.resourceData = null;
-    this.close.emit(this.workOrderCode);
+    this.close.emit(this.resource);
   }
   a = false;
   inventoryId: number[] = []
   getId(event: any) {
     this.inventoryId.push(event)
-    console.log(this.inventoryId)
   }
   handleReset() {
     this.validateForm.reset()
