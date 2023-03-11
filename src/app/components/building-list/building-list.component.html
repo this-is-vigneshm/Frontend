@@ -1,14 +1,5 @@
 
-<nz-collapse [nzBordered]="false">
-    <nz-collapse-panel
-      #p
-      *ngFor="let panel of panels; let isFirst = first"
-      [nzHeader]="panel.name" 
-      [nzActive]="panel.active"
-      [ngStyle]="panel.customStyle"
-      [nzExpandedIcon]="!isFirst ? panel.icon || expandedIcon : undefined"
-    >
-      <p>
+
         <nz-table #nestedTable [nzData]="searchResults" [nzPageSize]="10"  [nzShowPagination]="false">
             <thead>
                 <tr>
@@ -22,6 +13,7 @@
             <tbody>
                 <ng-template ngFor let-data [ngForOf]="nestedTable.data">
                     <tr>
+                      <td [(nzExpand)]="data.expand"></td>
                         <td>{{ data.id }}</td>
                         <td>{{ data.name }}</td>
                         <td>
@@ -34,17 +26,13 @@
                                 </span>
                             </button> -->
         </tr>
+        <tr [nzExpand]="data.expand">
+<app-floor-list></app-floor-list>
+        </tr>
         </ng-template>
         </tbody>
         </nz-table>
-      </p>
-      <ng-template #expandedIcon let-active>
-        {{ active }}
-
-        <span nz-icon nzType="plus" class="ant-collapse-arrow" [nzRotate]="p.nzActive ? 90 : -90"></span>
-      </ng-template>
-    </nz-collapse-panel>
-  </nz-collapse>
+ 
 
 
 
