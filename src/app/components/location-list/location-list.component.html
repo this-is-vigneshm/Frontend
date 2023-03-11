@@ -22,7 +22,7 @@
             <tbody>
                 <ng-template ngFor let-data [ngForOf]="nestedTable.data">
                     <tr>
-                        <td [(nzExpand)]="data.expand"></td>
+                        <td [(nzExpand)]="data.expand" style="background: white;"></td>
                         <td>{{ data.id }}</td>
                         <td>{{ data.name }}</td>
                         <td>{{ data.description }}</td>
