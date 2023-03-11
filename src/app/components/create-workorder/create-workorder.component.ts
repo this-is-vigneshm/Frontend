@@ -189,7 +189,7 @@ export class CreateWorkorderComponent implements OnInit {
     console.log(id)
     this.selectedResource = null;
     this.isVisibleMiddle = false;
-    this.resourcesUser = id
+    this.resourcesUser.push(id)
     this.condition = true
   }
 
@@ -197,7 +197,7 @@ export class CreateWorkorderComponent implements OnInit {
     console.log(id)
     this.selectedResource = null;
     this.isVisibleMiddle = false;
-    this.resourcesInventory = id
+    this.resourcesInventory.push(id)
     this.condition1 = true
   }
 
