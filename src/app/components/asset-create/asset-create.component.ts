@@ -154,8 +154,8 @@ export class AssetCreateComponent implements OnInit {
         category: [null, [Validators.required]],
         department: [null, [Validators.required]],
         subAsset: [
-          null,
-          [Validators.required, Validators.pattern('^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ ]+$')],
+          // null,
+          // [Validators.required, Validators.pattern('^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ ]+$')],
         ],
         system: [
           null,
