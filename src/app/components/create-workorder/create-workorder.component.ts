@@ -18,12 +18,6 @@ import { NzTableFilterFn, NzTableFilterList, NzTableSortFn, NzTableSortOrder } f
 
 interface ColumnItem {
   name: string;
-  sortOrder: NzTableSortOrder | null;
-  sortFn: NzTableSortFn<Resource> | null;
-  listOfFilter: NzTableFilterList;
-  filterFn: NzTableFilterFn<Resource> | null;
-  filterMultiple: boolean;
-  sortDirections: NzTableSortOrder[];
 }
 
 @Component({
@@ -192,10 +186,6 @@ export class CreateWorkorderComponent implements OnInit {
   isb = false
   resources: Resource[] = [];
   searchResults: any
-
-
-
-  workOrderCode : any
   
   handleUpdateResource(data: any) {
     this.selectedResource = data;
@@ -204,7 +194,7 @@ export class CreateWorkorderComponent implements OnInit {
   handleCreateResourceSave(id : any): void {
     this.selectedResource = null;
     this.isVisibleMiddle = false;
-    this.workOrderCode = id
+    this.resources = id
     this.condition = true
   }
 
@@ -264,13 +254,15 @@ export class CreateWorkorderComponent implements OnInit {
 
 
 
-  changeA() {
+  changeA(event : MouseEvent) {
     this.isa = true
     this.isb = false
+    event.preventDefault()
   }
-  changeB() {
+  changeB(event : MouseEvent) {
     this.isa = false
     this.isb = true
+    event.preventDefault()
   }
 
   isClick = false
@@ -280,9 +272,8 @@ export class CreateWorkorderComponent implements OnInit {
     event.preventDefault()
   }
   map : Map<string, number> = new Map
-  getHello(event : MouseEvent)
+  getHello()
   {
-    event.preventDefault()
     this.map.set(this.ticketid, this.id.orderNo)
 
     this.done.emit(this.map)
@@ -300,6 +291,38 @@ export class CreateWorkorderComponent implements OnInit {
   innerTable1(){
     this.condition1 = true
   }
-  
+  listOfColumns: ColumnItem[] = [
+    {
+      name: 'resourceCode',
+    },
+    {
+      name: 'resourceName',
+    },
+    {
+      name: 'availability',
+    },
+    {
+      name: 'startDate',
+    },
+    {
+      name: 'endDate',
+    },
+    {
+      name: 'userId'
+    },
+  ]; 
+
+  deleteById(resourceId: any) {
+    this.restService.deleteById(resourceId).subscribe(
+      (data) => {
+        this.notification.success('Resource Deleted Successfully.!');
+        window.location.reload()
+      },
+      (error) => {
+        console.log('Error Occured', error);
+        this.notification.error('Error Deleting Resource!');
+      }
+    );
+  }
 }
 

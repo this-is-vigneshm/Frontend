@@ -362,10 +362,12 @@ export class TicketsComponent implements OnInit{
   handleCreateTicketOk(): void {
     console.log('click ok');
     this.isVisibleMiddle = false;
+    window.location.reload()
   }
 
   handleCreateTicketCancel(): void {
     this.isVisibleMiddle = false;
+    window.location.reload()
   }
 
   selectedTicket : any;

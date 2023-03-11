@@ -60,7 +60,7 @@ export class ResourceplannerComponent implements OnInit {
   workOrderCode :any;
 
   @Output()
-  close1: EventEmitter<number> = new EventEmitter<number>();
+  close1: EventEmitter<Resource[]> = new EventEmitter<Resource[]>();
 
 
   ColumnItem: any;
@@ -134,7 +134,7 @@ export class ResourceplannerComponent implements OnInit {
       });
     }
   }
-
+resource : Resource[] = []
   submitForm(): void {
     this.createresourceByData(this.validateForm.value);
   }
@@ -176,6 +176,7 @@ export class ResourceplannerComponent implements OnInit {
       this.restService.registerResource(resource).subscribe(
         (data: any) => {
           console.log('Success', data);
+          this.resource = data.responseData
           this.notification.success('Resource Created Successfully.');
           this.handleClose();
         },
@@ -203,7 +204,7 @@ export class ResourceplannerComponent implements OnInit {
     this.isUpdateComponent = false;
     this.resourceData = null;
     console.log("close")
-    this.close1.emit(this.workOrderCode);
+    this.close1.emit(this.resource);
   }
 
   employeeList: any = [];

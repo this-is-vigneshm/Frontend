@@ -48,7 +48,6 @@ export class BubbleReportComponent implements OnInit{
         console.log("Success", data)
         this.repoList = data.responseData;
         this.notification.success("Reports is Found!")
-        console.log("hi",this.repoList)
         this.newChart(this.repoList);
       },
       error => {
