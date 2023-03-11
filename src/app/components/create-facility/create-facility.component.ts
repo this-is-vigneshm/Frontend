@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
   UntypedFormBuilder,
   UntypedFormGroup,
@@ -20,7 +20,12 @@ export class CreateFacilityComponent implements OnInit {
   @Output()
   close: EventEmitter<any> = new EventEmitter();
 
+  @Input()
+  facilityData!: Facility | null
+
   validateForm!: UntypedFormGroup;
+
+  isUpdateComponent: boolean = false;
 
   userData: any;
 
@@ -29,7 +34,8 @@ export class CreateFacilityComponent implements OnInit {
   facilityType = [{ name: 'Rural' }, { name: 'Urban' }];
 
   ngOnInit(): void {
-    this.validateForm = this.fb.group({
+    if(this.facilityData == null){
+      this.validateForm = this.fb.group({
       facilityCode: [
         null,
         [Validators.required, Validators.pattern('[A-Z][A-Z ]+')],
@@ -42,6 +48,16 @@ export class CreateFacilityComponent implements OnInit {
       facilitySource: [null, [Validators.required]],
       inactiveDate: [null, []],
     });
+    } else {
+      this.isUpdateComponent = true;
+      this.validateForm = this.fb.group({
+        facilityCode: [this.facilityData.facilityCode, [Validators.required]],
+        facilityName: [this.facilityData.facilityName, [Validators.required]],
+        facilityType: [this.facilityData.facilityType, [Validators.required]],
+        facilitySource: [this.facilityData.facilitySource, [Validators.required]],
+        inactiveDate: [ this.facilityData.inactiveDate,[Validators.required, Validators.pattern],],
+      });
+    }
 
     this.userData = this.tokenService.getCurrentUserData();
   }

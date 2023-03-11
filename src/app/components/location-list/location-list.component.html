@@ -8,7 +8,7 @@
       [nzExpandedIcon]="!isFirst ? panel.icon || expandedIcon : undefined"
     >
       <p>
-        <nz-table #nestedTable [nzData]="searchResults" [nzShowPagination]="false" [nzPageSize]="10" *ngIf="loc1">
+        <nz-table #nestedTable [nzData]="searchResults" [nzShowPagination]="false" [nzPageSize]="10" *ngIf="loc1" Style="background: white;">
             <thead>
                 <tr>
                     <th></th>
@@ -22,7 +22,7 @@
             <tbody>
                 <ng-template ngFor let-data [ngForOf]="nestedTable.data">
                     <tr>
-                        <td [(nzExpand)]="data.expand"></td>
+                        <td [(nzExpand)]="data.expand" style="background: white;"></td>
                         <td>{{ data.id }}</td>
                         <td>{{ data.name }}</td>
                         <td>{{ data.description }}</td>
@@ -45,7 +45,10 @@
                         </td>
                     </tr>
                     <tr [nzExpand]="data.expand">
-                        <app-building-list></app-building-list>
+                        <div *ngIf="data.expand">
+                            <app-building-list [locationId]="data.id"></app-building-list>
+                        </div>
+                        
                       </tr>
         </ng-template>
         </tbody>

@@ -35,6 +35,23 @@ margin-left: -40%;">Facilities</span>
 <button nz-button nzType="primary" id="create-faclity-button" (click)="showCreateFacilityModal()"><span nz-icon
     nzType="plus" nzTheme="outline"></span></button>
 
+    <nz-modal
+  [nzStyle]="{ top: '20px', width: '60%' }"
+  [nzWidth]="200"
+  [(nzVisible)]="isFacVisibleMiddle"
+  nzTitle="Create an Asset"
+  nzCentered
+  (nzOnCancel)="handleCreateFacilityCancel()" (nzOnOk)="handleCreateFacilityOk()"
+>
+  <ng-container *nzModalContent>
+    <app-create-facility
+      style="text-align: center"
+      [facilityData]="facData"
+      (close)="handleCreateFacilityOk()"
+    ></app-create-facility>
+  </ng-container>
+</nz-modal>
+
 <nz-modal [nzStyle]="{ top: '20px' , width:'80%'}" [(nzVisible)]="isCreateFacilityVisible" nzTitle="Create an Ticket"
     nzCentered (nzOnCancel)="handleCreateFacilityCancel()" (nzOnOk)="handleCreateFacilityOk()">
     <ng-container *nzModalContent>
@@ -70,6 +87,31 @@ margin-left: -40%;">Facilities</span>
                             (nzOnConfirm)="handleDeleteFacility(data.facilityId)">
                         </span>
                     </button> -->
+             <button
+             nz-button
+             [nzSize]="size"
+             nzShape="circle"
+             style="
+               border-color: rgb(224, 228, 234);
+               background-color: #5cb85c;
+               border-radius: 5px;
+             "
+             id="facility-update-button"
+             nz-button
+             nz-popconfirm
+             nzPopconfirmTitle="Proceed to update?"
+             (nzOnConfirm)="handleupdate(data)"
+             nz-tooltip
+             [nzTooltipTitle]="'Update Facility'"
+             [nzTooltipColor]="'green'"
+           >
+             <span
+               nz-icon
+               nzType="edit"
+               nzTheme="twotone"
+               [nzTwotoneColor]="'white'"
+             ></span>
+           </button>
 
              <button nz-button [nzSize]="size" nzShape="circle"
              style=" border-color: rgb(224, 228, 234); background-color: #d9534f; border-radius: 5px;"
@@ -92,9 +134,6 @@ margin-left: -40%;">Facilities</span>
 
     <tbody>
         <tr>
-            <td>{{ data.dagRunId }}</td>
-            <td>{{ data.taskIdJobId }}</td>
-            <td>{{ data.crossCodeFlag }}</td>
             <td>{{ data.createdTime | date: 'dd/MM/yyyy hh:ss a' }}</td>
             <td>{{ data.createdBy }}</td>
             <td>{{ data.lastUpdatedTime | date: 'dd/MM/yyyy hh:ss a' }}</td>
