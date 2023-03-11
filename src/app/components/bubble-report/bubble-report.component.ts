@@ -48,7 +48,6 @@ export class BubbleReportComponent implements OnInit{
         console.log("Success", data)
         this.repoList = data.responseData;
         this.notification.success("Reports is Found!")
-        console.log("hi",this.repoList)
         this.newChart(this.repoList);
       },
       error => {
@@ -64,17 +63,10 @@ export class BubbleReportComponent implements OnInit{
   newChart(a : BubbleChart[]) {
     for(var i of a)
     {
-      inner_loop:
-      for(var j of i.label)
+     
+      for(let j=0; j<(i.values.length);j++)
       {
-        for(var k of i.values)
-        {
-          for(var l of i.number)
-          { 
-            this.d.push({x:l,y:k,r:l*5})
-            break inner_loop
-        }
-        }
+        this.d.push({x:i.label[j],y:i.values[j],r:i.number[j]*5})
       }
       this.data.push({
           label:i.category,

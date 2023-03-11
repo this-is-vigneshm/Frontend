@@ -306,7 +306,7 @@
               nz-button
               nzType="primary"
               id="create-resource-button"
-              (click)="changeA()"
+              (click)="changeA($event)"
             >
               <span nz-icon nzType="carry-out" nzTheme="outline"></span>Add User
             </button>
@@ -315,7 +315,7 @@
               nz-button
               nzType="primary"
               id="create-resource-button"
-              (click)="changeB()"
+              (click)="changeB($event)"
             >
               <span nz-icon nzType="carry-out" nzTheme="outline"></span>Add
               Inventory
@@ -358,7 +358,7 @@
           <button
             nz-button
             nzType="primary"
-            (click)="getHello($event)"
+            (click)="getHello()"
             id="create-workorder-submit"
             style="color: rgb(234, 236, 239)"
           >
@@ -386,13 +386,76 @@
 <div *ngIf="condition">
   <nz-collapse [nzGhost]="true" id="collapse" >
     <nz-collapse-panel [nzHeader]="'Users'">
-      <app-resourcelist [workorderCode]="workOrderCode" (innertable)="innerTable1()"></app-resourcelist>
+      <div>
+
+        <nz-table #filterTable [nzData]="resources" >
+          <thead id="resource-table-head">
+            <tr>
+              <th
+                *ngFor="let column of listOfColumns"
+              >
+                {{ column.name }}
+              </th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-template ngFor let-data [ngForOf]="filterTable.data">
+              <tr>
+                <td>{{ data.resourceCode }}</td>
+                <td>{{ data.resourceName }}</td>
+                <td>{{ data.availability }}</td>
+                <td>{{ data.startDate }}</td>
+                <td>{{ data.endDate }}</td>
+                <td>{{ data.userId }}</td>
+                <td><button nz-button [nzSize]="'small'" nzShape="circle" style=" border-color: rgb(224, 228, 234); background-color: #d9534f; border-radius: 5px;"
+                id="asset-delete-button" nz-button nz-popconfirm nzPopconfirmTitle="Sure to Delete?"
+                 (nzOnConfirm)="deleteById(data.resourceId)" nz-tooltip [nzTooltipTitle]="'Delete Asset'" [nzTooltipColor]="'red'">
+                 <span nz-icon nzType="delete" nzTheme="twotone" [nzTwotoneColor]="'white'"></span>
+               </button></td>
+              </tr>
+            </ng-template>
+          </tbody>
+        </nz-table>
+        </div>
     </nz-collapse-panel>
   </nz-collapse>
 </div>
 
 <nz-collapse *ngIf="condition1" [nzGhost]="true" id="collapse" >
   <nz-collapse-panel [nzHeader]="'Inventory'">
-    <app-resource-list [workOrderId]="workOrderCode" (dropDown)="innerTable()"></app-resource-list>
+    <div>
+
+      <nz-table #filterTable [nzData]="resources" >
+        <thead id="resource-table-head">
+          <tr>
+            <th
+              *ngFor="let column of listOfColumns"
+            >
+              {{ column.name }}
+            </th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-template ngFor let-data [ngForOf]="filterTable.data">
+            <tr>
+              <td>{{ data.resourceCode }}</td>
+              <td>{{ data.resourceName }}</td>
+              <td>{{ data.availability }}</td>
+              <td>{{ data.startDate }}</td>
+              <td>{{ data.endDate }}</td>
+              <td>{{ data.inventoryId }}</td>
+              <td><button nz-button [nzSize]="'small'" nzShape="circle" style=" border-color: rgb(224, 228, 234); background-color: #d9534f; border-radius: 5px;"
+              id="asset-delete-button" nz-button nz-popconfirm nzPopconfirmTitle="Sure to Delete?"
+               (nzOnConfirm)="deleteById(data.resourceId)" nz-tooltip [nzTooltipTitle]="'Delete Asset'" [nzTooltipColor]="'red'">
+               <span nz-icon nzType="delete" nzTheme="twotone" [nzTwotoneColor]="'white'"></span>
+             </button></td>
+            </tr>
+          </ng-template>
+        </tbody>
+      </nz-table>
+      </div>
+
   </nz-collapse-panel>
 </nz-collapse>

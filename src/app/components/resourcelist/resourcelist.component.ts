@@ -60,15 +60,6 @@ export class ResourcelistComponent {
 
   listOfColumns: ColumnItem[] = [
     {
-      name: 'workerOrderId',
-      sortOrder: null,
-      sortFn: null,
-      sortDirections: ['ascend', 'descend', null],
-      filterMultiple: true,
-      listOfFilter: [],
-      filterFn: null,
-    },
-    {
       name: 'resourceCode',
       sortOrder: null,
       sortFn: (a: Resource, b: Resource) => a.resourceId - b.resourceId,

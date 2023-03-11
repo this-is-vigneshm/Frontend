@@ -50,18 +50,10 @@ export class ResourceListComponent {
     } else {
       this.getResource(this.workOrderId);
     }
+    
   }
 
   listOfColumns: ColumnItem[] = [
-    {
-      name: 'workerOrderId',
-      sortOrder: null,
-      sortFn: null,
-      sortDirections: ['ascend', 'descend', null],
-      filterMultiple: true,
-      listOfFilter: [],
-      filterFn: null,
-    },
     {
       name: 'resourceCode',
       sortOrder: null,
