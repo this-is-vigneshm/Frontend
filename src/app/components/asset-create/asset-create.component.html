@@ -1,7 +1,34 @@
 <div id="create-asset-body" >
   <div id="create-asset-form">
-    <h2 *ngIf="!isUpdateComponent">Register Asset</h2>
-    <!-- <ng-component #updateTitle><h2 >Create Asset using Data</h2></ng-component> -->
+    <div style="display: flex; margin-left: -60px; margin-top: -40px">
+      <div>
+        <span
+          ><img
+            src="../../../assets/AssetsImg.png"
+            width="35px"
+            height="35px"
+            style="margin-top: 14px"
+        /></span>
+      </div>
+      <div style="margin-left: 20px">
+        <span>
+          <h2
+            *ngIf="!isUpdateComponent"
+            style="
+              margin-top: -1px;
+              color: rgba(38, 38, 202, 0.733);
+              font-size: 20pt;
+              font-weight: 700;
+            "
+          >
+            Register An Asset
+          </h2>
+          <h4 style="margin-top: -17px; margin-right: 20px; margin-bottom: 10px;">
+            This is the Asset creation page!
+          </h4></span
+        >
+      </div>
+    </div>
 
     <form class nz-form [formGroup]="validateForm" nzLayout="vertical"(ngSubmit)="submitForm()">
       <nz-form-item>

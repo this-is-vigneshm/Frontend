@@ -10,6 +10,7 @@ export class WorkOrder {
     workSubject: string;
     taskDetails: string;
     date: any;
+    data : any
     fileName:string
     workOrderCost:number
     createdBy:string;
@@ -20,7 +21,7 @@ export class WorkOrder {
     expectedCompletionTime: number;
 
     constructor( orderNo:number, workOrderCode: string,status: string,
-        name: string, emailId: string,phoneNumber: number, description: string,workSubject: string,taskDetails:string,date:Date,fileName : string,workOrderCost:number, createdBy:string, createdTime: number, updatedBy: string,
+        name: string, emailId: string,phoneNumber: number, description: string,workSubject: string,taskDetails:string,date:Date,data : any,fileName : string,workOrderCost:number, createdBy:string, createdTime: number, updatedBy: string,
         updatedTime: number, employeeId : number,expectedCompletionTime : number
      ) {
        
@@ -34,6 +35,7 @@ export class WorkOrder {
         this.workSubject = workSubject;
         this.taskDetails = taskDetails;
         this.date = date;
+        this.data = data
         this.fileName = fileName
         this.workOrderCost = workOrderCost;
         this.createdBy = createdBy;
