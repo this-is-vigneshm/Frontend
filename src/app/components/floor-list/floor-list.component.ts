@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { NzButtonSize } from 'ng-zorro-antd/button';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzTableFilterFn, NzTableFilterList, NzTableSortFn, NzTableSortOrder } from 'ng-zorro-antd/table';
 import { Floor } from 'src/app/models/Floor';
@@ -27,7 +28,7 @@ export class FloorListComponent {
 @Input()
 buildingId : any
 
-
+size: NzButtonSize = 'small';
 
 floor: Floor[] =[];
 

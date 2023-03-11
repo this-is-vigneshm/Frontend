@@ -75,12 +75,13 @@ panels = [
     }
   ];
 
-  done(event:any){
+  done(event:MouseEvent){
   
+    event.preventDefault()
     this.notification.success("Loction created Successfully")
     setTimeout(function(){
       window.location.reload()
-    },3000);
+    },1000);
     
 
 
