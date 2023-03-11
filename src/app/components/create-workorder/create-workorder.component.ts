@@ -92,9 +92,9 @@ export class CreateWorkorderComponent implements OnInit {
         // this.createItemByData(this.validateForm.value)
         this.handleCreation()
       }
-      // else{
-      //   this.updateItemData(this.validateForm.value)
-      // }
+      else{
+        this.updateItemData(this.validateForm.value, this.workOrderData)
+      }
 
     } else {
       Object.values(this.validateForm.controls).forEach(control => {
@@ -122,6 +122,8 @@ export class CreateWorkorderComponent implements OnInit {
 
   isa = false;
 
+  updateWOR : Resource[]=[]
+
   ngOnInit(): void {
     if (localStorage.getItem("access_token") === null) {
       this.router.navigateByUrl("/signin");
@@ -130,7 +132,6 @@ export class CreateWorkorderComponent implements OnInit {
     this.userData = this.tokenService.getCurrentUserData()
     console.log(this.userData)
     this.getEmployees(this.userData.userId)
-
     if (this.workOrderData == null) {
       this.validateForm = this.fb.group({
         status: ["In Progress"],
@@ -143,6 +144,7 @@ export class CreateWorkorderComponent implements OnInit {
       });
     }
     else{
+      console.log(this.workOrderData.workOrderCode)
       this.validateForm = this.fb.group({
         status: ["In Progress"],
         workOrderCode :  [this.workOrderData.workOrderCode, [Validators.required,]],
@@ -152,12 +154,59 @@ export class CreateWorkorderComponent implements OnInit {
         workOrderCost: [this.workOrderData.workOrderCost, [Validators.required, Validators.pattern('^-?[0-9]\\d*(\\.\\d{1,2})?$')]],
         date: [this.workOrderData.date, [Validators.required]],
       });
+      this.restService.getAllResourceByWorkOrderCode(this.workOrderData.workOrderCode).subscribe(
+        data=>{
+          console.log("Success", data)
+          this.updateWOR = data.responseData
+          for(var i of this.updateWOR)
+          {
+            if(i.resourceType == "User")
+            {
+              this.condition = true
+              this.resourcesUser.push(i)
+            }
+            else
+            {
+              this.condition1 = true
+              this.resourcesInventory.push(i)
+            }
+          }
+          
+        }, 
+        error=>{
+
+        }
+      )
+
     }
 
   }
   code : any
 
   createItemByData(workorder: WorkOrder, file: File) {
+      workorder.employeeId = this.userData.userId
+    workorder.status = "Active"
+    workorder.emailId = this.emailId
+    workorder.phoneNumber = this.phNo
+    workorder.name = this.name
+    this.restService.registerWo(workorder, file).subscribe(
+      data => {
+        console.log("Success", data)
+        this.notification.success("Workorder Created Successfully.")
+        this.getHello(data.responseData.orderNo)
+      },
+      error => {
+        console.log("Error occcured", error)
+      }
+    );
+  }
+
+
+  updateItemData(workorder: any, file : any)
+  {
+    if(this.workOrderData!=null)
+      {
+         workorder.orderNo = this.workOrderData?.orderNo
     workorder.employeeId = this.userData.userId
     workorder.status = "Active"
     workorder.emailId = this.emailId
@@ -173,6 +222,7 @@ export class CreateWorkorderComponent implements OnInit {
         console.log("Error occcured", error)
       }
     );
+  }
   }
   isb = false
   resourcesUser: Resource[] = [];
