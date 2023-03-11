@@ -14,7 +14,6 @@
                 <ng-template ngFor let-data [ngForOf]="nestedTable.data">
                     <tr>
                         <td [(nzExpand)]="data.expand"></td>
-                        <td [(nzExpand)]="data.expand"></td>
                         <td>{{ data.id }}</td>
                         <td>{{ data.name }}</td>
                         <td>
@@ -32,10 +31,6 @@
         <tr [nzExpand]="data.expand">
             <div *ngIf="data.expand">
                 <app-room-list [floorId]="data.id"></app-room-list>
-            </div>
-        </tr>
-        <tr [nzExpand]="data.expand">
-            <div *ngIf="data.expand">
                 <app-area-list [floorId]="data.id"></app-area-list>
             </div>
         </tr>

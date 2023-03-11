@@ -1,5 +1,5 @@
 
-        <nz-table #nestedTable [nzData]="searchResults" [nzPageSize]="10">
+        <nz-table #nestedTable [nzData]="searchResults" [nzPageSize]="10" [nzShowPagination]="false">
             <thead>
                 <tr>
                     <th *ngFor="let column of roomColumns" [nzSortOrder]="column.sortOrder" [nzSortFn]="column.sortFn"
@@ -25,4 +25,3 @@
         </ng-template>
         </tbody>
         </nz-table>
-  <button nz-button nzType="primary" (click)="done($event)">Done</button>
