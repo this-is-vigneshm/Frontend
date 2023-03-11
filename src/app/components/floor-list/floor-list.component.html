@@ -1,13 +1,4 @@
-<nz-collapse [nzBordered]="false">
-    <nz-collapse-panel
-      #p
-      *ngFor="let panel of panels; let isFirst = first"
-      [nzHeader]="panel.name" 
-      [nzActive]="panel.active"
-      [ngStyle]="panel.customStyle"
-      [nzExpandedIcon]="!isFirst ? panel.icon || expandedIcon : undefined"
-    >
-      <p>
+
         <nz-table #nestedTable [nzData]="searchResults" [nzPageSize]="10" [nzShowPagination]="false">
             <thead>
                 <tr>
@@ -38,14 +29,7 @@
         </ng-template>
         </tbody>
         </nz-table>
-      </p>
-      <ng-template #expandedIcon let-active>
-        {{ active }}
 
-        <span nz-icon nzType="plus" class="ant-collapse-arrow" [nzRotate]="p.nzActive ? 90 : -90"></span>
-      </ng-template>
-    </nz-collapse-panel>
-  </nz-collapse>
 
 
 <div *ngIf="loc">

@@ -11,6 +11,7 @@
         <nz-table #nestedTable [nzData]="searchResults" [nzShowPagination]="false" [nzPageSize]="10" *ngIf="loc1">
             <thead>
                 <tr>
+                    <th></th>
                     <th *ngFor="let column of locationColumns" [nzSortOrder]="column.sortOrder" [nzSortFn]="column.sortFn"
                         [nzSortDirections]="column.sortDirections">
                         {{ column.name }}
@@ -21,6 +22,7 @@
             <tbody>
                 <ng-template ngFor let-data [ngForOf]="nestedTable.data">
                     <tr>
+                        <td [(nzExpand)]="data.expand"></td>
                         <td>{{ data.id }}</td>
                         <td>{{ data.name }}</td>
                         <td>{{ data.description }}</td>
@@ -42,7 +44,9 @@
                             </button> -->
                         </td>
                     </tr>
-        
+                    <tr [nzExpand]="data.expand">
+                        <app-building-list></app-building-list>
+                      </tr>
         </ng-template>
         </tbody>
         </nz-table>
