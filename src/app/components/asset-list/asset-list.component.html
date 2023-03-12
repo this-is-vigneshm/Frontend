@@ -135,37 +135,36 @@
   (nzOnCancel)="handleCreateTicketCancel()"
   (nzOnOk)="handleCreateTicketOk()"
 >
+
   <ng-container *nzModalContent>
-    <div id="create-asset-body" >
-      <div id="create-asset-form">
-        <div style="display: flex; margin-left: 69px; margin-top: 5px">
-          <div>
-            <span
-              ><img
-                src="../../../assets/AssetsImg.png"
-                width="35px"
-                height="35px"
-                style="margin-top: 14px"
-            /></span>
-          </div>
-          <div style="margin-left: 20px">
-            <span>
-              <h2
-                style="
-                  margin-top: -1px;
-                  color: rgba(38, 38, 202, 0.733);
-                  font-size: 20pt;
-                  font-weight: 700;
-                "
-              >
-                Create a Ticket
-              </h2>
-              <h4 style="margin-top: -17px; margin-right: 20px">
-                This is the Ticket creation page!
-              </h4></span
-            >
-          </div>
+      <div style="display: flex; margin-left: 69px; margin-top: 5px">
+        <div>
+          <span
+            ><img
+              src="../../../assets/AssetsImg.png"
+              width="35px"
+              height="35px"
+              style="margin-top: 14px"
+          /></span>
         </div>
+        <div style="margin-left: 20px">
+          <span>
+            <h2
+              style="
+                margin-top: -1px;
+                color: rgba(38, 38, 202, 0.733);
+                font-size: 20pt;
+                font-weight: 700;
+              "
+            >
+              Create a Ticket
+            </h2>
+            <h4 style="margin-top: -17px; margin-right: 20px">
+              This is the Ticket creation page!
+            </h4></span
+          >
+        </div>
+      </div>
     <app-create-ticket
       style="text-align: center"
       [assetData]="selectedAsset"
