@@ -130,13 +130,6 @@ export class AssetCreateComponent implements OnInit {
             Validators.pattern('^-?[0-9]\\d*(\\.\\d{1,2})?$'),
           ],
         ],
-        serialNo: [
-          null,
-          [
-            Validators.required,
-            Validators.pattern('^-?[0-9]\\d*(\\.\\d{1,2})?$'),
-          ],
-        ],
         description: [
           null,
           [
@@ -151,34 +144,27 @@ export class AssetCreateComponent implements OnInit {
         floor:[],
         raname:[],
         arname:[],
-        category: [null, [Validators.required]],
-        department: [null, [Validators.required]],
+        serialNo: [
+        ],
+        category: [],
+        department: [],
         subAsset: [
           // null,
           // [Validators.required, Validators.pattern('^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ ]+$')],
         ],
         system: [
-          null,
-          [
-            Validators.required,
-            Validators.pattern('^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ ]+$'),
-          ],
-        ],
-        supplier: [null, [Validators.required]],
-        status: [null, [Validators.required]],
-        priority: [null, [Validators.required]],
 
-        make: [null, [Validators.required]],
+        ],
+        supplier: [],
+        status: [],
+        priority: [],
+
+        make: [],
         model: [
-          null,
-          [
-            Validators.required,
-            Validators.pattern('^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ ]+$'),
-          ],
+
         ],
         price: [
-          null,
-          [Validators.required, Validators.pattern('^[0-9]+(.[0-9]{0,2})?$')],
+
         ],
 
       });
@@ -188,8 +174,8 @@ export class AssetCreateComponent implements OnInit {
         id: [this.assetData.id, Validators.required],
         name: [this.assetData.name, [Validators.required]],
         code: [this.assetData.code, [Validators.required]],
-        serialNo: [this.assetData.serialNo, [Validators.required]],
         description: [this.assetData.description, [Validators.required]],
+        serialNo: [this.assetData.serialNo, [Validators.required]],
         category: [this.assetData.category, [Validators.required]],
         department: [this.assetData.department, [Validators.required]],
         subAsset: [this.assetData.subAsset, [Validators.required]],

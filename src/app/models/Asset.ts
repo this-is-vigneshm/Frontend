@@ -6,11 +6,11 @@ export class Asset{
      id:number;
      name:string;
      code: string;
-     serialNo: number;
      description:string;
      location:Facility;
      area: number;
      room: number;
+     serialNo: number;
      category:string;
      department: string;
      subAsset: string;
@@ -31,11 +31,11 @@ export class Asset{
     constructor(     id:number,
         name:string,
         code: string,
-        serialNo: number,
         description:string,
         location:Facility,
         area:number,
         room:number,
+        serialNo: number,
         category:string,
         department: string,
         subAsset: string,
@@ -54,11 +54,11 @@ export class Asset{
         this.id = id;
         this.name = name;
         this.code = code;
-        this.serialNo = serialNo;
         this.description = description;
         this.location = location;
         this.area = area;
         this.room = room;
+        this.serialNo = serialNo;
         this.category = category;
         this.department = department;
         this.subAsset = subAsset;
