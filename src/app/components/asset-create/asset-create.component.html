@@ -232,7 +232,7 @@
         <nz-form-control [nzSm]="20" [nzXs]="24">
           <nz-input-group nzCompact>
             <nz-select [ngModel]="'Sign Up'"
-            formControlName="raname" [ngModel]="' '" (ngModelChange)="getOptions($event)">
+            formControlName="raname" [ngModel]="' '" style="text-align: left" (ngModelChange)="getOptions($event)">
               <nz-option [nzLabel]="'Area'" [nzValue]="'Area'"></nz-option>
               <nz-option [nzLabel]="'Room'" [nzValue]="'Room'"></nz-option>
             </nz-select>
