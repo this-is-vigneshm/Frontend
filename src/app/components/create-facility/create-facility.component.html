@@ -46,7 +46,7 @@
       <nz-form-control
         [nzSm]="14"
         [nzXs]="24"
-        nzErrorTip="Please Enter Valid Facility Code"
+        nzErrorTip="Please enter a valid three character string for the facility Code"
       >
         <input nz-input id="facilityCode" formControlName="facilityCode" />
       </nz-form-control>
@@ -117,19 +117,23 @@
     </nz-form-item>
 
     <nz-form-item nz-row class="register-area">
-      <nz-form-control [nzSpan]="14" [nzOffset]="-10">
+      <nz-form-control [nzSpan]="14" nzPull="1">
         <button nz-button nzType="primary">Register</button>
-      </nz-form-control>
+ 
+      <!-- <nz-form-label [nzSm]="15" [nzXs]="24" nzFor="Location" nzRequired 
+      ><span style="color: #3253dc">Add Location</span></nz-form-label
+    > -->
+    <span style="margin-left: 15px;">
+      <button nz-button nzType="primary" [nzSize]="size" nzShape="circle" (click)="forLocation($event)" style="margin-top: 5px;" [disabled] = "addLoc"><span nz-icon nzType="plus"></span></button>
+    </span>
+
+    <span style="color: #3253dc; margin-left: 15px">Add Location</span>
+
+  </nz-form-control>
     </nz-form-item>
 
     <nz-form-item>
-      <nz-form-label [nzSm]="15" [nzXs]="24" nzFor="Location" nzRequired
-      ><span style="color: #3253dc">Add Location</span></nz-form-label
-    >
-  <nz-form-control nzPull="8">
-    <button nz-button nzType="primary" [nzSize]="size" nzShape="circle" (click)="forLocation($event)" style="margin-top: 5px;" [disabled] = "addLoc"><span nz-icon nzType="plus"></span></button>
 
-  </nz-form-control>
     </nz-form-item>
 
     <div *ngIf="loc">

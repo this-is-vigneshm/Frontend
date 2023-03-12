@@ -4,7 +4,7 @@
       <div>
         <span
           ><img
-            src="../../../assets/AssetsImg.png"
+            src="../../../assets/asset.png"
             width="35px"
             height="35px"
             style="margin-top: 14px"
@@ -20,12 +20,12 @@
               font-weight: 700;
             "
           >
-            Register An Asset
+           Register an asset
           </h2>
-          <h4 style="margin-top: -17px; margin-right: 20px; margin-bottom: 30px;">
-            This is the Asset creation page!
-          </h4></span
-        >
+         </span>
+         <span style="margin-top: -50px; padding-right: 20px;"> <h4>
+          Create assets!
+        </h4></span>
       </div>
     </div>
 
@@ -50,7 +50,7 @@
       </nz-form-item>
       <nz-form-item>
         <nz-form-label [nzSm]="14" [nzXs]="24" nzRequired nzFor="code">
-          <span style="color: rgb(0, 102, 255)">Mention Asset Code</span>
+          <span style="color: rgb(0, 102, 255)">Assign a code to the asset</span>
         </nz-form-label>
         <nz-form-control
           [nzSm]="20"
@@ -66,28 +66,10 @@
           />
         </nz-form-control>
       </nz-form-item>
-      <nz-form-item>
-        <nz-form-label [nzSm]="14" [nzXs]="24" nzRequired nzFor="serialNo">
-          <span style="color: rgb(0, 102, 255)">Mention the Serial No?</span>
-        </nz-form-label>
-        <nz-form-control
-          [nzSm]="20"
-          [nzXs]="24"
-          nzErrorTip="Please Enter Valid Serial No"
-        >
-          <input
-            style="border-radius: 10px"
-            nz-input
-            formControlName="serialNo"
-            id="asset-name"
-            placeholder="Serial No"
-          />
-        </nz-form-control>
-      </nz-form-item>
 
       <nz-form-item>
         <nz-form-label [nzSm]="14" [nzXs]="24" nzFor="description" nzRequired
-          ><span style="color: rgb(0, 102, 255)">Enter the Asset Description</span>
+          ><span style="color: rgb(0, 102, 255)">Describe about the asset</span>
         </nz-form-label>
         <nz-form-control
           [nzSm]="20"
@@ -103,9 +85,27 @@
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
-        <nz-form-label [nzSm]="14" [nzXs]="24" nzFor="facilityCode" nzRequired
+        <nz-form-label [nzSm]="14" [nzXs]="24" nzFor="status" nzRequired
+          ><span style="color: rgb(0, 102, 255)">What is the status of the asset?</span>
+        </nz-form-label>
+        <nz-form-control
+          [nzSm]="20"
+          [nzXs]="24"
+          nzErrorTip="Please Enter the Status"
+        >
+          <input
+            style="border-radius: 10px"
+            nz-input
+            formControlName="status"
+            id="asset-priority"
+            placeholder="Status"
+          />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="18" [nzXs]="24" nzFor="facilityCode" nzRequired
           ><span style="color: rgb(0, 102, 255)"
-            >Mention the facility name
+            >Which facility does this asset belongs to?
             </span
           ></nz-form-label
         >
@@ -135,8 +135,8 @@
         </nz-form-control>
       </nz-form-item>
       <nz-form-item >
-        <nz-form-label [nzSm]="14" [nzXs]="24">
-          <span style="color: rgb(0, 102, 255)">Location</span>
+        <nz-form-label [nzSm]="14" nzRequired [nzXs]="24">
+          <span style="color: rgb(0, 102, 255)">Where is this asset located?</span>
         </nz-form-label>
         <nz-form-control
           [nzSm]="20"
@@ -169,7 +169,7 @@
       </nz-form-item>
       <nz-form-item>
         <nz-form-label [nzSm]="14" [nzXs]="24" nzRequired nzFor="building">
-          <span style="color: rgb(0, 102, 255)">Building</span>
+          <span style="color: rgb(0, 102, 255)">Select an appropriate building</span>
         </nz-form-label>
         <nz-form-control
           [nzSm]="20"
@@ -198,7 +198,7 @@
       </nz-form-item>
       <nz-form-item>
         <nz-form-label [nzSm]="14" [nzXs]="24" nzRequired nzFor="location">
-          <span style="color: rgb(0, 102, 255)">Floors</span>
+          <span style="color: rgb(0, 102, 255)">Select an appropriate floor</span>
         </nz-form-label>
         <nz-form-control
           [nzSm]="20"
@@ -227,7 +227,7 @@
       </nz-form-item>
       <nz-form-item>
         <nz-form-label [nzSm]="14" [nzXs]="24" nzRequired nzFor="location">
-          <span style="color: rgb(0, 102, 255)">Area or Room</span>
+          <span style="color: rgb(0, 102, 255)">Select an appropriate area or room</span>
         </nz-form-label>
         <nz-form-control [nzSm]="20" [nzXs]="24">
           <nz-input-group nzCompact>
@@ -264,14 +264,31 @@
       </nz-form-control>
       </nz-form-item>
       <nz-form-item>
+        <nz-form-label [nzSm]="14" [nzXs]="24" nzFor="serialNo">
+          <span style="color: rgb(0, 102, 255)">Provide the serial No if any</span>
+        </nz-form-label>
+        <nz-form-control
+          [nzSm]="20"
+          [nzXs]="24"
+          nzErrorTip="Please Enter Valid Serial No"
+        >
+          <input
+            style="border-radius: 10px"
+            nz-input
+            formControlName="serialNo"
+            id="asset-name"
+            placeholder="Serial No"
+          />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
         <nz-form-label
           [nzSm]="14"
           [nzXs]="24"
           style="color: #3253dc"
-          nzRequired
           nzFor="category"
         >
-          <span style="color: #3253dc">Category</span></nz-form-label
+          <span style="color: rgb(0, 102, 255)">Select a category of the asset</span></nz-form-label
         >
         <nz-form-control
           [nzSm]="20"
@@ -299,11 +316,10 @@
         <nz-form-label
           [nzSm]="14"
           [nzXs]="24"
-          style="color: #3253dc"
-          nzRequired
+          style="color: rgb(0, 102, 255)"
           nzFor="department"
         >
-          <span style="color: #3253dc">Asset department</span></nz-form-label
+          <span style="color: rgb(0, 102, 255)">Select a asset department</span></nz-form-label
         >
         <nz-form-control
           [nzSm]="20"
@@ -331,11 +347,10 @@
         <nz-form-label
           [nzSm]="14"
           [nzXs]="24"
-          style="color: #3253dc"
-          nzRequired
+          
           nzFor="supplier"
         >
-          <span style="color: #3253dc">Supplier</span></nz-form-label
+          <span style="color: rgb(0, 102, 255)">Provide the supplier name</span></nz-form-label
         >
         <nz-form-control
           [nzSm]="20"
@@ -361,12 +376,12 @@
       </nz-form-item>
       <nz-form-item>
         <nz-form-label
-          [nzSm]="6"
+          [nzSm]="18"
           [nzXs]="24"
-          style="color: #3253dc"
+ 
           nzFor="subAsset"
         >
-          <span style="color: #3253dc">Sub Asset of</span></nz-form-label
+          <span style="color: rgb(0, 102, 255)">Is this sub asset of any existing assets?</span></nz-form-label
         >
         <nz-form-control
           [nzSm]="20"
@@ -389,7 +404,7 @@
       </nz-form-item>
       <nz-form-item>
         <nz-form-label [nzSm]="14" [nzXs]="24" nzFor="system"
-          ><span style="color: rgb(0, 102, 255)">System</span>
+          ><span style="color: rgb(0, 102, 255)">Provide system details if any</span>
         </nz-form-label>
         <nz-form-control
           [nzSm]="20"
@@ -407,7 +422,7 @@
       </nz-form-item>
       <nz-form-item>
         <nz-form-label [nzSm]="14" [nzXs]="24" nzFor="priority"
-          ><span style="color: rgb(0, 102, 255)">Priority</span>
+          ><span style="color: rgb(0, 102, 255)">Select an appropriate priority</span>
         </nz-form-label>
         <nz-form-control
           [nzSm]="20"
@@ -424,26 +439,8 @@
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
-        <nz-form-label [nzSm]="14" [nzXs]="24" nzFor="priority"
-          ><span style="color: rgb(0, 102, 255)">Status</span>
-        </nz-form-label>
-        <nz-form-control
-          [nzSm]="20"
-          [nzXs]="24"
-          nzErrorTip="Please Enter the Status"
-        >
-          <input
-            style="border-radius: 10px"
-            nz-input
-            formControlName="status"
-            id="asset-priority"
-            placeholder="Status"
-          />
-        </nz-form-control>
-      </nz-form-item>
-      <nz-form-item>
         <nz-form-label [nzSm]="14" [nzXs]="24" nzFor="model"
-          ><span style="color: rgb(0, 102, 255)">Model</span>
+          ><span style="color: rgb(0, 102, 255)">What is the model of the asset?</span>
         </nz-form-label>
         <nz-form-control
           [nzSm]="20"
@@ -461,7 +458,7 @@
       </nz-form-item>
       <nz-form-item>
         <nz-form-label [nzSm]="14" [nzXs]="24" nzFor="make"
-          ><span style="color: rgb(0, 102, 255)">Make</span>
+          ><span style="color: rgb(0, 102, 255)">What is the make of the asset?</span>
         </nz-form-label>
         <nz-form-control
           [nzSm]="20"
@@ -478,9 +475,9 @@
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
-        <nz-form-label [nzSm]="14" [nzXs]="24" nzFor="price"
+        <nz-form-label [nzSm]="24" [nzXs]="24" nzFor="price"
           ><span style="color: rgb(0, 102, 255)"
-            >Price (in Dollar)</span
+            >What is the estimated Price (in Dollar) of the asset?</span
           ></nz-form-label
         >
         <nz-form-control
@@ -519,7 +516,7 @@
 
     <div id="create-asset-file-upload" *ngIf="!isUpdateComponent">
       <h2>Create Assets By File</h2>
-      <nz-form-label [nzSm]="14" [nzXs]="24"> Upload </nz-form-label>
+      <nz-form-label [nzSm]="14" [nzXs]="24"> Mass upload assets</nz-form-label>
       <nz-upload
         nzType="drag"
         [nzMultiple]="false"
