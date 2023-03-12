@@ -326,8 +326,11 @@ export class RestapiService {
     return this.httpClient.post<ApiResponse>(`${this.baseUrl}/workorder/save`, formData);
   }
 
-  public updateWo(workorder: any){
-    return this.httpClient.post<ApiResponse>(`${this.baseUrl}/workorder/save`, workorder);
+  public updateWo(workorder: any, file : any){
+    var formData = new FormData();
+    formData.append("workorder", JSON.stringify(workorder));
+    formData.append("file", file);
+    return this.httpClient.put<ApiResponse>(`${this.baseUrl}/workorder/${workorder.orderNo}`, formData);
   }
 
   public getAllWorkOrders() {
