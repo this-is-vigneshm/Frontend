@@ -409,11 +409,36 @@
                 <td>{{ data.startDate }}</td>
                 <td>{{ data.endDate }}</td>
                 <td>{{ data.userId }}</td>
-                <td><button nz-button [nzSize]="'small'" nzShape="circle" style=" border-color: rgb(224, 228, 234); background-color: #d9534f; border-radius: 5px;"
+                <td><button
+                  nz-button
+                  [nzSize]="size"
+                  nzShape="circle"
+                  style="
+                    border-color: rgb(224, 228, 234);
+                    background-color: #5cb85c;
+                    border-radius: 5px;
+                  "
+                  id="asset-delete-button"
+                  nz-button
+                  nz-popconfirm
+                  nzPopconfirmTitle="Proceed to update?"
+                  (nzOnConfirm)="handleUpdate(data)"
+                  nz-tooltip
+                  [nzTooltipTitle]="'Update Resource'"
+                  [nzTooltipColor]="'green'"
+                >
+                  <span
+                    nz-icon
+                    nzType="edit"
+                    nzTheme="twotone"
+                    [nzTwotoneColor]="'white'"
+                  ></span>
+                </button><button nz-button [nzSize]="'small'" nzShape="circle" style=" border-color: rgb(224, 228, 234); background-color: #d9534f; border-radius: 5px;"
                 id="asset-delete-button" nz-button nz-popconfirm nzPopconfirmTitle="Sure to Delete?"
                  (nzOnConfirm)="deleteById(data.resourceId)" nz-tooltip [nzTooltipTitle]="'Delete Asset'" [nzTooltipColor]="'red'">
                  <span nz-icon nzType="delete" nzTheme="twotone" [nzTwotoneColor]="'white'"></span>
                </button></td>
+               
               </tr>
             </ng-template>
           </tbody>
@@ -447,7 +472,31 @@
               <td>{{ data.startDate }}</td>
               <td>{{ data.endDate }}</td>
               <td>{{ data.inventoryId }}</td>
-              <td><button nz-button [nzSize]="'small'" nzShape="circle" style=" border-color: rgb(224, 228, 234); background-color: #d9534f; border-radius: 5px;"
+              <td><button
+                nz-button
+                [nzSize]="size"
+                nzShape="circle"
+                style="
+                  border-color: rgb(224, 228, 234);
+                  background-color: #5cb85c;
+                  border-radius: 5px;
+                "
+                id="asset-delete-button"
+                nz-button
+                nz-popconfirm
+                nzPopconfirmTitle="Proceed to update?"
+                (nzOnConfirm)="handleUpdate(data)"
+                nz-tooltip
+                [nzTooltipTitle]="'Update Resource'"
+                [nzTooltipColor]="'green'"
+              >
+                <span
+                  nz-icon
+                  nzType="edit"
+                  nzTheme="twotone"
+                  [nzTwotoneColor]="'white'"
+                ></span>
+              </button><button nz-button [nzSize]="'small'" nzShape="circle" style=" border-color: rgb(224, 228, 234); background-color: #d9534f; border-radius: 5px;"
               id="asset-delete-button" nz-button nz-popconfirm nzPopconfirmTitle="Sure to Delete?"
                (nzOnConfirm)="deleteById(data.resourceId)" nz-tooltip [nzTooltipTitle]="'Delete Asset'" [nzTooltipColor]="'red'">
                <span nz-icon nzType="delete" nzTheme="twotone" [nzTwotoneColor]="'white'"></span>
@@ -460,3 +509,17 @@
 
   </nz-collapse-panel>
 </nz-collapse>
+
+<nz-modal
+[nzStyle]="{ top: '20px', width: '70%' }"
+[nzWidth]="100"
+[(nzVisible)]="updateVisible"
+nzTitle="Resource Planner Update"
+nzCentered
+(nzOnCancel)="updatersesource()"
+(nzOnOk)="updatersesource()"
+>
+<ng-container *nzModalContent>
+ <app-update-resource [resourceData]="resourceData"></app-update-resource>
+</ng-container>
+</nz-modal>

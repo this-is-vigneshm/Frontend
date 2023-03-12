@@ -392,5 +392,21 @@ export class CreateWorkorderComponent implements OnInit {
       }
     );
   }
+
+  resourceData : any
+  updateVisible = false
+
+
+  handleUpdate(data : any){
+    console.log(data)
+    this.updateVisible = true;
+    this.resourceData = data
+  }
+
+  updatersesource()
+  {
+    this.updateVisible = false
+  }
+
 }
 

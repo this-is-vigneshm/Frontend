@@ -298,7 +298,7 @@ export class RestapiService {
   }
   public updateResource(id: number, resourceDto: Resource) {
     return this.httpClient.put<ApiResponse>(
-      `${this.baseUrl}/resource/${id}`,
+      `${this.baseUrl}/resource/resourceId/${id}`,
       resourceDto
     );
   }
