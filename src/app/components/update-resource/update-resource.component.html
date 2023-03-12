@@ -1,0 +1,147 @@
+<div id="create-resource-body">
+    <div id="create-resource-form">
+      <div style="display: flex; margin-left: 90px; margin-top: 5px">
+        <div>
+          <span
+            ><img
+              src="../../../assets/Resource.png"
+              width="35px"
+              height="35px"
+              style="margin-top: 14px"
+          /></span>
+        </div>
+        <div style="margin-left: 20px">
+          <span>
+            <h2
+              style="
+                margin-top: -1px;
+                color: rgba(38, 38, 202, 0.733);
+                font-size: 20pt;
+                font-weight: 700;
+              "
+            >
+              Update a Resource
+            </h2>
+            <h4 style="margin-top: -17px; margin-right: 140px">
+              This is the Resource updation page!
+            </h4></span
+          >
+        </div>
+      </div>
+      <div class="align">
+        <form class nz-form [formGroup]="validateForm" nzLayout="vertical" (ngSubmit)="submitForm()">
+          <nz-form-item>
+            <nz-form-label [nzSm]="14" [nzXs]="24">
+              <span style="color: #3253dc">Mention the WorkOrder Code</span>
+            </nz-form-label>
+            <nz-form-control
+              [nzSm]="19"
+              [nzXs]="24"
+              nzErrorTip="Please Enter the  WorkOrder Id"
+            >
+              <input
+                style="border-radius: 10px"
+                nz-input
+                id="resource-name"
+                placeholder="Allocate Resource"
+                [disabled]="true"
+                value={{resourceData.workOrderCode}}
+              />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSm]="14" [nzXs]="24" nzRequired nzFor="resourceCode">
+              <span style="color: #3253dc"> Mention the Resource Code?</span></nz-form-label
+            >
+            <nz-form-control
+              [nzSm]="19"
+              [nzXs]="24"
+              nzErrorTip="Please Enter the Resource Id"
+            >
+              <input
+                style="border-radius: 10px"
+                nz-input
+                formControlName="resourceCode"
+                id="resource-name"
+                placeholder="Resource Code"
+              />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSm]="14" [nzXs]="24" nzRequired nzFor="name">
+              <span style="color: #3253dc"> Mention the Resource Name?</span></nz-form-label
+            >
+            <nz-form-control
+              [nzSm]="19"
+              [nzXs]="24"
+              nzErrorTip="Please Enter the Resource Name"
+            >
+              <input
+                style="border-radius: 10px"
+                nz-input
+                formControlName="resourceName"
+                id="resource-name"
+                placeholder="Resource Name"
+              />
+            </nz-form-control>
+          </nz-form-item>
+         
+          <nz-form-item>
+            <nz-form-label [nzSm]="14" [nzXs]="24">
+              <span style="color: #3253dc"> Schedule the Resource</span>
+            </nz-form-label>
+            <nz-form-control [nzSm]="16"nzErrorTip="Please Enter the Resource Schedule">
+              <nz-date-picker
+                formControlName="startDate"
+                placeholder="Start Date"
+                [(ngModel)]="startDate"
+                [nzDisabledDate]="disabledDate"
+              >
+              </nz-date-picker>
+              <nz-date-picker
+                formControlName="endDate"
+                placeholder="End Date"
+                [nzDisabledDate]="disabledEndDate"
+              ></nz-date-picker>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label
+              nzRequired
+              nzFor="Resource Availability"
+              [nzSm]="14"
+              [nzXs]="24"
+            >
+            <span style="color: #3253dc">Mention the Availability of Resource</span>
+            </nz-form-label>
+            <nz-form-control
+              nzErrorTip="Please Select a Resource Availability"
+              [nzSm]="19"
+              [nzXs]="24"
+            >
+              <input
+                style="border-radius: 10px"
+                nz-input
+                id="resource-name"
+                placeholder="Allocate Resource"
+                value="Yes"
+                [disabled]="true"
+              />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item nz-row class="register-area">
+            <nz-form-control [nzSpan]="14" [nzOffset]="6">
+              <button
+                nz-button
+                nzType="primary"
+                id="create-button"
+              >
+                SAVE
+              </button>
+            </nz-form-control>
+          </nz-form-item>
+        </form>
+      </div>
+    </div>
+  </div>
+  

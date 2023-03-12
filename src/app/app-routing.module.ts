@@ -38,7 +38,7 @@ import { FloorListComponent } from './components/floor-list/floor-list.component
 import { RoomListComponent } from './components/room-list/room-list.component';
 import { AreaListComponent } from './components/area-list/area-list.component';
 import { ResourceListComponent } from './components/resource-list/resource-list.component';
-
+import { UpdateResourceComponent } from './components/update-resource/update-resource.component';
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'assets/create', component: AssetCreateComponent },
@@ -81,6 +81,7 @@ const routes: Routes = [
   {path:'room-list' ,component:RoomListComponent},
   {path:'area-list',component:AreaListComponent},
   {path:'resource-list', component : ResourceListComponent},
+  { path :'update-resource', component : UpdateResourceComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/' },
 ];

@@ -206,6 +206,9 @@ export class AssetCreateComponent implements OnInit {
     asset.room = this.roomId
     asset.area = this.areaId
     asset.userId = this.userData.userId;
+    if(asset.subAsset == null){
+      asset.subAsset = "none"
+    }
     this.restService.registerAsset(asset,file).subscribe(
       (data) => {
         console.log('Success', data);

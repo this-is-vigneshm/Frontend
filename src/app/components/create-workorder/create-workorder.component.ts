@@ -93,7 +93,7 @@ export class CreateWorkorderComponent implements OnInit {
         this.handleCreation()
       }
       else{
-        this.updateItemData(this.validateForm.value, this.workOrderData)
+        this.updateItemData(this.validateForm.value, this.file)
       }
 
     } else {
@@ -174,10 +174,10 @@ export class CreateWorkorderComponent implements OnInit {
           
         }, 
         error=>{
-
+          console.log("No Resources")
         }
       )
-
+        this.isUpdateComponent = true
     }
 
   }
@@ -212,7 +212,7 @@ export class CreateWorkorderComponent implements OnInit {
     workorder.emailId = this.emailId
     workorder.phoneNumber = this.phNo
     workorder.name = this.name
-    this.restService.registerWo(workorder, file).subscribe(
+    this.restService.updateWo(workorder, file).subscribe(
       data => {
         console.log("Success", data)
         this.notification.success("Workorder Created Successfully.")
@@ -392,5 +392,21 @@ export class CreateWorkorderComponent implements OnInit {
       }
     );
   }
+
+  resourceData : any
+  updateVisible = false
+
+
+  handleUpdate(data : any){
+    console.log(data)
+    this.updateVisible = true;
+    this.resourceData = data
+  }
+
+  updatersesource()
+  {
+    this.updateVisible = false
+  }
+
 }
 
