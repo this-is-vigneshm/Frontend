@@ -145,11 +145,6 @@ export class AssetCreateComponent implements OnInit {
         raname:[],
         arname:[],
         serialNo: [
-          null,
-          [
-            Validators.required,
-            Validators.pattern('^-?[0-9]\\d*(\\.\\d{1,2})?$'),
-          ],
         ],
         category: [],
         department: [],
