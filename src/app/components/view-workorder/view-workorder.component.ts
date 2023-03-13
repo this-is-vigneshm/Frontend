@@ -15,7 +15,7 @@ export class ViewWorkorderComponent {
   @Output()
   close: EventEmitter<void> = new EventEmitter<void>();
 
-  workOrder: WorkOrder[] = [];
+  workOrder!: WorkOrder;
 
   imageToShow: any = null;
 
@@ -30,16 +30,19 @@ export class ViewWorkorderComponent {
   }
 
   getWorkOrder(workOrderId: number) {
+    console.log(workOrderId)
     this.restApi.getWorkOrder(workOrderId).subscribe(
       (data) => {
         console.log('success', data);
-        this.workOrder[0] = data.responseData;
-        this.retreiveImage(this.workOrder[0].orderNo);
+        this.workOrder = data.responseData;
+        console.log(this.workOrder)
+        this.retreiveImage(this.workOrder.orderNo);
       },
       (error) => {
         console.log('Failed to fetch Work Order Details', error);
       }
     );
+    console.log(this.workOrder)
   }
 
   retreiveImage(id: number) {
