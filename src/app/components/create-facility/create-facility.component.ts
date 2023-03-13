@@ -38,7 +38,7 @@ export class CreateFacilityComponent implements OnInit {
       this.validateForm = this.fb.group({
       facilityCode: [
         null,
-        [Validators.required, Validators.pattern('[A-Z][A-Z ]+')],
+        [Validators.required, Validators.pattern('[A-Z][A-Z ]+'),Validators.minLength(3),Validators.maxLength(3)],
       ],
       facilityName: [
         null,
