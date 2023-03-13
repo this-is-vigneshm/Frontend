@@ -30,7 +30,8 @@ export class CreateWorkorderComponent implements OnInit {
   loading = false;
   avatarUrl?: string;
 
-
+  workorder = "Register"
+  workorder1 = "Create"
 
   statusTypes = [
     "In Progress",
@@ -145,6 +146,8 @@ export class CreateWorkorderComponent implements OnInit {
     }
     else{
       console.log(this.workOrderData.workOrderCode)
+      this.workorder = "Update"
+      this.workorder1 = "Manage"
       this.validateForm = this.fb.group({
         status: ["In Progress"],
         workOrderCode :  [this.workOrderData.workOrderCode, [Validators.required,]],

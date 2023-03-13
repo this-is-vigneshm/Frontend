@@ -115,11 +115,11 @@
 </tbody>
 </nz-table>
 
-<nz-modal [nzVisible]="visible" [nzStyle]="{ top: '20px', width: '70%' }" nzTitle="View Work Order"
+<nz-modal [nzVisible]="visible" [nzStyle]="{ top: '20px', width: '70%' }" nzTitle="WorkOrder-list / {{nav1}}"
             nzCentered (nzOnCancel)="handleCreateTicketOk()" (nzOnOk)="handleCreateTicketOk()" >
               <app-view-workorder *nzModalContent [workOrderId]="viewId" (close)="closeView()"></app-view-workorder>
             </nz-modal>
-            <nz-modal [(nzVisible)]="isVisible"  [nzStyle]="{ top: '20px', width: '75%' }"  nzTitle="Update Workorder Status" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+            <nz-modal [(nzVisible)]="isVisible"  [nzStyle]="{ top: '20px', width: '75%' }"  nzTitle="WorkOrder-list / {{nav}}" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
               <ng-container *nzModalContent>
                 <app-create-workorder [workOrderData]="selectedWo"></app-create-workorder>
               </ng-container>

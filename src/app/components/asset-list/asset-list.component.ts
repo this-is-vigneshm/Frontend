@@ -36,6 +36,8 @@ export class AssetListComponent implements OnInit{
 
   nav = "create"
 
+  nav1 = "preview"
+
   ngOnInit(): void {
     if(localStorage.getItem("access_token") === null){
       this.router.navigateByUrl("/signin");

@@ -31,6 +31,7 @@ export class InventoryListComponent {
   searchString : any ;
 
   nav = "create"
+  nav1 = "preview"
 
 
   size: NzButtonSize='small'
