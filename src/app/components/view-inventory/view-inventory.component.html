@@ -1,108 +1,112 @@
-<div style="display: flex; margin-left: 50px; margin-bottom: 50px">
-  <div>
-    <span
-      ><img
-        src="../../../assets/userInventory.png"
-        width="45px"
-        height="45px"
-        style="margin-top: 11px"
-    /></span>
-  </div>
-  <div style="margin-left: 20px">
-    <span>
-      <h2
-        style="
-          margin-top: -1px;
-          color: rgba(38, 38, 202, 0.733);
-          font-size: 20pt;
-          font-weight: 700;
-          margin-left: -10%;
-          margin-right: -50px;
-        "
+<div>
+  <div style="display: flex; margin-left: 50px; margin-bottom: 50px">
+    <div>
+      <span
+        ><img
+          src="../../../assets/userInventory.png"
+          width="45px"
+          height="45px"
+          style="margin-top: 11px"
+      /></span>
+    </div>
+    <div style="margin-left: 75px">
+      <span>
+        <h2
+          style="
+            margin-top: -1px;
+            color: rgba(38, 38, 202, 0.733);
+            font-size: 20pt;
+            font-weight: 700;
+            margin-left: -10%;
+            margin-right: -40px;
+          "
+        >
+          Inventory Items
+        </h2>
+        <h4 style="margin-top: -17px; margin-right: -500px; margin-left: -20px">
+          This is the Inventory List page!
+        </h4></span
       >
-        Inventory Items
-      </h2>
-      <h4 style="margin-top: -17px; margin-right: -500px; margin-left: 40px">
-        This is the Inventory List page!
-      </h4></span
-    >
+    </div>
   </div>
-</div>
-<div id="flex">
-  <div>
-    <form nz-form style="width: 1200%">
-      <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" [nzSpan]="5">
-          <span style="color: rgb(0, 102, 255)"
-            >Inventory Id</span
-          ></nz-form-label
-        >
-        <nz-form-control [nzSpan]="12">
-          <input nz-input value="{{ inventory.id }}" />
-        </nz-form-control>
-      </nz-form-item>
-      <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" [nzSpan]="5"
-          ><span style="color: rgb(0, 102, 255)"
-            >Inventory Name</span
-          ></nz-form-label
-        >
-        <nz-form-control [nzSpan]="12">
-          <input nz-input value="{{ inventory.name }}" />
-        </nz-form-control>
-      </nz-form-item>
-      <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" [nzSpan]="5"
-          ><span style="color: rgb(0, 102, 255)"
-            >Inventory Code</span
-          ></nz-form-label
-        >
-        <nz-form-control [nzSpan]="12">
-          <input nz-input value="{{ inventory.code }}" />
-        </nz-form-control>
-      </nz-form-item>
-      <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" [nzSpan]="5"
-          ><span style="color: rgb(0, 102, 255)"
-            >Description</span
-          ></nz-form-label
-        >
-        <nz-form-control [nzSpan]="12">
-          <input nz-input value="{{ inventory.description }}" />
-        </nz-form-control>
-      </nz-form-item>
-      <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" [nzSpan]="5"
-          ><span style="color: rgb(0, 102, 255)">Quantity</span></nz-form-label
-        >
-        <nz-form-control [nzSpan]="12">
-          <input nz-input value="{{ inventory.quantity }}" />
-        </nz-form-control>
-      </nz-form-item>
-      <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" [nzSpan]="5"
-          ><span style="color: rgb(0, 102, 255)">Price</span></nz-form-label
-        >
-        <nz-form-control [nzSpan]="12">
-          <input nz-input value="{{ inventory.price }}" />
-        </nz-form-control>
-      </nz-form-item>
-      <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" [nzSpan]="5"
-          ><span style="color: rgb(0, 102, 255)">Status</span></nz-form-label
-        >
-        <nz-form-control [nzSpan]="12">
-          <input nz-input value="{{ inventory.status }}" />
-        </nz-form-control>
-      </nz-form-item>
-    </form>
-  </div>
+  <div id="flex">
+    <div>
+      <form nz-form style="width: 1200%">
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" [nzSpan]="5">
+            <span style="color: rgb(0, 102, 255)"
+              >Inventory Id</span
+            ></nz-form-label
+          >
+          <nz-form-control [nzSpan]="12">
+            <input nz-input value="{{ inventory.id }}" />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" [nzSpan]="5"
+            ><span style="color: rgb(0, 102, 255)"
+              >Inventory Name</span
+            ></nz-form-label
+          >
+          <nz-form-control [nzSpan]="12">
+            <input nz-input value="{{ inventory.name }}" />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" [nzSpan]="5"
+            ><span style="color: rgb(0, 102, 255)"
+              >Inventory Code</span
+            ></nz-form-label
+          >
+          <nz-form-control [nzSpan]="12">
+            <input nz-input value="{{ inventory.code }}" />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" [nzSpan]="5"
+            ><span style="color: rgb(0, 102, 255)"
+              >Description</span
+            ></nz-form-label
+          >
+          <nz-form-control [nzSpan]="12">
+            <input nz-input value="{{ inventory.description }}" />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" [nzSpan]="5"
+            ><span style="color: rgb(0, 102, 255)"
+              >Quantity</span
+            ></nz-form-label
+          >
+          <nz-form-control [nzSpan]="12">
+            <input nz-input value="{{ inventory.quantity }}" />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" [nzSpan]="5"
+            ><span style="color: rgb(0, 102, 255)">Price</span></nz-form-label
+          >
+          <nz-form-control [nzSpan]="12">
+            <input nz-input value="{{ inventory.price }}" />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" [nzSpan]="5"
+            ><span style="color: rgb(0, 102, 255)">Status</span></nz-form-label
+          >
+          <nz-form-control [nzSpan]="12">
+            <input nz-input value="{{ inventory.status }}" />
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+    </div>
 
-  <div style="width: 80%; margin-left: 40%; margin-top: 20%">
-    <img
-      [src]="imageToShow"
-      [alt]="'NO IMAGE FOUND'"
-      style="width: 70%; border: 1px solid; border-color: rgb(55, 83, 239)"
-    />
+    <div style="width: 80%; margin-left: 40%; margin-top: 20%">
+      <img
+        [src]="imageToShow"
+        [alt]="'NO IMAGE FOUND'"
+        style="width: 70%; border: 1px solid; border-color: rgb(55, 83, 239)"
+      />
+    </div>
   </div>
 </div>

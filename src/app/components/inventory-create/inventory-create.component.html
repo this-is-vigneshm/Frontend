@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div id="create-inventory-body">
   <div id="create-item-form">
     <div style="display: flex; margin-left: -65px; margin-top: -40px">
@@ -23,146 +24,188 @@
           >
             {{inventory}} Inventory Item
           </h2></span>
+=======
+<div>
+  <div id="create-inventory-body">
+    <div id="create-item-form">
+      <div style="display: flex; margin-left: -65px; margin-top: -40px">
+        <div>
+          <span
+            ><img
+              src="../../../assets/userInventory.png"
+              width="45px"
+              height="45px"
+              style="margin-top: 11px"
+          /></span>
+        </div>
+        <div style="margin-left: 20px">
+>>>>>>> eb918ef0339ba2a51445c076bde8ddba535aba3a
           <span>
-          <h4 style="margin-top: -17px; margin-left: -65%">
-            {{inventory1}} Inventory!
-          </h4></span
-        >
+            <h2
+              style="
+                margin-top: -1px;
+                color: rgba(38, 38, 202, 0.733);
+                font-size: 20pt;
+                font-weight: 700;
+                margin-left: -1%;
+              "
+            >
+              {{ inventory }} Inventory Item
+            </h2></span
+          >
+          <span>
+            <h4 style="margin-top: -17px; margin-left: -61%">
+              {{ inventory1 }} Inventory!
+            </h4></span
+          >
+        </div>
       </div>
-    </div>
-    <form
-      class
-      nz-form
-      [formGroup]="validateForm"
-      nzLayout="vertical"
-      (ngSubmit)="submitForm()"
-      style="margin-top: 30px"
-    >
-      <nz-form-item>
-        <nz-form-label [nzSm]="14" [nzXs]="24" nzRequired nzFor="name">
-          <span style="color: rgb(0, 102, 255)">Mention the Inventory Item Name</span>
-        </nz-form-label>
-        <nz-form-control
-          [nzSm]="14"
-          [nzXs]="24"
-          nzErrorTip="Please Enter Valid Item Name"
-        >
-          <input
-            style="border-radius: 10px"
-            nz-input
-            formControlName="name"
-            id="item-name"
-            placeholder="Item Name"
-          />
-        </nz-form-control>
-      </nz-form-item>
-      <nz-form-item>
-        <nz-form-label [nzSm]="14" [nzXs]="24" nzRequired nzFor="code">
-          <span style="color: rgb(0, 102, 255)">Mention the Inventory Item code?</span>
-        </nz-form-label>
-        <nz-form-control
-          [nzSm]="14"
-          [nzXs]="24"
-          nzErrorTip="Please Enter Valid Item Code "
-        >
-          <input
-            style="border-radius: 10px"
-            nz-input
-            formControlName="code"
-            id="item-name"
-            placeholder="Item code"
-          />
-        </nz-form-control>
-      </nz-form-item>
-      <nz-form-item>
-        <nz-form-label [nzSm]="14" [nzXs]="24" nzFor="description" nzRequired
-          ><span style="color: rgb(0, 102, 255)">Enter the Inventory Description</span>
-        </nz-form-label>
-        <nz-form-control
-          [nzSm]="14"
-          [nzXs]="24"
-          nzErrorTip="Please Enter the Description!"
-        >
-          <input
-            style="border-radius: 10px"
-            nz-input
-            id="description"
-            formControlName="description"
-            placeholder="Description"
-          />
-        </nz-form-control>
-      </nz-form-item>
-      <nz-form-item>
-        <nz-form-label [nzSm]="14" [nzXs]="24" nzRequired nzFor="quantity">
-          <span style="color: rgb(0, 102, 255)">Mention the Quantity?
-          </span>
-        </nz-form-label>
-        <nz-form-control
-          [nzSm]="14"
-          [nzXs]="24"
-          nzErrorTip="Please Enter the Quantity"
-        >
-          <input
-            style="border-radius: 10px"
-            nz-input
-            formControlName="quantity"
-            id="Item-quantity"
-            placeholder="Quantity"
-          />
-        </nz-form-control>
-      </nz-form-item>
-      <nz-form-item>
-        <nz-form-label [nzSm]="14" [nzXs]="24" nzFor="price"
-          ><span style="color: rgb(0, 102, 255)"
-            >How much its costs for(in Dollar)?</span
-          ></nz-form-label
-        >
-        <nz-form-control
-          [nzSm]="14"
-          [nzXs]="24"
-          nzErrorTip="Please Enter the Item Price!"
-        >
-          <input
-            style="border-radius: 10px"
-            formControlName="price"
-            id="'price'"
-            nz-input
-            placeholder="Price in Dollars"
-          />
-        </nz-form-control>
-      </nz-form-item>
-      <nz-form-item>
-        <nz-form-label [nzSm]="14" [nzXs]="24" nzFor="description" nzRequired
-          ><span style="color: rgb(0, 102, 255)">What is the Status of an Inventory?</span>
-        </nz-form-label>
-        <nz-form-control
-          [nzSm]="14"
-          [nzXs]="24"
-          nzErrorTip="Please Enter the Status!"
-        >
-          <input
-            style="border-radius: 10px"
-            nz-input
-            id="Status"
-            formControlName="status"
-            placeholder="Status"
-          />
-        </nz-form-control>
-      </nz-form-item>
-      <div>
-        <nz-form-item id="upload-view">
-          <nz-form-control nzErrorTip="Please Add an Attachment">
-            <input formControlName="file" type="file" placeholder="file" (change)="handleChange($event)">
+      <form
+        class
+        nz-form
+        [formGroup]="validateForm"
+        nzLayout="vertical"
+        (ngSubmit)="submitForm()"
+        style="margin-top: 30px"
+      >
+        <nz-form-item>
+          <nz-form-label [nzSm]="14" [nzXs]="24" nzRequired nzFor="name">
+            <span style="color: rgb(0, 102, 255)"
+              >Mention the Inventory Item Name</span
+            >
+          </nz-form-label>
+          <nz-form-control
+            [nzSm]="14"
+            [nzXs]="24"
+            nzErrorTip="Please Enter Valid Item Name"
+          >
+            <input
+              style="border-radius: 10px"
+              nz-input
+              formControlName="name"
+              id="item-name"
+              placeholder="Item Name"
+            />
           </nz-form-control>
         </nz-form-item>
-      </div>
-      <nz-form-item nz-row class="register-area">
-        <nz-form-control [nzSpan]="2" [nzOffset]="-2">
-          <button nz-button nzType="primary" id="create-button">Submit</button>
-        </nz-form-control>
-      </nz-form-item>
-    </form>
+        <nz-form-item>
+          <nz-form-label [nzSm]="14" [nzXs]="24" nzRequired nzFor="code">
+            <span style="color: rgb(0, 102, 255)"
+              >Mention the Inventory Item code?</span
+            >
+          </nz-form-label>
+          <nz-form-control
+            [nzSm]="14"
+            [nzXs]="24"
+            nzErrorTip="Please Enter Valid Item Code "
+          >
+            <input
+              style="border-radius: 10px"
+              nz-input
+              formControlName="code"
+              id="item-name"
+              placeholder="Item code"
+            />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="14" [nzXs]="24" nzFor="description" nzRequired
+            ><span style="color: rgb(0, 102, 255)"
+              >Enter the Inventory Description</span
+            >
+          </nz-form-label>
+          <nz-form-control
+            [nzSm]="14"
+            [nzXs]="24"
+            nzErrorTip="Please Enter the Description!"
+          >
+            <input
+              style="border-radius: 10px"
+              nz-input
+              id="description"
+              formControlName="description"
+              placeholder="Description"
+            />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="14" [nzXs]="24" nzRequired nzFor="quantity">
+            <span style="color: rgb(0, 102, 255)">Mention the Quantity? </span>
+          </nz-form-label>
+          <nz-form-control
+            [nzSm]="14"
+            [nzXs]="24"
+            nzErrorTip="Please Enter the Quantity"
+          >
+            <input
+              style="border-radius: 10px"
+              nz-input
+              formControlName="quantity"
+              id="Item-quantity"
+              placeholder="Quantity"
+            />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="14" [nzXs]="24" nzFor="price"
+            ><span style="color: rgb(0, 102, 255)"
+              >How much its costs for(in Dollar)?</span
+            ></nz-form-label
+          >
+          <nz-form-control
+            [nzSm]="14"
+            [nzXs]="24"
+            nzErrorTip="Please Enter the Item Price!"
+          >
+            <input
+              style="border-radius: 10px"
+              formControlName="price"
+              id="'price'"
+              nz-input
+              placeholder="Price in Dollars"
+            />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="14" [nzXs]="24" nzFor="description" nzRequired
+            ><span style="color: rgb(0, 102, 255)"
+              >What is the Status of an Inventory?</span
+            >
+          </nz-form-label>
+          <nz-form-control
+            [nzSm]="14"
+            [nzXs]="24"
+            nzErrorTip="Please Enter the Status!"
+          >
+            <input
+              style="border-radius: 10px"
+              nz-input
+              id="Status"
+              formControlName="status"
+              placeholder="Status"
+            />
+          </nz-form-control>
+        </nz-form-item>
+        <div>
+          <nz-form-item id="upload-view">
+            <nz-form-control nzErrorTip="Please Add an Attachment">
+              <input
+                formControlName="file"
+                type="file"
+                placeholder="file"
+                (change)="handleChange($event)"
+              />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <nz-form-item nz-row class="register-area">
+          <nz-form-control [nzSpan]="2" [nzOffset]="-2">
+            <button nz-button nzType="primary" id="create-button">
+              Submit
+            </button>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+    </div>
   </div>
-  
-
 </div>
