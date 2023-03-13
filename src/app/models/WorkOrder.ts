@@ -1,3 +1,5 @@
+import { Employee } from "./Employee";
+
 export class WorkOrder {
 
     orderNo:number;
@@ -17,12 +19,13 @@ export class WorkOrder {
     createdTime: number;
     updatedBy: string;
     updatedTime: number;
-    employeeId : number;
+    employeeId : Employee;
     expectedCompletionTime: number;
+    expand = false
 
     constructor( orderNo:number, code: string,status: string,
         name: string, emailId: string,phoneNumber: number, description: string,workSubject: string,taskDetails:string,date:Date,data : any,fileName : string,workOrderCost:number, createdBy:string, createdTime: number, updatedBy: string,
-        updatedTime: number, employeeId : number,expectedCompletionTime : number
+        updatedTime: number, employeeId : Employee,expectedCompletionTime : number
      ) {
        
         this.orderNo = orderNo;
