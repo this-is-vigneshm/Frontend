@@ -32,6 +32,8 @@ export class InventoryCreateComponent {
   inventory = "Register"
   inventory1 = "Create"
 
+  abc!: boolean
+
   status = [
     { name: 'Available' },
     { name: 'Not Available'},
@@ -93,6 +95,7 @@ export class InventoryCreateComponent {
       this.isUpdateComponent = true;
       this.inventory = "Update"
       this.inventory1  = "Manage"
+      this.abc = true
       this.validateForm = this.fb.group({
         id: [this.inventoryData.id, Validators.required],
         name: [this.inventoryData.name, [Validators.required]],

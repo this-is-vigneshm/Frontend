@@ -1,38 +1,80 @@
-<div style="display: flex; margin-left: 90px; margin-top: -5px">
-  <div>
-    <span
-      ><img
-        src="../../../assets/Location.png"
-        width="45px"
-        height="45px"
-        style="margin-top: 10px"
-    /></span>
+
+
+  <div style="display: flex; margin-left: 40px; margin-top: -20px" *ngIf="!abc">
+
+
+    <div>
+      <span
+        ><img
+          src="../../../assets/Location.png"
+          width="45px"
+          height="45px"
+          style="margin-top: 8px"
+      /></span>
+    </div>
+
+    <div style="margin-left: 25px">
+
+        <h2
+          style="
+            margin-top: -1px;
+            color: rgba(38, 38, 202, 0.733);
+            font-size: 20pt;
+            font-weight: 700;
+            margin-right: 0%;
+          "
+        >
+          {{ facility }} an facility
+        </h2>
+      </div>
+      <div>
+        <h4 style="margin-top: 40px; margin-left: -505%">
+          {{facility1}} facility!
+      </h4 >
+
+    </div>
+
   </div>
-  <div style="margin-left: 20px">
-    <span>
-      <h2
-        style="
-          margin-top: -1px;
-          color: rgba(38, 38, 202, 0.733);
-          font-size: 20pt;
-          font-weight: 700;
-        "
-      >
-        {{facility}} a Facility
-      </h2>
-      <h4 style="margin-top: -17px; margin-right: -17px; margin-bottom: -15%;">
-        {{facility1}} Facility!
-      </h4></span
-    >
+  <div style="display: flex; margin-left: -50px; margin-top: -70px" *ngIf="abc">
+
+    <div>
+      <span
+        ><img
+          src="../../../assets/Location.png"
+          width="45px"
+          height="45px"
+          style="margin-top: 8px"
+      /></span>
+    </div>
+
+    <div style="margin-left: 25px">
+        <h2
+          style="
+            margin-top: -1px;
+            color: rgba(38, 38, 202, 0.733);
+            font-size: 20pt;
+            font-weight: 700;
+            margin-right: 0%;
+          "
+        >
+         {{facility}} an facility
+        </h2>
+      </div>
+      <div>
+        <h4 style="margin-top: 40px; margin-left: -435%">
+          {{facility1}} facility!
+      </h4 >
+    </div>
+
   </div>
-</div>
+
 <form
   nz-form
   [formGroup]="validateForm"
   (ngSubmit)="submitForm()"
   [nzLayout]="'vertical'"
 >
-  <div nz-col [nzSpan]="12">
+
     <nz-form-item>
       <nz-form-label
         [nzSm]="15"
@@ -54,7 +96,9 @@
 
     <nz-form-item>
       <nz-form-label [nzSm]="15" [nzXs]="24" nzRequired nzFor="facilityName"
-        ><span style="color: #3253dc">Mention the Facility Name</span></nz-form-label
+        ><span style="color: #3253dc"
+          >Mention the Facility Name</span
+        ></nz-form-label
       >
       <nz-form-control
         [nzSm]="14"
@@ -67,7 +111,9 @@
 
     <nz-form-item>
       <nz-form-label [nzSm]="15" [nzXs]="24" nzRequired nzFor="facilityType"
-        ><span style="color: #3253dc">Mention the Facility Type</span></nz-form-label
+        ><span style="color: #3253dc"
+          >Mention the Facility Type</span
+        ></nz-form-label
       >
       <nz-form-control
         [nzSm]="14"
@@ -93,8 +139,8 @@
     </nz-form-item>
     <nz-form-item>
       <nz-form-label [nzSm]="15" [nzXs]="24" nzFor="facilitySource" nzRequired
-        ><span style="color: #3253dc">Mention the Facility Source</span> </nz-form-label
-      >
+        ><span style="color: #3253dc">Mention the Facility Source</span>
+      </nz-form-label>
       <nz-form-control
         [nzSm]="14"
         [nzXs]="24"
@@ -105,8 +151,8 @@
     </nz-form-item>
     <nz-form-item>
       <nz-form-label [nzSm]="15" [nzXs]="24" nzFor="inactiveDate"
-        ><span style="color: #3253dc">Enter the Inactive Date</span> </nz-form-label
-      >
+        ><span style="color: #3253dc">Enter the Inactive Date</span>
+      </nz-form-label>
       <nz-form-control
         [nzSm]="14"
         [nzXs]="24"
@@ -119,23 +165,29 @@
     <nz-form-item nz-row class="register-area">
       <nz-form-control [nzSpan]="12" nzPull="1">
         <button nz-button nzType="primary">Register</button>
- 
-      <!-- <nz-form-label [nzSm]="15" [nzXs]="24" nzFor="Location" nzRequired 
+
+        <!-- <nz-form-label [nzSm]="15" [nzXs]="24" nzFor="Location" nzRequired 
       ><span style="color: #3253dc">Add Location</span></nz-form-label
     > -->
-    <span style="margin-left: 15px;">
-      <button nz-button nzType="primary" [nzSize]="size" nzShape="circle" (click)="forLocation($event)" style="margin-top: 5px;" [disabled] = "addLoc"><span nz-icon nzType="plus"></span></button>
-    </span>
+        <span style="margin-left: 15px">
+          <button
+            nz-button
+            nzType="primary"
+            [nzSize]="size"
+            nzShape="circle"
+            (click)="forLocation($event)"
+            style="margin-top: 5px"
+            [disabled]="addLoc"
+          >
+            <span nz-icon nzType="plus"></span>
+          </button>
+        </span>
 
-    <span style="color: #3253dc; margin-left: 15px">Add Location</span>
-
-  </nz-form-control>
+        <span style="color: #3253dc; margin-left: 15px">Add Location</span>
+      </nz-form-control>
     </nz-form-item>
 
-    <nz-form-item>
-
-    </nz-form-item>
-
+    <nz-form-item> </nz-form-item>
 
     <!-- <nz-form-item>
       <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="dagRunId"
@@ -177,7 +229,6 @@
         </nz-select>
       </nz-form-control>
     </nz-form-item> -->
-  </div>
 </form>
 s
 <div *ngIf="loc" style="margin: 60px;">

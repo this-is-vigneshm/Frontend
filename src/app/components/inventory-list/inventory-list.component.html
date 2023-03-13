@@ -21,7 +21,7 @@
       >
         Inventory Items
       </h2>
-      <h4 style="margin-top: -17px; margin-right: 20px">
+      <h4 style="margin-top: -17px; margin-right: 19px">
         This is the Inventory List page!
       </h4></span
     >
@@ -124,7 +124,7 @@
 <nz-modal
   [nzVisible]="visible"
   [nzStyle]="{ top: '20px', width: '70%' }"
-  nzTitle="View Inventory"
+  nzTitle="Inventory-list / {{nav1}}"
   nzCentered
   (nzOnCancel)="closeView()"
   (nzOnOk)="closeView()"
@@ -179,7 +179,7 @@
             nzPopconfirmTitle="Proceed to update?"
             (nzOnConfirm)="handleUpdateItem(data)"
             nz-tooltip
-            [nzTooltipTitle]="'Update Asset'"
+            [nzTooltipTitle]="'Update Inventory'"
             [nzTooltipColor]="'green'"
           >
             <span
@@ -204,7 +204,7 @@
             nzPopconfirmTitle="Sure to Delete?"
             (nzOnConfirm)="handleDelete(data.id)"
             nz-tooltip
-            [nzTooltipTitle]="'Delete Asset'"
+            [nzTooltipTitle]="'Delete Inventory'"
             [nzTooltipColor]="'red'"
           >
             <span

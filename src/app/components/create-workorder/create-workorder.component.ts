@@ -30,7 +30,8 @@ export class CreateWorkorderComponent implements OnInit {
   loading = false;
   avatarUrl?: string;
 
-
+  workorder = "Register"
+  workorder1 = "Create"
 
   statusTypes = [
     "In Progress",
@@ -89,7 +90,6 @@ export class CreateWorkorderComponent implements OnInit {
   submitForm(): void {
     if (this.validateForm.valid) {
       if (!this.isUpdateComponent) {
-        // this.createItemByData(this.validateForm.value)
         this.handleCreation()
       }
       else{
@@ -144,40 +144,17 @@ export class CreateWorkorderComponent implements OnInit {
       });
     }
     else{
-      console.log(this.workOrderData.workOrderCode)
       this.validateForm = this.fb.group({
         status: ["In Progress"],
-        workOrderCode :  [this.workOrderData.workOrderCode, [Validators.required,]],
+        workOrderCode :  [this.workOrderData.code, [Validators.required,]],
         description: [this.workOrderData.description, [Validators.required, Validators.maxLength(200)]],
         workSubject: [this.workOrderData.workSubject, [Validators.required,]],
         taskDetails: [this.workOrderData.taskDetails, [Validators.required,]],
         workOrderCost: [this.workOrderData.workOrderCost, [Validators.required, Validators.pattern('^-?[0-9]\\d*(\\.\\d{1,2})?$')]],
         date: [this.workOrderData.date, [Validators.required]],
       });
-      this.restService.getAllResourceByWorkOrderCode(this.workOrderData.workOrderCode).subscribe(
-        data=>{
-          console.log("Success", data)
-          this.updateWOR = data.responseData
-          for(var i of this.updateWOR)
-          {
-            if(i.resourceType == "User")
-            {
-              this.condition = true
-              this.resourcesUser.push(i)
-            }
-            else
-            {
-              this.condition1 = true
-              this.resourcesInventory.push(i)
-            }
-          }
-          
-        }, 
-        error=>{
-          console.log("No Resources")
-        }
-      )
         this.isUpdateComponent = true
+        this.fetchResource(this.workOrderData.code)
     }
 
   }
@@ -235,24 +212,23 @@ export class CreateWorkorderComponent implements OnInit {
   }
 
 
-  handleCreateResourceSave(id : any): void {
-    console.log(id)
+  handleCreateResourceSave(): void {
     this.selectedResource = null;
     this.isVisibleMiddle = false;
-    this.resourcesUser.push(id)
+    this.fetchResource(this.code)
     this.condition = true
   }
 
-  handleCreateResourceSave1(id : any): void {
-    console.log(id)
+  handleCreateResourceSave1(): void {
     this.selectedResource = null;
     this.isVisibleMiddle = false;
-    this.resourcesInventory.push(id)
+    this.fetchResource(this.code)
     this.condition1 = true
   }
 
   handleCreateResourceCancel(): void {
     this.selectedResource = null;
+    this.fetchResource(this.code)
     this.isVisibleMiddle = false;
   }
 
@@ -408,5 +384,33 @@ export class CreateWorkorderComponent implements OnInit {
     this.updateVisible = false
   }
 
+  fetchResource(code : any)
+  {
+    this.restService.getAllResourceByWorkOrderCode(code).subscribe(
+      data=>{
+        console.log("Success", data)
+        this.updateWOR = data.responseData
+        this.resourcesInventory = []
+        this.resourcesUser = []
+        for(var i of this.updateWOR)
+        {
+          if(i.resourceType == "User")
+          {
+            this.condition = true
+            this.resourcesUser.push(i)
+          }
+          else
+          {
+            this.condition1 = true
+            this.resourcesInventory.push(i)
+          }
+        }
+        
+      }, 
+      error=>{
+        console.log("No Resources")
+      }
+    )
+  }
 }
 
