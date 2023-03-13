@@ -34,6 +34,10 @@ export class AssetListComponent implements OnInit{
 
   searchString : any ;
 
+  nav = "create"
+
+  nav1 = "preview"
+
   ngOnInit(): void {
     if(localStorage.getItem("access_token") === null){
       this.router.navigateByUrl("/signin");
@@ -249,7 +253,8 @@ export class AssetListComponent implements OnInit{
 
   handleUpdateAsset(data : any){
     this.selectedAsset = data;
-    this.isVisibleMiddle = true;
+    this.isVisibleMiddle = true
+    this.nav = "update"
   }
   handleCreateAssetOk(): void {
     this.selectedAsset = null;
@@ -259,6 +264,7 @@ export class AssetListComponent implements OnInit{
   handleCreateAssetCancel(): void {
     this.selectedAsset = null;
     this.isVisibleMiddle = false;
+    this.nav = "create"
   }
 
 

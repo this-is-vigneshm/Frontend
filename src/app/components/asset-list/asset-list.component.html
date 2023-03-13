@@ -1,21 +1,11 @@
-<!-- <span
-  style="
-    font-family: math;
-    font-size: xx-large;
-    font-weight: 900;
-    margin-left: -50%;
-  "
-  >Assets</span
-> -->
-
 <div style="display: flex; margin-left: 20px; margin-bottom: -50px;">
   <div>
     <span
       ><img
-        src="../../../assets/AssetsImg.png"
-        width="35px"
-        height="35px"
-        style="margin-top: 14px"
+        src="../../../assets/asset.png"
+        width="45px"
+        height="45px"
+        style="margin-top: 9px"
     /></span>
   </div>
   <div style="margin-left: 20px">
@@ -113,7 +103,7 @@
   [nzStyle]="{ top: '20px', width: '60%' }"
   [nzWidth]="200"
   [(nzVisible)]="isVisibleMiddle"
-  nzTitle="Create an Asset"
+  nzTitle="Asset-list / {{nav}}"
   nzCentered
   (nzOnCancel)="handleCreateAssetCancel()"
   (nzOnOk)="handleCreateAssetOk()"
@@ -175,7 +165,7 @@
 <nz-modal
   [nzVisible]="visible"
   [nzStyle]="{ top: '20px', width: '70%' }"
-  nzTitle="View Asset"
+  nzTitle="Asset-list / {{nav1}}"
   nzCentered
   (nzOnCancel)="close()"
   (nzOnOk)="close()"

@@ -2,10 +2,10 @@
   <div>
     <span
       ><img
-        src="../../../assets/Inventory.png"
-        width="35px"
-        height="35px"
-        style="margin-top: 14px"
+        src="../../../assets/userInventory.png"
+        width="45px"
+        height="45px"
+        style="margin-top: 11px"
     /></span>
   </div>
   <div style="margin-left: 20px">
@@ -105,10 +105,10 @@
 </button>
 
 <nz-modal
-  [nzStyle]="{ top: '-40px', width: '60%' }"
+  [nzStyle]="{ top: '5px', width: '60%' }"
   [nzWidth]="200"
   [(nzVisible)]="isVisibleMiddle"
-  nzTitle="Create an Item"
+  nzTitle="Inventory-list / {{nav}}"
   nzCentered
   (nzOnCancel)="handleCreateItemCancel()"
   (nzOnOk)="handleCreateItemOk()"
@@ -124,7 +124,7 @@
 <nz-modal
   [nzVisible]="visible"
   [nzStyle]="{ top: '20px', width: '70%' }"
-  nzTitle="View Inventory"
+  nzTitle="Inventory-list / {{nav1}}"
   nzCentered
   (nzOnCancel)="closeView()"
   (nzOnOk)="closeView()"

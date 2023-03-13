@@ -42,56 +42,74 @@
         <span id="user-title">{{ userData.sub }}</span>
         <span id="user-designation">{{ userData.designation }}</span>
       </li>
-      <li nz-submenu nzTitle="Queues" nzIcon="unordered-list">
+      <li nz-submenu nzTitle="Tickets" nzIcon="unordered-list">
         <ul>
           <li nz-menu-item routerLink="/raise-issue">
             <span nz-icon nzType="plus-circle" nzTheme="outline"></span>
             <span> Raise a Request</span>
           </li>
-          <li nz-menu-item routerLink="/tickets">
-            <span nz-icon nzType="node-collapse" nzTheme="outline"></span>
-            <span> Queues</span>
-          </li>
-          <li nz-menu-group nzTitle="Tickets">
+          <!-- <li nz-menu-item routerLink="/tickets"></li> -->
+          <li nz-submenu nzTitle="Queues" disabled nzIcon="plus-circle">
             <ul>
-              <li nz-menu-item routerLink="/tickets/open">
-                <span nz-icon nzType="snippets" nzTheme="outline"></span>
-                <span>Open Tickets</span>
+              <li nz-menu-item>
+                <a routerLink="/tickets">
+                  <span nz-icon nzType="file-protect" nzTheme="outline"></span>
+                  <span>All Tickets</span></a
+                >
               </li>
-              <li nz-menu-item routerLink="/tickets/self">
-                <span nz-icon nzType="user" nzTheme="outline"></span>
-                <span>My Tickets</span>
+              <li nz-menu-item>
+                <a routerLink="/tickets">
+                  <span nz-icon nzType="user" nzTheme="outline"></span>
+                  <span>My Tickets</span></a
+                >
+              </li>
+              <li nz-menu-item>
+                <a routerLink="/tickets">
+                  <span nz-icon nzType="snippets" nzTheme="outline"></span>
+                  <span>Open Tickets</span></a
+                >
               </li>
             </ul>
           </li>
         </ul>
       </li>
-      <li nz-submenu nzTitle="Library" disabled nzIcon="desktop">
-        <ul>
-          <li nz-menu-item>
-            <a routerLink="/knowledge-repos">
-              <span nz-icon nzType="file-protect" nzTheme="outline"></span>
-              <span>Knowledge Repo</span></a
-            >
-          </li>
-          <li nz-menu-group nzTitle="Reports">
-            <ul>
-                <li nz-menu-item><a routerLink="/reports1">
-                  <span nz-icon nzType="bar-chart" nzTheme="outline"></span>
-                  <span>Reports Dashboard</span></a></li>
-                  <li nz-menu-item><a routerLink="/reports">
-                    <span nz-icon nzType="bar-chart" nzTheme="outline"></span>
-                    <span>Reports Dashboard</span></a></li>
-                    <li nz-menu-item><a routerLink="/reports2">
-                      <span nz-icon nzType="bar-chart" nzTheme="outline"></span>
-                      <span>Reports Dashboard</span></a></li>
-                      <li nz-menu-item><a routerLink="/bubble-report">
-                        <span nz-icon nzType="bar-chart" nzTheme="outline"></span>
-                        <span>Reports Dashboard</span></a></li>
-            </ul>
-          </li>
-        </ul>
-      </li>
+
+      <ul>
+        <li nz-menu-item>
+          <a routerLink="/knowledge-repos">
+            <span nz-icon nzType="file-protect" nzTheme="outline"></span>
+            <span>Knowledge Repo</span></a
+          >
+        </li>
+        <li nz-submenu nzTitle="Dash Board" disabled nzIcon="area-chart">
+          <ul>
+            <li nz-menu-item>
+              <a routerLink="/reports1">
+                <span nz-icon nzType="bar-chart" nzTheme="outline"></span>
+                <span>Reports Dashboard</span></a
+              >
+            </li>
+            <li nz-menu-item>
+              <a routerLink="/reports">
+                <span nz-icon nzType="bar-chart" nzTheme="outline"></span>
+                <span>Reports Dashboard</span></a
+              >
+            </li>
+            <li nz-menu-item>
+              <a routerLink="/reports2">
+                <span nz-icon nzType="bar-chart" nzTheme="outline"></span>
+                <span>Reports Dashboard</span></a
+              >
+            </li>
+            <li nz-menu-item>
+              <a routerLink="/resports-table">
+                <span nz-icon nzType="bar-chart" nzTheme="outline"></span>
+                <span>Reports Dashboard</span></a
+              >
+            </li>
+          </ul>
+        </li>
+      </ul>
     </ul>
   </nz-sider>
   <nz-layout>

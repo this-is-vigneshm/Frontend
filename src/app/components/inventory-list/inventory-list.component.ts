@@ -30,6 +30,10 @@ export class InventoryListComponent {
   options : string = ''
   searchString : any ;
 
+  nav = "create"
+  nav1 = "preview"
+
+
   size: NzButtonSize='small'
 
   ngOnInit(): void {
@@ -256,6 +260,8 @@ export class InventoryListComponent {
   handleUpdateItem(data : any){
     this.selectedInventory = data;
     this.isVisibleMiddle = true;
+    this.nav = "update"
+
   }
   handleCreateItemOk(): void {
     this.selectedInventory = null;
@@ -265,6 +271,8 @@ export class InventoryListComponent {
   handleCreateItemCancel(): void {
     this.selectedInventory = null;
     this.isVisibleMiddle = false;
+    this.nav = "create"
+
   }
 
 
