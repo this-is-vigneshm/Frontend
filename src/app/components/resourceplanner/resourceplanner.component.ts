@@ -60,7 +60,7 @@ export class ResourceplannerComponent implements OnInit {
   workOrderCode :any;
 
   @Output()
-  close1: EventEmitter<Resource> = new EventEmitter<Resource>();
+  close1: EventEmitter<void> = new EventEmitter<void>();
 
 
   ColumnItem: any;
@@ -155,7 +155,6 @@ resource! : Resource
         this.searchResults = this.employeeList;
         this.notification.success('Employee Details is Found!');
         this.data = true
-        console.log(this.data)
       },
       (error) => {
         console.log('Error occurred', error);
@@ -178,12 +177,22 @@ resource! : Resource
           console.log('Success', data);
           this.resource = data.responseData
           this.notification.success('Resource Created Successfully.');
-          this.handleClose();
+          console.log(this.saveAdd)
         },
         (error: any) => {
           console.log('Error occcured', error);
         }
       );
+    }
+    if(this.saveAdd == true)
+    {
+      this.validateForm.reset()
+      this.saveAdd = false
+    }
+    if(this.saveClose == true)
+    {
+      this.handleClose()
+      this.saveClose = false
     }
   }
   updateresourceData(resource: any) {
@@ -201,9 +210,8 @@ resource! : Resource
   }
 
   handleClose() {
-    this.isUpdateComponent = false;
-    this.resourceData = null;
-    this.close1.emit(this.resource);
+    this.isUpdateComponent = false
+    this.close1.emit();
   }
 
   employeeList: any = [];
@@ -215,8 +223,17 @@ resource! : Resource
   onCheck(event: any) {
     this.userId.push(event)
   }
+ 
+  saveAdd = false
+  saveClose = false
+
   handleReset()
   {
-    this.validateForm.reset()
+    this.saveAdd = true
+  }
+
+  handleclose()
+  {
+    this.saveClose = true
   }
 }
