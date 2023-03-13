@@ -1,6 +1,7 @@
 <div id="create-asset-body" >
-  <div id="create-asset-form">
-    <div style="display: flex; margin-left: -70px; margin-top: -70px">
+  <div>
+    <div style="display: flex; margin-left: -70px; margin-top: -70px" *ngIf="!abc">
+
       <div>
         <span
           ><img
@@ -10,8 +11,8 @@
             style="margin-top: 8px"
         /></span>
       </div>
+
       <div style="margin-left: 25px">
-        <span>
           <h2
             style="
               margin-top: -1px;
@@ -23,10 +24,45 @@
           >
            {{asset}} an asset
           </h2>
-          <h4 style="margin-top: -17px; margin-left: -59%">
+        </div>
+        <div>
+          <h4 style="margin-top: 40px; margin-left: -475%">
             {{asset1}} assets!
-        </h4 ></span>
+        </h4 >
       </div>
+
+    </div>
+    <div style="display: flex; margin-left: -70px; margin-top: -70px" *ngIf="abc">
+
+      <div>
+        <span
+          ><img
+            src="../../../assets/asset.png"
+            width="45px"
+            height="45px"
+            style="margin-top: 8px"
+        /></span>
+      </div>
+
+      <div style="margin-left: 25px">
+          <h2
+            style="
+              margin-top: -1px;
+              color: rgba(38, 38, 202, 0.733);
+              font-size: 20pt;
+              font-weight: 700;
+              margin-right: 0%;
+            "
+          >
+           {{asset}} an asset
+          </h2>
+        </div>
+        <div>
+          <h4 style="margin-top: 40px; margin-left: -405%">
+            {{asset1}} assets!
+        </h4 >
+      </div>
+
     </div>
 
     <form class nz-form [formGroup]="validateForm" nzLayout="vertical"(ngSubmit)="submitForm()">

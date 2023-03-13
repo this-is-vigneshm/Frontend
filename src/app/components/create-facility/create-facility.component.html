@@ -1,4 +1,6 @@
-<div style="display: flex; margin-left: 90px; margin-top: -5px">
+<div id="create-facility-body">
+
+<div style="display: flex; margin-left: -5%; margin-top: -5px">
   <div>
     <span
       ><img
@@ -19,20 +21,20 @@
         "
       >
         {{facility}} a Facility
-      </h2>
-      <h4 style="margin-top: -17px; margin-right: -17px; margin-bottom: -15%;">
+      </h2></span><span>
+      <h4 style="margin-top: -17px; margin-left: -57%; margin-bottom: -15%;">
         {{facility1}} Facility!
       </h4></span
     >
   </div>
 </div>
+
 <form
   nz-form
   [formGroup]="validateForm"
   (ngSubmit)="submitForm()"
   [nzLayout]="'vertical'"
 >
-  <div nz-col [nzSpan]="12">
     <nz-form-item>
       <nz-form-label
         [nzSm]="15"
@@ -177,9 +179,9 @@
         </nz-select>
       </nz-form-control>
     </nz-form-item> -->
-  </div>
 </form>
 
 <div *ngIf="loc" style="margin: 60px;">
   <app-location [facCode]="facCode"></app-location>
+</div>
 </div>

@@ -43,6 +43,7 @@ export class AssetCreateComponent implements OnInit {
   asset1 = "Create"
 
 
+  abc!: boolean
 
  subAsset = [
 ];
@@ -177,6 +178,7 @@ export class AssetCreateComponent implements OnInit {
       this.isUpdateComponent = true;
       this.asset = "Update"
       this.asset1 = "Manage"
+      this.abc = true
       this.validateForm = this.fb.group({
         id: [this.assetData.id, Validators.required],
         name: [this.assetData.name, [Validators.required]],
