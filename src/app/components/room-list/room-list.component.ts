@@ -72,6 +72,15 @@ panels = [
       filterMultiple: true,
       listOfFilter: [],
       filterFn: null
+    },
+    {
+      name: 'Floor Id',
+      sortOrder: null,
+      sortFn: (a: Room, b: Room) => a.floorId - b.floorId ,
+      sortDirections: ['ascend', 'descend', null],
+      filterMultiple: true,
+      listOfFilter: [],
+      filterFn: null
     }
   ];
 

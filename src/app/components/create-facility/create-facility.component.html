@@ -136,9 +136,7 @@
 
     </nz-form-item>
 
-    <div *ngIf="loc">
-      <app-location [facCode]="facCode"></app-location>
-    </div>
+
     <!-- <nz-form-item>
       <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="dagRunId"
         >DAG Run ID</nz-form-label
@@ -181,3 +179,7 @@
     </nz-form-item> -->
   </div>
 </form>
+
+<div *ngIf="loc" style="margin: 60px;">
+  <app-location [facCode]="facCode"></app-location>
+</div>

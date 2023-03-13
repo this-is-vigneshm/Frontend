@@ -69,6 +69,15 @@ areaColumns: ColumnItem[] = [
       filterMultiple: true,
       listOfFilter: [],
       filterFn: null
+    },
+    {
+      name: 'Floor Id',
+      sortOrder: null,
+      sortFn: (a: Area, b: Area) => a.floorId - b.floorId ,
+      sortDirections: ['ascend', 'descend', null],
+      filterMultiple: true,
+      listOfFilter: [],
+      filterFn: null
     }
   ];
 
