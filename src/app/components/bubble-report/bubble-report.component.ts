@@ -66,7 +66,7 @@ export class BubbleReportComponent implements OnInit{
      
       for(let j=0; j<(i.values.length);j++)
       {
-        this.d.push({x:i.label[j],y:i.values[j],r:i.number[j]*5})
+        this.d.push({x:i.label[j],y:i.values[j],r:i.number[j]})
       }
       this.data.push({
           label:i.category,
