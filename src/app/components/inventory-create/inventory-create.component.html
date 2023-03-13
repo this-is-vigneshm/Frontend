@@ -1,51 +1,73 @@
 <div>
 <div id="create-inventory-body">
   <div id="create-item-form">
-    <div style="display: flex; margin-left: -65px; margin-top: -40px">
+    <div style="display: flex; margin-left: -70px; margin-top: -70px" *ngIf="!abc">
+
+
       <div>
         <span
           ><img
-            src="../../../assets/User.png"
+            src="../../../assets/userInventory.png"
             width="45px"
             height="45px"
-            style="margin-top: 11px"
+            style="margin-top: 8px"
         /></span>
       </div>
-      <div style="margin-left: 20px">
-        <span>
+
+      <div style="margin-left: 25px">
+
           <h2
             style="
               margin-top: -1px;
               color: rgba(38, 38, 202, 0.733);
               font-size: 20pt;
               font-weight: 700;
-              margin-left: -2% ;
+              margin-right: 0%;
             "
           >
-            {{inventory}} Inventory Item
-          </h2></span>
-
-
-          <span>
-            <h2
-              style="
-                margin-top: -1px;
-                color: rgba(38, 38, 202, 0.733);
-                font-size: 20pt;
-                font-weight: 700;
-                margin-left: -1%;
-              "
-            >
-              {{ inventory }} Inventory Item
-            </h2></span
-          >
-          <span>
-            <h4 style="margin-top: -17px; margin-left: -61%">
-              {{ inventory1 }} Inventory!
-            </h4></span
-          >
+            {{ inventory }} an inventory
+          </h2>
         </div>
+        <div>
+          <h4 style="margin-top: 40px; margin-left: -483%">
+            {{inventory1}} inventory!
+        </h4 >
+
       </div>
+
+    </div>
+    <div style="display: flex; margin-left: -70px; margin-top: -70px" *ngIf="abc">
+
+      <div>
+        <span
+          ><img
+            src="../../../assets/asset.png"
+            width="45px"
+            height="45px"
+            style="margin-top: 8px"
+        /></span>
+      </div>
+
+      <div style="margin-left: 25px">
+          <h2
+            style="
+              margin-top: -1px;
+              color: rgba(38, 38, 202, 0.733);
+              font-size: 20pt;
+              font-weight: 700;
+              margin-right: 0%;
+            "
+          >
+           {{inventory}} an inventory
+          </h2>
+        </div>
+        <div>
+          <h4 style="margin-top: 40px; margin-left: -425%">
+            {{inventory1}} inventory!
+        </h4 >
+      </div>
+
+    </div>
       <form
         class
         nz-form

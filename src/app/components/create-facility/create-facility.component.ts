@@ -32,6 +32,8 @@ export class CreateFacilityComponent implements OnInit {
   facility = "Register"
   facility1 = "Create"
 
+  abc!: boolean
+
   addLoc: boolean = true;
 
   facilityType = [{ name: 'Rural' }, { name: 'Urban' }];
@@ -55,6 +57,7 @@ export class CreateFacilityComponent implements OnInit {
       this.isUpdateComponent = true;
       this.facility = "Update"
       this.facility1 = "manage"
+      this.abc = true
       this.validateForm = this.fb.group({
         facilityCode: [this.facilityData.facilityCode, [Validators.required]],
         facilityName: [this.facilityData.facilityName, [Validators.required]],

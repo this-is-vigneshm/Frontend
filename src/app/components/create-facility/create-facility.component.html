@@ -1,33 +1,72 @@
-<div id="create-facility-body">
 
-<div style="display: flex; margin-left: -5%; margin-top: -5px">
-  <div>
-    <span
-      ><img
-        src="../../../assets/Location.png"
-        width="45px"
-        height="45px"
-        style="margin-top: 10px"
-    /></span>
+
+  <div style="display: flex; margin-left: 40px; margin-top: -20px" *ngIf="!abc">
+
+
+    <div>
+      <span
+        ><img
+          src="../../../assets/Location.png"
+          width="45px"
+          height="45px"
+          style="margin-top: 8px"
+      /></span>
+    </div>
+
+    <div style="margin-left: 25px">
+
+        <h2
+          style="
+            margin-top: -1px;
+            color: rgba(38, 38, 202, 0.733);
+            font-size: 20pt;
+            font-weight: 700;
+            margin-right: 0%;
+          "
+        >
+          {{ facility }} an facility
+        </h2>
+      </div>
+      <div>
+        <h4 style="margin-top: 40px; margin-left: -505%">
+          {{facility1}} facility!
+      </h4 >
+
+    </div>
+
   </div>
-  <div style="margin-left: 20px">
-    <span>
-      <h2
-        style="
-          margin-top: -1px;
-          color: rgba(38, 38, 202, 0.733);
-          font-size: 20pt;
-          font-weight: 700;
-        "
-      >
-        {{facility}} a Facility
-      </h2></span><span>
-      <h4 style="margin-top: -17px; margin-left: -57%; margin-bottom: -15%;">
-        {{facility1}} Facility!
-      </h4></span
-    >
+  <div style="display: flex; margin-left: -50px; margin-top: -70px" *ngIf="abc">
+
+    <div>
+      <span
+        ><img
+          src="../../../assets/Location.png"
+          width="45px"
+          height="45px"
+          style="margin-top: 8px"
+      /></span>
+    </div>
+
+    <div style="margin-left: 25px">
+        <h2
+          style="
+            margin-top: -1px;
+            color: rgba(38, 38, 202, 0.733);
+            font-size: 20pt;
+            font-weight: 700;
+            margin-right: 0%;
+          "
+        >
+         {{facility}} an facility
+        </h2>
+      </div>
+      <div>
+        <h4 style="margin-top: 40px; margin-left: -435%">
+          {{facility1}} facility!
+      </h4 >
+    </div>
+
   </div>
-</div>
 
 <form
   nz-form
@@ -194,5 +233,4 @@
 
 <div *ngIf="loc" style="margin: 60px;">
   <app-location [facCode]="facCode"></app-location>
-</div>
 </div>
