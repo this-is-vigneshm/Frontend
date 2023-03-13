@@ -29,6 +29,9 @@ export class InventoryCreateComponent {
   validateForm!: UntypedFormGroup;
   file: any;
 
+  inventory = "Register"
+  inventory1 = "Create"
+
   status = [
     { name: 'Available' },
     { name: 'Not Available'},
@@ -88,6 +91,8 @@ export class InventoryCreateComponent {
       });
     } else {
       this.isUpdateComponent = true;
+      this.inventory = "Update"
+      this.inventory1  = "Manage"
       this.validateForm = this.fb.group({
         id: [this.inventoryData.id, Validators.required],
         name: [this.inventoryData.name, [Validators.required]],

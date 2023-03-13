@@ -29,6 +29,9 @@ export class CreateFacilityComponent implements OnInit {
 
   userData: any;
 
+  facility = "Register"
+  facility1 = "Create"
+
   addLoc: boolean = true;
 
   facilityType = [{ name: 'Rural' }, { name: 'Urban' }];

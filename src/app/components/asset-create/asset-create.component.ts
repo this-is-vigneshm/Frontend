@@ -32,11 +32,16 @@ export class AssetCreateComponent implements OnInit {
   @Output()
   close: EventEmitter<void> = new EventEmitter<void>();
 
+
   isUpdateComponent: boolean = false;
 
   userData: any;
 
   file:any
+
+  asset = "Register"
+  asset1 = "Create"
+
 
 
  subAsset = [
@@ -170,6 +175,8 @@ export class AssetCreateComponent implements OnInit {
       });
     } else {
       this.isUpdateComponent = true;
+      this.asset = "Update"
+      this.asset1 = "Manage"
       this.validateForm = this.fb.group({
         id: [this.assetData.id, Validators.required],
         name: [this.assetData.name, [Validators.required]],
