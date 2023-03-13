@@ -1,6 +1,6 @@
 <div id="create-asset-body" >
   <div id="create-asset-form">
-    <div style="display: flex; margin-left: 78px; margin-top: -10px">
+    <div style="display: flex; margin-left: 48px; margin-top: -10px">
       <div>
         <span
           ><img
@@ -30,66 +30,66 @@
     </div>
 <div id="flex">
     <div>
-      <form nz-form style="width: 1200%">
+      <form nz-form nzLayout="vertical" style="width: 1200%">
         <nz-form-item>
-          <nz-form-label [nzSm]="6" [nzXs]="24" [nzSpan]="5">
-            <span style="color: rgb(0, 102, 255)">Asset Name</span></nz-form-label
+          <nz-form-label [nzSm]="14" [nzXs]="24" [nzSpan]="5">
+            <span style="color: rgb(0, 102, 255)">What is the Asset Name?</span></nz-form-label
           >
-          <nz-form-control [nzSpan]="12">
+          <nz-form-control [nzSpan]="19">
             <input nz-input value="{{ asset.name }}" />
           </nz-form-control>
         </nz-form-item>
         <nz-form-item>
-          <nz-form-label [nzSm]="6" [nzXs]="24" [nzSpan]="5"
+          <nz-form-label [nzSm]="14" [nzXs]="24" [nzSpan]="5"
             ><span style="color: rgb(0, 102, 255)"
-              >Asset Code
+              >Assign a code to the asset
             </span></nz-form-label
           >
-          <nz-form-control [nzSpan]="12">
+          <nz-form-control [nzSpan]="19">
             <input nz-input value="{{ asset.code }}" />
           </nz-form-control>
         </nz-form-item>
         <nz-form-item>
-          <nz-form-label [nzSm]="6" [nzXs]="24" [nzSpan]="5"
+          <nz-form-label [nzSm]="14" [nzXs]="24" [nzSpan]="5"
             ><span style="color: rgb(0, 102, 255)"
               >Serial No
             </span></nz-form-label
           >
-          <nz-form-control [nzSpan]="12">
+          <nz-form-control [nzSpan]="19">
             <input nz-input value="{{ asset.serialNo }}" />
           </nz-form-control>
         </nz-form-item>
         <nz-form-item>
-          <nz-form-label [nzSm]="6" [nzXs]="24" [nzSpan]="5"
+          <nz-form-label [nzSm]="14" [nzXs]="24" [nzSpan]="5"
             ><span style="color: rgb(0, 102, 255)"
-              >Description
+              >Describe about the asset
             </span></nz-form-label
           >
-          <nz-form-control [nzSpan]="12">
+          <nz-form-control [nzSpan]="19">
             <input nz-input value="{{ asset.description }}" />
           </nz-form-control>
         </nz-form-item>
         <nz-form-item>
-          <nz-form-label [nzSm]="6" [nzXs]="24" [nzSpan]="5"
+          <nz-form-label [nzSm]="14" [nzXs]="24" [nzSpan]="5"
             ><span style="color: rgb(0, 102, 255)"
-              >Facility Name
+              >Which facility does this asset belongs to?
             </span></nz-form-label
           >
-          <nz-form-control [nzSpan]="12">
+          <nz-form-control [nzSpan]="19">
             <input nz-input value="{{ asset.name }}" />
           </nz-form-control>
         </nz-form-item>
         <nz-form-item>
-          <nz-form-label [nzSm]="6" [nzXs]="24" [nzSpan]="5"
-            ><span style="color: rgb(0, 102, 255)">Location </span></nz-form-label
+          <nz-form-label [nzSm]="14" [nzXs]="24" [nzSpan]="5"
+            ><span style="color: rgb(0, 102, 255)">Where is this asset located? </span></nz-form-label
           >
-          <nz-form-control [nzSpan]="12">
+          <nz-form-control [nzSpan]="19">
             <input nz-input value="{{ asset.location.facilityCode }}" />
           </nz-form-control>
         </nz-form-item>
         <!-- <nz-form-item>
           <nz-form-label [nzSm]="6" [nzXs]="24" [nzSpan]="5"
-            ><span style="color: rgb(0, 102, 255)">Building </span></nz-form-label
+            ><span style="color: rgb(0, 102, 255)">Select an appropriate building </span></nz-form-label
           >
           <nz-form-control [nzSpan]="12">
             <input nz-input value="{{ asset.building }}" />
@@ -97,106 +97,106 @@
         </nz-form-item>
         <nz-form-item>
           <nz-form-label [nzSm]="6" [nzXs]="24" [nzSpan]="5"
-            ><span style="color: rgb(0, 102, 255)">Floors </span></nz-form-label
+            ><span style="color: rgb(0, 102, 255)">Select an appropriate floor </span></nz-form-label
           >
           <nz-form-control [nzSpan]="12">
             <input nz-input value="{{ asset.floors }}" />
           </nz-form-control>
         </nz-form-item> -->
         <nz-form-item>
-          <nz-form-label [nzSm]="6" [nzXs]="24" [nzSpan]="5"
+          <nz-form-label [nzSm]="14" [nzXs]="24" [nzSpan]="5"
             ><span style="color: rgb(0, 102, 255)"
-              >Area or Room
+              >Select an appropriate area or room
             </span></nz-form-label
           >
-          <nz-form-control [nzSpan]="12">
+          <nz-form-control [nzSpan]="19">
             <input nz-input value="{{ asset.area }}" />
           </nz-form-control>
         </nz-form-item>
         <nz-form-item>
-          <nz-form-label [nzSm]="6" [nzXs]="24" [nzSpan]="5"
-            ><span style="color: rgb(0, 102, 255)">Category </span></nz-form-label
+          <nz-form-label [nzSm]="14" [nzXs]="24" [nzSpan]="5"
+            ><span style="color: rgb(0, 102, 255)">Select a category of the asset </span></nz-form-label
           >
-          <nz-form-control [nzSpan]="12">
+          <nz-form-control [nzSpan]="19">
             <input nz-input value="{{ asset.category }}" />
           </nz-form-control>
         </nz-form-item>
         <nz-form-item>
-          <nz-form-label [nzSm]="6" [nzXs]="24" [nzSpan]="5"
+          <nz-form-label [nzSm]="14" [nzXs]="24" [nzSpan]="5"
             ><span style="color: rgb(0, 102, 255)"
-              >Asset department
+              >Select a asset department
             </span></nz-form-label
           >
-          <nz-form-control [nzSpan]="12">
+          <nz-form-control [nzSpan]="19">
             <input nz-input value="{{ asset.department }}" />
           </nz-form-control>
         </nz-form-item>
         <nz-form-item>
-          <nz-form-label [nzSm]="6" [nzXs]="24" [nzSpan]="5"
+          <nz-form-label [nzSm]="14" [nzXs]="24" [nzSpan]="5"
             ><span style="color: rgb(0, 102, 255)"
-              >Sub Asset
+              >Is this sub asset of any existing assets?
             </span></nz-form-label
           >
-          <nz-form-control [nzSpan]="12">
+          <nz-form-control [nzSpan]="19">
             <input nz-input value="{{ asset.subAsset }}" />
           </nz-form-control>
         </nz-form-item>
         <nz-form-item>
-          <nz-form-label [nzSm]="6" [nzXs]="24" [nzSpan]="5"
-            ><span style="color: rgb(0, 102, 255)">System </span></nz-form-label
+          <nz-form-label [nzSm]="14" [nzXs]="24" [nzSpan]="5"
+            ><span style="color: rgb(0, 102, 255)">Provide system details if any </span></nz-form-label
           >
-          <nz-form-control [nzSpan]="12">
+          <nz-form-control [nzSpan]="19">
             <input nz-input value="{{ asset.system }}" />
           </nz-form-control>
         </nz-form-item>
         <nz-form-item>
-          <nz-form-label [nzSm]="6" [nzXs]="24" [nzSpan]="5"
-            ><span style="color: rgb(0, 102, 255)">Supplier </span></nz-form-label
+          <nz-form-label [nzSm]="14" [nzXs]="24" [nzSpan]="5"
+            ><span style="color: rgb(0, 102, 255)">Provide the supplier name </span></nz-form-label
           >
-          <nz-form-control [nzSpan]="12">
+          <nz-form-control [nzSpan]="19">
             <input nz-input value="{{ asset.supplier }}" />
           </nz-form-control>
         </nz-form-item>
         <nz-form-item>
-          <nz-form-label [nzSm]="6" [nzXs]="24" [nzSpan]="5"
-            ><span style="color: rgb(0, 102, 255)">Status </span></nz-form-label
+          <nz-form-label [nzSm]="14" [nzXs]="24" [nzSpan]="5"
+            ><span style="color: rgb(0, 102, 255)">What is the status of the asset? </span></nz-form-label
           >
-          <nz-form-control [nzSpan]="12">
+          <nz-form-control [nzSpan]="19">
             <input nz-input value="{{ asset.status }}" />
           </nz-form-control>
         </nz-form-item>
         <nz-form-item>
-          <nz-form-label [nzSm]="6" [nzXs]="24" [nzSpan]="5"
-            ><span style="color: rgb(0, 102, 255)">Priority </span></nz-form-label
+          <nz-form-label [nzSm]="14" [nzXs]="24" [nzSpan]="5"
+            ><span style="color: rgb(0, 102, 255)">Select an appropriate priority </span></nz-form-label
           >
-          <nz-form-control [nzSpan]="12">
+          <nz-form-control [nzSpan]="19">
             <input nz-input value="{{ asset.priority }}" />
           </nz-form-control>
         </nz-form-item>
         <nz-form-item>
-          <nz-form-label [nzSm]="6" [nzXs]="24" [nzSpan]="5"
-            ><span style="color: rgb(0, 102, 255)">Make </span></nz-form-label
+          <nz-form-label [nzSm]="14" [nzXs]="24" [nzSpan]="5"
+            ><span style="color: rgb(0, 102, 255)">What is the make of the asset? </span></nz-form-label
           >
-          <nz-form-control [nzSpan]="12">
+          <nz-form-control [nzSpan]="19">
             <input nz-input value="{{ asset.make }}" />
           </nz-form-control>
         </nz-form-item>
         <nz-form-item>
-          <nz-form-label [nzSm]="6" [nzXs]="24" [nzSpan]="5"
-            ><span style="color: rgb(0, 102, 255)">Model </span></nz-form-label
+          <nz-form-label [nzSm]="14" [nzXs]="24" [nzSpan]="5"
+            ><span style="color: rgb(0, 102, 255)">What is the model of the asset? </span></nz-form-label
           >
-          <nz-form-control [nzSpan]="12">
+          <nz-form-control [nzSpan]="19">
             <input nz-input value="{{ asset.model }}" />
           </nz-form-control>
         </nz-form-item>
   
         <nz-form-item>
-          <nz-form-label [nzSm]="6" [nzXs]="24" [nzSpan]="5"
+          <nz-form-label [nzSm]="19" [nzXs]="24" [nzSpan]="5"
             ><span style="color: rgb(0, 102, 255)"
-              >Price (in Dollar)
+              >What is the estimated Price (in Dollar) of the asset?
             </span></nz-form-label
           >
-          <nz-form-control [nzSpan]="12">
+          <nz-form-control [nzSpan]="19">
             <input nz-input value="{{ asset.price }}" />
           </nz-form-control>
         </nz-form-item>
