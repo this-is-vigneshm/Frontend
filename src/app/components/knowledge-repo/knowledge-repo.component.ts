@@ -22,6 +22,8 @@ export class KnowledgeRepoComponent implements OnInit {
 
   userData:any;
 
+  nav = "create"
+
   options : string = ''
   assetData: any;
 

@@ -45,6 +45,10 @@ export class MyworkorderComponent implements OnInit{
 
   size: NzButtonSize='small'
 
+  nav = "update"
+
+  nav1 = "preview"
+
 
   searchResults:any=[]
 
@@ -280,6 +284,8 @@ editId : string | null =null;
 
   handleCreateWorkOrderCancel(): void {
     this.isVisibleMiddle = false;
+    this.nav = "update"
+
   }
   handleDeleteWo(orderNo: any){
     this.restApiService.deleteWo(orderNo).subscribe(

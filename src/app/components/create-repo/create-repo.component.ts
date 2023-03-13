@@ -31,6 +31,9 @@ export class CreateRepoComponent {
 
   assetList: any;
 
+  repo = "Register"
+  repo1 = "Create"
+
   constructor(private formBuilder: UntypedFormBuilder, private notification: NzMessageService,
     private restApiService: RestapiService, private router: Router, private tokenService: TokenService) {
       this.form = this.formBuilder.group({

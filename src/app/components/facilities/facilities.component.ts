@@ -49,6 +49,9 @@ export class FacilitiesComponent implements OnInit{
   size: NzButtonSize='small'
   
   searchResults:any=[]
+
+  nav = "create"
+
   
   facData!: Facility | null
 
@@ -110,6 +113,7 @@ export class FacilitiesComponent implements OnInit{
   handleupdate(data:any){
     this.facData=data
     this.isFacVisibleMiddle = true
+    this.nav = "update"
   }
 
   innerColumns : ColumnItem[] = [
@@ -264,5 +268,6 @@ export class FacilitiesComponent implements OnInit{
   handleCreateFacilityCancel(): void {
     this.isCreateFacilityVisible = false;
     this.isFacVisibleMiddle = false;
+    this.nav = "create"
   }
 }

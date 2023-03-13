@@ -53,6 +53,8 @@ export class CreateFacilityComponent implements OnInit {
     });
     } else {
       this.isUpdateComponent = true;
+      this.facility = "Update"
+      this.facility1 = "manage"
       this.validateForm = this.fb.group({
         facilityCode: [this.facilityData.facilityCode, [Validators.required]],
         facilityName: [this.facilityData.facilityName, [Validators.required]],
