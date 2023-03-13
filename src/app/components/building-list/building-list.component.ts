@@ -72,7 +72,16 @@ export class BuildingListComponent {
       filterMultiple: true,
       listOfFilter: [],
       filterFn: null
-    }
+    },
+    {
+      name: 'Location Id',
+      sortOrder: null,
+      sortFn: (a: Building, b: Building) => a.locationId - b.locationId ,
+      sortDirections: ['ascend', 'descend', null],
+      filterMultiple: true,
+      listOfFilter: [],
+      filterFn: null
+    },
   ];
 
 

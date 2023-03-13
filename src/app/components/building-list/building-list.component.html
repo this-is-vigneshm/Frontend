@@ -17,6 +17,7 @@
                       <td [(nzExpand)]="data.expand"></td>
                         <td>{{ data.id }}</td>
                         <td>{{ data.name }}</td>
+                        <td>{{ locationId }}</td>
                         <td>
                             <button nz-button (click)="forLocation($event, data)"><span nz-icon nzType="plus" nzTheme="outline"></span></button>
                             <!-- <button nz-button>
