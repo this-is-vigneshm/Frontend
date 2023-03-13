@@ -1,4 +1,4 @@
-<div id="create-asset-body" >
+<div id="create-asset-body">
   <div id="create-asset-form">
     <div style="display: flex; margin-left: -70px; margin-top: -70px">
       <div>
@@ -10,7 +10,7 @@
             style="margin-top: 8px"
         /></span>
       </div>
-      <div style="margin-left: 25px">
+      <div style="margin-left: 19.5px">
         <span>
           <h2
             style="
@@ -21,15 +21,22 @@
               margin-right: 0%;
             "
           >
-           {{asset}} an asset
+            {{ asset }} an asset
           </h2>
-          <h4 style="margin-top: -17px; margin-left: -59%">
-            {{asset1}} assets!
-        </h4 ></span>
+          <h4 style="margin-top: -17px; margin-left: -50.5%">
+            {{ asset1 }} assets!
+          </h4></span
+        >
       </div>
     </div>
 
-    <form class nz-form [formGroup]="validateForm" nzLayout="vertical"(ngSubmit)="submitForm()">
+    <form
+      class
+      nz-form
+      [formGroup]="validateForm"
+      nzLayout="vertical"
+      (ngSubmit)="submitForm()"
+    >
       <nz-form-item>
         <nz-form-label [nzSm]="14" [nzXs]="24" nzRequired nzFor="name">
           <span style="color: rgb(0, 102, 255)">What is the Asset Name?</span>
@@ -50,7 +57,9 @@
       </nz-form-item>
       <nz-form-item>
         <nz-form-label [nzSm]="14" [nzXs]="24" nzRequired nzFor="code">
-          <span style="color: rgb(0, 102, 255)">Assign a code to the asset</span>
+          <span style="color: rgb(0, 102, 255)"
+            >Assign a code to the asset</span
+          >
         </nz-form-label>
         <nz-form-control
           [nzSm]="20"
@@ -86,7 +95,9 @@
       </nz-form-item>
       <nz-form-item>
         <nz-form-label [nzSm]="14" [nzXs]="24" nzFor="status" nzRequired
-          ><span style="color: rgb(0, 102, 255)">What is the status of the asset?</span>
+          ><span style="color: rgb(0, 102, 255)"
+            >What is the status of the asset?</span
+          >
         </nz-form-label>
         <nz-form-control
           [nzSm]="20"
@@ -106,8 +117,7 @@
         <nz-form-label [nzSm]="18" [nzXs]="24" nzFor="facilityCode" nzRequired
           ><span style="color: rgb(0, 102, 255)"
             >Which facility does this asset belongs to?
-            </span
-          ></nz-form-label
+          </span></nz-form-label
         >
         <nz-form-control
           [nzSm]="20"
@@ -121,9 +131,9 @@
             nzShowSearch
             nzAllowClear
             nzPlaceHolder="Select a Facility"
-            style="text-align: left;"
-            [ngModel] = "''"
-            (ngModelChange)="getLocationBycode($event)" 
+            style="text-align: left"
+            [ngModel]="''"
+            (ngModelChange)="getLocationBycode($event)"
           >
             <nz-option
               *ngFor="let facility of facilities"
@@ -134,138 +144,148 @@
           </nz-select>
         </nz-form-control>
       </nz-form-item>
-      <nz-form-item >
+      <nz-form-item>
         <nz-form-label [nzSm]="14" nzRequired [nzXs]="24">
-          <span style="color: rgb(0, 102, 255)">Where is this asset located?</span>
+          <span style="color: rgb(0, 102, 255)"
+            >Where is this asset located?</span
+          >
         </nz-form-label>
         <nz-form-control
           [nzSm]="20"
           [nzXs]="24"
           nzErrorTip="Please Enter Valid Location"
         >
-        <nz-select
-          id="location"
-          formControlName="location"
-          nzShowSearch
-          nzAllowClear
-          nzPlaceHolder="Select a Location"
-          style="text-align: left;"
-         [ngModel] = "''"
-          (ngModelChange)="getAllBuilding($event)" 
-  
-         
-        >
-          <nz-option
-            *ngFor="let location of locations"
-            [nzLabel]="location.name"
-            [nzValue]="location.id"
-            >{{ location }}</nz-option
+          <nz-select
+            id="location"
+            formControlName="location"
+            nzShowSearch
+            nzAllowClear
+            nzPlaceHolder="Select a Location"
+            style="text-align: left"
+            [ngModel]="''"
+            (ngModelChange)="getAllBuilding($event)"
           >
-        </nz-select>
-
-      
-       
+            <nz-option
+              *ngFor="let location of locations"
+              [nzLabel]="location.name"
+              [nzValue]="location.id"
+              >{{ location }}</nz-option
+            >
+          </nz-select>
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
         <nz-form-label [nzSm]="14" [nzXs]="24" nzRequired nzFor="building">
-          <span style="color: rgb(0, 102, 255)">Select an appropriate building</span>
+          <span style="color: rgb(0, 102, 255)"
+            >Select an appropriate building</span
+          >
         </nz-form-label>
         <nz-form-control
           [nzSm]="20"
           [nzXs]="24"
           nzErrorTip="Please Enter Valid Building"
         >
-        <nz-select
-        nz-input
-        formControlName="building"
-        id="building"
-        nzShowSearch
-        nzAllowClear
-        nzPlaceHolder="Select a building"
-        style="text-align: left;"
-        [ngModel] = "''"
-        (ngModelChange)="getAllFloor($event)"
-      >
-        <nz-option
-          *ngFor="let building of buildings"
-          [nzLabel]="building.name"
-          [nzValue]="building.id"
-          >{{ building }}</nz-option
-        >
-      </nz-select>
+          <nz-select
+            nz-input
+            formControlName="building"
+            id="building"
+            nzShowSearch
+            nzAllowClear
+            nzPlaceHolder="Select a building"
+            style="text-align: left"
+            [ngModel]="''"
+            (ngModelChange)="getAllFloor($event)"
+          >
+            <nz-option
+              *ngFor="let building of buildings"
+              [nzLabel]="building.name"
+              [nzValue]="building.id"
+              >{{ building }}</nz-option
+            >
+          </nz-select>
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
         <nz-form-label [nzSm]="14" [nzXs]="24" nzRequired nzFor="location">
-          <span style="color: rgb(0, 102, 255)">Select an appropriate floor</span>
+          <span style="color: rgb(0, 102, 255)"
+            >Select an appropriate floor</span
+          >
         </nz-form-label>
         <nz-form-control
           [nzSm]="20"
           [nzXs]="24"
           nzErrorTip="Please Enter Valid Floor"
         >
-        <nz-select
-        nz-input
-        formControlName="floor"
-        id="floor"
-        nzShowSearch
-        nzAllowClear
-        nzPlaceHolder="Select a floor"
-        style="text-align: left;"
-        [ngModel]="' '"
-        (ngModelChange)="getAllRoomAndArea($event)"
-      >
-        <nz-option
-          *ngFor="let floor of floors"
-          [nzLabel]="floor.name"
-          [nzValue]="floor.id"
-          >{{ floor }}</nz-option
-        >
-      </nz-select>
+          <nz-select
+            nz-input
+            formControlName="floor"
+            id="floor"
+            nzShowSearch
+            nzAllowClear
+            nzPlaceHolder="Select a floor"
+            style="text-align: left"
+            [ngModel]="' '"
+            (ngModelChange)="getAllRoomAndArea($event)"
+          >
+            <nz-option
+              *ngFor="let floor of floors"
+              [nzLabel]="floor.name"
+              [nzValue]="floor.id"
+              >{{ floor }}</nz-option
+            >
+          </nz-select>
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
         <nz-form-label [nzSm]="14" [nzXs]="24" nzRequired nzFor="location">
-          <span style="color: rgb(0, 102, 255)">Select an appropriate area or room</span>
+          <span style="color: rgb(0, 102, 255)"
+            >Select an appropriate area or room</span
+          >
         </nz-form-label>
         <nz-form-control [nzSm]="20" [nzXs]="24">
           <nz-input-group nzCompact>
-            <nz-select [ngModel]="'Sign Up'"
-            formControlName="raname" [ngModel]="' '" style="text-align: left" (ngModelChange)="getOptions($event)">
+            <nz-select
+              [ngModel]="'Sign Up'"
+              formControlName="raname"
+              [ngModel]="' '"
+              style="text-align: left"
+              (ngModelChange)="getOptions($event)"
+            >
               <nz-option [nzLabel]="'Area'" [nzValue]="'Area'"></nz-option>
               <nz-option [nzLabel]="'Room'" [nzValue]="'Room'"></nz-option>
             </nz-select>
           </nz-input-group>
         </nz-form-control>
         <nz-form-control
-        [nzSm]="20"
-        [nzXs]="24"
-        nzErrorTip="select the area/room"
-      >
-      <nz-select
-      nz-input
-      formControlName="arname"
-      id="floor"
-      nzShowSearch
-      nzAllowClear
-      nzPlaceHolder="Select a Area/Room"
-      style="text-align: left;"
-      
-    >
-      <nz-option
-        *ngFor="let arname of options"
-        [nzLabel]="arname.name"
-        [nzValue]="arname.id"
-        [ngModel]="''" (ngModelChange)="getId($event)"
-        >{{ arname }}</nz-option
-      >
-    </nz-select>
-      </nz-form-control>
+          [nzSm]="20"
+          [nzXs]="24"
+          nzErrorTip="select the area/room"
+        >
+          <nz-select
+            nz-input
+            formControlName="arname"
+            id="floor"
+            nzShowSearch
+            nzAllowClear
+            nzPlaceHolder="Select a Area/Room"
+            style="text-align: left"
+          >
+            <nz-option
+              *ngFor="let arname of options"
+              [nzLabel]="arname.name"
+              [nzValue]="arname.id"
+              [ngModel]="''"
+              (ngModelChange)="getId($event)"
+              >{{ arname }}</nz-option
+            >
+          </nz-select>
+        </nz-form-control>
       </nz-form-item>
       <nz-form-item>
         <nz-form-label [nzSm]="14" [nzXs]="24" nzFor="serialNo">
-          <span style="color: rgb(0, 102, 255)">Provide the serial No if any</span>
+          <span style="color: rgb(0, 102, 255)"
+            >Provide the serial No if any</span
+          >
         </nz-form-label>
         <nz-form-control
           [nzSm]="20"
@@ -288,7 +308,9 @@
           style="color: #3253dc"
           nzFor="category"
         >
-          <span style="color: rgb(0, 102, 255)">Select a category of the asset</span></nz-form-label
+          <span style="color: rgb(0, 102, 255)"
+            >Select a category of the asset</span
+          ></nz-form-label
         >
         <nz-form-control
           [nzSm]="20"
@@ -302,7 +324,7 @@
             nzShowSearch
             nzAllowClear
             nzPlaceHolder="Select a Category"
-            style="text-align: left;"
+            style="text-align: left"
           >
             <nz-option
               *ngFor="let category of categories"
@@ -319,7 +341,9 @@
           style="color: rgb(0, 102, 255)"
           nzFor="department"
         >
-          <span style="color: rgb(0, 102, 255)">Select a asset department</span></nz-form-label
+          <span style="color: rgb(0, 102, 255)"
+            >Select a asset department</span
+          ></nz-form-label
         >
         <nz-form-control
           [nzSm]="20"
@@ -333,7 +357,7 @@
             nzShowSearch
             nzAllowClear
             nzPlaceHolder="Select a Department"
-            style="text-align: left;"
+            style="text-align: left"
           >
             <nz-option
               *ngFor="let Department of departments"
@@ -344,13 +368,10 @@
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
-        <nz-form-label
-          [nzSm]="14"
-          [nzXs]="24"
-          
-          nzFor="supplier"
-        >
-          <span style="color: rgb(0, 102, 255)">Provide the supplier name</span></nz-form-label
+        <nz-form-label [nzSm]="14" [nzXs]="24" nzFor="supplier">
+          <span style="color: rgb(0, 102, 255)"
+            >Provide the supplier name</span
+          ></nz-form-label
         >
         <nz-form-control
           [nzSm]="20"
@@ -364,7 +385,7 @@
             nzShowSearch
             nzAllowClear
             nzPlaceHolder="Select a Supplier"
-            style="text-align: left;"
+            style="text-align: left"
           >
             <nz-option
               *ngFor="let Supplier of suppliers"
@@ -375,13 +396,10 @@
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
-        <nz-form-label
-          [nzSm]="18"
-          [nzXs]="24"
- 
-          nzFor="subAsset"
-        >
-          <span style="color: rgb(0, 102, 255)">Is this sub asset of any existing assets?</span></nz-form-label
+        <nz-form-label [nzSm]="18" [nzXs]="24" nzFor="subAsset">
+          <span style="color: rgb(0, 102, 255)"
+            >Is this sub asset of any existing assets?</span
+          ></nz-form-label
         >
         <nz-form-control
           [nzSm]="20"
@@ -395,16 +413,21 @@
             nzShowSearch
             nzAllowClear
             nzPlaceHolder="Select a subAsset"
-            style="text-align: left;"
+            style="text-align: left"
           >
-          <nz-option *ngFor="let asset of assetList" [nzLabel]="asset.name +  ' (' + asset.id + ')'"
-          [nzValue]="asset.id"></nz-option>
+            <nz-option
+              *ngFor="let asset of assetList"
+              [nzLabel]="asset.name + ' (' + asset.id + ')'"
+              [nzValue]="asset.id"
+            ></nz-option>
           </nz-select>
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
         <nz-form-label [nzSm]="14" [nzXs]="24" nzFor="system"
-          ><span style="color: rgb(0, 102, 255)">Provide system details if any</span>
+          ><span style="color: rgb(0, 102, 255)"
+            >Provide system details if any</span
+          >
         </nz-form-label>
         <nz-form-control
           [nzSm]="20"
@@ -422,7 +445,9 @@
       </nz-form-item>
       <nz-form-item>
         <nz-form-label [nzSm]="14" [nzXs]="24" nzFor="priority"
-          ><span style="color: rgb(0, 102, 255)">Select an appropriate priority</span>
+          ><span style="color: rgb(0, 102, 255)"
+            >Select an appropriate priority</span
+          >
         </nz-form-label>
         <nz-form-control
           [nzSm]="20"
@@ -440,7 +465,9 @@
       </nz-form-item>
       <nz-form-item>
         <nz-form-label [nzSm]="14" [nzXs]="24" nzFor="model"
-          ><span style="color: rgb(0, 102, 255)">What is the model of the asset?</span>
+          ><span style="color: rgb(0, 102, 255)"
+            >What is the model of the asset?</span
+          >
         </nz-form-label>
         <nz-form-control
           [nzSm]="20"
@@ -458,7 +485,9 @@
       </nz-form-item>
       <nz-form-item>
         <nz-form-label [nzSm]="14" [nzXs]="24" nzFor="make"
-          ><span style="color: rgb(0, 102, 255)">What is the make of the asset?</span>
+          ><span style="color: rgb(0, 102, 255)"
+            >What is the make of the asset?</span
+          >
         </nz-form-label>
         <nz-form-control
           [nzSm]="20"
@@ -494,25 +523,25 @@
         </nz-form-control>
       </nz-form-item>
 
-
       <div>
         <nz-form-item id="upload-view">
           <nz-form-control nzErrorTip="Please Add an Attachment">
-            <input formControlName="file" type="file" placeholder="file" (change)="handleChange1($event)">
+            <input
+              formControlName="file"
+              type="file"
+              placeholder="file"
+              (change)="handleChange1($event)"
+            />
           </nz-form-control>
         </nz-form-item>
       </div>
 
-      
       <nz-form-item nz-row class="register-area">
         <nz-form-control [nzSpan]="20" [nzOffset]="6">
           <button nz-button nzType="primary" id="create-button">Submit</button>
         </nz-form-control>
       </nz-form-item>
     </form>
-
-    
-
 
     <div id="create-asset-file-upload" *ngIf="!isUpdateComponent">
       <h2>Create Assets By File</h2>
