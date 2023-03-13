@@ -248,6 +248,7 @@ export class EmployeeListComponent implements OnInit {
       data => {
         console.log("Success", data)
         this.notification.success("Employee Status updated Successfully!")
+        window.location.reload()
       },
       error => {
         console.log(error)

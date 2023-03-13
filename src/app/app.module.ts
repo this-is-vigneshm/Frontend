@@ -60,6 +60,7 @@ import { ViewInventoryComponent } from './components/view-inventory/view-invento
 import { ViewAssetComponent } from './components/view-asset/view-asset.component';
 import { ResourceListComponent } from './components/resource-list/resource-list.component';
 import { UpdateResourceComponent } from './components/update-resource/update-resource.component';
+
 registerLocaleData(en);
 
 @NgModule({
@@ -112,6 +113,7 @@ registerLocaleData(en);
     ViewAssetComponent,
     ResourceListComponent,
     UpdateResourceComponent,
+
     ],
   imports: [
     BrowserModule,
