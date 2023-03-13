@@ -339,7 +339,7 @@
               <app-resourceplanner
                 style="text-align: center"
                 [workOrderCode]="code"
-                (close1)="handleCreateResourceSave($event)"
+                (close1)="handleCreateResourceSave()"
               ></app-resourceplanner>
             </ng-template>
             <ng-container *ngIf="isb; then B"></ng-container>
@@ -347,7 +347,7 @@
               <app-createresource
                 style="text-align: center"
                 [workOrderCode]="code"
-                (close)="handleCreateResourceSave1($event)"
+                (close)="handleCreateResourceSave1()"
               ></app-createresource>
             </ng-template>
           </ng-container>

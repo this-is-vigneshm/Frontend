@@ -46,7 +46,7 @@ export class CreateresourceComponent {
   resourceData!: Resource | null;
 
   @Output()
-  close: EventEmitter<Resource> = new EventEmitter<Resource>
+  close: EventEmitter<void> = new EventEmitter<void>
 
   isUpdateComponent: boolean = true;
 
@@ -127,12 +127,21 @@ export class CreateresourceComponent {
           console.log('Success', data);
           this.notification.success('Resource Created Successfully.');
           this.resource =  data.responseData
-          this.handleClose()
         },
         (error) => {
           console.log('Error occcured', error);
         }
       );
+    }
+    if(this.saveAdd == true)
+    {
+      this.validateForm.reset()
+      this.saveAdd = false
+    }
+    if(this.saveClose == true)
+    {
+      this.handleClose()
+      this.saveClose = false
     }
   }
 
@@ -151,7 +160,7 @@ export class CreateresourceComponent {
 
   handleClose() {
     setTimeout(function(){delay},10000)
-    this.close.emit(this.resource)
+    this.close.emit()
   }
   a = false;
   inventoryId: number[] = []
@@ -159,7 +168,18 @@ export class CreateresourceComponent {
     this.inventoryId.push(event)
   }
 
-  handleReset() {
-    this.validateForm.reset()
+
+
+  saveAdd = false
+  saveClose = false
+
+  handleReset()
+  {
+    this.saveAdd = true
+  }
+
+  handleclose()
+  {
+    this.saveClose = true
   }
 }
